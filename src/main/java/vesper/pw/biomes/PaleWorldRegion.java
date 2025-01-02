@@ -7,7 +7,6 @@ import net.minecraft.util.Identifier;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.biome.source.util.MultiNoiseUtil;
-import terrablender.api.ModifiedVanillaOverworldBuilder;
 import terrablender.api.Region;
 import terrablender.api.RegionType;
 
@@ -20,8 +19,11 @@ public class PaleWorldRegion extends Region {
 
     @Override
     public void addBiomes(Registry<Biome> registry, Consumer<Pair<MultiNoiseUtil.NoiseHypercube, RegistryKey<Biome>>> mapper) {
-        this.addModifiedVanillaOverworldBiomes(mapper, ModifiedVanillaOverworldBuilder -> {
-            ModifiedVanillaOverworldBuilder.replaceBiome(BiomeKeys.LUSH_CAVES, PaleWorldBiomes.PALE_CAVE);
+        this.addModifiedVanillaOverworldBiomes(mapper, builder -> {
+            builder.replaceBiome(BiomeKeys.LUSH_CAVES, PaleWorldBiomes.PALE_CAVE);
         });
+        /*this.addModifiedVanillaOverworldBiomes(mapper, ModifiedVanillaOverworldBuilder -> {
+            ModifiedVanillaOverworldBuilder.replaceBiome(BiomeKeys.LUSH_CAVES, PaleWorldBiomes.PALE_CAVE);
+        });*/
     }
 }

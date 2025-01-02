@@ -4,6 +4,8 @@ import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import vesper.pw.block.PaleWorldBlocks;
+import vesper.pw.item.PaleWorldItems;
 
 public class PaleWorld implements ModInitializer {
 	public static final String MOD_ID = "pale-world";
@@ -19,6 +21,7 @@ public class PaleWorld implements ModInitializer {
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
 
-		LOGGER.info("Hello Fabric world!");
+		PaleWorldBlocks.regModBlocks();
+		PaleWorldItems.regModItems();
 	}
 }
