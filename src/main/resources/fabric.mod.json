@@ -18,8 +18,14 @@
 		"main": [
 			"vesper.pw.PaleWorld"
 		],
+		"client": [
+			"vesper.pw.PaleWorldClient"
+		],
 		"fabric-datagen": [
 			"vesper.pw.PaleWorldDataGenerator"
+		],
+		"terrablender": [
+			"vesper.pw.biomes.PaleWorldTerrablenderApi"
 		]
 	},
 	"mixins": [
