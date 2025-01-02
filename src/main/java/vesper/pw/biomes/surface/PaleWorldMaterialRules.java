@@ -15,7 +15,8 @@ public class PaleWorldMaterialRules {
 
     public static MaterialRules.MaterialRule makeRules(){
         return MaterialRules.sequence(
-                MaterialRules.sequence(MaterialRules.condition(MaterialRules.biome(PaleWorldBiomes.PALE_CAVE), MaterialRules.condition(MaterialRules.STONE_DEPTH_FLOOR, MOSS)))
+                MaterialRules.sequence(MaterialRules.condition(MaterialRules.biome(PaleWorldBiomes.PALE_CAVE), MaterialRules.condition(MaterialRules.STONE_DEPTH_FLOOR, MOSS))),
+                MaterialRules.sequence(MaterialRules.condition(MaterialRules.biome(PaleWorldBiomes.PALE_CAVE), MaterialRules.condition(MaterialRules.STONE_DEPTH_CEILING, MOSS)))
         );
     }
 

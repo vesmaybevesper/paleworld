@@ -34,13 +34,22 @@ public class PaleWorldBiomes {
 
     private static Biome paleCave(Registerable<Biome> biomeRegisterable) {
         SpawnSettings.Builder spawner = new SpawnSettings.Builder();
-        spawner.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.AXOLOTL, 2, 1, 1));
+        spawner.spawn(SpawnGroup.AXOLOTLS, new SpawnSettings.SpawnEntry(EntityType.AXOLOTL, 2, 1, 1));
 
         DefaultBiomeFeatures.addBatsAndMonsters(spawner);
 
         GenerationSettings.LookupBackedBuilder builder = new GenerationSettings.LookupBackedBuilder(biomeRegisterable.getRegistryLookup(RegistryKeys.PLACED_FEATURE), biomeRegisterable.getRegistryLookup(RegistryKeys.CONFIGURED_CARVER));
-        builder.feature((GenerationStep.Feature.UNDERGROUND_DECORATION), UndergroundPlacedFeatures.LUSH_CAVES_VEGETATION);
+        globalOverworldGeneration(builder);
+        DefaultBiomeFeatures.addPlainsTallGrass(builder);
+        DefaultBiomeFeatures.addDefaultOres(builder);
+        DefaultBiomeFeatures.addClayOre(builder);
+        DefaultBiomeFeatures.addDefaultDisks(builder);
         builder.feature((GenerationStep.Feature.UNDERGROUND_DECORATION), UndergroundPlacedFeatures.LUSH_CAVES_CEILING_VEGETATION);
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, UndergroundPlacedFeatures.CAVE_VINES);
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, UndergroundPlacedFeatures.LUSH_CAVES_CLAY);
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, UndergroundPlacedFeatures.LUSH_CAVES_VEGETATION);
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, UndergroundPlacedFeatures.ROOTED_AZALEA_TREE);
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, UndergroundPlacedFeatures.CLASSIC_VINES_CAVE_FEATURE);
 
 
         return new Biome.Builder()
