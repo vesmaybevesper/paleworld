@@ -13,7 +13,7 @@ public class PaleWorldTerrablenderApi implements TerraBlenderApi {
 
     @Override
     public void onTerraBlenderInitialized(){
-        Regions.register(new PaleWorldRegion(Identifier.of(MOD_ID, "overworld"), 4));
+        Regions.register(new PaleWorldRegion(Identifier.of(MOD_ID, "overworld"), 2));
 
 
         SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MOD_ID, PaleWorldMaterialRules.makeRules());
