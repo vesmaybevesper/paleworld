@@ -5,6 +5,7 @@ import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import vesper.pw.block.PaleWorldBlocks;
+import vesper.pw.item.PaleWorldItemGroup;
 import vesper.pw.item.PaleWorldItems;
 
 public class PaleWorld implements ModInitializer {
@@ -20,7 +21,7 @@ public class PaleWorld implements ModInitializer {
 		// This code runs as soon as Minecraft is in a mod-load-ready state.
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
-
+		PaleWorldItemGroup.regItemGroups();
 		PaleWorldBlocks.regModBlocks();
 		PaleWorldItems.regModItems();
 	}

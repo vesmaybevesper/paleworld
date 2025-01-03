@@ -13,15 +13,15 @@ import vesper.pw.PaleWorld;
 
 public class PaleWorldItems {
 
-        public static final Item PALE_VINE = regItems("pale_vine", new Item(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(PaleWorld.MOD_ID, "pale_vine")))));
+       // public static final Item PALE_VINE = regItems("pale_vine", new Item(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(PaleWorld.MOD_ID, "pale_vine")))));
 
     public static Item regItems(String name, Item item){
-        return Registry.register(Registries.ITEM, Identifier.of(PaleWorld.MOD_ID, name), item);
+        return Registry.register(Registries.ITEM, Identifier.of(PaleWorld.MOD_ID, name).toTranslationKey(), item);
     }
 
     public static void regModItems(){
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(fabricItemGroupEntries -> {
+        /*ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(fabricItemGroupEntries -> {
             fabricItemGroupEntries.add(PALE_VINE);
-        });
+        });*/
     }
 }

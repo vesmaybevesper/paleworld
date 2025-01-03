@@ -44,6 +44,7 @@ public class PaleWorldBiomes {
         DefaultBiomeFeatures.addDefaultOres(builder);
         DefaultBiomeFeatures.addClayOre(builder);
         DefaultBiomeFeatures.addDefaultDisks(builder);
+        DefaultBiomeFeatures.addInfestedStone(builder);
         builder.feature((GenerationStep.Feature.UNDERGROUND_DECORATION), UndergroundPlacedFeatures.LUSH_CAVES_CEILING_VEGETATION);
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, UndergroundPlacedFeatures.CAVE_VINES);
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, UndergroundPlacedFeatures.LUSH_CAVES_CLAY);
