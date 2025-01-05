@@ -17,7 +17,8 @@ public class PaleWorldItemGroup {
                     .icon(() -> new ItemStack(Blocks.PALE_MOSS_BLOCK))
                     .displayName(Text.translatable("itemgroup.pale-world.pale-world"))
                     .entries(((displayContext, entries) -> {
-                        entries.add(PaleWorldBlocks.PALE_VINE_PLACED);
+                        entries.add(PaleWorldBlocks.PALE_VINE);
+                        entries.add(PaleWorldBlocks.PETRIFIED_WOOD);
                     }))
             .build());
 
