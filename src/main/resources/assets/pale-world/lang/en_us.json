@@ -1,7 +1,8 @@
 {
-  "item.pale_world.pale_vine": "Pale Vine",
+  "item.pale-world.pale_vine": "Pale Vine",
 
-  "block.pale-world.pale_vine_placed": "Pale Vine",
+  "block.pale-world.pale_vine": "Pale Vine",
+  "block.pale-world.petrified_wood": "Petrified Wood" ,
 
   "itemgroup.pale-world.pale-world": "Pale World"
 }
