@@ -3,7 +3,7 @@
 Added:
     
     Pale Vine body
-    Pale Vines now spawn on the roof of Pale Caves
+    Pale Vines now spawn on the ceiling of Pale Caves
 
 Changed:
 
