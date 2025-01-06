@@ -26,11 +26,16 @@ import vesper.pw.block.PaleWorldBlocks;
 
 import java.util.List;
 
+import static net.minecraft.world.gen.feature.UndergroundConfiguredFeatures.DRIPLEAF;
+
 public class PaleWorldConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?,?>> PALE_CAVE_PATCH = registryKey("pale_cave_patch");
     public static final RegistryKey<ConfiguredFeature<?,?>> PALE_CAVE_VEG = registryKey("pale_cave_vegetation");
     public static final RegistryKey<ConfiguredFeature<?,?>> PALE_CAVE_CEILING = registryKey("pale_vine_ceiling");
     public static final RegistryKey<ConfiguredFeature<?,?>> PALE_VINE_IN_MOSS = registryKey("pale_vine_in_moss");
+    public static final RegistryKey<ConfiguredFeature<?,?>> PALE_CAVES_CLAY = registryKey("pale_caves_clay");
+    public static final RegistryKey<ConfiguredFeature<?,?>> CLAY_WITH_DYING_DRIPLEAF = registryKey("clay_with_dying_dripleaf");
+    public static final RegistryKey<ConfiguredFeature<?,?>> CLAY_POOL_WITH_DYING_DRIPLEAF = registryKey("clay_pool_with_dying_dripleaf");
 
     public static void bootstrap(Registerable<ConfiguredFeature<?,?>> configuredFeatureRegisterable) {
         RegistryEntryLookup<ConfiguredFeature<?, ?>> registryEntryLookup = configuredFeatureRegisterable.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
@@ -103,6 +108,51 @@ public class PaleWorldConfiguredFeatures {
                        UniformIntProvider.create(4,7),
                        0.3f
                ));
+
+       register(
+               configuredFeatureRegisterable,
+               CLAY_WITH_DYING_DRIPLEAF,
+               Feature.VEGETATION_PATCH,
+               new VegetationPatchFeatureConfig(
+                       BlockTags.LUSH_GROUND_REPLACEABLE,
+                       BlockStateProvider.of(Blocks.CLAY),
+                       PlacedFeatures.createEntry(registryEntryLookup.getOrThrow(DRIPLEAF)),
+                       VerticalSurfaceType.FLOOR,
+                       ConstantIntProvider.create(3),
+                       0.8F,
+                       2,
+                       0.5F,
+                       UniformIntProvider.create(4, 7),
+                       0.7F
+               ));
+
+               register(
+               configuredFeatureRegisterable,
+               CLAY_WITH_DYING_DRIPLEAF,
+               Feature.WATERLOGGED_VEGETATION_PATCH,
+               new VegetationPatchFeatureConfig(
+                       BlockTags.LUSH_GROUND_REPLACEABLE,
+                       BlockStateProvider.of(Blocks.CLAY),
+                       PlacedFeatures.createEntry(registryEntryLookup.getOrThrow(DRIPLEAF)),
+                       VerticalSurfaceType.FLOOR,
+                       ConstantIntProvider.create(3),
+                       0.8F,
+                       5,
+                       0.1F,
+                       UniformIntProvider.create(4, 7),
+                       0.7F
+               )
+       );
+
+       /*register(
+               configuredFeatureRegisterable,
+               PALE_CAVES_CLAY,
+               Feature.RANDOM_BOOLEAN_SELECTOR,
+                    new RandomBooleanFeatureConfig(
+                            PlacedFeatures.createEntry(registryEntryLookup.getOrThrow(CLAY_WITH_DYING_DRIPLEAF),
+                            PlacedFeatures.createEntry(registryEntryLookup.getOrThrow(CLAY_POOL_WITH_DYING_DRIPLEAF))
+                    )
+       ));*/
     }
 
     public static RegistryKey<ConfiguredFeature<?,?>> registryKey(String name){
