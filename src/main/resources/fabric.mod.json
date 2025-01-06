@@ -3,7 +3,7 @@
 	"id": "pale-world",
 	"version": "${version}",
 	"name": "Pale World",
-	"description": "TIt's the Creaking's world, we just live in it.",
+	"description": "It's the Creaking's world, we just live in it.",
 	"authors": [
 		"VesMaybeVesper"
 	],
@@ -14,7 +14,7 @@
 		"homepage": "https://modrinth.com/mod/pale-world",
 		"sources": "https://github.com/vesmaybevesper/pale-world"
 	},
-	"license": "CC0-1.0",
+	"license": "All Rights Reserved",
 	"icon": "assets/pale-world/icon.png",
 	"environment": "*",
 	"entrypoints": {
