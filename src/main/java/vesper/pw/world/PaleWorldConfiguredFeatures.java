@@ -144,15 +144,15 @@ public class PaleWorldConfiguredFeatures {
                )
        );
 
-       /*register(
+       register(
                configuredFeatureRegisterable,
                PALE_CAVES_CLAY,
                Feature.RANDOM_BOOLEAN_SELECTOR,
                     new RandomBooleanFeatureConfig(
-                            PlacedFeatures.createEntry(registryEntryLookup.getOrThrow(CLAY_WITH_DYING_DRIPLEAF),
+                            PlacedFeatures.createEntry(registryEntryLookup.getOrThrow(CLAY_WITH_DYING_DRIPLEAF)),
                             PlacedFeatures.createEntry(registryEntryLookup.getOrThrow(CLAY_POOL_WITH_DYING_DRIPLEAF))
                     )
-       ));*/
+       );
     }
 
     public static RegistryKey<ConfiguredFeature<?,?>> registryKey(String name){
