@@ -1,6 +1,8 @@
 1.0.0+Alpha.3
 =
 Added:
+    
+    Pale Vine body
 
 Changed:
 
