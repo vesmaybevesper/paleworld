@@ -1,9 +1,6 @@
 package vesper.pw.world;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.CaveVines;
-import net.minecraft.block.CaveVinesHeadBlock;
+import net.minecraft.block.*;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryEntryLookup;
 import net.minecraft.registry.RegistryKey;
@@ -15,6 +12,7 @@ import net.minecraft.util.collection.DataPool;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.VerticalSurfaceType;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
+import net.minecraft.util.math.intprovider.IntProvider;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.util.math.intprovider.WeightedListIntProvider;
 import net.minecraft.world.gen.blockpredicate.BlockPredicate;
@@ -31,7 +29,8 @@ import java.util.List;
 public class PaleWorldConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?,?>> PALE_CAVE_PATCH = registryKey("pale_cave_patch");
     public static final RegistryKey<ConfiguredFeature<?,?>> PALE_CAVE_VEG = registryKey("pale_cave_vegetation");
-    public static final RegistryKey<ConfiguredFeature<?,?>> PALE_VINE = registryKey("pale_vine");
+    public static final RegistryKey<ConfiguredFeature<?,?>> PALE_CAVE_CEILING = registryKey("pale_vine_ceiling");
+    public static final RegistryKey<ConfiguredFeature<?,?>> PALE_VINE_IN_MOSS = registryKey("pale_vine_in_moss");
 
     public static void bootstrap(Registerable<ConfiguredFeature<?,?>> configuredFeatureRegisterable) {
         RegistryEntryLookup<ConfiguredFeature<?, ?>> registryEntryLookup = configuredFeatureRegisterable.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
@@ -64,6 +63,40 @@ public class PaleWorldConfiguredFeatures {
                        PlacedFeatures.createEntry(registryEntryLookup.getOrThrow(PALE_CAVE_VEG)),
                        VerticalSurfaceType.FLOOR,
                        ConstantIntProvider.create(1),
+                       0.0f,
+                       5,
+                       0.8f,
+                       UniformIntProvider.create(4,7),
+                       0.3f
+               ));
+
+       register(configuredFeatureRegisterable,
+               PALE_VINE_IN_MOSS,
+               Feature.BLOCK_COLUMN,
+               new BlockColumnFeatureConfig(
+                       List.of(
+                               BlockColumnFeatureConfig.createLayer(
+                                       new WeightedListIntProvider(DataPool.<IntProvider>builder().add(UniformIntProvider.create(0,3), 5).add(UniformIntProvider.create(1,7),1).build()),
+                                       weightedBlockStateProvider
+                               ),
+                               BlockColumnFeatureConfig.createLayer(ConstantIntProvider.create(1), randomizedIntBlockStateProvider)
+                       ),
+                       Direction.DOWN,
+                       BlockPredicate.IS_AIR,
+                       true
+               )
+       );
+
+       register(
+               configuredFeatureRegisterable,
+               PALE_CAVE_CEILING,
+               Feature.VEGETATION_PATCH,
+               new VegetationPatchFeatureConfig(
+                       BlockTags.MOSS_REPLACEABLE,
+                       BlockStateProvider.of(Blocks.PALE_MOSS_BLOCK),
+                       PlacedFeatures.createEntry(registryEntryLookup.getOrThrow(PALE_VINE_IN_MOSS)),
+                       VerticalSurfaceType.CEILING,
+                       UniformIntProvider.create(1,2),
                        0.0f,
                        5,
                        0.8f,

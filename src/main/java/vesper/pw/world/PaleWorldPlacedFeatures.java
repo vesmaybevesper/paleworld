@@ -21,6 +21,7 @@ public class PaleWorldPlacedFeatures {
 
     public static final RegistryKey<PlacedFeature> PALE_CAVE_VEG = registryKey("pale_cave_veg");
     public static final RegistryKey<PlacedFeature> PALE_CAVE_PATCH = registryKey("pale_cave_patch");
+    public static final RegistryKey<PlacedFeature> PALE_CAVE_CEILING_PATCH = registryKey("pale_cave_ceiling_patch");
 
     public static void bootstrap(Registerable<PlacedFeature> registerable){
         var configuredFeatures = registerable.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
@@ -48,6 +49,18 @@ public class PaleWorldPlacedFeatures {
                 PlacedFeatures.BOTTOM_TO_120_RANGE,
                 EnvironmentScanPlacementModifier.of(Direction.DOWN, BlockPredicate.solid(), BlockPredicate.IS_AIR, 12),
                 RandomOffsetPlacementModifier.vertically(ConstantIntProvider.create(1)),
+                BiomePlacementModifier.of()
+        );
+
+        register(
+                registerable,
+                PALE_CAVE_CEILING_PATCH,
+                configuredFeatures.getOrThrow(PaleWorldConfiguredFeatures.PALE_CAVE_CEILING),
+                CountPlacementModifier.of(125),
+                SquarePlacementModifier.of(),
+                PlacedFeatures.BOTTOM_TO_120_RANGE,
+                EnvironmentScanPlacementModifier.of(Direction.UP, BlockPredicate.solid(), BlockPredicate.IS_AIR, 12),
+                RandomOffsetPlacementModifier.vertically(ConstantIntProvider.create(-1)),
                 BiomePlacementModifier.of()
         );
     }
