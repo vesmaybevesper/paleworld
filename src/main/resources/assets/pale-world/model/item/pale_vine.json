@@ -1,6 +1,3 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-      "layer0": "pale-world:item/pale_vine"
-  }
+  "parent": "pale-world:block/pale_vine"
 }
