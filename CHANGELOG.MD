@@ -7,12 +7,11 @@ Added:
 Changed:
     
     Update TerraBlender to 4.3.0.2
-    Replace vanilla lush caves veigation with a custom mix in Pale Caves
-    Reducced axolotl weight to account for "L o R e" or something
+    Replace vanilla lush caves vegetation with a custom mix in Pale Caves
+    Removed Lush Cave ceiling generation from Pale Caves pending customization
 
-Fixed:
     
-    WIP
+
 
 ----------------
 1.0.0+Alpha.1
