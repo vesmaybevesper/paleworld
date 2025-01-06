@@ -22,6 +22,10 @@ public class PaleWorldPlacedFeatures {
     public static final RegistryKey<PlacedFeature> PALE_CAVE_VEG = registryKey("pale_cave_veg");
     public static final RegistryKey<PlacedFeature> PALE_CAVE_PATCH = registryKey("pale_cave_patch");
     public static final RegistryKey<PlacedFeature> PALE_CAVE_CEILING_PATCH = registryKey("pale_cave_ceiling_patch");
+    public static final RegistryKey<PlacedFeature> CLAY_WITH_DYING_DRIPLEAF = registryKey("clay_with_dying_dripleaf");
+    public static final RegistryKey<PlacedFeature> CLAY_POOL_WITH_DYING_DRIPLEAF = registryKey("clay_pool_with_dying_dripleaf");
+    public static final RegistryKey<PlacedFeature> PALE_CAVE_CLAY = registryKey("pale_cave_clay");
+
 
     public static void bootstrap(Registerable<PlacedFeature> registerable){
         var configuredFeatures = registerable.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
@@ -61,6 +65,41 @@ public class PaleWorldPlacedFeatures {
                 PlacedFeatures.BOTTOM_TO_120_RANGE,
                 EnvironmentScanPlacementModifier.of(Direction.UP, BlockPredicate.solid(), BlockPredicate.IS_AIR, 12),
                 RandomOffsetPlacementModifier.vertically(ConstantIntProvider.create(-1)),
+                BiomePlacementModifier.of()
+        );
+
+        register(
+                registerable,
+                CLAY_WITH_DYING_DRIPLEAF,
+                configuredFeatures.getOrThrow(PaleWorldConfiguredFeatures.CLAY_WITH_DYING_DRIPLEAF),
+                CountPlacementModifier.of(62),
+                SquarePlacementModifier.of(),
+                PlacedFeatures.BOTTOM_TO_120_RANGE,
+                EnvironmentScanPlacementModifier.of(Direction.DOWN, BlockPredicate.solid(), BlockPredicate.IS_AIR, 12),
+                RandomOffsetPlacementModifier.vertically(ConstantIntProvider.create(1)),
+                BiomePlacementModifier.of()
+        );
+        register(
+                registerable,
+                CLAY_POOL_WITH_DYING_DRIPLEAF,
+                configuredFeatures.getOrThrow(PaleWorldConfiguredFeatures.CLAY_POOL_WITH_DYING_DRIPLEAF),
+                CountPlacementModifier.of(62),
+                SquarePlacementModifier.of(),
+                PlacedFeatures.BOTTOM_TO_120_RANGE,
+                EnvironmentScanPlacementModifier.of(Direction.DOWN, BlockPredicate.solid(), BlockPredicate.IS_AIR, 12),
+                RandomOffsetPlacementModifier.vertically(ConstantIntProvider.create(1)),
+                BiomePlacementModifier.of()
+        );
+
+        register(
+                registerable,
+                PALE_CAVE_CLAY,
+                configuredFeatures.getOrThrow(PaleWorldConfiguredFeatures.PALE_CAVES_CLAY),
+                CountPlacementModifier.of(62),
+                SquarePlacementModifier.of(),
+                PlacedFeatures.BOTTOM_TO_120_RANGE,
+                EnvironmentScanPlacementModifier.of(Direction.DOWN, BlockPredicate.solid(), BlockPredicate.IS_AIR, 12),
+                RandomOffsetPlacementModifier.vertically(ConstantIntProvider.create(1)),
                 BiomePlacementModifier.of()
         );
     }
