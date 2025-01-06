@@ -37,7 +37,7 @@ public class PaleWorldBiomes {
 
     private static Biome paleCave(Registerable<Biome> biomeRegisterable) {
         SpawnSettings.Builder spawner = new SpawnSettings.Builder();
-        spawner.spawn(SpawnGroup.AXOLOTLS, new SpawnSettings.SpawnEntry(EntityType.AXOLOTL, 1, 1, 1));
+        spawner.spawn(SpawnGroup.AXOLOTLS, new SpawnSettings.SpawnEntry(EntityType.AXOLOTL, 2, 1, 1));
 
         DefaultBiomeFeatures.addBatsAndMonsters(spawner);
 
@@ -49,10 +49,11 @@ public class PaleWorldBiomes {
         DefaultBiomeFeatures.addDefaultDisks(builder);
         DefaultBiomeFeatures.addInfestedStone(builder);
        // builder.feature((GenerationStep.Feature.UNDERGROUND_DECORATION), UndergroundPlacedFeatures.LUSH_CAVES_CEILING_VEGETATION);
-        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, UndergroundPlacedFeatures.CAVE_VINES);
-        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, UndergroundPlacedFeatures.LUSH_CAVES_CLAY);
-        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PaleWorldPlacedFeatures.PALE_CAVE_VEG);
-       builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.PALE_MOSS_PATCH);
+       //  builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, UndergroundPlacedFeatures.CAVE_VINES);
+        // might add non clay dripleaf?
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PaleWorldPlacedFeatures.PALE_CAVE_PATCH);
+        builder.feature(GenerationStep.Feature.UNDERGROUND_DECORATION, UndergroundPlacedFeatures.LUSH_CAVES_CLAY);
+
 
 
         return new Biome.Builder()

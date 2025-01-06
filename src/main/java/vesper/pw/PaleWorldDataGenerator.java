@@ -7,6 +7,8 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import vesper.pw.biomes.PaleWorldBiomes;
 import vesper.pw.datagen.WorldGenerator;
+import vesper.pw.world.PaleWorldConfiguredFeatures;
+import vesper.pw.world.PaleWorldPlacedFeatures;
 
 public class PaleWorldDataGenerator implements DataGeneratorEntrypoint {
 	@Override
@@ -19,5 +21,9 @@ public class PaleWorldDataGenerator implements DataGeneratorEntrypoint {
 	@Override
 	public void buildRegistry(RegistryBuilder registryBuilder) {
 		registryBuilder.addRegistry(RegistryKeys.BIOME, PaleWorldBiomes::bootstrap);
+		registryBuilder.addRegistry(RegistryKeys.CONFIGURED_FEATURE, PaleWorldConfiguredFeatures::bootstrap);
+		registryBuilder.addRegistry(RegistryKeys.PLACED_FEATURE, PaleWorldPlacedFeatures::bootstrap);
+
+
 	}
 }

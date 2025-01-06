@@ -8,9 +8,7 @@ import vesper.pw.biomes.PaleWorldBiomes;
 public class PaleWorldMaterialRules {
 
     static MaterialRules.MaterialRule MOSS = makeStateRule(Blocks.PALE_MOSS_BLOCK);
-    static MaterialRules.MaterialRule CLAY = makeStateRule(Blocks.CLAY);
-    static MaterialRules.MaterialRule LOG = makeStateRule(Blocks.PALE_OAK_LOG);
-    static  MaterialRules.MaterialRule LEAVES = makeStateRule(Blocks.PALE_OAK_LEAVES);
+    static MaterialRules.MaterialRule MOSS_CARPET = makeStateRule(Blocks.PALE_MOSS_CARPET);
 
 
     public static MaterialRules.MaterialRule makeRules(){

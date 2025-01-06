@@ -22,5 +22,8 @@ public class PaleWorldRegion extends Region {
         this.addModifiedVanillaOverworldBiomes(mapper, builder -> {
             builder.replaceBiome(BiomeKeys.LUSH_CAVES, PaleWorldBiomes.PALE_CAVE);
         });
+        this.addModifiedVanillaOverworldBiomes(mapper, builder -> {
+            builder.replaceBiome(BiomeKeys.RIVER, PaleWorldBiomes.PALE_VALLEY);
+        });
     }
 }

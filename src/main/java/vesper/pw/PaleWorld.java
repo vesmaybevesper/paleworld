@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import vesper.pw.block.PaleWorldBlocks;
 import vesper.pw.item.PaleWorldItemGroup;
 import vesper.pw.item.PaleWorldItems;
+import vesper.pw.world.gen.PaleWorldWorldGen;
 
 public class PaleWorld implements ModInitializer {
 	public static final String MOD_ID = "pale-world";
@@ -24,5 +25,6 @@ public class PaleWorld implements ModInitializer {
 		PaleWorldItemGroup.regItemGroups();
 		PaleWorldBlocks.regModBlocks();
 		PaleWorldItems.regModItems();
+		PaleWorldWorldGen.genWorld();
 	}
 }
