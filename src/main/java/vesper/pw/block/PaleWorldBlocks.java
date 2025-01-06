@@ -24,6 +24,8 @@ public class PaleWorldBlocks {
 
     public static final Block PALE_VINE = regBlock("pale_vine", new Block(AbstractBlock.Settings.create().registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(PaleWorld.MOD_ID, "pale_vine")))
             .noCollision().sounds(BlockSoundGroup.CAVE_VINES).ticksRandomly().luminance(state -> 7).breakInstantly().mapColor(MapColor.GRAY).pistonBehavior(PistonBehavior.DESTROY)));
+    public static final Block PALE_VINE_BODY = regBlock("pale_vine_body", new Block(AbstractBlock.Settings.create().registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(PaleWorld.MOD_ID, "pale_vine_body")))
+            .noCollision().sounds(BlockSoundGroup.CAVE_VINES).ticksRandomly().luminance(state -> 7).breakInstantly().mapColor(MapColor.GRAY).pistonBehavior(PistonBehavior.DESTROY)));
     public static final Block PETRIFIED_WOOD = regBlock("petrified_wood", new Block(AbstractBlock.Settings.create().registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(PaleWorld.MOD_ID, "petrified_wood")))
             .mapColor(MapColor.SPRUCE_BROWN).sounds(BlockSoundGroup.WOOD).burnable().hardness(7).requiresTool().pistonBehavior(PistonBehavior.NORMAL)));
 
@@ -38,8 +40,9 @@ public class PaleWorldBlocks {
     }
 
     public static void regModBlocks(){
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(fabricItemGroupEntries -> {
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.SEARCH).register(fabricItemGroupEntries -> {
             fabricItemGroupEntries.add(PALE_VINE);
+            fabricItemGroupEntries.add(PALE_VINE_BODY);
             fabricItemGroupEntries.add(PETRIFIED_WOOD);
     });
 }

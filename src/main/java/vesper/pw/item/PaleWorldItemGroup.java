@@ -19,6 +19,7 @@ public class PaleWorldItemGroup {
                     .entries(((displayContext, entries) -> {
                         entries.add(PaleWorldBlocks.PALE_VINE);
                         entries.add(PaleWorldBlocks.PETRIFIED_WOOD);
+                        entries.add(PaleWorldBlocks.PALE_VINE_BODY);
                     }))
             .build());
 
