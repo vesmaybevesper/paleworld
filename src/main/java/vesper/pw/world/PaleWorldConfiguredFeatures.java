@@ -37,7 +37,7 @@ public class PaleWorldConfiguredFeatures {
         RegistryEntryLookup<StructureProcessorList> registryEntryLookup2 = configuredFeatureRegisterable.getRegistryLookup(RegistryKeys.PROCESSOR_LIST);
 
     // Underground / Pale Cave features
-        WeightedBlockStateProvider weightedBlockStateProvider = new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(Blocks.CAVE_VINES_PLANT.getDefaultState(), 4).add((BlockState)Blocks.CAVE_VINES_PLANT.getDefaultState(), 1));
+        WeightedBlockStateProvider weightedBlockStateProvider = new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(PaleWorldBlocks.PALE_VINE_BODY.getDefaultState(), 4).add((BlockState)PaleWorldBlocks.PALE_VINE_BODY.getDefaultState(), 1));
 
         RandomizedIntBlockStateProvider randomizedIntBlockStateProvider = new RandomizedIntBlockStateProvider(new WeightedBlockStateProvider(DataPool.<BlockState>builder()
                 .add(PaleWorldBlocks.PALE_VINE.getDefaultState(), 4)
