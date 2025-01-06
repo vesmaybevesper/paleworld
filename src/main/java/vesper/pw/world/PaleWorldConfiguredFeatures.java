@@ -48,8 +48,8 @@ public class PaleWorldConfiguredFeatures {
 
        register(configuredFeatureRegisterable, PALE_CAVE_VEG, Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(
                 DataPool.<BlockState>builder()
-                        .add(Blocks.DEAD_BUSH.getDefaultState(),7)
-                        .add(Blocks.AZALEA.getDefaultState(),4)
+                        .add(Blocks.DEAD_BUSH.getDefaultState(),5)
+                        .add(Blocks.AZALEA.getDefaultState(),2)
                         .add(Blocks.PALE_MOSS_CARPET.getDefaultState(), 25)
                         .add(Blocks.SHORT_GRASS.getDefaultState(),50)
                         .add(Blocks.TALL_GRASS.getDefaultState(),10))));

@@ -50,7 +50,6 @@ public class PaleWorldBiomes {
         DefaultBiomeFeatures.addInfestedStone(builder);
        // builder.feature((GenerationStep.Feature.UNDERGROUND_DECORATION), UndergroundPlacedFeatures.LUSH_CAVES_CEILING_VEGETATION);
        //  builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, UndergroundPlacedFeatures.CAVE_VINES);
-        // might add non clay dripleaf?
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PaleWorldPlacedFeatures.PALE_CAVE_PATCH);
         builder.feature(GenerationStep.Feature.UNDERGROUND_DECORATION, UndergroundPlacedFeatures.LUSH_CAVES_CLAY);
 
