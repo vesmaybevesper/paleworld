@@ -1,3 +1,16 @@
+1.0.0+Alpha.3
+=
+Added:
+
+Changed:
+
+    Reduced Dead Bush spawn rate
+    Reduced Azalea spawn rate
+
+Fixed:
+
+    Fixed broken Pale Vine texture
+
 1.0.0+Alpha.2
 =
 Added:
