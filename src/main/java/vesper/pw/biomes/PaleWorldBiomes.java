@@ -12,15 +12,18 @@ import net.minecraft.world.biome.BiomeEffects;
 import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.GenerationStep;
-import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
-import net.minecraft.world.gen.feature.UndergroundPlacedFeatures;
+import net.minecraft.world.gen.feature.*;
 import vesper.pw.PaleWorld;
+import vesper.pw.world.PaleWorldPlacedFeatures;
+
 
 public class PaleWorldBiomes {
     public static final RegistryKey<Biome> PALE_CAVE = RegistryKey.of(RegistryKeys.BIOME, Identifier.of(PaleWorld.MOD_ID, "pale_cave"));
+    public static final RegistryKey<Biome> PALE_VALLEY = RegistryKey.of(RegistryKeys.BIOME, Identifier.of(PaleWorld.MOD_ID, "pale_valley"));
 
     public static void bootstrap(Registerable<Biome> biomeRegisterable) {
         biomeRegisterable.register(PALE_CAVE, paleCave(biomeRegisterable));
+        biomeRegisterable.register(PALE_VALLEY, paleValley(biomeRegisterable));
     }
 
     public static void globalOverworldGeneration(GenerationSettings.LookupBackedBuilder builder) {
@@ -34,7 +37,7 @@ public class PaleWorldBiomes {
 
     private static Biome paleCave(Registerable<Biome> biomeRegisterable) {
         SpawnSettings.Builder spawner = new SpawnSettings.Builder();
-        spawner.spawn(SpawnGroup.AXOLOTLS, new SpawnSettings.SpawnEntry(EntityType.AXOLOTL, 2, 1, 1));
+        spawner.spawn(SpawnGroup.AXOLOTLS, new SpawnSettings.SpawnEntry(EntityType.AXOLOTL, 1, 1, 1));
 
         DefaultBiomeFeatures.addBatsAndMonsters(spawner);
 
@@ -45,12 +48,11 @@ public class PaleWorldBiomes {
         DefaultBiomeFeatures.addClayOre(builder);
         DefaultBiomeFeatures.addDefaultDisks(builder);
         DefaultBiomeFeatures.addInfestedStone(builder);
-        builder.feature((GenerationStep.Feature.UNDERGROUND_DECORATION), UndergroundPlacedFeatures.LUSH_CAVES_CEILING_VEGETATION);
+       // builder.feature((GenerationStep.Feature.UNDERGROUND_DECORATION), UndergroundPlacedFeatures.LUSH_CAVES_CEILING_VEGETATION);
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, UndergroundPlacedFeatures.CAVE_VINES);
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, UndergroundPlacedFeatures.LUSH_CAVES_CLAY);
-        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, UndergroundPlacedFeatures.LUSH_CAVES_VEGETATION);
-        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, UndergroundPlacedFeatures.ROOTED_AZALEA_TREE);
-        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, UndergroundPlacedFeatures.CLASSIC_VINES_CAVE_FEATURE);
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PaleWorldPlacedFeatures.PALE_CAVE_VEG);
+       builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.PALE_MOSS_PATCH);
 
 
         return new Biome.Builder()
@@ -70,5 +72,31 @@ public class PaleWorldBiomes {
             .build();
 
 
+    }
+
+    public static Biome paleValley(Registerable<Biome> biomeRegisterable){
+
+        SpawnSettings.Builder spawner = new SpawnSettings.Builder();
+        GenerationSettings.LookupBackedBuilder builder = new GenerationSettings.LookupBackedBuilder(biomeRegisterable.getRegistryLookup(RegistryKeys.PLACED_FEATURE), biomeRegisterable.getRegistryLookup(RegistryKeys.CONFIGURED_CARVER));
+
+        DefaultBiomeFeatures.addBatsAndMonsters(spawner);
+        DefaultBiomeFeatures.addFarmAnimals(spawner);
+       // builder.feature(GenerationStep.Feature.SURFACE_STRUCTURES, VillagePlacedFeatures.SPRUCE);
+
+        return new Biome.Builder()
+                .precipitation(true)
+                .downfall(1)
+                .temperature(1)
+                .generationSettings(builder.build())
+                .spawnSettings(spawner.build())
+                .effects((new BiomeEffects.Builder())
+                        .waterColor(0xff76889D)
+                        .waterFogColor(0xff556980)
+                        .skyColor(0xffb9b9b9)
+                        .grassColor(0xff778272)
+                        .foliageColor(0xff878D76)
+                        .fogColor(0xff817770).build()
+                )
+                .build();
     }
 }
