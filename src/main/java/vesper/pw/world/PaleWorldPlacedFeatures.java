@@ -60,7 +60,7 @@ public class PaleWorldPlacedFeatures {
                 registerable,
                 PALE_CAVE_CEILING_PATCH,
                 configuredFeatures.getOrThrow(PaleWorldConfiguredFeatures.PALE_CAVE_CEILING),
-                CountPlacementModifier.of(125),
+                CountPlacementModifier.of(100),
                 SquarePlacementModifier.of(),
                 PlacedFeatures.BOTTOM_TO_120_RANGE,
                 EnvironmentScanPlacementModifier.of(Direction.UP, BlockPredicate.solid(), BlockPredicate.IS_AIR, 12),
@@ -71,7 +71,7 @@ public class PaleWorldPlacedFeatures {
         register(
                 registerable,
                 CLAY_WITH_DYING_DRIPLEAF,
-                configuredFeatures.getOrThrow(PaleWorldConfiguredFeatures.CLAY_WITH_DYING_DRIPLEAF),
+                configuredFeatures.getOrThrow(PaleWorldConfiguredFeatures.CLAY_DRIPLEAF),
                 CountPlacementModifier.of(62),
                 SquarePlacementModifier.of(),
                 PlacedFeatures.BOTTOM_TO_120_RANGE,
@@ -82,7 +82,7 @@ public class PaleWorldPlacedFeatures {
         register(
                 registerable,
                 CLAY_POOL_WITH_DYING_DRIPLEAF,
-                configuredFeatures.getOrThrow(PaleWorldConfiguredFeatures.CLAY_POOL_WITH_DYING_DRIPLEAF),
+                configuredFeatures.getOrThrow(PaleWorldConfiguredFeatures.CLAY_POOL_DRIPLEAF),
                 CountPlacementModifier.of(62),
                 SquarePlacementModifier.of(),
                 PlacedFeatures.BOTTOM_TO_120_RANGE,

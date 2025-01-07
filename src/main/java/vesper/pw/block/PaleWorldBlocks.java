@@ -23,9 +23,15 @@ public class PaleWorldBlocks {
     }
 
     public static final Block PALE_VINE = regBlock("pale_vine", new Block(AbstractPlantStemBlock.Settings.create().registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(PaleWorld.MOD_ID, "pale_vine")))
-            .noCollision().sounds(BlockSoundGroup.CAVE_VINES).ticksRandomly().luminance(state -> 7).breakInstantly().mapColor(MapColor.GRAY).pistonBehavior(PistonBehavior.DESTROY).nonOpaque()));
+            .noCollision().sounds(BlockSoundGroup.CAVE_VINES).ticksRandomly().luminance(state -> 1).breakInstantly().mapColor(MapColor.GRAY).pistonBehavior(PistonBehavior.DESTROY).nonOpaque()));
     public static final Block PALE_VINE_BODY = regBlock("pale_vine_body", new Block(AbstractPlantStemBlock.Settings.create().registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(PaleWorld.MOD_ID, "pale_vine_body")))
-            .noCollision().sounds(BlockSoundGroup.CAVE_VINES).ticksRandomly().luminance(state -> 7).breakInstantly().mapColor(MapColor.GRAY).pistonBehavior(PistonBehavior.DESTROY).nonOpaque()));
+            .noCollision().sounds(BlockSoundGroup.CAVE_VINES).ticksRandomly().luminance(state -> 1).breakInstantly().mapColor(MapColor.GRAY).pistonBehavior(PistonBehavior.DESTROY).nonOpaque()));
+    public static final Block BIG_DYING_DRIPLEAF_STEM = regBlock("big_dying_dripleaf_stem", new Block(AbstractPlantStemBlock.Settings.create().registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(PaleWorld.MOD_ID, "big_dying_dripleaf_stem")))
+            .noCollision().sounds(BlockSoundGroup.BIG_DRIPLEAF).ticksRandomly().breakInstantly().mapColor(MapColor.BROWN).pistonBehavior(PistonBehavior.DESTROY)));
+    public static final Block BIG_DYING_DRIPLEAF = regBlock("big_dying_dripleaf", new Block(AbstractPlantStemBlock.Settings.create().registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(PaleWorld.MOD_ID, "big_dying_dripleaf")))
+            .noCollision().sounds(BlockSoundGroup.BIG_DRIPLEAF).ticksRandomly().breakInstantly().mapColor(MapColor.BROWN).pistonBehavior(PistonBehavior.DESTROY)));
+    public static final Block SMALL_DYING_DRIPLEAF = regBlock("small_dying_dripleaf", new Block(AbstractPlantStemBlock.Settings.create().registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(PaleWorld.MOD_ID, "small_dying_dripleaf")))
+            .noCollision().sounds(BlockSoundGroup.SMALL_DRIPLEAF).ticksRandomly().breakInstantly().mapColor(MapColor.BROWN).pistonBehavior(PistonBehavior.DESTROY)));
     public static final Block PETRIFIED_WOOD = regBlock("petrified_wood", new Block(AbstractBlock.Settings.create().registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(PaleWorld.MOD_ID, "petrified_wood")))
             .mapColor(MapColor.SPRUCE_BROWN).sounds(BlockSoundGroup.WOOD).burnable().hardness(7).requiresTool().pistonBehavior(PistonBehavior.NORMAL)));
 
@@ -44,6 +50,9 @@ public class PaleWorldBlocks {
             fabricItemGroupEntries.add(PALE_VINE);
             fabricItemGroupEntries.add(PALE_VINE_BODY);
             fabricItemGroupEntries.add(PETRIFIED_WOOD);
+            fabricItemGroupEntries.add(BIG_DYING_DRIPLEAF_STEM);
+            fabricItemGroupEntries.add(BIG_DYING_DRIPLEAF);
+            fabricItemGroupEntries.add(SMALL_DYING_DRIPLEAF);
     });
 }
 }

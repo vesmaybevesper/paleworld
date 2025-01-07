@@ -34,21 +34,21 @@ public class PaleWorldConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?,?>> PALE_CAVE_CEILING = registryKey("pale_vine_ceiling");
     public static final RegistryKey<ConfiguredFeature<?,?>> PALE_VINE_IN_MOSS = registryKey("pale_vine_in_moss");
     public static final RegistryKey<ConfiguredFeature<?,?>> PALE_CAVES_CLAY = registryKey("pale_caves_clay");
-    public static final RegistryKey<ConfiguredFeature<?,?>> CLAY_WITH_DYING_DRIPLEAF = registryKey("clay_with_dying_dripleaf");
-    public static final RegistryKey<ConfiguredFeature<?,?>> CLAY_POOL_WITH_DYING_DRIPLEAF = registryKey("clay_pool_with_dying_dripleaf");
+    public static final RegistryKey<ConfiguredFeature<?,?>> CLAY_DRIPLEAF = registryKey("clay_dripleaf");
+    public static final RegistryKey<ConfiguredFeature<?,?>> CLAY_POOL_DRIPLEAF = registryKey("clay_pool_dripleaf");
 
     public static void bootstrap(Registerable<ConfiguredFeature<?,?>> configuredFeatureRegisterable) {
         RegistryEntryLookup<ConfiguredFeature<?, ?>> registryEntryLookup = configuredFeatureRegisterable.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
         RegistryEntryLookup<StructureProcessorList> registryEntryLookup2 = configuredFeatureRegisterable.getRegistryLookup(RegistryKeys.PROCESSOR_LIST);
 
     // Underground / Pale Cave features
-        WeightedBlockStateProvider weightedBlockStateProvider = new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(PaleWorldBlocks.PALE_VINE_BODY.getDefaultState(), 4).add((BlockState)PaleWorldBlocks.PALE_VINE_BODY.getDefaultState(), 1));
+        WeightedBlockStateProvider weightedBlockStateProvider = new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(PaleWorldBlocks.PALE_VINE_BODY.getDefaultState(), 2).add((BlockState)PaleWorldBlocks.PALE_VINE_BODY.getDefaultState(), 1));
 
         RandomizedIntBlockStateProvider randomizedIntBlockStateProvider = new RandomizedIntBlockStateProvider(new WeightedBlockStateProvider(DataPool.<BlockState>builder()
-                .add(PaleWorldBlocks.PALE_VINE.getDefaultState(), 4)
-                .add((BlockState)PaleWorldBlocks.PALE_VINE.getDefaultState(), 1)), CaveVinesHeadBlock.AGE, UniformIntProvider.create(23, 25));
+                .add(PaleWorldBlocks.PALE_VINE.getDefaultState(), 1)
+                .add((BlockState)PaleWorldBlocks.PALE_VINE.getDefaultState(), 1)), CaveVinesHeadBlock.AGE, UniformIntProvider.create(20, 23));
 
-        // register(configuredFeatureRegisterable, PALE_VINE, Feature.BLOCK_COLUMN, new BlockColumnFeatureConfig(List.of(BlockColumnFeatureConfig.createLayer(new WeightedListIntProvider(DataPool.builder().add(UniformIntProvider.create(0, 19), 2).add(UniformIntProvider.create(0, 2), 3).add(UniformIntProvider.create(0, 6), 10).build()), weightedBlockStateProvider), BlockColumnFeatureConfig.createLayer(ConstantIntProvider.create(1), randomizedIntBlockStateProvider)), Direction.DOWN, BlockPredicate.IS_AIR, true));
+
 
        register(configuredFeatureRegisterable, PALE_CAVE_VEG, Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(
                 DataPool.<BlockState>builder()
@@ -111,7 +111,7 @@ public class PaleWorldConfiguredFeatures {
 
        register(
                configuredFeatureRegisterable,
-               CLAY_WITH_DYING_DRIPLEAF,
+               CLAY_DRIPLEAF,
                Feature.VEGETATION_PATCH,
                new VegetationPatchFeatureConfig(
                        BlockTags.LUSH_GROUND_REPLACEABLE,
@@ -128,7 +128,7 @@ public class PaleWorldConfiguredFeatures {
 
                register(
                configuredFeatureRegisterable,
-               CLAY_WITH_DYING_DRIPLEAF,
+               CLAY_POOL_DRIPLEAF,
                Feature.WATERLOGGED_VEGETATION_PATCH,
                new VegetationPatchFeatureConfig(
                        BlockTags.LUSH_GROUND_REPLACEABLE,
@@ -149,8 +149,8 @@ public class PaleWorldConfiguredFeatures {
                PALE_CAVES_CLAY,
                Feature.RANDOM_BOOLEAN_SELECTOR,
                     new RandomBooleanFeatureConfig(
-                            PlacedFeatures.createEntry(registryEntryLookup.getOrThrow(CLAY_WITH_DYING_DRIPLEAF)),
-                            PlacedFeatures.createEntry(registryEntryLookup.getOrThrow(CLAY_POOL_WITH_DYING_DRIPLEAF))
+                            PlacedFeatures.createEntry(registryEntryLookup.getOrThrow(CLAY_DRIPLEAF)),
+                            PlacedFeatures.createEntry(registryEntryLookup.getOrThrow(CLAY_POOL_DRIPLEAF))
                     )
        );
     }
