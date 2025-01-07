@@ -1,16 +1,27 @@
+1.0.0+Alpha.5
+=
+Added:
+
+Changed:
+
+Fixed:
+
+
+
+
+
 1.0.0+Alpha.4
 =
 Added:
 
-    plaeholder
+    Small Dying Dripleaf (WIP)
+    Big Dying Dripleaf (WIP)
 
 Changed:
 
-    placeholder
-
-Fixed:
-
-    placeholder
+    Reduced Pale Vine lumiance
+    Reduce weight of Pale Vines ceiling spawn (My hope is this makes the caves a bit less monolithic while I create better generation)
+    Reduce Weight of Biome Spawn
 
 1.0.0+Alpha.3
 =
