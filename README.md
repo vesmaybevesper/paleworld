@@ -1,5 +1,9 @@
 **Pale World is a _WORK-IN-PROGRESS_ mod that aims to revamp the Pale Garden Biome and add more related features**
 
+REQUIRED:
+https://modrinth.com/mod/fabric-api
+https://modrinth.com/mod/terrablender
+
 ----------------------------
 ### Features
 
