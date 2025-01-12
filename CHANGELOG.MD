@@ -1,4 +1,4 @@
-1.0.0+Alpha.5
+1.0.0+Alpha.6
 =
 Added:
 
@@ -7,6 +7,21 @@ Changed:
 Fixed:
 
 
+
+1.0.0+Alpha.5
+=
+Added:
+    
+    Add a small amount of fish spawn to Pale Caves
+
+Changed:
+    
+    Updated Fabric API to 0.114.2
+    Update Fabric Loader to 0.16.10
+    Changed Pale Vine luminance (It should now actually have a bit of light to it, trying to find a moddle ground between super bright and no light)
+Fixed:
+
+    Pale Vine Ceiling Gen
 
 
 
@@ -19,7 +34,7 @@ Added:
 
 Changed:
 
-    Reduced Pale Vine lumiance
+    Reduced Pale Vine luminance
     Reduce weight of Pale Vines ceiling spawn (My hope is this makes the caves a bit less monolithic while I create better generation)
     Reduce Weight of Biome Spawn
 
