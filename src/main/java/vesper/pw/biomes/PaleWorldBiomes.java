@@ -23,7 +23,7 @@ public class PaleWorldBiomes {
 
     public static void bootstrap(Registerable<Biome> biomeRegisterable) {
         biomeRegisterable.register(PALE_CAVE, paleCave(biomeRegisterable));
-        biomeRegisterable.register(PALE_VALLEY, paleValley(biomeRegisterable));
+        /*biomeRegisterable.register(PALE_VALLEY, paleValley(biomeRegisterable));*/
     }
 
     public static void globalOverworldGeneration(GenerationSettings.LookupBackedBuilder builder) {
@@ -73,7 +73,7 @@ public class PaleWorldBiomes {
 
     }
 
-    public static Biome paleValley(Registerable<Biome> biomeRegisterable){
+    /*public static Biome paleValley(Registerable<Biome> biomeRegisterable){
 
         SpawnSettings.Builder spawner = new SpawnSettings.Builder();
         GenerationSettings.LookupBackedBuilder builder = new GenerationSettings.LookupBackedBuilder(biomeRegisterable.getRegistryLookup(RegistryKeys.PLACED_FEATURE), biomeRegisterable.getRegistryLookup(RegistryKeys.CONFIGURED_CARVER));
@@ -97,5 +97,5 @@ public class PaleWorldBiomes {
                         .fogColor(0xff817770).build()
                 )
                 .build();
-    }
+    }*/
 }

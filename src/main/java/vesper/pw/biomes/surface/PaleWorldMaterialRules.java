@@ -4,6 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.world.gen.surfacebuilder.MaterialRules;
 import vesper.pw.biomes.PaleWorldBiomes;
+import vesper.pw.block.PaleWorldBlocks;
 
 public class PaleWorldMaterialRules {
 
@@ -16,6 +17,7 @@ public class PaleWorldMaterialRules {
                 MaterialRules.sequence(MaterialRules.condition(MaterialRules.biome(PaleWorldBiomes.PALE_CAVE), MaterialRules.condition(MaterialRules.STONE_DEPTH_FLOOR, MOSS))),
                 MaterialRules.sequence(MaterialRules.condition(MaterialRules.biome(PaleWorldBiomes.PALE_CAVE), MaterialRules.condition(MaterialRules.STONE_DEPTH_CEILING, MOSS)))
         );
+
     }
 
     private static MaterialRules.MaterialRule makeStateRule(Block block) {
