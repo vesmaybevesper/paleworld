@@ -40,16 +40,16 @@ public class PaleWorldBiomes {
         spawner.spawn(SpawnGroup.AXOLOTLS, new SpawnSettings.SpawnEntry(EntityType.AXOLOTL, 2, 1, 1));
 
         DefaultBiomeFeatures.addBatsAndMonsters(spawner);
+        DefaultBiomeFeatures.addOceanMobs(spawner,0,1,3);
 
         GenerationSettings.LookupBackedBuilder builder = new GenerationSettings.LookupBackedBuilder(biomeRegisterable.getRegistryLookup(RegistryKeys.PLACED_FEATURE), biomeRegisterable.getRegistryLookup(RegistryKeys.CONFIGURED_CARVER));
         globalOverworldGeneration(builder);
-        DefaultBiomeFeatures.addPlainsTallGrass(builder);
         DefaultBiomeFeatures.addDefaultOres(builder);
         DefaultBiomeFeatures.addClayOre(builder);
         DefaultBiomeFeatures.addDefaultDisks(builder);
         DefaultBiomeFeatures.addInfestedStone(builder);
-        builder.feature((GenerationStep.Feature.UNDERGROUND_DECORATION), PaleWorldPlacedFeatures.PALE_CAVE_CEILING_PATCH);
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PaleWorldPlacedFeatures.PALE_CAVE_PATCH);
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PaleWorldPlacedFeatures.PALE_VINE);
         builder.feature(GenerationStep.Feature.UNDERGROUND_DECORATION, PaleWorldPlacedFeatures.PALE_CAVE_CLAY);
 
 

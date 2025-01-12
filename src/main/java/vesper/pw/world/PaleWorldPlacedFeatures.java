@@ -25,6 +25,7 @@ public class PaleWorldPlacedFeatures {
     public static final RegistryKey<PlacedFeature> CLAY_WITH_DYING_DRIPLEAF = registryKey("clay_with_dying_dripleaf");
     public static final RegistryKey<PlacedFeature> CLAY_POOL_WITH_DYING_DRIPLEAF = registryKey("clay_pool_with_dying_dripleaf");
     public static final RegistryKey<PlacedFeature> PALE_CAVE_CLAY = registryKey("pale_cave_clay");
+    public static final RegistryKey<PlacedFeature> PALE_VINE = registryKey("pale_vine_feature");
 
 
     public static void bootstrap(Registerable<PlacedFeature> registerable){
@@ -33,9 +34,21 @@ public class PaleWorldPlacedFeatures {
 
         register(
                 registerable,
+                PALE_VINE,
+                configuredFeatures.getOrThrow(PaleWorldConfiguredFeatures.PALE_VINE),
+                CountPlacementModifier.of(200),
+                SquarePlacementModifier.of(),
+                PlacedFeatures.BOTTOM_TO_120_RANGE,
+                EnvironmentScanPlacementModifier.of(Direction.UP, BlockPredicate.solid(), BlockPredicate.IS_AIR, 12),
+                RandomOffsetPlacementModifier.vertically(ConstantIntProvider.create(-1)),
+                BiomePlacementModifier.of()
+        );
+
+        register(
+                registerable,
                 PALE_CAVE_VEG,
                 configuredFeatures.getOrThrow(PaleWorldConfiguredFeatures.PALE_CAVE_VEG),
-                CountPlacementModifier.of(125),
+                CountPlacementModifier.of(100),
                 SquarePlacementModifier.of(),
                 PlacedFeatures.BOTTOM_TO_120_RANGE,
                 EnvironmentScanPlacementModifier.of(Direction.DOWN, BlockPredicate.solid(), BlockPredicate.IS_AIR, 12),
@@ -60,10 +73,10 @@ public class PaleWorldPlacedFeatures {
                 registerable,
                 PALE_CAVE_CEILING_PATCH,
                 configuredFeatures.getOrThrow(PaleWorldConfiguredFeatures.PALE_CAVE_CEILING),
-                CountPlacementModifier.of(100),
+                CountPlacementModifier.of(75),
                 SquarePlacementModifier.of(),
                 PlacedFeatures.BOTTOM_TO_120_RANGE,
-                EnvironmentScanPlacementModifier.of(Direction.UP, BlockPredicate.solid(), BlockPredicate.IS_AIR, 12),
+                EnvironmentScanPlacementModifier.of(Direction.UP, BlockPredicate.solid(), BlockPredicate.IS_AIR, 10),
                 RandomOffsetPlacementModifier.vertically(ConstantIntProvider.create(-1)),
                 BiomePlacementModifier.of()
         );

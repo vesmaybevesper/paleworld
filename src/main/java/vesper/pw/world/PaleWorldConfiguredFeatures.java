@@ -36,6 +36,7 @@ public class PaleWorldConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?,?>> PALE_CAVES_CLAY = registryKey("pale_caves_clay");
     public static final RegistryKey<ConfiguredFeature<?,?>> CLAY_DRIPLEAF = registryKey("clay_dripleaf");
     public static final RegistryKey<ConfiguredFeature<?,?>> CLAY_POOL_DRIPLEAF = registryKey("clay_pool_dripleaf");
+    public static final RegistryKey<ConfiguredFeature<?,?>> PALE_VINE = registryKey("pale_vine_feature");
 
     public static void bootstrap(Registerable<ConfiguredFeature<?,?>> configuredFeatureRegisterable) {
         RegistryEntryLookup<ConfiguredFeature<?, ?>> registryEntryLookup = configuredFeatureRegisterable.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
@@ -55,8 +56,8 @@ public class PaleWorldConfiguredFeatures {
                         .add(Blocks.DEAD_BUSH.getDefaultState(),5)
                         .add(Blocks.AZALEA.getDefaultState(),2)
                         .add(Blocks.PALE_MOSS_CARPET.getDefaultState(), 25)
-                        .add(Blocks.SHORT_GRASS.getDefaultState(),50)
-                        .add(Blocks.TALL_GRASS.getDefaultState(),10))));
+                        .add(Blocks.SHORT_GRASS.getDefaultState(),30)
+                        .add(Blocks.TALL_GRASS.getDefaultState(),7))));
 
 
        register(configuredFeatureRegisterable,
@@ -73,6 +74,28 @@ public class PaleWorldConfiguredFeatures {
                        0.8f,
                        UniformIntProvider.create(4,7),
                        0.3f
+               ));
+
+       register(configuredFeatureRegisterable,
+               PALE_VINE,
+               Feature.BLOCK_COLUMN,
+               new BlockColumnFeatureConfig(
+                       List.of(
+                               BlockColumnFeatureConfig.createLayer(
+                                       new WeightedListIntProvider(
+                                               DataPool.<IntProvider>builder()
+                                                       .add(UniformIntProvider.create(0,19), 2)
+                                                       .add(UniformIntProvider.create(0,2),3)
+                                                       .add(UniformIntProvider.create(0,6),10)
+                                                       .build()
+                                       ),
+                                       weightedBlockStateProvider
+                               ),
+                               BlockColumnFeatureConfig.createLayer(ConstantIntProvider.create(1), randomizedIntBlockStateProvider)
+                       ),
+                       Direction.DOWN,
+                       BlockPredicate.IS_AIR,
+                       true
                ));
 
        register(configuredFeatureRegisterable,
