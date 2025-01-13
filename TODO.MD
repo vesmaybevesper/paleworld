@@ -6,7 +6,10 @@ TO-DO:
   - Fix Clay Gen
   - Create Dying Small Drip Leaf
   - Create Dying Big Drip Leaf
-  - Create Dying Azalea
+  - ~~Create Dying Azalea~~
+  - Fix dying azalea item texture
+  - fix dying azalea inside texture
+  - add dying azalea loot table
   - ~~Fix Pale Vines to work like vines~~
   - Add Custom Biome Ambiance
   - Add Pale Axolotl
