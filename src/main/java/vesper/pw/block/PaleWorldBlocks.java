@@ -16,7 +16,6 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
 import vesper.pw.PaleWorld;
 import vesper.pw.block.custom.DyingAzalea;
-import vesper.pw.block.custom.PaleVineBodyBlock;
 
 import java.util.function.Function;
 
@@ -57,21 +56,23 @@ public class PaleWorldBlocks {
     public static final Block BIG_DYING_DRIPLEAF = regBlock("big_dying_dripleaf", new Block(AbstractPlantStemBlock.Settings.create().registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(PaleWorld.MOD_ID, "big_dying_dripleaf")))
             .noCollision().sounds(BlockSoundGroup.BIG_DRIPLEAF).ticksRandomly().breakInstantly().mapColor(MapColor.BROWN).pistonBehavior(PistonBehavior.DESTROY)));
 
-    /*public static final Block SMALL_DYING_DRIPLEAF = regBlock(
+    public static final Block SMALL_DYING_DRIPLEAF = regBlock(
             "small_dying_dripleaf",
-            SmallDripleafBlock::new,
+            new SmallDripleafBlock(
             AbstractBlock.Settings.create()
-                    .mapColor(MapColor.DARK_GREEN)
+                    .registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(PaleWorld.MOD_ID, "small_dying_dripleaf")))
+                    .mapColor(MapColor.BROWN)
                     .noCollision()
                     .breakInstantly()
                     .sounds(BlockSoundGroup.SMALL_DRIPLEAF)
                     .offset(AbstractBlock.OffsetType.XYZ)
                     .pistonBehavior(PistonBehavior.DESTROY)
-    );*/
+    ));
     public static final Block PETRIFIED_WOOD = regBlock("petrified_wood", new Block(AbstractBlock.Settings.create().registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(PaleWorld.MOD_ID, "petrified_wood")))
             .mapColor(MapColor.SPRUCE_BROWN).sounds(BlockSoundGroup.WOOD).burnable().hardness(7).requiresTool().pistonBehavior(PistonBehavior.NORMAL)));
 
-    public static final Block DYING_AZALEA = regBlock("dying_azalea",
+    public static final Block DYING_AZALEA = regBlock(
+            "dying_azalea",
             new DyingAzalea(
                     AbstractBlock.Settings.create()
                             .registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(PaleWorld.MOD_ID, "dying_azalea")))
@@ -116,7 +117,7 @@ public class PaleWorldBlocks {
             fabricItemGroupEntries.add(BIG_DYING_DRIPLEAF_STEM);
             fabricItemGroupEntries.add(BIG_DYING_DRIPLEAF);
             fabricItemGroupEntries.add(DYING_AZALEA);
-            /*fabricItemGroupEntries.add(SMALL_DYING_DRIPLEAF);*/
+            fabricItemGroupEntries.add(SMALL_DYING_DRIPLEAF);
         });
     }
 
