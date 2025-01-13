@@ -81,7 +81,6 @@ public class PaleWorldBlocks {
                             .sounds(BlockSoundGroup.AZALEA)
                             .nonOpaque()
                             .pistonBehavior(PistonBehavior.DESTROY)
-                            .requiresTool()
     ));
 
     private static Block regBlock(String name, Block block) {
