@@ -7,7 +7,7 @@ TO-DO:
   - Create Dying Small Drip Leaf
   - Create Dying Big Drip Leaf
   - ~~Create Dying Azalea~~
-  - Fix dying azalea item texture
+  - ~~Fix dying azalea item texture~~
   - ~~fix dying azalea inside texture~~
   - add dying azalea loot table
   - ~~Fix Pale Vines to work like vines~~
