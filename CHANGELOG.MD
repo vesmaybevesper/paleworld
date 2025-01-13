@@ -1,17 +1,9 @@
 1.0.0+Alpha.7
 =
-_Added:_
-
-*PLACEHOLDER
 
 _Changed:_
 
-* PLACEHOLDER
-
-_FIXED:_
-
-* PLACEHOLDER
-
+* Pale Caves will now use the correct Carver(s)
 
 1.0.0+Alpha.6
 =
