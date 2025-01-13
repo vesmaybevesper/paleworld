@@ -1,9 +1,11 @@
 {
   "item.pale-world.pale_vine": "Pale Vine",
+  "item.pale-world.dying_azalea": "Dying Azalea",
 
   "block.pale-world.pale_vine": "Pale Vine",
   "block.pale-world.pale_vine_body": "Pale Vine",
   "block.pale-world.petrified_wood": "Petrified Wood",
+  "block.pale-world.dying_azalea": "Dying Azalea",
 
   "itemgroup.pale-world.pale-world": "Pale World"
 }
