@@ -20,6 +20,8 @@ public class PaleWorldItemGroup {
                         entries.add(PaleWorldBlocks.PALE_VINE);
                         entries.add(PaleWorldBlocks.PETRIFIED_WOOD);
                         entries.add(PaleWorldBlocks.PALE_VINE_BODY);
+                        entries.add(PaleWorldBlocks.DYING_AZALEA);
+                        /*entries.add(PaleWorldBlocks.SMALL_DYING_DRIPLEAF);*/
                     }))
             .build());
 

@@ -15,6 +15,7 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
 import vesper.pw.PaleWorld;
+import vesper.pw.block.custom.DyingAzalea;
 import vesper.pw.block.custom.PaleVineBodyBlock;
 
 import java.util.function.Function;
@@ -25,8 +26,18 @@ public class PaleWorldBlocks {
         return AbstractBlock.Settings.create().mapColor((state) -> state.get(PillarBlock.AXIS) == Direction.Axis.Y ? topMapColor : sideMapColor).instrument(NoteBlockInstrument.BASS).strength(2.0F).sounds(sounds).burnable();
     }
 
-    public static final Block PALE_VINE = regBlock("pale_vine", new Block(AbstractPlantStemBlock.Settings.create().registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(PaleWorld.MOD_ID, "pale_vine")))
-            .noCollision().sounds(BlockSoundGroup.CAVE_VINES).ticksRandomly().luminance(state -> 7).breakInstantly().mapColor(MapColor.GRAY).pistonBehavior(PistonBehavior.DESTROY).nonOpaque()));
+    public static final Block PALE_VINE = regBlock("pale_vine", new Block(
+            AbstractPlantStemBlock.Settings.create()
+                    .registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(PaleWorld.MOD_ID, "pale_vine")))
+                    .noCollision()
+                    .sounds(BlockSoundGroup.CAVE_VINES)
+                    .ticksRandomly()
+                    .luminance(state -> 7)
+                    .breakInstantly()
+                    .mapColor(MapColor.GRAY)
+                    .pistonBehavior(PistonBehavior.DESTROY)
+                    .nonOpaque()
+    ));
     public static final Block PALE_VINE_BODY = regBlock(
             "pale_vine_body",
             new Block(
@@ -60,6 +71,18 @@ public class PaleWorldBlocks {
     public static final Block PETRIFIED_WOOD = regBlock("petrified_wood", new Block(AbstractBlock.Settings.create().registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(PaleWorld.MOD_ID, "petrified_wood")))
             .mapColor(MapColor.SPRUCE_BROWN).sounds(BlockSoundGroup.WOOD).burnable().hardness(7).requiresTool().pistonBehavior(PistonBehavior.NORMAL)));
 
+    public static final Block DYING_AZALEA = regBlock("dying_azalea",
+            new DyingAzalea(
+                    AbstractBlock.Settings.create()
+                            .registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(PaleWorld.MOD_ID, "dying_azalea")))
+                            .mapColor(MapColor.GRAY)
+                            .notSolid()
+                            .breakInstantly()
+                            .sounds(BlockSoundGroup.AZALEA)
+                            .nonOpaque()
+                            .pistonBehavior(PistonBehavior.DESTROY)
+                            .requiresTool()
+    ));
 
     private static Block regBlock(String name, Block block) {
         regBlockItem(name, block);
@@ -93,6 +116,7 @@ public class PaleWorldBlocks {
             fabricItemGroupEntries.add(PETRIFIED_WOOD);
             fabricItemGroupEntries.add(BIG_DYING_DRIPLEAF_STEM);
             fabricItemGroupEntries.add(BIG_DYING_DRIPLEAF);
+            fabricItemGroupEntries.add(DYING_AZALEA);
             /*fabricItemGroupEntries.add(SMALL_DYING_DRIPLEAF);*/
         });
     }

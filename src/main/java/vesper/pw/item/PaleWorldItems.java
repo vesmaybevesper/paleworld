@@ -20,8 +20,6 @@ public class PaleWorldItems {
     }
 
     public static void regModItems(){
-        /*ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(fabricItemGroupEntries -> {
-            fabricItemGroupEntries.add(PALE_VINE);
-        });*/
+
     }
 }

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_azalea",
+  "textures": {
+    "side": "pale-world:block/dying_azalea_side",
+    "top": "pale-world:block/dying_azalea_top"
+  }
+}
