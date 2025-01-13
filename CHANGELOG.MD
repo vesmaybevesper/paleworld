@@ -1,9 +1,12 @@
 1.0.0+Alpha.8
 =
+_Added:_
+* Dying Azalea
 
 _Changed:_
 
 * Re-added several underground features to Pale Caves
+* Replace Azalea's in Pale cave with Dying Azalea
 
 
 1.0.0+Alpha.7
