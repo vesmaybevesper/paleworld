@@ -1,5 +1,6 @@
 package vesper.pw.biomes;
 
+import net.fabricmc.fabric.api.biome.v1.BiomeModification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.registry.Registerable;
@@ -12,6 +13,7 @@ import net.minecraft.world.biome.BiomeEffects;
 import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.GenerationStep;
+import net.minecraft.world.gen.carver.ConfiguredCarvers;
 import net.minecraft.world.gen.feature.*;
 import vesper.pw.PaleWorld;
 import vesper.pw.world.PaleWorldPlacedFeatures;
@@ -43,7 +45,11 @@ public class PaleWorldBiomes {
         DefaultBiomeFeatures.addOceanMobs(spawner,0,1,3);
 
         GenerationSettings.LookupBackedBuilder builder = new GenerationSettings.LookupBackedBuilder(biomeRegisterable.getRegistryLookup(RegistryKeys.PLACED_FEATURE), biomeRegisterable.getRegistryLookup(RegistryKeys.CONFIGURED_CARVER));
-        globalOverworldGeneration(builder);
+        /*globalOverworldGeneration(builder);*/
+        builder.carver(ConfiguredCarvers.CAVE);
+        builder.carver(ConfiguredCarvers.CAVE_EXTRA_UNDERGROUND);
+        builder.carver(ConfiguredCarvers.CANYON);
+
         DefaultBiomeFeatures.addDefaultOres(builder);
         DefaultBiomeFeatures.addClayOre(builder);
         DefaultBiomeFeatures.addDefaultDisks(builder);
