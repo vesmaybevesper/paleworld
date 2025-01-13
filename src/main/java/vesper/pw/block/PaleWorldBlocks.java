@@ -67,6 +67,7 @@ public class PaleWorldBlocks {
                     .sounds(BlockSoundGroup.SMALL_DRIPLEAF)
                     .offset(AbstractBlock.OffsetType.XYZ)
                     .pistonBehavior(PistonBehavior.DESTROY)
+                    .requiresTool()
     ));
     public static final Block PETRIFIED_WOOD = regBlock("petrified_wood", new Block(AbstractBlock.Settings.create().registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(PaleWorld.MOD_ID, "petrified_wood")))
             .mapColor(MapColor.SPRUCE_BROWN).sounds(BlockSoundGroup.WOOD).burnable().hardness(7).requiresTool().pistonBehavior(PistonBehavior.NORMAL)));
