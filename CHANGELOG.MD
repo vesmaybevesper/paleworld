@@ -1,3 +1,18 @@
+1.0.0+Alpha.7
+=
+_Added:_
+
+*PLACEHOLDER
+
+_Changed:_
+
+* PLACEHOLDER
+
+_FIXED:_
+
+* PLACEHOLDER
+
+
 1.0.0+Alpha.6
 =
 _Added:_
