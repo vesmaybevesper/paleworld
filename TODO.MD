@@ -4,7 +4,8 @@ TO-DO:
 - V1.0.0
   - ~~Fix Pale Cave Ceiling Patch Gen~~
   - Fix Clay Gen
-  - Create Dying Small Drip Leaf
+  - ~~Create Dying Small Drip Leaf~~
+  - fix small dripleaf item texture
   - Create Dying Big Drip Leaf
   - ~~Create Dying Azalea~~
   - ~~Fix dying azalea item texture~~
