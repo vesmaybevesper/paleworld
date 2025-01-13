@@ -1,13 +1,13 @@
 1.0.0+Alpha.6
 =
-Added:
+_Added:_
 
-    Pale Vines can now be climbed
+* Pale Vines can now be climbed
 
-Changed:
+_Changed:_
     
-    Up the region weight (The caves were really only spawning as tiny corners after the last weight reduction, The hope is to find a balance between having it as a large explorable biome and not overriding all Lush Caves)
-    Increase the luminance again=
+* Up the region weight (The caves were really only spawning as tiny corners after the last weight reduction, The hope is to find a balance between having it as a large explorable biome and not overriding all Lush Caves)
+* Increase the Pale Vine luminance again
 
 1.0.0+Alpha.5
 =
