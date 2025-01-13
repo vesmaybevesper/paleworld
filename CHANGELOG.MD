@@ -1,9 +1,17 @@
-1.0.0+Alpha.7
+1.0.0+Alpha.8
 =
 
 _Changed:_
 
-* Pale Caves will now use the correct Carver(s)
+* Re-added several underground features to Pale Caves
+
+
+1.0.0+Alpha.7
+=
+
+**_Changed:_
+
+* Pale Caves will now use the correct Carver(s)**
 
 1.0.0+Alpha.6
 =

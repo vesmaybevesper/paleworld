@@ -12,8 +12,8 @@ import terrablender.api.RegionType;
 
 import java.util.function.Consumer;
 
-public class PaleWorldRegion extends Region {
-    public PaleWorldRegion(Identifier name, int weight) {
+public class PaleCaveRegion extends Region {
+    public PaleCaveRegion(Identifier name, int weight) {
         super(name, RegionType.OVERWORLD, weight);
     }
 
@@ -22,8 +22,5 @@ public class PaleWorldRegion extends Region {
         this.addModifiedVanillaOverworldBiomes(mapper, builder -> {
             builder.replaceBiome(BiomeKeys.LUSH_CAVES, PaleWorldBiomes.PALE_CAVE);
         });
-        /*this.addModifiedVanillaOverworldBiomes(mapper, builder -> {
-            builder.replaceBiome(BiomeKeys.RIVER, PaleWorldBiomes.PALE_VALLEY);
-        });*/
     }
 }
