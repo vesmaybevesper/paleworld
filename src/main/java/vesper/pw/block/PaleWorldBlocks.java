@@ -15,6 +15,7 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
 import vesper.pw.PaleWorld;
+import vesper.pw.block.custom.PaleVineBodyBlock;
 
 import java.util.function.Function;
 
@@ -25,9 +26,21 @@ public class PaleWorldBlocks {
     }
 
     public static final Block PALE_VINE = regBlock("pale_vine", new Block(AbstractPlantStemBlock.Settings.create().registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(PaleWorld.MOD_ID, "pale_vine")))
-            .noCollision().sounds(BlockSoundGroup.CAVE_VINES).ticksRandomly().luminance(state -> 3).breakInstantly().mapColor(MapColor.GRAY).pistonBehavior(PistonBehavior.DESTROY).nonOpaque()));
-    public static final Block PALE_VINE_BODY = regBlock("pale_vine_body", new Block(AbstractPlantStemBlock.Settings.create().registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(PaleWorld.MOD_ID, "pale_vine_body")))
-            .noCollision().sounds(BlockSoundGroup.CAVE_VINES).ticksRandomly().luminance(state -> 3).breakInstantly().mapColor(MapColor.GRAY).pistonBehavior(PistonBehavior.DESTROY).nonOpaque()));
+            .noCollision().sounds(BlockSoundGroup.CAVE_VINES).ticksRandomly().luminance(state -> 7).breakInstantly().mapColor(MapColor.GRAY).pistonBehavior(PistonBehavior.DESTROY).nonOpaque()));
+    public static final Block PALE_VINE_BODY = regBlock(
+            "pale_vine_body",
+            new Block(
+            AbstractPlantStemBlock.Settings.create()
+                    .registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(PaleWorld.MOD_ID, "pale_vine_body")))
+                    .noCollision()
+                    .sounds(BlockSoundGroup.CAVE_VINES)
+                    .ticksRandomly()
+                    .luminance(state -> 7)
+                    .breakInstantly()
+                    .mapColor(MapColor.GRAY)
+                    .pistonBehavior(PistonBehavior.DESTROY)
+                    .nonOpaque()
+            ));
     public static final Block BIG_DYING_DRIPLEAF_STEM = regBlock("big_dying_dripleaf_stem", new Block(AbstractPlantStemBlock.Settings.create().registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(PaleWorld.MOD_ID, "big_dying_dripleaf_stem")))
             .noCollision().sounds(BlockSoundGroup.BIG_DRIPLEAF).ticksRandomly().breakInstantly().mapColor(MapColor.BROWN).pistonBehavior(PistonBehavior.DESTROY)));
     public static final Block BIG_DYING_DRIPLEAF = regBlock("big_dying_dripleaf", new Block(AbstractPlantStemBlock.Settings.create().registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(PaleWorld.MOD_ID, "big_dying_dripleaf")))
@@ -54,16 +67,19 @@ public class PaleWorldBlocks {
     }
 
     /*private static Block regBlock(String id, AbstractBlock.Settings settings) {
-        return regBlock(id, Block::new, settings);
-    }*/
+        return regBlock(id, Block::new, settings);*/
+
 
     private static RegistryKey<Block> keyOf(String id) {
-        return RegistryKey.of(RegistryKeys.BLOCK, Identifier.ofVanilla(id));
+        return RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(id));
     }
 
-    /*private static Block regBlock(String id, Function<AbstractBlock.Settings, Block> factory, AbstractBlock.Settings settings) {
-        return regBlock(keyOf(id), factory, settings);
-    }*/
+    private static Block regBlock(String id, Function<AbstractBlock.Settings, Block> factory, AbstractBlock.Settings settings) {
+        RegistryKey<Block> key = keyOf(id);
+        Block block = factory.apply(settings);
+        regBlockItem(id, block);
+        return Registry.register(Registries.BLOCK, key.getValue(), block);
+    }
 
 
     private static void regBlockItem(String item, Block block) {
