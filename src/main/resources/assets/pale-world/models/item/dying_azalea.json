@@ -1,6 +1,3 @@
 {
-  "model": {
-    "type": "minecraft:model",
-    "model": "minecraft:block/dying_azalea_pant"
-  }
+  "parent": "pale-world:block/dying_azalea"
 }
