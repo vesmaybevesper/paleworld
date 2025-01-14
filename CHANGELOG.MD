@@ -7,7 +7,7 @@ _Added:_
 
 _Changed:_
 
-* 
+* Axe's now break big dying dripleaves faster
 
 _Fixed:_
 

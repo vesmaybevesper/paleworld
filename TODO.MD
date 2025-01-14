@@ -14,7 +14,6 @@ TO-DO:
   - ~~Fix Pale Vines to work like vines~~
   - ~~Fix Big Dying Dripleaf Stem texture~~
   - ~~Fix Big Dripleaf Loot Table~~
-  - Require shears for big drip leaf
   - Add Custom Biome Ambiance
   - Add Pale Axolotl
   - Vampire Bat?

@@ -66,7 +66,7 @@ public class PaleWorldBlocks {
     public static final Block BIG_DYING_DRIPLEAF = regBlock("big_dying_dripleaf", new BigDyingDripleafBlock(
             AbstractBlock.Settings.create()
                     .registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(PaleWorld.MOD_ID, "big_dying_dripleaf")))
-                    .notSolid()
+                    .noCollision()
                     .strength(0.1F)
                     .sounds(BlockSoundGroup.BIG_DRIPLEAF)
                     .mapColor(MapColor.BROWN)
