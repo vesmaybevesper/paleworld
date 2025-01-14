@@ -1,4 +1,4 @@
-1.0.0+Alpha.9
+1.0.0+Beta.1
 =
 
 _Added:_
@@ -8,7 +8,7 @@ _Added:_
 
 _Changed:_
 
-* Small Dying Dripleaf now spawns instead of Small Drip Leaf in Pale Caves
+* Replace Dripleaves with Dying variants in Pale Caves
 * Update Fabric API to 0.114.3+1.21.4
 
 
