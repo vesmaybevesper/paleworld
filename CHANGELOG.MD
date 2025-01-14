@@ -1,3 +1,19 @@
+1.0.0+Beta.2
+=
+
+_Added:_
+ 
+* 
+
+_Changed:_
+
+* 
+
+_Fixed:_
+
+* Fixed Dying Dripleaf loot table
+
+
 1.0.0+Beta.1
 =
 
