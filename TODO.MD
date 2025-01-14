@@ -12,7 +12,7 @@ TO-DO:
   - ~~fix dying azalea inside texture~~
   - ~~add dying azalea loot table~~
   - ~~Fix Pale Vines to work like vines~~
-  - Fix Big Dying Dripleaf Stem texture
+  - ~~Fix Big Dying Dripleaf Stem texture~~
   - Add Custom Biome Ambiance
   - Add Pale Axolotl
   - Vampire Bat?
