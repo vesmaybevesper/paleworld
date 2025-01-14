@@ -57,8 +57,6 @@ public class PaleWorldBiomes {
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PaleWorldPlacedFeatures.PALE_VINE);
         builder.feature(GenerationStep.Feature.UNDERGROUND_DECORATION, PaleWorldPlacedFeatures.PALE_CAVE_CLAY);
 
-
-
         return new Biome.Builder()
                 .precipitation(true)
                 .downfall(0.8f)
@@ -74,8 +72,6 @@ public class PaleWorldBiomes {
                         .fogColor(0xff817770)
                         .moodSound(BiomeMoodSound.CAVE).build())
             .build();
-
-
     }
 
     /*public static Biome paleValley(Registerable<Biome> biomeRegisterable){
