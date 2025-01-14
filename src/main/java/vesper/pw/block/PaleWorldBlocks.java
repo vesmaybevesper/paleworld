@@ -15,6 +15,8 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
 import vesper.pw.PaleWorld;
+import vesper.pw.block.custom.BigDyingDripleafBlock;
+import vesper.pw.block.custom.BigDyingDripleafStemBlock;
 import vesper.pw.block.custom.DyingAzalea;
 
 import java.util.function.Function;
@@ -51,10 +53,25 @@ public class PaleWorldBlocks {
                     .pistonBehavior(PistonBehavior.DESTROY)
                     .nonOpaque()
             ));
-    public static final Block BIG_DYING_DRIPLEAF_STEM = regBlock("big_dying_dripleaf_stem", new Block(AbstractPlantStemBlock.Settings.create().registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(PaleWorld.MOD_ID, "big_dying_dripleaf_stem")))
-            .noCollision().sounds(BlockSoundGroup.BIG_DRIPLEAF).ticksRandomly().breakInstantly().mapColor(MapColor.BROWN).pistonBehavior(PistonBehavior.DESTROY)));
-    public static final Block BIG_DYING_DRIPLEAF = regBlock("big_dying_dripleaf", new Block(AbstractPlantStemBlock.Settings.create().registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(PaleWorld.MOD_ID, "big_dying_dripleaf")))
-            .noCollision().sounds(BlockSoundGroup.BIG_DRIPLEAF).ticksRandomly().breakInstantly().mapColor(MapColor.BROWN).pistonBehavior(PistonBehavior.DESTROY)));
+    public static final Block BIG_DYING_DRIPLEAF_STEM = regBlock("big_dying_dripleaf_stem", new BigDyingDripleafStemBlock(
+            AbstractBlock.Settings.create()
+                    .registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(PaleWorld.MOD_ID, "big_dying_dripleaf_stem")))
+                    .noCollision()
+                    .sounds(BlockSoundGroup.BIG_DRIPLEAF)
+                    .ticksRandomly().breakInstantly()
+                    .mapColor(MapColor.BROWN)
+                    .pistonBehavior(PistonBehavior.DESTROY)
+    ));
+
+    public static final Block BIG_DYING_DRIPLEAF = regBlock("big_dying_dripleaf", new BigDyingDripleafBlock(
+            AbstractBlock.Settings.create()
+                    .registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(PaleWorld.MOD_ID, "big_dying_dripleaf")))
+                    .notSolid()
+                    .strength(0.1F)
+                    .sounds(BlockSoundGroup.BIG_DRIPLEAF)
+                    .mapColor(MapColor.BROWN)
+                    .pistonBehavior(PistonBehavior.DESTROY)
+    ));
 
     public static final Block SMALL_DYING_DRIPLEAF = regBlock(
             "small_dying_dripleaf",
