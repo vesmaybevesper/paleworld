@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "facing=north,waterlogged=true": { "model": "pale-world:block/big_dying_dripleaf_stem" },
+    "facing=north,waterlogged=false": { "model": "pale-world:block/big_dying_dripleaf_stem" },
+    "facing=south,waterlogged=true": { "model": "pale-world:block/big_dying_dripleaf_stem", "y": 180 },
+    "facing=south,waterlogged=false": { "model": "pale-world:block/big_dying_dripleaf_stem", "y": 180 },
+    "facing=west,waterlogged=true": { "model": "pale-world:block/big_dying_dripleaf_stem", "y": 270 },
+    "facing=west,waterlogged=false": { "model": "pale-world:block/big_dying_dripleaf_stem", "y": 270 },
+    "facing=east,waterlogged=true": { "model": "pale-world:block/big_dying_dripleaf_stem", "y": 90 },
+    "facing=east,waterlogged=false": { "model": "pale-world:block/big_dying_dripleaf_stem", "y": 90 }
+  }
+}

@@ -13,5 +13,6 @@ public class PaleWorldClient implements ClientModInitializer {
 		BlockRenderLayerMap.INSTANCE.putBlock(PaleWorldBlocks.DYING_AZALEA, RenderLayer.getCutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(PaleWorldBlocks.SMALL_DYING_DRIPLEAF, RenderLayer.getCutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(PaleWorldBlocks.BIG_DYING_DRIPLEAF, RenderLayer.getCutout());
+		BlockRenderLayerMap.INSTANCE.putBlock(PaleWorldBlocks.BIG_DYING_DRIPLEAF_STEM, RenderLayer.getCutout());
 	}
 }

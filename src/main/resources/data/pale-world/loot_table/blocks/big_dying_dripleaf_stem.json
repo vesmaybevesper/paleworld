@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "palw-world:big_dying_dripleaf"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "pale-world:blocks/big_dying_dripleaf_stem"
+}
