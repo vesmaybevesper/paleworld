@@ -1,3 +1,17 @@
+1.0.0+Alpha.9
+=
+
+_Added:_
+
+* Small Dying Dripleaf
+* Big Dying Dripleaf
+
+_Changed:_
+
+* Small Dying Dripleaf now spawns instead of Small Drip Leaf in Pale Caves
+* Update Fabric API to 0.114.3+1.21.4
+
+
 1.0.0+Alpha.8
 =
 _Added:_
@@ -12,7 +26,7 @@ _Changed:_
 1.0.0+Alpha.7
 =
 
-**_Changed:_
+_Changed:_
 
 * Pale Caves will now use the correct Carver(s)**
 
