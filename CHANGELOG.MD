@@ -1,10 +1,6 @@
 1.0.0+Beta.2
 =
 
-_Added:_
- 
-* 
-
 _Changed:_
 
 * Axe's now break dying dripleaves faster
