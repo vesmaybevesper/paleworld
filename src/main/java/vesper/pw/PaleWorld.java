@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import vesper.pw.block.PaleWorldBlocks;
 import vesper.pw.item.PaleWorldItemGroup;
 import vesper.pw.item.PaleWorldItems;
+import vesper.pw.sound.CustomSounds;
 import vesper.pw.world.gen.PaleWorldWorldGen;
 
 public class PaleWorld implements ModInitializer {
@@ -26,5 +27,6 @@ public class PaleWorld implements ModInitializer {
 		PaleWorldBlocks.regModBlocks();
 		PaleWorldItems.regModItems();
 		PaleWorldWorldGen.genWorld();
+		CustomSounds.init();
 	}
 }
