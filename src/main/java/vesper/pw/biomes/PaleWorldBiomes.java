@@ -1,6 +1,6 @@
 package vesper.pw.biomes;
 
-import net.fabricmc.fabric.api.biome.v1.BiomeModification;
+
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.registry.Registerable;

@@ -14,6 +14,9 @@ TO-DO:
   - ~~Fix Pale Vines to work like vines~~
   - ~~Fix Big Dying Dripleaf Stem texture~~
   - ~~Fix Big Dripleaf Loot Table~~
+  - ~~Adjust Dripleaf spawn rates~~
+  - ~~Fix Big Dripleaf Particles~~
   - Add Custom Biome Ambiance
   - Add Pale Axolotl
+  - Make Pale Vines the correct type of block
   - Vampire Bat?

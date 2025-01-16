@@ -83,6 +83,7 @@ public class PaleWorldConfiguredFeatures {
                 new SimpleRandomFeatureConfig(
                         RegistryEntryList.of(new RegistryEntry[]{
                                 createSmallDyingDripleaf(),
+                                createSmallDyingDripleaf(),
                                 createBigDyingDripleaf(Direction.EAST),
                                 createBigDyingDripleaf(Direction.WEST),
                                 createBigDyingDripleaf(Direction.SOUTH),

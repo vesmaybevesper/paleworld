@@ -1,3 +1,21 @@
+1.0.0+Beta.3
+=
+
+_Added:_
+
+* 
+
+_Changed:_
+
+* Reduced spawn rate of Big Dying Dripleaf
+* Increased spawn rate of Small Dying Dripleaf
+
+_Fixed:_
+
+* Fixed Big Dying Dripleaf particles in most cases
+
+
+
 1.0.0+Beta.2
 =
 
