@@ -17,6 +17,9 @@ TO-DO:
   - ~~Adjust Dripleaf spawn rates~~
   - ~~Fix Big Dripleaf Particles~~
   - Add Custom Biome Ambiance
-  - Add Pale Axolotl
+  - ~~Add Pale Axolotl~~
+  - Pale Axolotl Animations
+  - Update Pale Axolotl texture
+  - Make Pale Axolotl eyes emissive
   - Make Pale Vines the correct type of block
   - Vampire Bat?
