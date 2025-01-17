@@ -1,9 +1,13 @@
-1.0.0+Beta.3
+1.0.0+Beta.4
 =
 
 _Added:_
 
-* 
+*
+
+
+1.0.0+Beta.3
+=
 
 _Changed:_
 
@@ -13,7 +17,6 @@ _Changed:_
 _Fixed:_
 
 * Fixed Big Dying Dripleaf particles in most cases
-
 
 
 1.0.0+Beta.2
