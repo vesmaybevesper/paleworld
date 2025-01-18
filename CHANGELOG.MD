@@ -7,7 +7,7 @@ _Added:_
 
 _Fixed:_
 
-* Big Dying Dripleafs should now have the correct particles in all cases
+* Big Dying Dripleaves should now have the correct particles in all cases
 
 
 1.0.0+Beta.3
