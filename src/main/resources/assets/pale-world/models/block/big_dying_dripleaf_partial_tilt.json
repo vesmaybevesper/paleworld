@@ -5,7 +5,7 @@
         "stem": "pale-world:block/big_dying_dripleaf_stem",
         "side": "pale-world:block/big_dying_dripleaf_side",
         "tip": "pale-world:block/big_dying_dripleaf_tip",
-        "particle": "block/big_dying_dripleaf_top"
+        "particle": "pale-world:block/big_dying_dripleaf_top"
     },
     "elements": [
         {   "from": [ 0, 15, 0 ],

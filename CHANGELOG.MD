@@ -3,7 +3,11 @@
 
 _Added:_
 
-*
+* Pale Axolotl
+
+_Fixed:_
+
+* Big Dying Dripleafs should now have the correct particles in all cases
 
 
 1.0.0+Beta.3
