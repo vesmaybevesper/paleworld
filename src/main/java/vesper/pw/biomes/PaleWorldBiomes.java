@@ -16,6 +16,7 @@ import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.carver.ConfiguredCarvers;
 import net.minecraft.world.gen.feature.*;
 import vesper.pw.PaleWorld;
+import vesper.pw.entity.Entities;
 import vesper.pw.world.PaleWorldPlacedFeatures;
 
 
@@ -38,7 +39,8 @@ public class PaleWorldBiomes {
 
     private static Biome paleCave(Registerable<Biome> biomeRegisterable) {
         SpawnSettings.Builder spawner = new SpawnSettings.Builder();
-        spawner.spawn(SpawnGroup.AXOLOTLS, new SpawnSettings.SpawnEntry(EntityType.AXOLOTL, 2, 1, 1));
+        spawner.spawn(SpawnGroup.AXOLOTLS, new SpawnSettings.SpawnEntry(EntityType.AXOLOTL, 1, 1, 1));
+        /*spawner.spawn(SpawnGroup.WATER_AMBIENT, new SpawnSettings.SpawnEntry(Entities.PALE_AXOLOTL, 1, 1, 1));*/
 
         DefaultBiomeFeatures.addBatsAndMonsters(spawner);
         DefaultBiomeFeatures.addOceanMobs(spawner,0,1,3);

@@ -28,12 +28,13 @@ public class PaleAxolotl extends AxolotlEntity implements GeoEntity {
                 .add(EntityAttributes.MAX_HEALTH, 14.0D)
                 .add(EntityAttributes.ATTACK_DAMAGE, 2.0F)
                 .add(EntityAttributes.ATTACK_SPEED,1.0F)
-                .add(EntityAttributes.MOVEMENT_SPEED,0.25F);
+                .add(EntityAttributes.MOVEMENT_SPEED,( double) 1F)
+                .add(EntityAttributes.STEP_HEIGHT, 1.0F);
     }
 
     @Override
     protected void initGoals() {
-        this.goalSelector.add(0, new SwimAroundGoal(this, 1.0F,1));
+        this.goalSelector.add(1, new SwimAroundGoal(this, 1.0F,1));
         this.goalSelector.add(3, new MeleeAttackGoal(this, 2.0D, false));
         this.goalSelector.add(5, new WanderAroundGoal(this, 1, 1));
         this.goalSelector.add(5, new WanderAroundFarGoal(this, 1, 1));

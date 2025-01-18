@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRe
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import vesper.pw.block.PaleWorldBlocks;
+import vesper.pw.datagen.EntityGen;
 import vesper.pw.entity.Entities;
 import vesper.pw.entity.PaleAxolotl.PaleAxolotl;
 import vesper.pw.item.PaleWorldItemGroup;
@@ -29,6 +30,7 @@ public class PaleWorld implements ModInitializer {
 		Entities.init();
 		FabricDefaultAttributeRegistry.register(Entities.PALE_AXOLOTL, PaleAxolotl.setAttributes());
 		PaleWorldItemGroup.regItemGroups();
+		EntityGen.addSpawns();
 		PaleWorldBlocks.regModBlocks();
 		PaleWorldItems.regModItems();
 		PaleWorldWorldGen.genWorld();
