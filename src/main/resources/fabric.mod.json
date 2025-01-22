@@ -39,7 +39,6 @@
 		"minecraft": "~1.21.4",
 		"java": ">=21",
 		"terrablender": ">=4.3.0.2",
-		"geckolib": ">=4.8",
 		"fabric-api": "*"
 	},
 	"suggests": {
