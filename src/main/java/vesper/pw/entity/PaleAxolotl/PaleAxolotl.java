@@ -1,20 +1,18 @@
 package vesper.pw.entity.PaleAxolotl;
 
-import net.minecraft.entity.AnimationState;
-import net.minecraft.entity.Bucketable;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.SpawnReason;
+import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.passive.*;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import vesper.pw.entity.Entities;
 
-public class PaleAxolotl extends AxolotlEntity implements  Bucketable {
+public class PaleAxolotl extends AxolotlEntity implements Bucketable {
     public final AnimationState idleAnimation = new AnimationState();
     private int idleAnimationTimeout = 0;
 
@@ -24,12 +22,23 @@ public class PaleAxolotl extends AxolotlEntity implements  Bucketable {
 
 
     public static DefaultAttributeContainer.Builder setAttributes() {
-        return AxolotlEntity.createAxolotlAttributes()
+        return PaleAxolotl.createAxolotlAttributes()
                 .add(EntityAttributes.MAX_HEALTH, 14.0)
                 .add(EntityAttributes.ATTACK_DAMAGE, 2.0)
                 .add(EntityAttributes.ATTACK_SPEED, 1.0)
-                .add(EntityAttributes.MOVEMENT_SPEED, (double) 1.0)
+                .add(EntityAttributes.MOVEMENT_SPEED, (double) 0.2F)
                 .add(EntityAttributes.STEP_HEIGHT, 1.0);
+    }
+
+
+    @Override
+    public void travel(Vec3d movementInput) {
+        if (this.isLogicalSideForUpdatingMovement() && this.isTouchingWater()){
+            this.updateVelocity(this.getMovementSpeed(), movementInput);
+            this.move(MovementType.SELF, this.getVelocity());
+            this.setVelocity(this.getVelocity().multiply(0.25));
+        }
+        super.travel(movementInput);
     }
 
     @Override
