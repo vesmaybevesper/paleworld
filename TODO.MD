@@ -19,7 +19,7 @@ TO-DO:
   - Add Custom Biome Ambiance(?)
   - ~~Add Pale Axolotl~~
   - ~~Pale Axolotl Animations~~
-  - Update Pale Axolotl texture
+  - ~~Update Pale Axolotl texture~~
   - Pale Axolotl Spawn Egg
   - Make better Pale Axolotl behavior 
   - Make Pale Vines the correct type of block
