@@ -20,6 +20,7 @@ TO-DO:
   - ~~Add Pale Axolotl~~
   - Pale Axolotl Animations
   - Update Pale Axolotl texture
-  - Make Pale Axolotl eyes emissive
+  - Pale Axolotl Spawn Egg
+  - Make better Pale Axolotl behavior 
   - Make Pale Vines the correct type of block
   - Vampire Bat?
