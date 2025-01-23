@@ -3,7 +3,13 @@
 
 _Added:_
 
-*
+* Advancements
+  * Pale World
+    * Load into a world with Pale World installed
+
+_Changed:_
+
+* Updated Pale Axolotl texture
 
 
 1.0.0+Beta.4
