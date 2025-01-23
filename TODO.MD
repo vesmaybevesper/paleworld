@@ -16,7 +16,7 @@ TO-DO:
   - ~~Fix Big Dripleaf Loot Table~~
   - ~~Adjust Dripleaf spawn rates~~
   - ~~Fix Big Dripleaf Particles~~
-  - Add Custom Biome Ambiance
+  - Add Custom Biome Ambiance(?)
   - ~~Add Pale Axolotl~~
   - ~~Pale Axolotl Animations~~
   - Update Pale Axolotl texture
