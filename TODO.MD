@@ -18,7 +18,7 @@ TO-DO:
   - ~~Fix Big Dripleaf Particles~~
   - Add Custom Biome Ambiance
   - ~~Add Pale Axolotl~~
-  - Pale Axolotl Animations
+  - ~~Pale Axolotl Animations~~
   - Update Pale Axolotl texture
   - Pale Axolotl Spawn Egg
   - Make better Pale Axolotl behavior 
