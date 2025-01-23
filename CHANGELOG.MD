@@ -1,4 +1,4 @@
-1.0.0+Beta.5
+1.0.0+RC.1
 =
 
 _Added:_
@@ -10,6 +10,7 @@ _Added:_
 _Changed:_
 
 * Updated Pale Axolotl texture
+* 
 
 
 1.0.0+Beta.4
