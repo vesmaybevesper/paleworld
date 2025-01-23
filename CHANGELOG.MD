@@ -4,18 +4,16 @@
 _Added:_
 
 * Pale Axolotl
-  * Temp Texture for the time being
-
+  * Temp Texture(!!!)
 
 _Changed:_
 
 * Updated Fabric Api to 0.115.0
 
-
 _Fixed:_
 
 * Big Dying Dripleaves should now have the correct particles in all cases
-* Fixed Big Drying Dripleaf loot table
+* Fixed an error related to Big Dying Dripleaf loottable
 
 
 1.0.0+Beta.3
