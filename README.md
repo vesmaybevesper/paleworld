@@ -1,5 +1,8 @@
 **Pale World is a _WORK-IN-PROGRESS_ mod that aims to revamp the Pale Garden Biome and add more related features**
 
+[CurseForge Page](https://www.curseforge.com/minecraft/mc-mods/pale-world)
+[Modrinth Page](https://modrinth.com/mod/pale-world)
+
 
 **_REQUIRED:_**
 * [Fabric API](https://modrinth.com/mod/fabric-api)
