@@ -35,12 +35,6 @@ public class Advancements extends FabricAdvancementProvider {
     public void generateAdvancement(RegistryWrapper.WrapperLookup wrapperLookup, Consumer<AdvancementEntry> consumer) {
 
 
-        RegistryEntry<Biome> paleCaveBiome = wrapperLookup
-                .getOrThrow(RegistryKeys.BIOME)
-                .getOrThrow(PaleWorldBiomes.PALE_CAVE);
-
-        RegistryEntryList<Biome> pCaveBiomeList = RegistryEntryList.of(paleCaveBiome);
-
         AdvancementEntry root = Advancement.Builder
                 .create()
                 .display(
