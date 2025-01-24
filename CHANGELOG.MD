@@ -7,6 +7,8 @@ _Added:_
   * Pale World
     * Load into a world with Pale World installed
 
+* Pale Axolotl Spawn Egg
+
 _Changed:_
 
 * Updated Pale Axolotl texture

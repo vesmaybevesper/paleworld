@@ -20,7 +20,7 @@ TO-DO:
   - ~~Add Pale Axolotl~~
   - ~~Pale Axolotl Animations~~
   - ~~Update Pale Axolotl texture~~
-  - Pale Axolotl Spawn Egg
+  - ~~Pale Axolotl Spawn Egg~~
   - Advancement tab vs taking whole menu
   - Make better Pale Axolotl behavior 
   - Make Pale Vines the correct type of block
@@ -28,6 +28,6 @@ TO-DO:
 
 
 - BEFORE RC 1
-  - Pale Axolotl Spawn Egg
+  - ~~Pale Axolotl Spawn Egg~~
   - Advancement tab vs taking whole menu
   - Make Pale Vines the correct type of block
