@@ -53,7 +53,7 @@ public class Advancements extends FabricAdvancementProvider {
                         true,
                         false)
                 .criterion("pale_world_load", TickCriterion.Conditions.createTick())
-                .build(consumer, PaleWorld.MOD_ID+":pale_world_root");
+                .build(consumer, PaleWorld.MOD_ID + "/root");
 
 
            /* AdvancementEntry paleCaveAdvance = Advancement.Builder.create()
