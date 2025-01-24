@@ -23,6 +23,7 @@ public class PaleWorldItemGroup {
                         entries.add(PaleWorldBlocks.DYING_AZALEA);
                         entries.add(PaleWorldBlocks.SMALL_DYING_DRIPLEAF);
                         entries.add(PaleWorldBlocks.BIG_DYING_DRIPLEAF);
+                        entries.add(PaleWorldItems.PALE_AXOLOTL_SPAWN_EGG);
                     }))
             .build());
 
