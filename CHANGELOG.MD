@@ -12,7 +12,7 @@ _Added:_
 _Changed:_
 
 * Updated Pale Axolotl texture
-* 
+
 
 
 1.0.0+Beta.4

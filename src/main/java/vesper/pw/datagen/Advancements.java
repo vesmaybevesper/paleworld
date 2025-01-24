@@ -34,11 +34,27 @@ public class Advancements extends FabricAdvancementProvider {
     @Override
     public void generateAdvancement(RegistryWrapper.WrapperLookup wrapperLookup, Consumer<AdvancementEntry> consumer) {
 
+
         RegistryEntry<Biome> paleCaveBiome = wrapperLookup
                 .getOrThrow(RegistryKeys.BIOME)
                 .getOrThrow(PaleWorldBiomes.PALE_CAVE);
 
         RegistryEntryList<Biome> pCaveBiomeList = RegistryEntryList.of(paleCaveBiome);
+
+        AdvancementEntry root = Advancement.Builder
+                .create()
+                .display(
+                        Items.PALE_MOSS_BLOCK,
+                        Text.translatable("Pale World"),
+                        Text.translatable("Load into a world with Pale World"),
+                        Identifier.of("textures/gui/advancements/backgrounds/adventure.png"),
+                        AdvancementFrame.TASK,
+                        true,
+                        true,
+                        false)
+                .criterion("pale_world_load", TickCriterion.Conditions.createTick())
+                .build(consumer, PaleWorld.MOD_ID+":pale_world_root");
+
 
            /* AdvancementEntry paleCaveAdvance = Advancement.Builder.create()
                     .display(
@@ -67,21 +83,6 @@ public class Advancements extends FabricAdvancementProvider {
                 )
                 .criterion("pale_axolotl_eat", TickCriterion.Conditions.createTick())
                 .build(consumer, PaleWorld.MOD_ID+":pale_axolotl_eat");*/
-
-        AdvancementEntry paleWorld = Advancement.Builder
-                .create()
-                .display(
-                        Items.PALE_MOSS_BLOCK,
-                        Text.literal("Pale World"),
-                        Text.literal("Load into a world with Pale World"),
-                        Identifier.ofVanilla("textures/gui/advancements/backgrounds/adventure.png"),
-                        AdvancementFrame.TASK,
-                        true,
-                        true,
-                        false
-                )
-                .criterion("pale_world_load", TickCriterion.Conditions.createTick())
-                .build(consumer, PaleWorld.MOD_ID+":pale_world_load");
 
     }
 }
