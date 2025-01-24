@@ -1,9 +1,18 @@
-1.0.0+Beta.5
+1.0.0+RC.1
 =
 
 _Added:_
 
-*
+* Advancements
+  * Pale World
+    * Load into a world with Pale World installed
+
+* Pale Axolotl Spawn Egg
+
+_Changed:_
+
+* Updated Pale Axolotl texture
+* 
 
 
 1.0.0+Beta.4

@@ -32,11 +32,11 @@ public class PaleWorld implements ModInitializer {
 		// Proceed with mild caution.
 		Entities.init();
 		FabricDefaultAttributeRegistry.register(Entities.PALE_AXOLOTL, PaleAxolotl.setAttributes());
+		PaleWorldItems.regModItems();
 		PaleWorldItemGroup.regItemGroups();
 		EntityGen.addSpawns();
 		// ModCriteria.init();
 		PaleWorldBlocks.regModBlocks();
-		PaleWorldItems.regModItems();
 		PaleWorldWorldGen.genWorld();
 		CustomSounds.init();
 	}

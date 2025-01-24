@@ -28,7 +28,7 @@ public class PaleWorldBlocks {
     }
 
     public static final Block PALE_VINE = regBlock("pale_vine", new Block(
-            AbstractPlantStemBlock.Settings.create()
+            AbstractPlantBlock.Settings.create()
                     .registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(PaleWorld.MOD_ID, "pale_vine")))
                     .noCollision()
                     .sounds(BlockSoundGroup.CAVE_VINES)
