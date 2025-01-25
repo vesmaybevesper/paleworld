@@ -1,3 +1,20 @@
+1.0.0+RC.3
+=
+
+
+
+1.0.0+RC.2
+=
+
+_Added:_
+
+* Pale Axolotl Bucket
+* You're My Friend Now Advancement 
+
+_Fixed:_
+
+* Fixed double Pale World Advancement
+
 1.0.0+RC.1
 =
 
