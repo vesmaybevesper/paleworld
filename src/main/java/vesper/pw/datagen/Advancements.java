@@ -3,11 +3,10 @@ package vesper.pw.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricAdvancementProvider;
 import net.minecraft.advancement.Advancement;
+import net.minecraft.advancement.AdvancementCriterion;
 import net.minecraft.advancement.AdvancementEntry;
 import net.minecraft.advancement.AdvancementFrame;
-import net.minecraft.advancement.criterion.AbstractCriterion;
-import net.minecraft.advancement.criterion.Criteria;
-import net.minecraft.advancement.criterion.TickCriterion;
+import net.minecraft.advancement.criterion.*;
 import net.minecraft.item.Items;
 import net.minecraft.predicate.entity.LocationPredicate;
 import net.minecraft.registry.RegistryKeys;
@@ -19,6 +18,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.world.biome.Biome;
 import vesper.pw.PaleWorld;
 import vesper.pw.biomes.PaleWorldBiomes;
+import vesper.pw.item.PaleWorldItems;
 import vesper.pw.utils.EnterBiomeCriterion;
 import vesper.pw.utils.ModCriteria;
 
@@ -33,15 +33,13 @@ public class Advancements extends FabricAdvancementProvider {
 
     @Override
     public void generateAdvancement(RegistryWrapper.WrapperLookup wrapperLookup, Consumer<AdvancementEntry> consumer) {
-
-
         AdvancementEntry root = Advancement.Builder
                 .create()
                 .display(
                         Items.PALE_MOSS_BLOCK,
                         Text.translatable("Pale World"),
                         Text.translatable("Load into a world with Pale World"),
-                        Identifier.of("textures/gui/advancements/backgrounds/adventure.png"),
+                        Identifier.of("textures/gui/advancements/backgrounds/stone.png"),
                         AdvancementFrame.TASK,
                         true,
                         true,
@@ -50,21 +48,37 @@ public class Advancements extends FabricAdvancementProvider {
                 .build(consumer, PaleWorld.MOD_ID + "/root");
 
 
-           /* AdvancementEntry paleCaveAdvance = Advancement.Builder.create()
+        AdvancementEntry paleAxolotlBucket = Advancement.Builder.create()
+                .parent(root)
+                .display(
+                        PaleWorldItems.PALE_AXOLOTL_BUCKET,
+                        Text.translatable("You're My Friend Now"),
+                        Text.translatable("Bucket a Pale Axolotl"),
+                        null,
+                        AdvancementFrame.TASK,
+                        true,
+                        true,
+                        false
+                )
+                .criterion("pale_axolotl_bucketed", InventoryChangedCriterion.Conditions.items(PaleWorldItems.PALE_AXOLOTL_BUCKET))
+                .build(consumer, PaleWorld.MOD_ID+"/bucket_pale_axolotl");
+
+            /*AdvancementEntry paleCaveAdvance = Advancement.Builder.create()
+                    .parent(root)
                     .display(
                             Items.PALE_MOSS_CARPET,
                             Text.literal("Clinging To Life"),
                             Text.literal("Step foot in the Pale Caves"),
-                            Identifier.ofVanilla("textures/gui/advancements/backgrounds/adventure.png"),
+                            null,
                             AdvancementFrame.GOAL,
                             true,
                             true,
                             false
                     )
                     .criterion("pale_cave_entered", ModCriteria.ENTER_BIOME.create(new EnterBiomeCriterion.Conditions(Optional.empty())))
-                    .build(consumer, PaleWorld.MOD_ID+":pale_cave_entered");
+                    .build(consumer, PaleWorld.MOD_ID+"/pale_cave_entered");*/
 
-        AdvancementEntry paleAxolotlEat = Advancement.Builder.create()
+        /*AdvancementEntry paleAxolotlEat = Advancement.Builder.create()
                 .display(
                         Items.AXOLOTL_SPAWN_EGG,
                         Text.literal("The Cutest Cannibal"),
