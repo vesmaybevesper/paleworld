@@ -4,13 +4,17 @@ import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.data.DataTracker;
+import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.passive.*;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import vesper.pw.entity.Entities;
+import vesper.pw.item.PaleWorldItems;
 
 public class PaleAxolotl extends AxolotlEntity implements Bucketable {
     public final AnimationState idleAnimation = new AnimationState();
@@ -39,6 +43,12 @@ public class PaleAxolotl extends AxolotlEntity implements Bucketable {
             this.setVelocity(this.getVelocity().multiply(0.25));
         }
         super.travel(movementInput);
+    }
+
+
+    @Override
+    public ItemStack getBucketItem() {
+        return new ItemStack(PaleWorldItems.PALE_AXOLOTL_BUCKET);
     }
 
     @Override
