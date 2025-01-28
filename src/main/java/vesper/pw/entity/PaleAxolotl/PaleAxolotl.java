@@ -29,8 +29,8 @@ public class PaleAxolotl extends AxolotlEntity implements Bucketable {
         return PaleAxolotl.createAxolotlAttributes()
                 .add(EntityAttributes.MAX_HEALTH, 14.0F)
                 .add(EntityAttributes.ATTACK_DAMAGE, 2.0F)
-                .add(EntityAttributes.ATTACK_SPEED, 1.0F)
-                .add(EntityAttributes.MOVEMENT_SPEED, (double) 0.25F)
+                .add(EntityAttributes.ATTACK_SPEED, 2.0F)
+                .add(EntityAttributes.MOVEMENT_SPEED, (double) 0.5F)
                 .add(EntityAttributes.STEP_HEIGHT, 1.0F);
     }
 
@@ -53,12 +53,12 @@ public class PaleAxolotl extends AxolotlEntity implements Bucketable {
 
     @Override
     protected void initGoals() {
-        this.goalSelector.add(0, new SwimAroundGoal(this, 1.0F, 20));
+        this.goalSelector.add(2, new SwimAroundGoal(this, 1.0F, 20));
         this.goalSelector.add(1, new MeleeAttackGoal(this, 2.0D, false));
         this.goalSelector.add(1, new AttackGoal(this));
         this.goalSelector.add(2, new WanderAroundGoal(this, 1.0F, 15));
         this.goalSelector.add(3, new WanderAroundFarGoal(this, 1.0F, 10));
-        this.goalSelector.add(2, new LookAroundGoal(this));
+        this.goalSelector.add(0, new LookAroundGoal(this));
 
         this.targetSelector.add(2, new ActiveTargetGoal<>(this, AxolotlEntity.class, true));
         this.targetSelector.add(1, new ActiveTargetGoal<>(this, GlowSquidEntity.class, true));

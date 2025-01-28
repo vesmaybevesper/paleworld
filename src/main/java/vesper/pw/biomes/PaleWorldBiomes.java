@@ -17,6 +17,7 @@ import net.minecraft.world.gen.carver.ConfiguredCarvers;
 import net.minecraft.world.gen.feature.*;
 import vesper.pw.PaleWorld;
 
+import vesper.pw.entity.Entities;
 import vesper.pw.world.PaleWorldPlacedFeatures;
 
 
@@ -39,10 +40,10 @@ public class PaleWorldBiomes {
 
     private static Biome paleCave(Registerable<Biome> biomeRegisterable) {
         SpawnSettings.Builder spawner = new SpawnSettings.Builder();
-        spawner.spawn(SpawnGroup.AXOLOTLS, new SpawnSettings.SpawnEntry(EntityType.AXOLOTL, 1, 1, 1));
+        /*spawner.spawn(SpawnGroup.AXOLOTLS, new SpawnSettings.SpawnEntry(EntityType.AXOLOTL, 1, 1, 1));*/
 
         DefaultBiomeFeatures.addBatsAndMonsters(spawner);
-        DefaultBiomeFeatures.addOceanMobs(spawner,0,1,3);
+        DefaultBiomeFeatures.addOceanMobs(spawner,1,1,3);
 
         GenerationSettings.LookupBackedBuilder builder = new GenerationSettings.LookupBackedBuilder(biomeRegisterable.getRegistryLookup(RegistryKeys.PLACED_FEATURE), biomeRegisterable.getRegistryLookup(RegistryKeys.CONFIGURED_CARVER));
         globalOverworldGeneration(builder);
