@@ -30,7 +30,7 @@ public class PaleAxolotl extends AxolotlEntity implements Bucketable {
                 .add(EntityAttributes.MAX_HEALTH, 14.0F)
                 .add(EntityAttributes.ATTACK_DAMAGE, 2.0F)
                 .add(EntityAttributes.ATTACK_SPEED, 1.0F)
-                .add(EntityAttributes.MOVEMENT_SPEED, (double) 0.2F)
+                .add(EntityAttributes.MOVEMENT_SPEED, (double) 0.25F)
                 .add(EntityAttributes.STEP_HEIGHT, 1.0F);
     }
 
@@ -66,6 +66,8 @@ public class PaleAxolotl extends AxolotlEntity implements Bucketable {
         this.targetSelector.add(0, new ActiveTargetGoal<>(this, SalmonEntity.class, true));
         this.targetSelector.add(0, new ActiveTargetGoal<>(this, TropicalFishEntity.class, true));
         this.targetSelector.add(1, new ActiveTargetGoal<>(this, SquidEntity.class, true));
+        this.targetSelector.add(1, new ActiveTargetGoal<>(this, TadpoleEntity.class, true));
+        this.targetSelector.add(2, new ActiveTargetGoal<>(this, PaleAxolotl.class, true));
 
 
     }
