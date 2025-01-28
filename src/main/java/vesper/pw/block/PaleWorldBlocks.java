@@ -15,9 +15,7 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
 import vesper.pw.PaleWorld;
-import vesper.pw.block.custom.BigDyingDripleafBlock;
-import vesper.pw.block.custom.BigDyingDripleafStemBlock;
-import vesper.pw.block.custom.DyingAzalea;
+import vesper.pw.block.custom.*;
 
 import java.util.function.Function;
 
@@ -27,7 +25,12 @@ public class PaleWorldBlocks {
         return AbstractBlock.Settings.create().mapColor((state) -> state.get(PillarBlock.AXIS) == Direction.Axis.Y ? topMapColor : sideMapColor).instrument(NoteBlockInstrument.BASS).strength(2.0F).sounds(sounds).burnable();
     }
 
-    public static final Block PALE_VINE = regBlock("pale_vine", new Block(
+    public static Block getPaleVineBody() {
+        return PALE_VINE_BODY;
+    }
+
+    public static final Block PALE_VINE = regBlock("pale_vine",
+            new PaleVineHeadBlock(
             AbstractPlantBlock.Settings.create()
                     .registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(PaleWorld.MOD_ID, "pale_vine")))
                     .noCollision()
@@ -41,7 +44,7 @@ public class PaleWorldBlocks {
     ));
     public static final Block PALE_VINE_BODY = regBlock(
             "pale_vine_body",
-            new Block(
+            new PaleVineBodyBlock(
             AbstractPlantStemBlock.Settings.create()
                     .registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(PaleWorld.MOD_ID, "pale_vine_body")))
                     .noCollision()
