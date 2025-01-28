@@ -1,4 +1,4 @@
-package vesper.pw.datagen;
+package vesper.pw.entity;
 
 
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
@@ -9,7 +9,6 @@ import net.minecraft.entity.SpawnRestriction;
 import net.minecraft.entity.passive.AxolotlEntity;
 import net.minecraft.world.Heightmap;
 import vesper.pw.biomes.PaleWorldBiomes;
-import vesper.pw.entity.Entities;
 
 public class EntityGen {
     public static void addSpawns(){
