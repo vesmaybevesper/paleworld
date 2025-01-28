@@ -9,22 +9,22 @@ import net.minecraft.advancement.AdvancementFrame;
 import net.minecraft.advancement.criterion.*;
 import net.minecraft.item.Items;
 import net.minecraft.predicate.entity.LocationPredicate;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.*;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.registry.entry.RegistryEntryList;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.BiomeKeys;
 import vesper.pw.PaleWorld;
 import vesper.pw.biomes.PaleWorldBiomes;
 import vesper.pw.item.PaleWorldItems;
-import vesper.pw.utils.EnterBiomeCriterion;
-import vesper.pw.utils.ModCriteria;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
+
 
 public class Advancements extends FabricAdvancementProvider {
     public Advancements(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup) {
@@ -63,10 +63,10 @@ public class Advancements extends FabricAdvancementProvider {
                 .criterion("pale_axolotl_bucketed", InventoryChangedCriterion.Conditions.items(PaleWorldItems.PALE_AXOLOTL_BUCKET))
                 .build(consumer, PaleWorld.MOD_ID+"/bucket_pale_axolotl");
 
-            /*AdvancementEntry paleCaveAdvance = Advancement.Builder.create()
+        AdvancementEntry paleCaveAdvance = Advancement.Builder.create()
                     .parent(root)
                     .display(
-                            Items.PALE_MOSS_CARPET,
+                            Items.DEAD_BUSH,
                             Text.literal("Clinging To Life"),
                             Text.literal("Step foot in the Pale Caves"),
                             null,
@@ -75,8 +75,8 @@ public class Advancements extends FabricAdvancementProvider {
                             true,
                             false
                     )
-                    .criterion("pale_cave_entered", ModCriteria.ENTER_BIOME.create(new EnterBiomeCriterion.Conditions(Optional.empty())))
-                    .build(consumer, PaleWorld.MOD_ID+"/pale_cave_entered");*/
+                    .criterion("pale_cave_entered", TickCriterion.Conditions.createLocation(LocationPredicate.Builder.createBiome(wrapperLookup.getOrThrow(RegistryKeys.BIOME).getOrThrow(PaleWorldBiomes.PALE_CAVE))))
+                    .build(consumer, PaleWorld.MOD_ID+"/pale_cave_entered");
 
         /*AdvancementEntry paleAxolotlEat = Advancement.Builder.create()
                 .display(
@@ -93,6 +93,8 @@ public class Advancements extends FabricAdvancementProvider {
                 .build(consumer, PaleWorld.MOD_ID+":pale_axolotl_eat");*/
 
     }
+
+
 }
 
 

@@ -1,6 +1,9 @@
 1.0.0+RC.3
 =
 
+_Added:_
+
+* Clinging To Life Advancement 
 
 
 1.0.0+RC.2

@@ -2,6 +2,7 @@
 	"schemaVersion": 1,
 	"id": "pale-world",
 	"version": "${version}",
+	"access_widener": "pale-cave.accesswidener",
 	"name": "Pale World",
 	"description": "It's the Creaking's world, we just live in it.",
 	"authors": [
