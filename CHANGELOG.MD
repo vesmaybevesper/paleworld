@@ -1,3 +1,7 @@
+1.0.0
+=
+
+
 1.0.0+RC.3
 =
 
@@ -5,6 +9,9 @@ _Added:_
 
 * Clinging To Life Advancement 
 
+_Fixed:_
+
+* Pale Vines now behave as expected_
 
 1.0.0+RC.2
 =
