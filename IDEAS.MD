@@ -15,5 +15,3 @@
 * Enchantments
   * Prismatic
     * Deals extra damage to "Pale" Biome exclusive mobs
-
-* Advancements
