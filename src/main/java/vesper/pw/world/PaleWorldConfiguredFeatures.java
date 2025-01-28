@@ -75,7 +75,7 @@ public class PaleWorldConfiguredFeatures {
 
         RandomizedIntBlockStateProvider randomizedIntBlockStateProvider = new RandomizedIntBlockStateProvider(new WeightedBlockStateProvider(DataPool.<BlockState>builder()
                 .add(PaleWorldBlocks.PALE_VINE.getDefaultState(), 1)
-                .add((BlockState)PaleWorldBlocks.PALE_VINE.getDefaultState(), 1)), PaleVineBodyBlock.AGE, UniformIntProvider.create(20, 23));
+                .add((BlockState)PaleWorldBlocks.PALE_VINE.getDefaultState(), 1)), String.valueOf(PaleVineBodyBlock.AGE), UniformIntProvider.create(20, 23));
 
         register(configuredFeatureRegisterable,
                 DYING_DRIPLEAF,
