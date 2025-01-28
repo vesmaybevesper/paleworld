@@ -40,22 +40,6 @@ public class Advancements extends FabricAdvancementProvider {
                 .criterion("pale_world_load", TickCriterion.Conditions.createTick())
                 .build(consumer, PaleWorld.MOD_ID + "/root");
 
-
-        AdvancementEntry paleAxolotlBucket = Advancement.Builder.create()
-                .parent(root)
-                .display(
-                        PaleWorldItems.PALE_AXOLOTL_BUCKET,
-                        Text.translatable("You're My Friend Now"),
-                        Text.translatable("Bucket a Pale Axolotl"),
-                        null,
-                        AdvancementFrame.TASK,
-                        true,
-                        true,
-                        false
-                )
-                .criterion("pale_axolotl_bucketed", InventoryChangedCriterion.Conditions.items(PaleWorldItems.PALE_AXOLOTL_BUCKET))
-                .build(consumer, PaleWorld.MOD_ID + "/bucket_pale_axolotl");
-
         AdvancementEntry paleCaveAdvance = Advancement.Builder.create()
                 .parent(root)
                 .display(
@@ -70,6 +54,22 @@ public class Advancements extends FabricAdvancementProvider {
                 )
                 .criterion("pale_cave_entered", TickCriterion.Conditions.createLocation(LocationPredicate.Builder.createBiome(wrapperLookup.getOrThrow(RegistryKeys.BIOME).getOrThrow(PaleWorldBiomes.PALE_CAVE))))
                 .build(consumer, PaleWorld.MOD_ID + "/pale_cave_entered");
+
+
+        AdvancementEntry paleAxolotlBucket = Advancement.Builder.create()
+                .parent(paleCaveAdvance)
+                .display(
+                        PaleWorldItems.PALE_AXOLOTL_BUCKET,
+                        Text.translatable("You're My Friend Now"),
+                        Text.translatable("Bucket a Pale Axolotl"),
+                        null,
+                        AdvancementFrame.TASK,
+                        true,
+                        true,
+                        false
+                )
+                .criterion("pale_axolotl_bucketed", InventoryChangedCriterion.Conditions.items(PaleWorldItems.PALE_AXOLOTL_BUCKET))
+                .build(consumer, PaleWorld.MOD_ID + "/bucket_pale_axolotl");
 
 
     }
