@@ -20,7 +20,7 @@ TO-DO:
   - ~~Pale Axolotl Animations~~
   - ~~Update Pale Axolotl texture~~
   - ~~Pale Axolotl Spawn Egg~~
-  - Make better Pale Axolotl behavior 
+  - ~~Make better Pale Axolotl behavior~~ 
   - ~~Make Pale Vines the correct type of block~~
   - Vampire Bat?
   - Add Custom Biome Ambiance(?)
