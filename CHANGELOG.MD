@@ -1,5 +1,27 @@
+1.1.0
+=
+
+
+
 1.0.0
 =
+# The Pale Cave
+
+### What happens when the last of the nutrients fade from a Lush Cave?
+
+## Added
+
+- The Pale Cave Biome
+- Pale Axolotl
+  ![A Pale Axolotl Sitting In A Pale Cave](https://cdn.modrinth.com/data/cached_images/b8e3b0d3a23e969fc8fc1979d412d0baee66bb6a.jpeg)
+- Pale Vines
+- Big Dying Dripleaf
+- Small Dying Dripleaf
+- Dying Azalea
+- Advancements
+  - Pale World
+  - Clinging To Life
+  - You're My Friend Now
 
 
 1.0.0+RC.3
