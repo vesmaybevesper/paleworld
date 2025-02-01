@@ -89,8 +89,8 @@ public class PaleWorldBlocks {
                     .pistonBehavior(PistonBehavior.DESTROY)
                     .requiresTool()
     ));
-    public static final Block PETRIFIED_WOOD = regBlock("petrified_wood", new Block(AbstractBlock.Settings.create().registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(PaleWorld.MOD_ID, "petrified_wood")))
-            .mapColor(MapColor.SPRUCE_BROWN).sounds(BlockSoundGroup.WOOD).burnable().hardness(7).requiresTool().pistonBehavior(PistonBehavior.NORMAL)));
+    public static final Block PETRIFIED_PALE_OAK = regBlock("petrified_wood", new Block(AbstractBlock.Settings.create().registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(PaleWorld.MOD_ID, "petrified_pale_oak")))
+            .mapColor(MapColor.WHITE_GRAY).sounds(BlockSoundGroup.WOOD).burnable().hardness(7).requiresTool().pistonBehavior(PistonBehavior.NORMAL)));
 
     public static final Block DYING_AZALEA = regBlock(
             "dying_azalea",
@@ -134,7 +134,7 @@ public class PaleWorldBlocks {
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.SEARCH).register(fabricItemGroupEntries -> {
             fabricItemGroupEntries.add(PALE_VINE);
             fabricItemGroupEntries.add(PALE_VINE_BODY);
-            fabricItemGroupEntries.add(PETRIFIED_WOOD);
+            fabricItemGroupEntries.add(PETRIFIED_PALE_OAK);
             fabricItemGroupEntries.add(BIG_DYING_DRIPLEAF_STEM);
             fabricItemGroupEntries.add(BIG_DYING_DRIPLEAF);
             fabricItemGroupEntries.add(DYING_AZALEA);
