@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "pale-world:block/petrified_pale_oak_log_top",
+    "side": "pale-world:block/petrified_pale_oak_log"
+  }
+}
