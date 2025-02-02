@@ -5,14 +5,12 @@ import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.render.RenderLayer;
-import net.minecraft.client.render.entity.EntityRenderer;
-import net.minecraft.client.render.entity.model.EntityModelLayer;
-import net.minecraft.entity.Entity;
 import vesper.pw.block.PaleWorldBlocks;
 import vesper.pw.entity.Entities;
-import vesper.pw.entity.PaleAxolotl.PaleAxolotl;
 import vesper.pw.entity.PaleAxolotl.PaleAxolotlModel;
+import vesper.pw.entity.VampireBat.VampireBatModel;
 import vesper.pw.entity.renderers.PaleAxolotlRenderer;
+import vesper.pw.entity.renderers.VampireBatRenderer;
 
 public class PaleWorldClient implements ClientModInitializer {
 	/*public static void registerRenderers(BiConsumer<EntityType<? extends Entity>, EntityRenderer> entityRenderer, BiConsumer<BlockEntityType<? extends BlockEntity>, BlockEntityRenderer> blockEntityRenderer){
@@ -22,7 +20,9 @@ public class PaleWorldClient implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() {
 		EntityModelLayerRegistry.registerModelLayer(PaleAxolotlModel.PALE_AXOLOTL, PaleAxolotlModel::getTexturedModelData);
+		EntityModelLayerRegistry.registerModelLayer(VampireBatModel.VAMPIRE_BAT, VampireBatModel::getTexturedModelData);
 		EntityRendererRegistry.register(Entities.PALE_AXOLOTL, PaleAxolotlRenderer::new);
+		EntityRendererRegistry.register(Entities.VAMPIRE_BAT, VampireBatRenderer::new);
 		BlockRenderLayerMap.INSTANCE.putBlock(PaleWorldBlocks.PALE_VINE, RenderLayer.getCutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(PaleWorldBlocks.PALE_VINE_BODY, RenderLayer.getCutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(PaleWorldBlocks.DYING_AZALEA, RenderLayer.getCutout());

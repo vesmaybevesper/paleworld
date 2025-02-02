@@ -9,6 +9,7 @@ import vesper.pw.block.PaleWorldBlocks;
 import vesper.pw.entity.EntityGen;
 import vesper.pw.entity.Entities;
 import vesper.pw.entity.PaleAxolotl.PaleAxolotl;
+import vesper.pw.entity.VampireBat.VampireBat;
 import vesper.pw.item.PaleWorldItemGroup;
 import vesper.pw.item.PaleWorldItems;
 import vesper.pw.sound.CustomSounds;
@@ -29,6 +30,7 @@ public class PaleWorld implements ModInitializer {
 		// Register Items, Blocks and World Gen
 		Entities.init();
 		FabricDefaultAttributeRegistry.register(Entities.PALE_AXOLOTL, PaleAxolotl.setAttributes());
+		FabricDefaultAttributeRegistry.register(Entities.VAMPIRE_BAT, VampireBat.createHostileAttributes());
 		PaleWorldItems.regModItems();
 		PaleWorldItemGroup.regItemGroups();
 		PaleWorldBlocks.regModBlocks();

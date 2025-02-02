@@ -27,5 +27,6 @@ public class ModelProvider extends FabricModelProvider {
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
         itemModelGenerator.register(Item.fromBlock(PaleWorldBlocks.PALE_VINE), Models.CROP);
         itemModelGenerator.register(PaleWorldItems.PALE_AXOLOTL_SPAWN_EGG, new Model(Optional.of(Identifier.of("item/template_spawn_egg")), Optional.empty()));
+        itemModelGenerator.register(PaleWorldItems.VAMPIRE_BAT_SPAWN_EGG, new Model(Optional.of(Identifier.of("item/template_spawn_egg")), Optional.empty()));
     }
 }
