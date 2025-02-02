@@ -1,6 +1,17 @@
 1.1.0
 =
 
+_Added:_
+
+* Vampire Bat
+
+_Changed:_
+
+* TerraBlender is now included
+
+_Fixed:_
+
+* Pale Axolotl Spawn Egg Texture
 
 
 1.0.0
