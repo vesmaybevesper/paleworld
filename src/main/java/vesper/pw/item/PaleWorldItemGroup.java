@@ -18,12 +18,13 @@ public class PaleWorldItemGroup {
                     .displayName(Text.translatable("itemgroup.pale-world.pale-world"))
                     .entries(((displayContext, entries) -> {
                         entries.add(PaleWorldBlocks.PALE_VINE);
-                        entries.add(PaleWorldBlocks.PETRIFIED_WOOD);
+                        entries.add(PaleWorldBlocks.PETRIFIED_PALE_OAK);
                         entries.add(PaleWorldBlocks.PALE_VINE_BODY);
                         entries.add(PaleWorldBlocks.DYING_AZALEA);
                         entries.add(PaleWorldBlocks.SMALL_DYING_DRIPLEAF);
                         entries.add(PaleWorldBlocks.BIG_DYING_DRIPLEAF);
                         entries.add(PaleWorldItems.PALE_AXOLOTL_SPAWN_EGG);
+                        entries.add(PaleWorldItems.VAMPIRE_BAT_SPAWN_EGG);
                         entries.add(PaleWorldItems.PALE_AXOLOTL_BUCKET);
                     }))
             .build());
