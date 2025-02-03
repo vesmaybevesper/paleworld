@@ -25,10 +25,14 @@ public class VampireBatRenderer extends MobEntityRenderer<VampireBat, VampireBat
         return Identifier.of(PaleWorld.MOD_ID, "textures/entity/vampire_bat.png");
     }
 
+
     @Override
     public void updateRenderState(VampireBat livingEntity, VampireBatRenderState livingEntityRenderState, float f) {
         super.updateRenderState(livingEntity, livingEntityRenderState, f);
         livingEntityRenderState.wingFlapProgress = (float) livingEntity.getWingFlapTickOffset() + livingEntityRenderState.age;
+        livingEntityRenderState.flyingAnimationState.copyFrom(livingEntityRenderState.flyingAnimationState);
+        livingEntityRenderState.roostingAnimationState.copyFrom(livingEntityRenderState.roostingAnimationState);
+        livingEntityRenderState.roosting = livingEntity.isRoosting();
     }
 
     @Override

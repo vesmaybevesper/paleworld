@@ -23,7 +23,7 @@ TO-DO:
   - ~~Make better Pale Axolotl behavior~~ 
   - ~~Make Pale Vines the correct type of block~~
   - Vampire Bat Animations
-  - Vampire Bat Behaviour
+  - ~~Vampire Bat Behaviour~~
   - Pale Berries
     - Some sort of effect
     - Advancement
