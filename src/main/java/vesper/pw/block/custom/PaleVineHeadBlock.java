@@ -11,7 +11,7 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.WorldView;
 import vesper.pw.block.PaleWorldBlocks;
 
-public class PaleVineHeadBlock extends AbstractPlantStemBlock implements CaveVines {
+public class PaleVineHeadBlock extends AbstractPlantStemBlock implements PaleVines {
 
     public static final MapCodec<PaleVineHeadBlock> CODEC = createCodec(PaleVineHeadBlock::new);
 

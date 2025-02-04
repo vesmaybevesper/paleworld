@@ -1,25 +1,20 @@
 package vesper.pw.block.custom;
 
 import com.mojang.serialization.MapCodec;
-import net.fabricmc.fabric.api.block.v1.FabricBlock;
 import net.minecraft.block.*;
-import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
-import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
 import net.minecraft.world.tick.ScheduledTickView;
 import vesper.pw.block.PaleWorldBlocks;
 
-import static net.minecraft.block.CaveVines.BERRIES;
 
-
-public class PaleVineBodyBlock extends AbstractPlantBlock implements CaveVines{
+public class PaleVineBodyBlock extends AbstractPlantBlock implements PaleVines{
 
     public static final MapCodec<PaleVineBodyBlock> CODEC = createCodec(PaleVineBodyBlock::new);
 
