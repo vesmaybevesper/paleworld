@@ -139,6 +139,15 @@ public class VampireBat extends FlyingEntity implements Monster {
     }
 
     @Override
+    public void readCustomDataFromNbt(NbtCompound nbt) {
+        super.readCustomDataFromNbt(nbt);
+        if (nbt.contains("AX")) {
+            this.circlingCenter = new BlockPos(nbt.getInt("AX"), nbt.getInt("AY"), nbt.getInt("AZ"));
+        }
+
+    }
+
+    @Override
     public void writeCustomDataToNbt(NbtCompound nbt) {
         super.writeCustomDataToNbt(nbt);
         nbt.putInt("AX", this.circlingCenter.getX());
@@ -158,9 +167,9 @@ public class VampireBat extends FlyingEntity implements Monster {
 
     public static DefaultAttributeContainer.Builder createHostileAttributes() {
         return HostileEntity.createHostileAttributes()
-                .add(EntityAttributes.FOLLOW_RANGE, (double)35.0F)
-                .add(EntityAttributes.FLYING_SPEED, (double)0.23F)
-                .add(EntityAttributes.ATTACK_DAMAGE, (double)2.0F);
+                .add(EntityAttributes.FOLLOW_RANGE, (double)25.0F)
+                .add(EntityAttributes.FLYING_SPEED, (double)1F)
+                .add(EntityAttributes.ATTACK_DAMAGE, (double)3.0F);
     }
     public int getWingFlapTickOffset() {
         return this.getId() * 3;

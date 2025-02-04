@@ -8,6 +8,7 @@ import net.minecraft.client.render.entity.model.EntityModel;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.MathHelper;
 import vesper.pw.PaleWorld;
 
 public class VampireBatModel extends EntityModel<VampireBatRenderState> {
@@ -50,10 +51,17 @@ public class VampireBatModel extends EntityModel<VampireBatRenderState> {
 
     public void setAngles(VampireBatRenderState entity) {
         super.setAngles(entity);
+        float f = entity.wingFlapProgress * 7.448451F * ((float)Math.PI / 10F);
+        this.leftWingTip.yaw = MathHelper.cos(f) * 16.0F * ((float)Math.PI / 80F);
+        this.rightWingTip.yaw = -this.leftWingTip.yaw;
+        this.leftWing.yaw = MathHelper.cos(f) * 16.0F * ((float)Math.PI / 80F);
+        this.rightWing.yaw = -this.leftWing.yaw;
+        this.feet.pitch = -(5.0F - MathHelper.cos(f * 2.0F) * 5.0F) * ((float)Math.PI / 180F);
+        this.body.pitch = MathHelper.cos(-100) * 16.0F * ((float)Math.PI / 100F);
+        this.head.pitch = MathHelper.cos(0.0005F*f) * 5.0F * ((float)Math.PI / 100F);
         if (entity.roosting) {
             this.setRoostingHeadAngles(entity.yawDegrees);
         }
-
         this.animate(entity.flyingAnimationState, BatAnimations.FLYING, entity.age, 1.0F);
         this.animate(entity.roostingAnimationState, BatAnimations.ROOSTING, entity.age, 1.0F);
     }
@@ -61,10 +69,6 @@ public class VampireBatModel extends EntityModel<VampireBatRenderState> {
         this.head.yaw = yaw * ((float)Math.PI / 180F);
     }
 
-
-    public void render(MatrixStack matrices, VertexConsumer vertexConsumer, int light, int overlay, float red, float green, float blue, float alpha) {
-        root.render(matrices, vertexConsumer, light, overlay);
-    }
 
     }
 
