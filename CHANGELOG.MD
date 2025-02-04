@@ -4,6 +4,11 @@
 _Added:_
 
 * Vampire Bat
+  * _Awww how cu- OW!_
+  * 
+
+* Pale Berries
+  * _I wouldn't eat that..._
 
 _Changed:_
 
@@ -44,7 +49,7 @@ _Added:_
 
 _Fixed:_
 
-* Pale Vines now behave as expected_
+* Pale Vines now behave as expected
 
 1.0.0+RC.2
 =
