@@ -1,11 +1,9 @@
 package vesper.pw.entity.VampireBat;
 
-import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.TargetPredicate;
 import net.minecraft.entity.ai.control.BodyControl;
 import net.minecraft.entity.ai.control.LookControl;
-import net.minecraft.entity.ai.control.MoveControl;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -14,12 +12,9 @@ import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.*;
-import net.minecraft.entity.passive.AxolotlEntity;
-import net.minecraft.entity.passive.CatEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.predicate.entity.EntityPredicates;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -31,7 +26,6 @@ import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
-import vesper.pw.entity.PaleAxolotl.PaleAxolotl;
 import vesper.pw.item.PaleWorldItems;
 
 import java.util.Comparator;
@@ -157,8 +151,8 @@ public class VampireBat extends FlyingEntity implements Monster {
 
     @Override
     protected void initGoals() {
-        this.goalSelector.add(3, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
-        this.goalSelector.add(1, new CircularMovementGoal());
+        this.goalSelector.add(4, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
+        this.goalSelector.add(3, new CircularMovementGoal());
         this.goalSelector.add(2, new SwoopGoal());
         this.goalSelector.add(2, new StartAttackGoal());
         this.targetSelector.add(1, new FindTargetGoal());
@@ -168,7 +162,7 @@ public class VampireBat extends FlyingEntity implements Monster {
     public static DefaultAttributeContainer.Builder createHostileAttributes() {
         return HostileEntity.createHostileAttributes()
                 .add(EntityAttributes.FOLLOW_RANGE, (double)25.0F)
-                .add(EntityAttributes.FLYING_SPEED, (double)1F)
+                .add(EntityAttributes.FLYING_SPEED, (double)1.5F)
                 .add(EntityAttributes.ATTACK_DAMAGE, (double)3.0F);
     }
     public int getWingFlapTickOffset() {

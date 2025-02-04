@@ -22,7 +22,7 @@ TO-DO:
   - ~~Pale Axolotl Spawn Egg~~
   - ~~Make better Pale Axolotl behavior~~ 
   - ~~Make Pale Vines the correct type of block~~
-  - Vampire Bat Animations
+  - ~~Vampire Bat Animations~~
   - ~~Vampire Bat Behaviour~~
   - Pale Berries
     - Some sort of effect
