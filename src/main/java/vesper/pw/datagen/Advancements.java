@@ -72,11 +72,11 @@ public class Advancements extends FabricAdvancementProvider {
                 .build(consumer, PaleWorld.MOD_ID + "/bucket_pale_axolotl");
 
         AdvancementEntry eatPaleBerries = Advancement.Builder.create()
-                .parent(paleCaveAdvance)
+                .parent(root)
                 .display(
                         PaleWorldItems.PALE_BERRIES,
                         Text.translatable("That Can't Be Healthy"),
-                        Text.translatable("Eat a Pale Berry"),
+                        Text.translatable("Eat all the Pale World food items"),
                         null,
                         AdvancementFrame.TASK,
                         true,
