@@ -25,6 +25,7 @@ public interface PaleVines {
     VoxelShape SHAPE = Block.createCuboidShape((double)1.0F, (double)0.0F, (double)1.0F, (double)15.0F, (double)16.0F, (double)15.0F);
     BooleanProperty BERRIES = Properties.BERRIES;
 
+
     static ActionResult pickBerries(@Nullable Entity picker, BlockState state, World world, BlockPos pos) {
         if ((Boolean)state.get(BERRIES)) {
             Block.dropStack(world, pos, new ItemStack(PaleWorldItems.PALE_BERRIES, 1));

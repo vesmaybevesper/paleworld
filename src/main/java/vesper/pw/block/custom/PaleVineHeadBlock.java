@@ -12,6 +12,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.World;
@@ -25,6 +26,21 @@ public class PaleVineHeadBlock extends AbstractPlantStemBlock implements PaleVin
 
     public PaleVineHeadBlock(AbstractBlock.Settings settings) {
         super(settings, Direction.DOWN, SHAPE, false, 0.1);
+        this.setDefaultState(this.getStateManager().getDefaultState().with(BERRIES, false));
+    }
+
+    @Override
+    protected void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
+        if (!world.isClient) {world.scheduleBlockTick(pos, this, 20);}
+        super.onBlockAdded(state, world, pos, oldState, notify);
+    }
+
+    @Override
+    protected void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+        if (!PaleVines.hasBerries(state) && random.nextFloat() < 0.25F){
+            world.setBlockState(pos,state.with(BERRIES, true), 2);
+        }
+        world.scheduleBlockTick(pos, this, MathHelper.nextBetween(random, 100, 200));
     }
 
     @Override

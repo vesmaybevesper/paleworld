@@ -6,11 +6,13 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
+import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Property;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
@@ -23,11 +25,27 @@ public class PaleVineBodyBlock extends AbstractPlantBlock implements PaleVines{
 
     public static final MapCodec<PaleVineBodyBlock> CODEC = createCodec(PaleVineBodyBlock::new);
 
-    public static final int AGE = 1;
+    public static final int AGE = 0;
+
 
 
     public PaleVineBodyBlock(AbstractBlock.Settings settings) {
         super(settings, Direction.DOWN, SHAPE, false);
+        this.setDefaultState(this.getStateManager().getDefaultState().with(BERRIES, false));
+    }
+
+    @Override
+    protected void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
+        if (!world.isClient) {world.scheduleBlockTick(pos, this, 20);}
+        super.onBlockAdded(state, world, pos, oldState, notify);
+    }
+
+    @Override
+    protected void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+        if (!PaleVines.hasBerries(state) && random.nextFloat() < 0.25F){
+            world.setBlockState(pos,state.with(BERRIES, true), 2);
+        }
+        world.scheduleBlockTick(pos, this, MathHelper.nextBetween(random, 100, 200));
     }
 
     @Override
@@ -68,7 +86,7 @@ public class PaleVineBodyBlock extends AbstractPlantBlock implements PaleVines{
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(new Property[]{BERRIES});
+        builder.add(BERRIES);
     }
 
     @Override
