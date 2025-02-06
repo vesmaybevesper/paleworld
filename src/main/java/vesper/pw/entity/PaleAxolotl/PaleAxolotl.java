@@ -1,7 +1,11 @@
 package vesper.pw.entity.PaleAxolotl;
 
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.*;
+import net.minecraft.entity.ai.pathing.AmphibiousSwimNavigation;
+import net.minecraft.entity.ai.pathing.EntityNavigation;
+import net.minecraft.entity.ai.pathing.PathNodeType;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.data.DataTracker;
@@ -10,8 +14,10 @@ import net.minecraft.entity.passive.*;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.Nullable;
 import vesper.pw.entity.Entities;
 import vesper.pw.item.PaleWorldItems;
@@ -22,6 +28,7 @@ public class PaleAxolotl extends AxolotlEntity implements Bucketable {
 
     public PaleAxolotl(EntityType<? extends AxolotlEntity> entityType, World world) {
         super(entityType, world);
+        this.setPathfindingPenalty(PathNodeType.WATER_BORDER, 0);
     }
 
 
@@ -31,17 +38,13 @@ public class PaleAxolotl extends AxolotlEntity implements Bucketable {
                 .add(EntityAttributes.ATTACK_DAMAGE, 2.0F)
                 .add(EntityAttributes.ATTACK_SPEED, 2.0F)
                 .add(EntityAttributes.MOVEMENT_SPEED, (double) 0.5F)
-                .add(EntityAttributes.STEP_HEIGHT, 1.0F);
+                .add(EntityAttributes.STEP_HEIGHT, .75F)
+                .add(EntityAttributes.JUMP_STRENGTH, 2F);
     }
 
 
     @Override
     public void travel(Vec3d movementInput) {
-        if (this.isLogicalSideForUpdatingMovement() && this.isTouchingWater()){
-            this.updateVelocity(this.getMovementSpeed(), movementInput);
-            this.move(MovementType.SELF, this.getVelocity());
-            this.setVelocity(this.getVelocity().multiply(0.25));
-        }
         super.travel(movementInput);
     }
 
@@ -82,6 +85,11 @@ public class PaleAxolotl extends AxolotlEntity implements Bucketable {
     }
 
     @Override
+    protected EntityNavigation createNavigation(World world) {
+        return new AmphibiousSwimNavigation(this, world);
+    }
+
+    @Override
     public void tick() {
         super.tick();
 
@@ -97,7 +105,7 @@ public class PaleAxolotl extends AxolotlEntity implements Bucketable {
 
     @Override
     public @Nullable PassiveEntity createChild(ServerWorld world, PassiveEntity entity) {
-        return Entities.PALE_AXOLOTL.create(world, SpawnReason.NATURAL);
+        return Entities.PALE_AXOLOTL.create(world, SpawnReason.BREEDING);
     }
 }
 
