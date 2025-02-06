@@ -151,7 +151,7 @@ public class VampireBat extends FlyingEntity implements Monster {
 
     @Override
     protected void initGoals() {
-        this.goalSelector.add(4, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
+        this.goalSelector.add(3, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
         this.goalSelector.add(3, new CircularMovementGoal());
         this.goalSelector.add(2, new SwoopGoal());
         this.goalSelector.add(2, new StartAttackGoal());
@@ -161,8 +161,8 @@ public class VampireBat extends FlyingEntity implements Monster {
 
     public static DefaultAttributeContainer.Builder createHostileAttributes() {
         return HostileEntity.createHostileAttributes()
-                .add(EntityAttributes.FOLLOW_RANGE, (double)25.0F)
-                .add(EntityAttributes.FLYING_SPEED, (double)1.5F)
+                .add(EntityAttributes.FOLLOW_RANGE, (double)35.0F)
+                .add(EntityAttributes.FLYING_SPEED, (double)2F)
                 .add(EntityAttributes.ATTACK_DAMAGE, (double)3.0F);
     }
     public int getWingFlapTickOffset() {
@@ -259,8 +259,8 @@ class CircularMovementGoal extends MovementGoal {
 
     @Override
     public void start() {
-        this.radius = 5.0F + VampireBat.this.random.nextFloat() * 10.0F;
-        this.yOffset = -4.0F + VampireBat.this.random.nextFloat() * 9.0F;
+        this.radius = 15.0F + VampireBat.this.random.nextFloat() * 10.0F;
+        this.yOffset = 4.0F + VampireBat.this.random.nextFloat() * 9.0F;
         this.circlingDirection = VampireBat.this.random.nextBoolean() ? 1.0F : -1.0F;
         this.adjustDirection();
     }
@@ -273,13 +273,13 @@ class CircularMovementGoal extends MovementGoal {
     @Override
     public void tick() {
         if (VampireBat.this.random.nextInt(this.getTickCount(350)) == 0) {
-            this.yOffset = -4.0F + VampireBat.this.random.nextFloat() * 9.0F;
+            this.yOffset = 4.0F + VampireBat.this.random.nextFloat() * 9.0F;
         }
 
         if (VampireBat.this.random.nextInt(this.getTickCount(250)) == 0) {
             ++this.radius;
-            if (this.radius > 15.0F) {
-                this.radius = 5.0F;
+            if (this.radius > 45.0F) {
+                this.radius = 15.0F;
                 this.circlingDirection = -this.circlingDirection;
             }
         }
@@ -302,6 +302,7 @@ class CircularMovementGoal extends MovementGoal {
             this.yOffset = Math.min(-1.0F, this.yOffset);
             this.adjustDirection();
         }
+
     }
 
     private void adjustDirection(){
@@ -310,7 +311,7 @@ class CircularMovementGoal extends MovementGoal {
         }
 
         this.angle += this.circlingDirection * 15.0F * ((float)Math.PI / 180F);
-        VampireBat.this.targetPosition = Vec3d.of(VampireBat.this.circlingCenter).add(this.radius * MathHelper.cos(this.angle), -4.0F + this.yOffset, this.radius * MathHelper.sin(this.angle));
+        VampireBat.this.targetPosition = Vec3d.of(VampireBat.this.circlingCenter).add(this.radius * MathHelper.cos(this.angle), 4.0F + this.yOffset, this.radius * MathHelper.sin(this.angle));
     }
 
 

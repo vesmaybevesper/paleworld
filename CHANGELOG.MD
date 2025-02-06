@@ -1,3 +1,15 @@
+1.1.1
+=
+
+_Changed:_
+
+* Changed Vampire Bat circling behaviour
+* Changed Vampire Bat Movement speed from 1.5 to 2
+* Changed Vampire Bat follow range from 25 to 35
+* Updated icon
+
+
+
 1.1.0
 =
 
