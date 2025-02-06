@@ -5,7 +5,7 @@ TO-DO:
   - Pale Berries
     - ~~Add to pale vines~~
     - ~~Make the parts with berries more random~~
-    - Make Plantable 
+    - ~~Make Plantable~~ 
     - make better effect
   - Add Custom Biome Ambiance(?)
   - Fix Pale Axolotl Behaviour

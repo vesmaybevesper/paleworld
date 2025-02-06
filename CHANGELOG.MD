@@ -4,19 +4,25 @@
 _Added:_
 
 * Vampire Bat
-  * _Awww how cu- OW!_
-  * 
+  * _"Awww how cu- OW!"_
+  * This tiny hunter spawns in the Pale Caves, be careful to keep your distance otherwise it might bite you!
 
 * Pale Berries
-  * _I wouldn't eat that..._
+  * _"I wouldn't eat that..."_
+  * Turns out the Pale Vines can still grow berries, they don't look that good though.
+    * Gives 2 Hunger & 0.1 Saturation
+    * Applies Blindness for 30 seconds on consumption
 
 _Changed:_
 
 * TerraBlender is now included
+* Increased Pale Axolotl Spawn Weight
+* Pale Vine Luminance is now tied to each block's berry state
 
 _Fixed:_
 
 * Pale Axolotl Spawn Egg Texture
+* Pale Axolotl's no longer get stuck when trying to exit the water
 
 
 1.0.0
