@@ -103,4 +103,5 @@ public class PaleVineBodyBlock extends AbstractPlantBlock implements PaleVines{
     public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state) {
         return !(Boolean)state.get(BERRIES);
     }
+
 }
