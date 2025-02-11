@@ -6,7 +6,6 @@
 
 **_REQUIRED:_**
 * [Fabric API](https://modrinth.com/mod/fabric-api)
-* [TerraBlender](https://modrinth.com/mod/terrablender)
 
 ----------------------------
 ### Features
