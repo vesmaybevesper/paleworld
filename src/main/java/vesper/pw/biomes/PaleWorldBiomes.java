@@ -56,7 +56,8 @@ public class PaleWorldBiomes {
         DefaultBiomeFeatures.addDefaultDisks(builder);
         DefaultBiomeFeatures.addInfestedStone(builder);
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PaleWorldPlacedFeatures.PALE_CAVE_PATCH);
-        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PaleWorldPlacedFeatures.PALE_VINE);
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PaleWorldPlacedFeatures.PALE_CAVE_CEILING_PATCH);
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PaleWorldPlacedFeatures.HANGING_MOSS_CEILING);
         builder.feature(GenerationStep.Feature.UNDERGROUND_DECORATION, PaleWorldPlacedFeatures.PALE_CAVE_CLAY);
 
         return new Biome.Builder()

@@ -18,6 +18,11 @@ repositories {
 	// for more information about repositories.
 	maven { url = 'https://maven.minecraftforge.net/' }
 	maven { url 'https://maven.wispforest.io/releases/' }
+	maven { url = "https://api.modrinth.com/maven"}
+	maven {
+		name = "Terraformers"
+		url = "https://maven.terraformersmc.com/"
+	}
 	}
 
 
@@ -34,7 +39,8 @@ dependencies {
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 	modImplementation include("com.github.glitchfiend:TerraBlender-fabric:${project.terrablender_version}")
-
+	modImplementation include ("maven.modrinth:midnightlib:${project.midnightlib_version}")
+	modCompileOnly ("com.terraformersmc:modmenu:${project.modmenu_version}")
 
 
 	
