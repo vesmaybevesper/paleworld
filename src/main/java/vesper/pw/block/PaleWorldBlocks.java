@@ -105,6 +105,15 @@ public class PaleWorldBlocks {
                             .pistonBehavior(PistonBehavior.DESTROY)
     ));
 
+    public static final Block WHITE_CRYSTAL = regBlock("white_crystal", new AmethystBlock(AbstractBlock.Settings.create()
+            .registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(PaleWorld.MOD_ID, "white_crystal")))
+            .mapColor(MapColor.WHITE)
+            .strength(1.5F)
+            .requiresTool()
+            .pistonBehavior(PistonBehavior.NORMAL)
+            .sounds(BlockSoundGroup.AMETHYST_BLOCK)
+    ));
+
     private static Block regBlock(String name, Block block) {
         regBlockItem(name, block);
         return Registry.register(Registries.BLOCK, Identifier.of(PaleWorld.MOD_ID, name), block);
@@ -139,6 +148,7 @@ public class PaleWorldBlocks {
             fabricItemGroupEntries.add(BIG_DYING_DRIPLEAF);
             fabricItemGroupEntries.add(DYING_AZALEA);
             fabricItemGroupEntries.add(SMALL_DYING_DRIPLEAF);
+            fabricItemGroupEntries.add(WHITE_CRYSTAL);
         });
     }
 
