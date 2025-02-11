@@ -1,3 +1,16 @@
+1.2.0
+=
+
+_Added:_
+* Pale Hanging Moss now generates on the ceiling of Pale Caves
+  * I'm not all that happy with the current generation of them, expect it to update soon 
+* {White Crystal}
+
+_Changed:_
+* (Massively) Increased generation of Pale Vines
+  * I had the wrong feature placed in the biome, whoops, this is (closer) to how I intended it to be from the start.
+
+
 1.1.1
 =
 

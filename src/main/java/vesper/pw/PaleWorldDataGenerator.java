@@ -6,6 +6,7 @@ import net.minecraft.registry.RegistryBuilder;
 import net.minecraft.registry.RegistryKeys;
 import vesper.pw.biomes.PaleWorldBiomes;
 import vesper.pw.datagen.Advancements;
+import vesper.pw.datagen.LootTables;
 import vesper.pw.datagen.WorldGenerator;
 import vesper.pw.enchanting.Enchantments;
 import vesper.pw.world.PaleWorldConfiguredFeatures;
@@ -18,6 +19,7 @@ public class PaleWorldDataGenerator implements DataGeneratorEntrypoint {
 
 		pack.addProvider(WorldGenerator::new);
 		pack.addProvider(Advancements::new);
+		pack.addProvider(LootTables::new);
 	}
 
 	@Override
