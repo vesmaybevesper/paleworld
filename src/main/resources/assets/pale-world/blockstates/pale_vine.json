@@ -1,6 +1,6 @@
 {
   "variants": {
-    "": {
+    "berries=false": {
       "model": "pale-world:block/pale_vine"
     },
     "berries=true": {
