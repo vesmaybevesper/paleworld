@@ -27,21 +27,34 @@ public class PaleBerriesItem extends Item {
         BlockPos pos = context.getBlockPos();
         Direction side = context.getSide();
 
-        // Only allow placement on the bottom face of blocks
-        if (side != Direction.DOWN || !world.getBlockState(pos).isSolidBlock(world, pos)) {
+
+        if (side != Direction.DOWN) {
             return ActionResult.PASS;
         }
 
         BlockPos vinePos = pos.down();
+        BlockState clickedBlockState = world.getBlockState(pos);
+        BlockState belowBlockState = world.getBlockState(vinePos);
         if (world.getBlockState(vinePos).isAir() || world.getBlockState(vinePos).isOf(PaleWorldBlocks.PALE_VINE_BODY)) {
-            // Place your custom vine block here
+
             world.setBlockState(vinePos, PaleWorldBlocks.PALE_VINE.getDefaultState());
             world.playSound(null, pos.getX(), pos.getY(), pos.getZ() , SoundEvents.BLOCK_CAVE_VINES_PLACE, SoundCategory.BLOCKS);
-            // Consume the item if not in creative mode
+
             if (!Objects.requireNonNull(context.getPlayer()).isCreative()) {
                 context.getStack().decrement(1);
             }
             return ActionResult.SUCCESS;
+        }
+
+        if (clickedBlockState.isOf(PaleWorldBlocks.PALE_VINE_BODY)) {
+            BlockPos belowClicked = pos.down();
+            if (world.getBlockState(belowClicked).isAir()) {
+                world.setBlockState(belowClicked, PaleWorldBlocks.PALE_VINE.getDefaultState());
+            }
+
+            if (!Objects.requireNonNull(context.getPlayer()).isCreative()) {
+                context.getStack().decrement(1);
+            }
         }
 
         return ActionResult.PASS;
