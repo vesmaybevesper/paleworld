@@ -6,7 +6,6 @@
 
 **_REQUIRED:_**
 * [Fabric API](https://modrinth.com/mod/fabric-api)
-* [TerraBlender](https://modrinth.com/mod/terrablender)
 
 ----------------------------
 ### Features
@@ -15,8 +14,19 @@
 <summary>Current Features</summary>
 
 * Blocks & Items
+  * Pale Vines
+  * Pale Berries
+  * Dying Dripleaf (Big & Small)
+  * Dying Azelea
  
 * Pale Biome Variants
+  * Pale Caves
+
+* Mobs
+  * Pale Axolotl
+  * Vampire Bat
+  
+* Advancements
 
 </details>
 
@@ -30,11 +40,9 @@
 
 * SFX
 
-* More mobs
-
-* More Blocks
-
 * Structures
+
+* More of everything already added!
 
 * Dimension (?)
 </details>
