@@ -8,6 +8,7 @@ import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
+import net.minecraft.world.gen.YOffset;
 import net.minecraft.world.gen.blockpredicate.BlockPredicate;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.placementmodifier.*;
@@ -27,6 +28,7 @@ public class PaleWorldPlacedFeatures {
     public static final RegistryKey<PlacedFeature> CLAY_POOL_WITH_DYING_DRIPLEAF = registryKey("clay_pool_with_dying_dripleaf");
     public static final RegistryKey<PlacedFeature> PALE_CAVE_CLAY = registryKey("pale_cave_clay");
     public static final RegistryKey<PlacedFeature> PALE_VINE = registryKey("pale_vine_feature");
+    public static final RegistryKey<PlacedFeature> PALE_GEODE = registryKey("pale_geode");
 
 
     public static void bootstrap(Registerable<PlacedFeature> registerable){
@@ -126,7 +128,19 @@ public class PaleWorldPlacedFeatures {
                 EnvironmentScanPlacementModifier.of(Direction.UP, BlockPredicate.solid(), BlockPredicate.IS_AIR ,12),
                 RandomOffsetPlacementModifier.vertically(ConstantIntProvider.create(1)),
                 BiomePlacementModifier.of());
+
+        register(
+                registerable,
+                PALE_GEODE,
+                configuredFeatures.getOrThrow(PaleWorldConfiguredFeatures.PALE_CAVE_GEODE),
+                RarityFilterPlacementModifier.of(24),
+                SquarePlacementModifier.of(),
+                HeightRangePlacementModifier.uniform(YOffset.aboveBottom(6), YOffset.fixed(30)),
+                BiomePlacementModifier.of()
+        );
     }
+
+
 
 
     public static RegistryKey<PlacedFeature> registryKey(String name){

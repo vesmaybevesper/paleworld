@@ -31,7 +31,7 @@ public class PaleWorldBiomes {
     }
 
     public static void globalOverworldGeneration(GenerationSettings.LookupBackedBuilder builder) {
-        DefaultBiomeFeatures.addAmethystGeodes(builder);
+
         DefaultBiomeFeatures.addDungeons(builder);
         DefaultBiomeFeatures.addMineables(builder);
         DefaultBiomeFeatures.addSprings(builder);
@@ -46,6 +46,7 @@ public class PaleWorldBiomes {
         DefaultBiomeFeatures.addOceanMobs(spawner,1,1,3);
 
         GenerationSettings.LookupBackedBuilder builder = new GenerationSettings.LookupBackedBuilder(biomeRegisterable.getRegistryLookup(RegistryKeys.PLACED_FEATURE), biomeRegisterable.getRegistryLookup(RegistryKeys.CONFIGURED_CARVER));
+        builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PaleWorldPlacedFeatures.PALE_GEODE);
         globalOverworldGeneration(builder);
         builder.carver(ConfiguredCarvers.CAVE);
         builder.carver(ConfiguredCarvers.CAVE_EXTRA_UNDERGROUND);

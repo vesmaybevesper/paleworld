@@ -44,6 +44,7 @@ public class PaleWorldConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?,?>> CLAY_POOL_DRIPLEAF = registryKey("clay_pool_dripleaf");
     public static final RegistryKey<ConfiguredFeature<?,?>> PALE_VINE = registryKey("pale_vine_feature");
     public static final RegistryKey<ConfiguredFeature<?,?>> DYING_DRIPLEAF = registryKey("dying_dripleaves");
+    public static final RegistryKey<ConfiguredFeature<?,?>> PALE_CAVE_GEODE = registryKey("pale_cave_dripleaf");
 
 
     private static RegistryEntry<PlacedFeature> createSmallDyingDripleaf(){
@@ -249,6 +250,41 @@ public class PaleWorldConfiguredFeatures {
                             PlacedFeatures.createEntry(registryEntryLookup.getOrThrow(CLAY_POOL_DRIPLEAF))
                     )
        );
+
+        register(
+                configuredFeatureRegisterable,
+                PALE_CAVE_GEODE,
+                Feature.GEODE,
+                new GeodeFeatureConfig(
+                        new GeodeLayerConfig(
+                                BlockStateProvider.of(Blocks.AIR),
+                                BlockStateProvider.of(Blocks.AMETHYST_BLOCK),
+                                BlockStateProvider.of(Blocks.BUDDING_AMETHYST),
+                                BlockStateProvider.of(PaleWorldBlocks.WHITE_CRYSTAL),
+                                BlockStateProvider.of(Blocks.SMOOTH_BASALT),
+                                List.of(
+                                        Blocks.SMALL_AMETHYST_BUD.getDefaultState(),
+                                        Blocks.MEDIUM_AMETHYST_BUD.getDefaultState(),
+                                        Blocks.LARGE_AMETHYST_BUD.getDefaultState(),
+                                        Blocks.AMETHYST_CLUSTER.getDefaultState()
+                                ),
+                                BlockTags.FEATURES_CANNOT_REPLACE,
+                                BlockTags.GEODE_INVALID_BLOCKS
+                        ),
+                        new GeodeLayerThicknessConfig(1.7, 2.2, 3.2, 4.2),
+                        new GeodeCrackConfig(0.95, 2.0, 2),
+                        0.35,
+                        0.083,
+                        true,
+                        UniformIntProvider.create(4, 6),
+                        UniformIntProvider.create(3, 4),
+                        UniformIntProvider.create(1, 2),
+                        -16,
+                        16,
+                        0.05,
+                        1
+                )
+        );
     }
 
     public static RegistryKey<ConfiguredFeature<?,?>> registryKey(String name){
