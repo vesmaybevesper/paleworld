@@ -12,10 +12,8 @@ TO-DO:
   - More exclusive blocks/ items(?)
   - VFX 
   - Mix Pale Vines and Hanging Moss
-  - Update Drained Amethyst Fragment texture
   - Drained Amethyst Fragment use 
-    - White armor trim
-  - allow extending pale vines with pale berries
+    - idk please help
 
 
 - V2.0.0
