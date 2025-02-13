@@ -4,11 +4,14 @@
 _Added:_
 * Pale Hanging Moss now generates on the ceiling of Pale Caves
   * I'm not all that happy with the current generation of them, expect it to update soon 
-* {White Crystal}
+* Drained Amethyst
+  * _"Wait... was the purple... blood?"_
+    * You can find these in Geodes that spawn in Pale Caves, in the spot usually occupied by Calcite!
 
 _Changed:_
 * (Massively) Increased generation of Pale Vines
   * I had the wrong feature placed in the biome, whoops, this is (closer) to how I intended it to be from the start.
+    * I would still expect this to undergo an update again
 
 
 1.1.1
