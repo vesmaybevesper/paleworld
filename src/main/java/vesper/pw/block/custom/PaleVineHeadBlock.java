@@ -43,7 +43,7 @@ public class PaleVineHeadBlock extends AbstractPlantStemBlock implements PaleVin
 
     @Override
     protected void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        if (!PaleVines.hasBerries(state) && random.nextFloat() < 0.25F){
+        if (!PaleVines.hasBerries(state) && random.nextFloat() < 0.10F){
             world.setBlockState(pos,state.with(BERRIES, true), 2);
         }
         world.scheduleBlockTick(pos, this, MathHelper.nextBetween(random, 100, 200));
