@@ -1,3 +1,8 @@
+1.3.0
+=
+
+
+
 1.2.0
 =
 
@@ -7,11 +12,19 @@ _Added:_
 * Drained Amethyst
   * _"Wait... was the purple... blood?"_
     * You can find these in Geodes that spawn in Pale Caves, in the spot usually occupied by Calcite!
+  * Drained Amethyst Fragment
+    * Craftable from a Drained Amethyst
+    * Craftable into a Drained Amethyst
 
 _Changed:_
 * (Massively) Increased generation of Pale Vines
   * I had the wrong feature placed in the biome, whoops, this is (closer) to how I intended it to be from the start.
     * I would still expect this to undergo an update again
+* Pale Vines can now be extended with Pale Berries
+* Reduced the chance of Pale Berries growing on a given block (From 25% to 10%)
+
+_Fixed:_
+* The end of Pale Vines will now display the correct texture if they have berries
 
 
 1.1.1
