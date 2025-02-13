@@ -1,14 +1,21 @@
 TO-DO:
 =
 
+- Do Whenever
+  - Better Effect on eating Pale Berries
+  - Better Vampire Bat Behavior
+
+
 - V1.0.0
   - Add Custom Biome Ambiance(?)
   - Chance of custom structure(?)
   - More exclusive blocks/ items(?)
   - VFX 
   - Mix Pale Vines and Hanging Moss
-  - add crystals to generation (and recipe?)
-  - give crystals a use
+  - Update Drained Amethyst Fragment texture
+  - Drained Amethyst Fragment use 
+    - White armor trim
+  - allow extending pale vines with pale berries
 
 
 - V2.0.0
