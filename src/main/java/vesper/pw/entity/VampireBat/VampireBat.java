@@ -21,10 +21,7 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.Heightmap;
-import net.minecraft.world.LocalDifficulty;
-import net.minecraft.world.ServerWorldAccess;
-import net.minecraft.world.World;
+import net.minecraft.world.*;
 import org.jetbrains.annotations.Nullable;
 import vesper.pw.item.PaleWorldItems;
 
@@ -457,4 +454,13 @@ class SwoopGoal extends MovementGoal{
         }
     }
 
+    @Override
+    public boolean canSpawn(WorldAccess world, SpawnReason spawnReason) {
+        return super.canSpawn(world, spawnReason);
+    }
+
+    @Override
+    public boolean canSpawn(WorldView world) {
+        return super.canSpawn(world);
+    }
 }

@@ -10,6 +10,7 @@ import net.minecraft.entity.mob.FlyingEntity;
 import net.minecraft.entity.passive.AxolotlEntity;
 import net.minecraft.world.Heightmap;
 import vesper.pw.biomes.PaleWorldBiomes;
+import vesper.pw.entity.VampireBat.VampireBat;
 
 public class EntityGen {
     public static void addSpawns(){
@@ -17,7 +18,7 @@ public class EntityGen {
         BiomeModifications.addSpawn(BiomeSelectors.includeByKey(PaleWorldBiomes.PALE_CAVE), SpawnGroup.MONSTER, Entities.VAMPIRE_BAT, 12, 1, 3);
 
         SpawnRestriction.register(Entities.PALE_AXOLOTL, SpawnLocationTypes.IN_WATER, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, AxolotlEntity::canSpawn);
-        SpawnRestriction.register(Entities.VAMPIRE_BAT, SpawnLocationTypes.UNRESTRICTED, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, FlyingEntity::canMobSpawn);
+        SpawnRestriction.register(Entities.VAMPIRE_BAT, SpawnLocationTypes.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, FlyingEntity::canMobSpawn);
 
     }
 }
