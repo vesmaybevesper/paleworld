@@ -28,6 +28,7 @@ import vesper.pw.item.PaleWorldItems;
 import java.util.Comparator;
 import java.util.EnumSet;
 import java.util.List;
+import java.util.Random;
 
 
 public class VampireBat extends FlyingEntity implements Monster {
@@ -110,6 +111,10 @@ public class VampireBat extends FlyingEntity implements Monster {
                 VampireBat.this.setVelocity(vec3d.add((new Vec3d(p, r, q)).subtract(vec3d).multiply(0.2)));
             }
         }
+    }
+
+    public static boolean canMobSpawn(EntityType<? extends MobEntity> entityType, WorldAccess worldAccess, SpawnReason spawnReason, BlockPos pos, Random random){
+        return worldAccess.getLightLevel(pos) <= 7 || SpawnReason.isAnySpawner(spawnReason);
     }
 
     class VBBodyControl extends BodyControl {
