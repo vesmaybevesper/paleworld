@@ -4,18 +4,17 @@ TO-DO:
 - Do Whenever
   - Better Effect on eating Pale Berries
   - Better Vampire Bat Behavior
+  - More Drained Amethyst Fragment use
+    - Use for dimension portal
+    - Compass to pale garden
 
 
 - V1.0.0
-  - Add Custom Biome Ambiance(?)
   - Chance of custom structure(?)
-  - More exclusive blocks/ items(?)
-  - VFX 
-  - Mix Pale Vines and Hanging Moss
-  - Drained Amethyst Fragment use 
-    - idk please help
+  - VFX
+  - Update Pale Apple texture
 
-
+  
 - V2.0.0
   - Stripped Pale Trees in Pale Garden
   - New Flowers
