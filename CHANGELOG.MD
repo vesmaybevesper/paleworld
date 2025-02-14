@@ -1,7 +1,19 @@
 1.3.0
 =
 
+_Added:_
+* Pale Apple
+  * Gives Regeneration for 15 seconds
+  * Absorption for 1 minute
+  * Nausea for 5 seconds
 
+
+_Changed:_
+* Pale Apple has been added to the criteria for "That Can't Be Healthy"
+* Updated Pale Cave ceiling generation
+
+_Fixed:_
+* Added Drained Amethyst Fragment to creative menu
 
 1.2.0
 =
