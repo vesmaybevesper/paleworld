@@ -2,7 +2,6 @@
 	"schemaVersion": 1,
 	"id": "pale-world",
 	"version": "${version}",
-	"access_widener": "pale-cave.accesswidener",
 	"name": "Pale World",
 	"description": "It's the Creaking's world, we just live in it.",
 	"authors": [
@@ -36,7 +35,7 @@
 		"pale-world.mixins.json"
 	],
 	"depends": {
-		"fabricloader": ">=0.16.9",
+		"fabricloader": ">=0.16.10",
 		"minecraft": "~1.21.4",
 		"java": ">=21",
 		"terrablender": ">=4.3.0.2",

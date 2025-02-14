@@ -3,10 +3,10 @@
 
 _Added:_
 * Pale Apple
-  * Gives Regeneration for 15 seconds
-  * Absorption for 1 minute
-  * Nausea for 5 seconds
-
+  * Craftable with 8 Drained Amethyst Fragments and an Apple
+    * Gives Regeneration for 15 seconds
+    * Absorption for 1 minute
+    * Nausea for 5 seconds
 
 _Changed:_
 * Pale Apple has been added to the criteria for "That Can't Be Healthy"

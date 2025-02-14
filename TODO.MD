@@ -12,7 +12,6 @@ TO-DO:
 - V1.0.0
   - Chance of custom structure(?)
   - VFX
-  - Update Pale Apple texture
 
   
 - V2.0.0
