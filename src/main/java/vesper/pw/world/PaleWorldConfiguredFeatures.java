@@ -45,6 +45,7 @@ public class PaleWorldConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?,?>> PALE_VINE = registryKey("pale_vine_feature");
     public static final RegistryKey<ConfiguredFeature<?,?>> DYING_DRIPLEAF = registryKey("dying_dripleaves");
     public static final RegistryKey<ConfiguredFeature<?,?>> PALE_CAVE_GEODE = registryKey("pale_cave_dripleaf");
+    public static final RegistryKey<ConfiguredFeature<?,?>> PALE_CAVE_CEILING_VEG_MIXED = registryKey("pale_cave_ceiling_veg_mixed");
 
 
     private static RegistryEntry<PlacedFeature> createSmallDyingDripleaf(){
@@ -108,6 +109,11 @@ public class PaleWorldConfiguredFeatures {
                         .add(Blocks.SHORT_GRASS.getDefaultState(),30)
                         .add(Blocks.TALL_GRASS.getDefaultState(),7))));
 
+        register(configuredFeatureRegisterable, PALE_CAVE_CEILING_VEG_MIXED, Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(
+                DataPool.<BlockState>builder()
+                        .add(Blocks.PALE_HANGING_MOSS.getDefaultState(),6)
+                        .add(PaleWorldBlocks.PALE_VINE_BODY.getDefaultState(), 7))));
+
 
        register(configuredFeatureRegisterable,
                PALE_CAVE_PATCH,
@@ -153,7 +159,7 @@ public class PaleWorldConfiguredFeatures {
                 new BlockColumnFeatureConfig(
                         List.of(
                                 BlockColumnFeatureConfig.createLayer(
-                                        new WeightedListIntProvider(DataPool.<IntProvider>builder().add(UniformIntProvider.create(0,3), 2).add(UniformIntProvider.create(1,7),1).build()),
+                                        new WeightedListIntProvider(DataPool.<IntProvider>builder().add(UniformIntProvider.create(0,3), 2).add(UniformIntProvider.create(1,7),1).add(UniformIntProvider.create(0,1), 10).build()),
                                         weightedBlockStateProvider
                                 ),
                                 BlockColumnFeatureConfig.createLayer(ConstantIntProvider.create(1), randomizedIntBlockStateProvider)
