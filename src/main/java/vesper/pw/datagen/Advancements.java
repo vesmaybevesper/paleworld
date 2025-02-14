@@ -84,6 +84,7 @@ public class Advancements extends FabricAdvancementProvider {
                         false
                 )
                 .criterion("pale_berry_eaten", ConsumeItemCriterion.Conditions.item(wrapperLookup.getOrThrow(RegistryKeys.ITEM), PaleWorldItems.PALE_BERRIES))
+                .criterion("pale_apple_eaten", ConsumeItemCriterion.Conditions.item(wrapperLookup.getOrThrow(RegistryKeys.ITEM), PaleWorldItems.PALE_APPLE))
                 .build(consumer, PaleWorld.MOD_ID + "/eat_pale_berry");
 
 
