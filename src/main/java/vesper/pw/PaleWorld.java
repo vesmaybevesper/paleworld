@@ -1,5 +1,6 @@
 package vesper.pw;
 
+import eu.midnightdust.lib.config.MidnightConfig;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
@@ -28,6 +29,7 @@ public class PaleWorld implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		// Register Items, Blocks and World Gen
+		MidnightConfig.init(PaleWorld.MOD_ID, PaleWorldConfig.class);
 		Entities.init();
 		FabricDefaultAttributeRegistry.register(Entities.PALE_AXOLOTL, PaleAxolotl.setAttributes());
 		FabricDefaultAttributeRegistry.register(Entities.VAMPIRE_BAT, VampireBat.createHostileAttributes());
