@@ -1,5 +1,6 @@
 package vesper.pw.world;
 
+import net.minecraft.block.Blocks;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryEntryLookup;
 import net.minecraft.registry.RegistryKey;
@@ -13,6 +14,7 @@ import net.minecraft.world.gen.blockpredicate.BlockPredicate;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.placementmodifier.*;
 import vesper.pw.PaleWorld;
+import vesper.pw.PaleWorldConfig;
 
 import java.util.List;
 
@@ -30,11 +32,14 @@ public class PaleWorldPlacedFeatures {
     public static final RegistryKey<PlacedFeature> PALE_CAVE_CLAY = registryKey("pale_cave_clay");
     public static final RegistryKey<PlacedFeature> PALE_VINE = registryKey("pale_vine_feature");
     public static final RegistryKey<PlacedFeature> PALE_GEODE = registryKey("pale_geode");
+    public static final RegistryKey<PlacedFeature> STRIPPED_PALE_OAK = registryKey("stripped_pale_oak");
 
 
     public static void bootstrap(Registerable<PlacedFeature> registerable){
         var configuredFeatures = registerable.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
 
+
+        // Pale CAve Features
 
         register(
                 registerable,
@@ -151,6 +156,13 @@ public class PaleWorldPlacedFeatures {
                 HeightRangePlacementModifier.uniform(YOffset.aboveBottom(6), YOffset.fixed(30)),
                 BiomePlacementModifier.of()
         );
+
+        // Pale Garden Features
+
+        register(registerable,
+               STRIPPED_PALE_OAK,
+                configuredFeatures.getOrThrow(PaleWorldConfiguredFeatures.STRIPPED_PALE_OAK),
+                VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(PaleWorldConfig.strippedOakCount, PaleWorldConfig.strippedOakExtraChance, PaleWorldConfig.strippedOakExtraCount), Blocks.PALE_OAK_SAPLING));
     }
 
 

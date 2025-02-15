@@ -1,5 +1,6 @@
 package vesper.pw.world;
 
+import com.google.common.collect.ImmutableList;
 import net.minecraft.block.*;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryEntryLookup;
@@ -20,10 +21,14 @@ import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.util.math.intprovider.WeightedListIntProvider;
 import net.minecraft.world.gen.blockpredicate.BlockPredicate;
 import net.minecraft.world.gen.feature.*;
+import net.minecraft.world.gen.feature.size.ThreeLayersFeatureSize;
+import net.minecraft.world.gen.foliage.DarkOakFoliagePlacer;
 import net.minecraft.world.gen.placementmodifier.PlacementModifier;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import net.minecraft.world.gen.stateprovider.RandomizedIntBlockStateProvider;
 import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
+import net.minecraft.world.gen.treedecorator.PaleMossTreeDecorator;
+import net.minecraft.world.gen.trunk.DarkOakTrunkPlacer;
 import vesper.pw.PaleWorld;
 import vesper.pw.block.PaleWorldBlocks;
 import vesper.pw.block.custom.PaleVineBodyBlock;
@@ -31,6 +36,7 @@ import net.minecraft.block.BlockState;
 import vesper.pw.block.custom.PaleVines;
 import vesper.pw.block.custom.SmallDyingDripleafBlock;
 import java.util.List;
+import java.util.OptionalInt;
 
 public class PaleWorldConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?,?>> PALE_CAVE_PATCH = registryKey("pale_cave_patch");
@@ -46,6 +52,7 @@ public class PaleWorldConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?,?>> DYING_DRIPLEAF = registryKey("dying_dripleaves");
     public static final RegistryKey<ConfiguredFeature<?,?>> PALE_CAVE_GEODE = registryKey("pale_cave_dripleaf");
     public static final RegistryKey<ConfiguredFeature<?,?>> PALE_CAVE_CEILING_VEG_MIXED = registryKey("pale_cave_ceiling_veg_mixed");
+    public static final RegistryKey<ConfiguredFeature<?,?>> STRIPPED_PALE_OAK = registryKey("stripped_pale_oak");
 
 
     private static RegistryEntry<PlacedFeature> createSmallDyingDripleaf(){
@@ -111,8 +118,9 @@ public class PaleWorldConfiguredFeatures {
 
         register(configuredFeatureRegisterable, PALE_CAVE_CEILING_VEG_MIXED, Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(
                 DataPool.<BlockState>builder()
-                        .add(Blocks.PALE_HANGING_MOSS.getDefaultState(),6)
-                        .add(PaleWorldBlocks.PALE_VINE_BODY.getDefaultState(), 7))));
+                        .add(Blocks.PALE_HANGING_MOSS.getDefaultState(),7)
+                        .add(PaleWorldBlocks.PALE_VINE_BODY.getDefaultState(), 7)
+                        .add(Blocks.AIR.getDefaultState(), 7))));
 
 
        register(configuredFeatureRegisterable,
@@ -169,7 +177,6 @@ public class PaleWorldConfiguredFeatures {
                         true
                 )
         );
-
 
         register(
                 configuredFeatureRegisterable,
@@ -291,6 +298,20 @@ public class PaleWorldConfiguredFeatures {
                         1
                 )
         );
+
+        // Pale Garden Features
+
+        register(configuredFeatureRegisterable,
+                STRIPPED_PALE_OAK,
+                Feature.TREE,
+                new TreeFeatureConfig.Builder(BlockStateProvider.of(Blocks.STRIPPED_PALE_OAK_LOG), new DarkOakTrunkPlacer(6,2,1),
+                        BlockStateProvider.of(Blocks.PALE_OAK_LEAVES), new DarkOakFoliagePlacer(ConstantIntProvider.create(0), ConstantIntProvider.create(0)),
+                        new ThreeLayersFeatureSize(1,1,0,1,2, OptionalInt.empty()))
+                        .decorators(ImmutableList.of(new PaleMossTreeDecorator(0.15F, 0.4F, 0.8F)))
+                        .ignoreVines()
+                        .build());
+
+
     }
 
     public static RegistryKey<ConfiguredFeature<?,?>> registryKey(String name){
