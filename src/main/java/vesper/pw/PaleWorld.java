@@ -38,6 +38,5 @@ public class PaleWorld implements ModInitializer {
 		PaleWorldBlocks.regModBlocks();
 		PaleWorldWorldGen.genWorld();
 		EntityGen.addSpawns();
-		// CustomSounds.init();
 	}
 }

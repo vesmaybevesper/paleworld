@@ -1,5 +1,6 @@
 package vesper.pw.datagen;
 
+import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricAdvancementProvider;
 import net.minecraft.advancement.Advancement;
@@ -9,8 +10,10 @@ import net.minecraft.advancement.criterion.*;
 import net.minecraft.item.Items;
 import net.minecraft.predicate.entity.LocationPredicate;
 import net.minecraft.registry.*;
+import net.minecraft.registry.tag.BiomeTags;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
+import net.minecraft.world.biome.BiomeKeys;
 import vesper.pw.PaleWorld;
 import vesper.pw.biomes.PaleWorldBiomes;
 import vesper.pw.item.PaleWorldItems;
@@ -54,6 +57,21 @@ public class Advancements extends FabricAdvancementProvider {
                 )
                 .criterion("pale_cave_entered", TickCriterion.Conditions.createLocation(LocationPredicate.Builder.createBiome(wrapperLookup.getOrThrow(RegistryKeys.BIOME).getOrThrow(PaleWorldBiomes.PALE_CAVE))))
                 .build(consumer, PaleWorld.MOD_ID + "/pale_cave_entered");
+
+        AdvancementEntry paleGardenAdvance = Advancement.Builder.create()
+                .parent(root)
+                .display(
+                        Items.CREAKING_HEART,
+                        Text.literal("At the Heart"),
+                        Text.literal("Enter the Pale Garden"),
+                        null,
+                        AdvancementFrame.GOAL,
+                        true,
+                        true,
+                        false
+                )
+                .criterion("pale_garden_entered", TickCriterion.Conditions.createLocation(LocationPredicate.Builder.createBiome(wrapperLookup.getOrThrow(RegistryKeys.BIOME).getOrThrow(BiomeKeys.PALE_GARDEN))))
+                .build(consumer, PaleWorld.MOD_ID + "/pale_garden_entered");
 
 
         AdvancementEntry paleAxolotlBucket = Advancement.Builder.create()
