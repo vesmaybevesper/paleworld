@@ -7,15 +7,12 @@ TO-DO:
   - More Drained Amethyst Fragment use
     - Use for dimension portal
     - Compass to pale garden
-
-
-- V1.0.0
-  - Chance of custom structure(?)
-  - VFX
+  - Pale Cave VFX
+  - Pale Cave Structure(?)
 
   
 - V2.0.0
-  - Stripped Pale Trees in Pale Garden
+  - ~~Stripped Pale Trees in Pale Garden~~
   - New Flowers
   - Structures
   - More Blocks
