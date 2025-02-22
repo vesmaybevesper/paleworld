@@ -3,9 +3,12 @@
   "package": "vesper.pw.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "PaleGardenFogMixin"
+    "BiomeEffectsMixin"
   ],
   "injectors": {
     "defaultRequire": 1
-	}
+  },
+  "client": [
+    "BackgroundRendererMixin"
+  ]
 }

@@ -9,6 +9,7 @@ TO-DO:
     - Compass to pale garden
   - Pale Cave VFX
   - Pale Cave Structure(?)
+  - Finalize Pale Apple implementation
 
   
 - V2.0.0
@@ -17,5 +18,7 @@ TO-DO:
   - Structures
   - More Blocks
   - VFX
+    - ~~Fog~~
   - Reduce Normal Mob Spawns
   - Add More "Pale" Mobs
+  - Add all new to lang

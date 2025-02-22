@@ -1,3 +1,22 @@
+2.0.0
+=
+
+_Added:_
+* At the Heart Advancement 
+* Stripped Pale Oaks
+  * Some Description idk
+* Added Fog to the Pale Garden
+
+_Changed:_
+* Tweaked Pale Cave ceiling generation (again)
+* Vampire Bats now spawn in the Pale Garden
+
+1.3.1
+=
+
+_Fixed:_
+* Fixed Vampire Bats will now actually spawn 
+
 1.3.0
 =
 
