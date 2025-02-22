@@ -48,7 +48,8 @@ public class BackgroundRendererMixin {
             return;
         }
 
-        // not implemented ATM
+        PaleWorldConfig.horrorMode = PaleWorldConfig.horrorModeSelect == PaleWorldConfig.horrorVals.TRUE;
+
         if (PaleWorldConfig.horrorMode) {
             fogStart = (viewDistance * 0.8F) + fogFade * (0.1F - (viewDistance * 0.8F));
             fogEnd = (viewDistance) + fogFade * (8F - (viewDistance));
