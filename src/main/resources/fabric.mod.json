@@ -12,7 +12,8 @@
 	],
 	"contact": {
 		"homepage": "https://modrinth.com/mod/pale-world",
-		"sources": "https://github.com/vesmaybevesper/pale-world"
+		"sources": "https://github.com/vesmaybevesper/pale-world",
+		"issues": "https://github.com/vesmaybevesper/pale-world/issues"
 	},
 	"license": "All Rights Reserved",
 	"icon": "assets/pale-world/icon.png",
