@@ -9,8 +9,8 @@ public class PaleWorldConfig extends MidnightConfig {
    public enum horrorVals {FALSE, TRUE}
 
     public static final String Mobs = "Mobs";
-    public static final String Gen = "Generation";
-    public static final String Cos = "Cosmetic";
+    public static final String Gen = "B_Generation";
+    public static final String Cos = "A_Cosmetic";
 
     @Comment(category = Gen, centered = true) public static Comment warn;
     @Entry(category = Gen) public static int palecaveweight = 4;

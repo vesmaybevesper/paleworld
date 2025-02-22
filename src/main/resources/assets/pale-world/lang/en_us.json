@@ -1,7 +1,13 @@
 {
   "pale-world.midnightconfig.title": "Pale World Config",
+  "pale-world.midnightconfig.category.A_Cosmetic": "Visuals",
+  "pale-world.midnightconfig.category.B_Generation": "Generation",
   "pale-world.midnightconfig.palecaveweight": "Pale Cave Weight",
   "pale-world.midnightconfig.palecaveweight.tooltip": "Sets likelihood of Pale Cave generation",
+  "pale-world.midnightconfig.horrorModeSelect": "Horror Mode",
+  "pale-world.midnightconfig.enum.horrorVals.TRUE": "Yes",
+  "pale-world.midnightconfig.enum.horrorVals.FALSE": "No",
+  "pale-world.midnightconfig.horrorModeSelect.tooltip": "Toggles Horror Mode.",
   "pale-world.midnightconfig.warn": "I don't recommend changing any non-cosmetic settings (weights, etc), but I'm not your mom",
   "item.pale-world.pale_vine": "Pale Vine",
   "item.pale-world.dying_azalea": "Dying Azalea",
