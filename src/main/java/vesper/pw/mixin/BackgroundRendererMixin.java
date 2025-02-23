@@ -40,7 +40,9 @@ public class BackgroundRendererMixin {
         BlockPos pos = MinecraftClient.getInstance().player.getBlockPos();
         RegistryEntry<Biome> biome = world.getBiome(pos);
 
-        if (biome.matchesKey(BiomeKeys.PALE_GARDEN) && player.getY() <= (world.getTopY(Heightmap.Type.WORLD_SURFACE, pos.getX(), pos.getZ())) + 15 && !(player.getY() < (world.getTopY(Heightmap.Type.WORLD_SURFACE, pos.getX(), pos.getZ())) - 15) && !player.isCreative() && !player.isSpectator()) {
+        if (biome.matchesKey(BiomeKeys.PALE_GARDEN) && player.getY() <= (world.getTopY(Heightmap.Type.WORLD_SURFACE, pos.getX(), pos.getZ())) + 15
+                && !(player.getY() < (world.getTopY(Heightmap.Type.WORLD_SURFACE, pos.getX(), pos.getZ())) - 15)
+                && !player.isCreative() && !player.isSpectator()) {
             fogFade = Math.min(fogFade + FADE_SPEED, 1.0F);
         } else if (fogFade > 0) {
             fogFade = Math.max(fogFade - FADE_SPEED, 0);
