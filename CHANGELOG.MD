@@ -1,15 +1,18 @@
-2.0.0
+2.0.0+Alpha.1
 =
 
 _Added:_
 * At the Heart Advancement 
-* Stripped Pale Oaks
+* 5 new tree variants
   * Some Description idk
 * Added Fog to the Pale Garden
+  * "Horror Mode" is available in the mod settings and significantly reduces visibility
+  * The Fog will be customizable through the config in future versions
 
 _Changed:_
 * Tweaked Pale Cave ceiling generation (again)
 * Vampire Bats now spawn in the Pale Garden
+* Pale Apples are now always consumable
 
 1.3.1
 =
