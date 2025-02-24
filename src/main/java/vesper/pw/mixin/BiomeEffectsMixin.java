@@ -24,7 +24,7 @@ public class BiomeEffectsMixin {
         assert world != null;
         RegistryEntry<Biome> biome = world.getBiome(pos);
 		if (biome.matchesKey(BiomeKeys.PALE_GARDEN)){
-			cir.setReturnValue(0xFFFFFF);
+			cir.setReturnValue(0Xe3e4e6);
 		}
 
 	}
