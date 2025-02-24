@@ -33,6 +33,13 @@ public class PaleWorldPlacedFeatures {
     public static final RegistryKey<PlacedFeature> PALE_VINE = registryKey("pale_vine_feature");
     public static final RegistryKey<PlacedFeature> PALE_GEODE = registryKey("pale_geode");
     public static final RegistryKey<PlacedFeature> STRIPPED_PALE_OAK = registryKey("stripped_pale_oak");
+    public static final RegistryKey<PlacedFeature> SMALL_PALE_OAK = registryKey("small_pale_oak");
+    public static final RegistryKey<PlacedFeature> STRIPPED_SMALL_PALE_OAK = registryKey("stripped_small_pale_oak");
+    public static final RegistryKey<PlacedFeature> BARE_SMALL_PALE_OAK = registryKey("bare_small_pale_oak");
+    public static final RegistryKey<PlacedFeature> BARE_STRIPPED_SMALL_PALE_OAK = registryKey("bare_stripped_small_pale_oak");
+    public static final RegistryKey<PlacedFeature> BARE_PALE_OAK = registryKey("bare_pale_oak");
+    public static final RegistryKey<PlacedFeature> STRIPPED_BARE_PALE_OAK = registryKey("stripped_bare_pale_oak");
+    public static final RegistryKey<PlacedFeature> PALE_SPIKE = registryKey("pale_spike");
 
 
     public static void bootstrap(Registerable<PlacedFeature> registerable){
@@ -160,10 +167,45 @@ public class PaleWorldPlacedFeatures {
         // Pale Garden Features
 
         register(registerable,
+               BARE_PALE_OAK,
+                configuredFeatures.getOrThrow(PaleWorldConfiguredFeatures.BARE_PALE_OAK),
+                VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(PaleWorldConfig.bareOakCount, PaleWorldConfig.bareOakExtraChance, PaleWorldConfig.bareOakExtraCount), Blocks.PALE_OAK_SAPLING));
+
+
+        register(registerable,
                STRIPPED_PALE_OAK,
                 configuredFeatures.getOrThrow(PaleWorldConfiguredFeatures.STRIPPED_PALE_OAK),
                 VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(PaleWorldConfig.strippedOakCount, PaleWorldConfig.strippedOakExtraChance, PaleWorldConfig.strippedOakExtraCount), Blocks.PALE_OAK_SAPLING));
+
+        register(registerable,
+               STRIPPED_BARE_PALE_OAK,
+                configuredFeatures.getOrThrow(PaleWorldConfiguredFeatures.STRIPPED_BARE_PALE_OAK),
+                VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(PaleWorldConfig.barestrippedOakCount, PaleWorldConfig.barestrippedOakExtraChance, PaleWorldConfig.barestrippedOakExtraCount), Blocks.PALE_OAK_SAPLING));
+
+
+        register(registerable,
+               SMALL_PALE_OAK,
+                configuredFeatures.getOrThrow(PaleWorldConfiguredFeatures.SMALL_PALE_OAK),
+                VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(PaleWorldConfig.smallPaleOakChance, PaleWorldConfig.smallPaleOakExtraChance, PaleWorldConfig.smallPaleOakExtraCount), Blocks.PALE_OAK_SAPLING));
+
+        register(registerable,
+               STRIPPED_SMALL_PALE_OAK,
+                configuredFeatures.getOrThrow(PaleWorldConfiguredFeatures.STRIPPED_SMALL_PALE_OAK),
+                VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(PaleWorldConfig.strippedSmallPaleOakChance, PaleWorldConfig.strippedSmallPaleOakExtraChance, PaleWorldConfig.strippedSmallPaleOakExtraCount), Blocks.PALE_OAK_SAPLING));
+
+        register(registerable,
+                BARE_SMALL_PALE_OAK,
+                configuredFeatures.getOrThrow(PaleWorldConfiguredFeatures.BARE_SMALL_PALE_OAK),
+                VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(PaleWorldConfig.bareSmallPaleOakChance, PaleWorldConfig.bareSmallPaleOakExtraChance, PaleWorldConfig.bareSmallPaleOakExtraCount), Blocks.PALE_OAK_SAPLING));
+
+        register(registerable,
+                BARE_STRIPPED_SMALL_PALE_OAK,
+                configuredFeatures.getOrThrow(PaleWorldConfiguredFeatures.BARE_STRIPPED_SMALL_PALE_OAK),
+                VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(PaleWorldConfig.bareStrippedSmallPaleOakChance, PaleWorldConfig.bareStrippedSmallPaleOakExtraChance, PaleWorldConfig.bareStrippedSmallPaleOakExtraCount), Blocks.PALE_OAK_SAPLING));
+
     }
+
+
 
 
 

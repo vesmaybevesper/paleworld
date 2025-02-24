@@ -2,10 +2,7 @@ package vesper.pw.world;
 
 import com.google.common.collect.ImmutableList;
 import net.minecraft.block.*;
-import net.minecraft.registry.Registerable;
-import net.minecraft.registry.RegistryEntryLookup;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.*;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.registry.entry.RegistryEntryList;
 import net.minecraft.registry.tag.BlockTags;
@@ -15,10 +12,8 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DataPool;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.VerticalSurfaceType;
-import net.minecraft.util.math.intprovider.ConstantIntProvider;
-import net.minecraft.util.math.intprovider.IntProvider;
-import net.minecraft.util.math.intprovider.UniformIntProvider;
-import net.minecraft.util.math.intprovider.WeightedListIntProvider;
+import net.minecraft.util.math.intprovider.*;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.world.gen.blockpredicate.BlockPredicate;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.size.ThreeLayersFeatureSize;
@@ -28,13 +23,19 @@ import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import net.minecraft.world.gen.stateprovider.RandomizedIntBlockStateProvider;
 import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
 import net.minecraft.world.gen.treedecorator.PaleMossTreeDecorator;
+import net.minecraft.world.gen.trunk.BendingTrunkPlacer;
 import net.minecraft.world.gen.trunk.DarkOakTrunkPlacer;
+import net.minecraft.world.gen.trunk.ForkingTrunkPlacer;
 import vesper.pw.PaleWorld;
 import vesper.pw.block.PaleWorldBlocks;
 import vesper.pw.block.custom.PaleVineBodyBlock;
 import net.minecraft.block.BlockState;
 import vesper.pw.block.custom.PaleVines;
 import vesper.pw.block.custom.SmallDyingDripleafBlock;
+import vesper.pw.world.gen.RegisterFeatures;
+import vesper.pw.world.gen.feature.PaleSpikeFeatureConfig;
+
+
 import java.util.List;
 import java.util.OptionalInt;
 
@@ -53,6 +54,13 @@ public class PaleWorldConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?,?>> PALE_CAVE_GEODE = registryKey("pale_cave_dripleaf");
     public static final RegistryKey<ConfiguredFeature<?,?>> PALE_CAVE_CEILING_VEG_MIXED = registryKey("pale_cave_ceiling_veg_mixed");
     public static final RegistryKey<ConfiguredFeature<?,?>> STRIPPED_PALE_OAK = registryKey("stripped_pale_oak");
+    public static final RegistryKey<ConfiguredFeature<?,?>> SMALL_PALE_OAK = registryKey("small_pale_oak");
+    public static final RegistryKey<ConfiguredFeature<?,?>> STRIPPED_SMALL_PALE_OAK = registryKey("stripped_small_pale_oak");
+    public static final RegistryKey<ConfiguredFeature<?,?>> BARE_SMALL_PALE_OAK = registryKey("bare_small_pale_oak");
+    public static final RegistryKey<ConfiguredFeature<?,?>> BARE_STRIPPED_SMALL_PALE_OAK = registryKey("bare_stripped_small_pale_oak");
+    public static final RegistryKey<ConfiguredFeature<?,?>> BARE_PALE_OAK = registryKey("bare_pale_oak");
+    public static final RegistryKey<ConfiguredFeature<?,?>> STRIPPED_BARE_PALE_OAK = registryKey("stripped_bare_pale_oak");
+    public static final RegistryKey<ConfiguredFeature<?,?>> PALE_SPIKE = registryKey("pale_spike");
 
 
     private static RegistryEntry<PlacedFeature> createSmallDyingDripleaf(){
@@ -307,12 +315,75 @@ public class PaleWorldConfiguredFeatures {
                 new TreeFeatureConfig.Builder(BlockStateProvider.of(Blocks.STRIPPED_PALE_OAK_LOG), new DarkOakTrunkPlacer(6,2,1),
                         BlockStateProvider.of(Blocks.PALE_OAK_LEAVES), new DarkOakFoliagePlacer(ConstantIntProvider.create(0), ConstantIntProvider.create(0)),
                         new ThreeLayersFeatureSize(1,1,0,1,2, OptionalInt.empty()))
-                        .decorators(ImmutableList.of(new PaleMossTreeDecorator(0.15F, 0.4F, 0.8F)))
+                        .decorators(ImmutableList.of(new PaleMossTreeDecorator(0.25F, 0.4F, 0.8F)))
                         .ignoreVines()
                         .build());
 
 
+        register(configuredFeatureRegisterable,
+                BARE_PALE_OAK,
+                Feature.TREE,
+                new TreeFeatureConfig.Builder(BlockStateProvider.of(Blocks.PALE_OAK_LOG), new DarkOakTrunkPlacer(6,2,1),
+                        BlockStateProvider.of(Blocks.AIR), new DarkOakFoliagePlacer(ConstantIntProvider.create(0), ConstantIntProvider.create(0)),
+                        new ThreeLayersFeatureSize(1,1,0,1,2, OptionalInt.empty()))
+                        .decorators(ImmutableList.of(new PaleMossTreeDecorator(0.00F, 0.4F, 0.8F)))
+                        .ignoreVines()
+                        .build());
+
+        register(configuredFeatureRegisterable,
+                STRIPPED_BARE_PALE_OAK,
+                Feature.TREE,
+                new TreeFeatureConfig.Builder(BlockStateProvider.of(Blocks.STRIPPED_PALE_OAK_LOG), new DarkOakTrunkPlacer(6,2,1),
+                        BlockStateProvider.of(Blocks.AIR), new DarkOakFoliagePlacer(ConstantIntProvider.create(0), ConstantIntProvider.create(0)),
+                        new ThreeLayersFeatureSize(1,1,0,1,2, OptionalInt.empty()))
+                        .decorators(ImmutableList.of(new PaleMossTreeDecorator(0.00F, 0.4F, 0.8F)))
+                        .ignoreVines()
+                        .build());
+
+        register(configuredFeatureRegisterable,
+                SMALL_PALE_OAK,
+                Feature.TREE,
+                new TreeFeatureConfig.Builder(BlockStateProvider.of(Blocks.PALE_OAK_LOG), new ForkingTrunkPlacer(6,2,1),
+                        BlockStateProvider.of(Blocks.PALE_OAK_LEAVES), new DarkOakFoliagePlacer(ConstantIntProvider.create(0), ConstantIntProvider.create(0)),
+                        new ThreeLayersFeatureSize(1,1,0,1,2, OptionalInt.empty()))
+                        .decorators(ImmutableList.of(new PaleMossTreeDecorator(0.25F, 0.4F, 0.8F)))
+                        .ignoreVines()
+                        .build());
+
+        register(configuredFeatureRegisterable,
+                STRIPPED_SMALL_PALE_OAK,
+                Feature.TREE,
+                new TreeFeatureConfig.Builder(BlockStateProvider.of(Blocks.STRIPPED_PALE_OAK_LOG), new ForkingTrunkPlacer(6,2,1),
+                        BlockStateProvider.of(Blocks.PALE_OAK_LEAVES), new DarkOakFoliagePlacer(ConstantIntProvider.create(0), ConstantIntProvider.create(0)),
+                        new ThreeLayersFeatureSize(1,1,0,1,2, OptionalInt.empty()))
+                        .decorators(ImmutableList.of(new PaleMossTreeDecorator(0.25F, 0.4F, 0.8F)))
+                        .ignoreVines()
+                        .build());
+
+        register(configuredFeatureRegisterable,
+                BARE_SMALL_PALE_OAK,
+                Feature.TREE,
+                new TreeFeatureConfig.Builder(BlockStateProvider.of(Blocks.PALE_OAK_LOG), new ForkingTrunkPlacer(6,2,1),
+                        BlockStateProvider.of(Blocks.AIR), new DarkOakFoliagePlacer(ConstantIntProvider.create(0), ConstantIntProvider.create(0)),
+                        new ThreeLayersFeatureSize(1,1,0,1,2, OptionalInt.empty()))
+                        .decorators(ImmutableList.of(new PaleMossTreeDecorator(0.25F, 0.4F, 0.8F)))
+                        .ignoreVines()
+                        .build());
+
+        register(configuredFeatureRegisterable,
+                BARE_STRIPPED_SMALL_PALE_OAK,
+                Feature.TREE,
+                new TreeFeatureConfig.Builder(BlockStateProvider.of(Blocks.STRIPPED_PALE_OAK_LOG), new ForkingTrunkPlacer(6,2,1),
+                        BlockStateProvider.of(Blocks.AIR), new DarkOakFoliagePlacer(ConstantIntProvider.create(0), ConstantIntProvider.create(0)),
+                        new ThreeLayersFeatureSize(1,1,0,1,2, OptionalInt.empty()))
+                        .decorators(ImmutableList.of(new PaleMossTreeDecorator(0.25F, 0.4F, 0.8F)))
+                        .ignoreVines()
+                        .build());
+
+
+
     }
+
 
     public static RegistryKey<ConfiguredFeature<?,?>> registryKey(String name){
         return RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, Identifier.of(PaleWorld.MOD_ID, name));
