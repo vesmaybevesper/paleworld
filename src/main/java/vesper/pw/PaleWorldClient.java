@@ -2,8 +2,10 @@ package vesper.pw;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.minecraft.client.particle.EndRodParticle;
 import net.minecraft.client.render.RenderLayer;
 import vesper.pw.block.PaleWorldBlocks;
 import vesper.pw.entity.Entities;
@@ -19,6 +21,7 @@ public class PaleWorldClient implements ClientModInitializer {
 		EntityModelLayerRegistry.registerModelLayer(VampireBatModel.VAMPIRE_BAT, VampireBatModel::getTexturedModelData);
 		EntityRendererRegistry.register(Entities.PALE_AXOLOTL, PaleAxolotlRenderer::new);
 		EntityRendererRegistry.register(Entities.VAMPIRE_BAT, VampireBatRenderer::new);
+		ParticleFactoryRegistry.getInstance().register(PaleWorld.FOG_PARTICLE, EndRodParticle.Factory::new);
 		BlockRenderLayerMap.INSTANCE.putBlock(PaleWorldBlocks.PALE_VINE, RenderLayer.getCutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(PaleWorldBlocks.PALE_VINE_BODY, RenderLayer.getCutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(PaleWorldBlocks.DYING_AZALEA, RenderLayer.getCutout());
@@ -26,7 +29,5 @@ public class PaleWorldClient implements ClientModInitializer {
 		BlockRenderLayerMap.INSTANCE.putBlock(PaleWorldBlocks.BIG_DYING_DRIPLEAF, RenderLayer.getCutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(PaleWorldBlocks.BIG_DYING_DRIPLEAF_STEM, RenderLayer.getCutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(PaleWorldBlocks.CHRYSANTHEMUM, RenderLayer.getCutout());
-
-
 	}
 }

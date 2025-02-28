@@ -1,6 +1,5 @@
 package vesper.pw.datagen;
 
-import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricAdvancementProvider;
 import net.minecraft.advancement.Advancement;
@@ -10,7 +9,6 @@ import net.minecraft.advancement.criterion.*;
 import net.minecraft.item.Items;
 import net.minecraft.predicate.entity.LocationPredicate;
 import net.minecraft.registry.*;
-import net.minecraft.registry.tag.BiomeTags;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.biome.BiomeKeys;
@@ -104,6 +102,7 @@ public class Advancements extends FabricAdvancementProvider {
                 .criterion("pale_berry_eaten", ConsumeItemCriterion.Conditions.item(wrapperLookup.getOrThrow(RegistryKeys.ITEM), PaleWorldItems.PALE_BERRIES))
                 .criterion("pale_apple_eaten", ConsumeItemCriterion.Conditions.item(wrapperLookup.getOrThrow(RegistryKeys.ITEM), PaleWorldItems.PALE_APPLE))
                 .build(consumer, PaleWorld.MOD_ID + "/eat_pale_berry");
+
 
 
     }
