@@ -1,3 +1,15 @@
+2.0.0+Alpha.2
+=
+
+_Added:_
+*
+
+_Changed:_
+*
+
+_Fixed:_
+*
+
 2.0.0+Alpha.1
 =
 

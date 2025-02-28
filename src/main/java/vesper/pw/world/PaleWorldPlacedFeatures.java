@@ -203,6 +203,8 @@ public class PaleWorldPlacedFeatures {
                 configuredFeatures.getOrThrow(PaleWorldConfiguredFeatures.BARE_STRIPPED_SMALL_PALE_OAK),
                 VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(PaleWorldConfig.bareStrippedSmallPaleOakChance, PaleWorldConfig.bareStrippedSmallPaleOakExtraChance, PaleWorldConfig.bareStrippedSmallPaleOakExtraCount), Blocks.PALE_OAK_SAPLING));
 
+        /*register(registerable, PALE_SPIKE, configuredFeatures.getOrThrow(PaleWorldConfiguredFeatures.PALE_SPIKE));*/
+
     }
 
 

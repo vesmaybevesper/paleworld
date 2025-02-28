@@ -13,7 +13,6 @@ import net.minecraft.util.collection.DataPool;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.VerticalSurfaceType;
 import net.minecraft.util.math.intprovider.*;
-import net.minecraft.util.math.random.Random;
 import net.minecraft.world.gen.blockpredicate.BlockPredicate;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.size.ThreeLayersFeatureSize;
@@ -23,7 +22,6 @@ import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import net.minecraft.world.gen.stateprovider.RandomizedIntBlockStateProvider;
 import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
 import net.minecraft.world.gen.treedecorator.PaleMossTreeDecorator;
-import net.minecraft.world.gen.trunk.BendingTrunkPlacer;
 import net.minecraft.world.gen.trunk.DarkOakTrunkPlacer;
 import net.minecraft.world.gen.trunk.ForkingTrunkPlacer;
 import vesper.pw.PaleWorld;
@@ -32,12 +30,12 @@ import vesper.pw.block.custom.PaleVineBodyBlock;
 import net.minecraft.block.BlockState;
 import vesper.pw.block.custom.PaleVines;
 import vesper.pw.block.custom.SmallDyingDripleafBlock;
-import vesper.pw.world.gen.RegisterFeatures;
-import vesper.pw.world.gen.feature.PaleSpikeFeatureConfig;
-
+import vesper.pw.world.gen.feature.PaleSpikeFeature;
+import vesper.pw.world.gen.feature.RegisterFeatures;
 
 import java.util.List;
 import java.util.OptionalInt;
+
 
 public class PaleWorldConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?,?>> PALE_CAVE_PATCH = registryKey("pale_cave_patch");
@@ -380,8 +378,12 @@ public class PaleWorldConfiguredFeatures {
                         .ignoreVines()
                         .build());
 
+        /*register(configuredFeatureRegisterable, PALE_SPIKE, RegisterFeatures.PALE_SPIKE_FEATURE);*/
 
+    }
 
+    public static void register(Registerable<ConfiguredFeature<?, ?>> registerable, RegistryKey<ConfiguredFeature<?, ?>> key, Feature<DefaultFeatureConfig> feature) {
+        register(registerable, key, feature, FeatureConfig.DEFAULT);
     }
 
 
@@ -396,7 +398,9 @@ public class PaleWorldConfiguredFeatures {
     }
 
 
-
+    private static <C extends FeatureConfig, F extends Feature<C>> F register(String name, F feature) {
+        return (F)(Registry.register(Registries.FEATURE, name, feature));
+    }
 
 
 }

@@ -11,6 +11,7 @@ import vesper.pw.datagen.WorldGenerator;
 import vesper.pw.enchanting.Enchantments;
 import vesper.pw.world.PaleWorldConfiguredFeatures;
 import vesper.pw.world.PaleWorldPlacedFeatures;
+import vesper.pw.world.gen.feature.RegisterFeatures;
 
 public class PaleWorldDataGenerator implements DataGeneratorEntrypoint {
 	@Override

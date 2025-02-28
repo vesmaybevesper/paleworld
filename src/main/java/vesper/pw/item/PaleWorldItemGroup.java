@@ -20,9 +20,12 @@ public class PaleWorldItemGroup {
                         entries.add(PaleWorldBlocks.PETRIFIED_PALE_OAK);
                         entries.add(PaleWorldBlocks.WHITE_CRYSTAL);
                         entries.add(PaleWorldItems.DRAINED_CRYSTAL_FRAGMENT);
-                     //   entries.add(PaleWorldItems.PALE_COMPASS);
+                     // entries.add(PaleWorldItems.PALE_COMPASS);
                         entries.add(PaleWorldItems.PALE_BERRIES);
                         entries.add(PaleWorldItems.PALE_APPLE);
+                        /*entries.add(PaleWorldBlocks.FLOWER_1);
+                        entries.add(PaleWorldBlocks.FLOWER_2);*/
+                        entries.add(PaleWorldBlocks.CHRYSANTHEMUM);
                         entries.add(PaleWorldBlocks.DYING_AZALEA);
                         entries.add(PaleWorldBlocks.SMALL_DYING_DRIPLEAF);
                         entries.add(PaleWorldBlocks.BIG_DYING_DRIPLEAF);

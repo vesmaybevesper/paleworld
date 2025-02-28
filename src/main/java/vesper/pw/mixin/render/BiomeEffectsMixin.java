@@ -1,4 +1,4 @@
-package vesper.pw.mixin;
+package vesper.pw.mixin.render;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.world.ClientWorld;

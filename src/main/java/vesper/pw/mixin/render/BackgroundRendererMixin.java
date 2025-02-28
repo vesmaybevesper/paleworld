@@ -1,11 +1,8 @@
-package vesper.pw.mixin;
+package vesper.pw.mixin.render;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
-import net.minecraft.client.render.BackgroundRenderer;
-import net.minecraft.client.render.Camera;
-import net.minecraft.client.render.Fog;
-import net.minecraft.client.render.FogShape;
+import net.minecraft.client.render.*;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.math.BlockPos;
@@ -14,18 +11,22 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeKeys;
 import org.joml.Vector4f;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import vesper.pw.PaleWorldConfig;
-
 import static vesper.pw.utils.FogStateManager.fogFade;
 
 @Mixin(BackgroundRenderer.class)
 public class BackgroundRendererMixin {
+    @Unique
     private static final float FADE_SPEED = 0.002f;
+    @Unique
     private static float fogStart;
+    @Unique
     private static float fogEnd;
+    @Unique
     private static float fogAlphaBase;
 
     @Inject(method = "applyFog", at = @At("TAIL"), cancellable = true)
@@ -70,5 +71,10 @@ public class BackgroundRendererMixin {
 
         PALE_GARDEN_FOG = new Fog(fogStart, fogEnd, FogShape.SPHERE, fogRed, fogGreen, fogBlue, fogAlpha);
         cir.setReturnValue(PALE_GARDEN_FOG);
+
+        /*if (ModCompatCheckers.isShaders()) {
+            setIrisFog(fogStart, fogEnd, fogRed,fogGreen, fogBlue, fogAlpha);
+        }*/
     }
+
 }

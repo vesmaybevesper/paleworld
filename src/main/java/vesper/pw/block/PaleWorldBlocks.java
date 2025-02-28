@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.NoteBlockInstrument;
 import net.minecraft.block.piston.PistonBehavior;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
@@ -16,6 +17,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
 import vesper.pw.PaleWorld;
 import vesper.pw.block.custom.*;
+import vesper.pw.item.custom.ChrysanthemumBlock;
 
 import java.util.function.Function;
 
@@ -89,6 +91,7 @@ public class PaleWorldBlocks {
                     .pistonBehavior(PistonBehavior.DESTROY)
                     .requiresTool()
     ));
+
     public static final Block PETRIFIED_PALE_OAK = regBlock("petrified_pale_oak", new Block(AbstractBlock.Settings.create().registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(PaleWorld.MOD_ID, "petrified_pale_oak")))
             .mapColor(MapColor.WHITE_GRAY).sounds(BlockSoundGroup.WOOD).burnable().hardness(7).requiresTool().pistonBehavior(PistonBehavior.NORMAL)));
 
@@ -105,6 +108,19 @@ public class PaleWorldBlocks {
                             .pistonBehavior(PistonBehavior.DESTROY)
     ));
 
+    public static final Block CHRYSANTHEMUM = regBlock(
+            "chrysanthemum",
+            (settings) -> new ChrysanthemumBlock(StatusEffects.WEAKNESS, 3.0F, settings),
+            AbstractBlock.Settings.create()
+                    .registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(PaleWorld.MOD_ID, "chrysanthemum")))
+                    .mapColor(MapColor.OFF_WHITE)
+                    .noCollision()
+                    .breakInstantly()
+                    .sounds(BlockSoundGroup.GRASS)
+                    .offset(AbstractBlock.OffsetType.XZ)
+                    .pistonBehavior(PistonBehavior.DESTROY)
+    );
+
     public static final Block WHITE_CRYSTAL = regBlock("white_crystal", new AmethystBlock(AbstractBlock.Settings.create()
             .registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(PaleWorld.MOD_ID, "white_crystal")))
             .mapColor(MapColor.WHITE)
@@ -118,9 +134,6 @@ public class PaleWorldBlocks {
         regBlockItem(name, block);
         return Registry.register(Registries.BLOCK, Identifier.of(PaleWorld.MOD_ID, name), block);
     }
-
-    /*private static Block regBlock(String id, AbstractBlock.Settings settings) {
-        return regBlock(id, Block::new, settings);*/
 
 
     private static RegistryKey<Block> keyOf(String id) {
@@ -149,6 +162,7 @@ public class PaleWorldBlocks {
             fabricItemGroupEntries.add(DYING_AZALEA);
             fabricItemGroupEntries.add(SMALL_DYING_DRIPLEAF);
             fabricItemGroupEntries.add(WHITE_CRYSTAL);
+
         });
     }
 

@@ -13,10 +13,6 @@ import vesper.pw.entity.renderers.PaleAxolotlRenderer;
 import vesper.pw.entity.renderers.VampireBatRenderer;
 
 public class PaleWorldClient implements ClientModInitializer {
-	/*public static void registerRenderers(BiConsumer<EntityType<? extends Entity>, EntityRenderer> entityRenderer, BiConsumer<BlockEntityType<? extends BlockEntity>, BlockEntityRenderer> blockEntityRenderer){
-		entityRenderer.accept(EntityRegistry.PALE_AXOLOTL.get(), PaleAxolotlRenderer::new);
-	}*/
-
 	@Override
 	public void onInitializeClient() {
 		EntityModelLayerRegistry.registerModelLayer(PaleAxolotlModel.PALE_AXOLOTL, PaleAxolotlModel::getTexturedModelData);
@@ -29,5 +25,8 @@ public class PaleWorldClient implements ClientModInitializer {
 		BlockRenderLayerMap.INSTANCE.putBlock(PaleWorldBlocks.SMALL_DYING_DRIPLEAF, RenderLayer.getCutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(PaleWorldBlocks.BIG_DYING_DRIPLEAF, RenderLayer.getCutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(PaleWorldBlocks.BIG_DYING_DRIPLEAF_STEM, RenderLayer.getCutout());
+		BlockRenderLayerMap.INSTANCE.putBlock(PaleWorldBlocks.CHRYSANTHEMUM, RenderLayer.getCutout());
+
+
 	}
 }
