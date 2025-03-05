@@ -14,6 +14,9 @@ public class PaleWorldConfig extends MidnightConfig {
 
     @Comment(category = Gen, centered = true) public static Comment warn;
     @Entry(category = Gen) public static int palecaveweight = 4;
+    @Entry(category = Cos) public static float fogStart = 0.5F;
+    @Entry(category = Cos) public static float fogEnd = 20F;
+    @Entry(category = Cos) public static float fogTransparency = 0.7F;
     @Entry(category = Cos) public static horrorVals horrorModeSelect = horrorVals.FALSE;
      public static int strippedOakCount = 3;
      public static float strippedOakExtraChance = 0.05F;

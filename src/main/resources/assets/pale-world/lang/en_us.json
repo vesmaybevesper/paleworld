@@ -9,6 +9,12 @@
   "pale-world.midnightconfig.enum.horrorVals.FALSE": "No",
   "pale-world.midnightconfig.horrorModeSelect.tooltip": "Toggles Horror Mode.",
   "pale-world.midnightconfig.warn": "I don't recommend changing any non-cosmetic settings (weights, etc), but I'm not your mom",
+  "pale-world.midnightconfig.fogStart": "Fog Start",
+  "pale-world.midnightconfig.fogStart.tooltip": "Sets the starting distance of the fog",
+  "pale-world.midnightconfig.fogEnd": "Fog End",
+  "pale-world.midnightconfig.fogEnd.tooltip": "Sets the ending distance of the fog",
+  "pale-world.midnightconfig.fogTransparency": "Fog Transparency",
+  "pale-world.midnightconfig.fogTransparency.tooltip": "Sets the transparency of the fog",
 
   "item.pale-world.pale_vine": "Pale Vine",
   "item.pale-world.dying_azalea": "Dying Azalea",
