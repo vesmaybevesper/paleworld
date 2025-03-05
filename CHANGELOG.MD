@@ -2,10 +2,10 @@
 =
 
 _Added:_
-*
+* Open Eyeblossoms now glow
 
 _Changed:_
-*
+* Fog is now customizable through the config
 
 _Fixed:_
 *

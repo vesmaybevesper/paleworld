@@ -3,7 +3,8 @@
   "package": "vesper.pw.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "render.BiomeEffectsMixin"
+    "render.BiomeEffectsMixin",
+    "render.BlocksMixin"
   ],
   "injectors": {
     "defaultRequire": 1
