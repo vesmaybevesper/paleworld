@@ -15,5 +15,7 @@ public class LootTables extends FabricBlockLootTableProvider {
     @Override
     public void generate() {
         addDrop(PaleWorldBlocks.WHITE_CRYSTAL);
+        addDrop(PaleWorldBlocks.CHRYSANTHEMUM);
+
     }
 }

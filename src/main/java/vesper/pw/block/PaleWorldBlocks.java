@@ -17,7 +17,6 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
 import vesper.pw.PaleWorld;
 import vesper.pw.block.custom.*;
-import vesper.pw.item.custom.ChrysanthemumBlock;
 
 import java.util.function.Function;
 
@@ -110,7 +109,7 @@ public class PaleWorldBlocks {
 
     public static final Block CHRYSANTHEMUM = regBlock(
             "chrysanthemum",
-            (settings) -> new ChrysanthemumBlock(StatusEffects.WEAKNESS, 3.0F, settings),
+            (settings) -> new FlowerBlock(StatusEffects.WEAKNESS, 15.0F, settings),
             AbstractBlock.Settings.create()
                     .registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(PaleWorld.MOD_ID, "chrysanthemum")))
                     .mapColor(MapColor.OFF_WHITE)
@@ -162,7 +161,7 @@ public class PaleWorldBlocks {
             fabricItemGroupEntries.add(DYING_AZALEA);
             fabricItemGroupEntries.add(SMALL_DYING_DRIPLEAF);
             fabricItemGroupEntries.add(WHITE_CRYSTAL);
-
+            fabricItemGroupEntries.add(CHRYSANTHEMUM);
         });
     }
 

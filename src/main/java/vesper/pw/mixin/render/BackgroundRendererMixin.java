@@ -28,6 +28,8 @@ public class BackgroundRendererMixin {
     private static float fogEnd;
     @Unique
     private static float fogAlphaBase;
+    @Unique
+    private static FogShape fogShape;
 
     @Inject(method = "applyFog", at = @At("TAIL"), cancellable = true)
     private static void modifyFogSettings(Camera camera, BackgroundRenderer.FogType fogType, Vector4f color, float viewDistance, boolean thickenFog, float tickDelta, CallbackInfoReturnable<Fog> cir) {
@@ -57,11 +59,13 @@ public class BackgroundRendererMixin {
         if (PaleWorldConfig.horrorMode) {
             fogStart = (viewDistance * 0.8F) + fogFade * (0.1F - (viewDistance * 0.8F));
             fogEnd = (viewDistance) + fogFade * (8F - (viewDistance));
-            fogAlphaBase = 1F;
+            fogAlphaBase = 0.99F;
+            fogShape = FogShape.SPHERE;
         } else {
             fogStart = (viewDistance * 0.8F) + fogFade * (PaleWorldConfig.fogStart - (viewDistance * 0.8F));
             fogEnd = (viewDistance) + fogFade * (PaleWorldConfig.fogEnd - (viewDistance));
             fogAlphaBase = PaleWorldConfig.fogTransparency;
+            fogShape = FogShape.CYLINDER;
         }
 
         float fogRed = color.x + fogFade * (0.8F - color.x);
@@ -69,7 +73,7 @@ public class BackgroundRendererMixin {
         float fogBlue = color.z + fogFade * (0.85F - color.z);
         float fogAlpha = color.w + fogFade * (fogAlphaBase - color.w);
 
-        PALE_GARDEN_FOG = new Fog(fogStart, fogEnd, FogShape.SPHERE, fogRed, fogGreen, fogBlue, fogAlpha);
+        PALE_GARDEN_FOG = new Fog(fogStart, fogEnd, fogShape, fogRed, fogGreen, fogBlue, fogAlpha);
         cir.setReturnValue(PALE_GARDEN_FOG);
 
     }

@@ -3,12 +3,18 @@
 
 _Added:_
 * Open Eyeblossoms now glow
+* Tall Pale Oaks (Stripped and Regular)
+* Chrysanthemum
+  * No generation for the time being
+    *  it's craft-able with a Sunflower and white dye for now
 
 _Changed:_
 * Fog is now customizable through the config
-
-_Fixed:_
-*
+* Tweaked "Horror Mode" fog transparency (1 -> 0.99)
+  * While this seems like a nothing change, this massively changed the way Minecraft was rendering. Chunks mostly or totally in fog shouldn't completely unrender anymore.
+    * This also mostly fixes the issue of seeing the skybox everywhere
+* Changed some tree gen numbers
+* 
 
 2.0.0+Alpha.1
 =

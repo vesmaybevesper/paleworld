@@ -20,23 +20,28 @@ import vesper.pw.item.PaleWorldItems;
 import vesper.pw.world.gen.PaleWorldWorldGen;
 
 public class PaleWorld implements ModInitializer {
-	public static final String MOD_ID = "pale-world";
+	public static final String MOD_ID = "paleworld";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 	public static final SimpleParticleType FOG_PARTICLE = FabricParticleTypes.simple();
 
 
-	@Override
+
+    @Override
 	public void onInitialize() {
 		// Register Items, Blocks and World Gen
 		MidnightConfig.init(PaleWorld.MOD_ID, PaleWorldConfig.class);
+		LOGGER.info("Registered Config");
 		Entities.init();
 		FabricDefaultAttributeRegistry.register(Entities.PALE_AXOLOTL, PaleAxolotl.setAttributes());
 		FabricDefaultAttributeRegistry.register(Entities.VAMPIRE_BAT, VampireBat.createHostileAttributes());
+		LOGGER.info("Registered Entities");
 		Registry.register(Registries.PARTICLE_TYPE, Identifier.of(MOD_ID, "fog_particle"), FOG_PARTICLE);
 		PaleWorldItems.regModItems();
 		PaleWorldBlocks.regModBlocks();
 		PaleWorldItemGroup.regItemGroups();
+		LOGGER.info("Registered Blocks & Items");
 		PaleWorldWorldGen.genWorld();
 		EntityGen.addSpawns();
+		LOGGER.info("Registered Generation");
 	}
 }

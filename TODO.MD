@@ -15,12 +15,18 @@ TO-DO:
 - V2.0.0
   - ~~Stripped Pale Trees in Pale Garden~~
   - New Flowers
+    - chrysanthemum
+      - fix texture
+      - add to gen
+    - flower 2
+    - flower 3
   - Structures
   - More Blocks
   - Increase biome size
   - VFX
     - ~~Fog~~
     - Add some particles into fog
+    - Create a particle only fog / make fog work with shaders
   - Reduce Normal Mob Spawns
   - Add More "Pale" Mobs
   - Add all new to lang

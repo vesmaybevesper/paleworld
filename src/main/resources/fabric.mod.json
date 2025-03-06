@@ -1,6 +1,6 @@
 {
 	"schemaVersion": 1,
-	"id": "pale-world",
+	"id": "paleworld",
 	"version": "${version}",
 	"name": "Pale World",
 	"description": "It's the Creaking's world, we just live in it.",
@@ -11,12 +11,12 @@
 		"Hoku the cat"
 	],
 	"contact": {
-		"homepage": "https://modrinth.com/mod/pale-world",
-		"sources": "https://github.com/vesmaybevesper/pale-world",
-		"issues": "https://github.com/vesmaybevesper/pale-world/issues"
+		"homepage": "https://modrinth.com/mod/paleworld",
+		"sources": "https://github.com/vesmaybevesper/paleworld",
+		"issues": "https://github.com/vesmaybevesper/paleworld/issues"
 	},
 	"license": "All Rights Reserved",
-	"icon": "assets/pale-world/icon.png",
+	"icon": "assets/paleworld/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [

@@ -1,4 +1,4 @@
-#version 100
+#version 460
 
 uniform float fogStart;
 uniform float fogEnd;

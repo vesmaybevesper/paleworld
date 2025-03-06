@@ -30,8 +30,7 @@ import vesper.pw.block.custom.PaleVineBodyBlock;
 import net.minecraft.block.BlockState;
 import vesper.pw.block.custom.PaleVines;
 import vesper.pw.block.custom.SmallDyingDripleafBlock;
-import vesper.pw.world.gen.feature.PaleSpikeFeature;
-import vesper.pw.world.gen.feature.RegisterFeatures;
+
 
 import java.util.List;
 import java.util.OptionalInt;
@@ -52,12 +51,15 @@ public class PaleWorldConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?,?>> PALE_CAVE_GEODE = registryKey("pale_cave_dripleaf");
     public static final RegistryKey<ConfiguredFeature<?,?>> PALE_CAVE_CEILING_VEG_MIXED = registryKey("pale_cave_ceiling_veg_mixed");
     public static final RegistryKey<ConfiguredFeature<?,?>> STRIPPED_PALE_OAK = registryKey("stripped_pale_oak");
+    public static final RegistryKey<ConfiguredFeature<?,?>> TALL_STRIPPED_PALE_OAK = registryKey("tall_stripped_pale_oak");
+    public static final RegistryKey<ConfiguredFeature<?,?>> TALL_PALE_OAK = registryKey("tall_pale_oak");
     public static final RegistryKey<ConfiguredFeature<?,?>> SMALL_PALE_OAK = registryKey("small_pale_oak");
     public static final RegistryKey<ConfiguredFeature<?,?>> STRIPPED_SMALL_PALE_OAK = registryKey("stripped_small_pale_oak");
     public static final RegistryKey<ConfiguredFeature<?,?>> BARE_SMALL_PALE_OAK = registryKey("bare_small_pale_oak");
     public static final RegistryKey<ConfiguredFeature<?,?>> BARE_STRIPPED_SMALL_PALE_OAK = registryKey("bare_stripped_small_pale_oak");
     public static final RegistryKey<ConfiguredFeature<?,?>> BARE_PALE_OAK = registryKey("bare_pale_oak");
     public static final RegistryKey<ConfiguredFeature<?,?>> STRIPPED_BARE_PALE_OAK = registryKey("stripped_bare_pale_oak");
+    public static final RegistryKey<ConfiguredFeature<?,?>> FALLEN_PALE_OAK = registryKey("fallen_pale_oak");
     public static final RegistryKey<ConfiguredFeature<?,?>> PALE_SPIKE = registryKey("pale_spike");
 
 
@@ -317,6 +319,26 @@ public class PaleWorldConfiguredFeatures {
                         .ignoreVines()
                         .build());
 
+        register(configuredFeatureRegisterable,
+                TALL_STRIPPED_PALE_OAK,
+                Feature.TREE,
+                new TreeFeatureConfig.Builder(BlockStateProvider.of(Blocks.STRIPPED_PALE_OAK_LOG), new DarkOakTrunkPlacer(10,4,2),
+                        BlockStateProvider.of(Blocks.PALE_OAK_LEAVES), new DarkOakFoliagePlacer(ConstantIntProvider.create(0), ConstantIntProvider.create(0)),
+                        new ThreeLayersFeatureSize(1,1,0,1,2, OptionalInt.empty()))
+                        .decorators(ImmutableList.of(new PaleMossTreeDecorator(0.25F, 0.4F, 0.8F)))
+                        .ignoreVines()
+                        .build());
+
+        register(configuredFeatureRegisterable,
+                TALL_PALE_OAK,
+                Feature.TREE,
+                new TreeFeatureConfig.Builder(BlockStateProvider.of(Blocks.PALE_OAK_LOG), new DarkOakTrunkPlacer(10,4,2),
+                        BlockStateProvider.of(Blocks.PALE_OAK_LEAVES), new DarkOakFoliagePlacer(ConstantIntProvider.create(0), ConstantIntProvider.create(0)),
+                        new ThreeLayersFeatureSize(1,1,0,1,2, OptionalInt.empty()))
+                        .decorators(ImmutableList.of(new PaleMossTreeDecorator(0.25F, 0.4F, 0.8F)))
+                        .ignoreVines()
+                        .build());
+
 
         register(configuredFeatureRegisterable,
                 BARE_PALE_OAK,
@@ -374,9 +396,11 @@ public class PaleWorldConfiguredFeatures {
                 new TreeFeatureConfig.Builder(BlockStateProvider.of(Blocks.STRIPPED_PALE_OAK_LOG), new ForkingTrunkPlacer(6,2,1),
                         BlockStateProvider.of(Blocks.AIR), new DarkOakFoliagePlacer(ConstantIntProvider.create(0), ConstantIntProvider.create(0)),
                         new ThreeLayersFeatureSize(1,1,0,1,2, OptionalInt.empty()))
-                        .decorators(ImmutableList.of(new PaleMossTreeDecorator(0.25F, 0.4F, 0.8F)))
+                        .decorators(ImmutableList.of(new PaleMossTreeDecorator(0.0F, 0.4F, 0.8F)))
                         .ignoreVines()
                         .build());
+
+        /*register(configuredFeatureRegisterable, FALLEN_PALE_OAK, RegisterFeatures.FALLEN_TREE,);*/
 
         /*register(configuredFeatureRegisterable, PALE_SPIKE, RegisterFeatures.PALE_SPIKE_FEATURE);*/
 
