@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cross",
   "textures": {
-    "cross": "pale-world:block/pale_vines_lit"
+    "cross": "paleworld:block/pale_vines_lit"
   }
 }

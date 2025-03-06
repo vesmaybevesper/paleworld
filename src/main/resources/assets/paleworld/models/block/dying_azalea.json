@@ -1,9 +1,9 @@
 {
   "parent": "minecraft:block/template_azalea",
   "textures": {
-    "particle": "pale-world:block/dying_azalea_plant",
-    "plant": "pale-world:block/dying_azalea_plant",
-    "side": "pale-world:block/dying_azalea_side",
-    "top": "pale-world:block/dying_azalea_top"
+    "particle": "paleworld:block/dying_azalea_plant",
+    "plant": "paleworld:block/dying_azalea_plant",
+    "side": "paleworld:block/dying_azalea_side",
+    "top": "paleworld:block/dying_azalea_top"
   }
 }

@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "pale-world:block/chrysanthemum"
+      "model": "paleworld:block/chrysanthemum"
     }
   }
 }

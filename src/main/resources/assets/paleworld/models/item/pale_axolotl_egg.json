@@ -1,6 +1,6 @@
 {
   "parent": "item/template_spawn_egg",
   "textures": {
-    "layer0": "pale-world:item/pale_axolotl_egg"
+    "layer0": "paleworld:item/pale_axolotl_egg"
   }
 }

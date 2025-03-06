@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "pale-world:block/white_crystal"
+      "model": "paleworld:block/white_crystal"
     }
   }
 }

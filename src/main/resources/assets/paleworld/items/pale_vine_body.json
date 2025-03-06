@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "pale-world:item/pale_vine_body"
+    "model": "paleworld:item/pale_vine_body"
   }
 }

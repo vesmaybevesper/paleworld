@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "pale-world:item/drained_crystal_fragment"
+    "layer0": "paleworld:item/drained_crystal_fragment"
   }
 }

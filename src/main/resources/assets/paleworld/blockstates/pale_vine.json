@@ -1,10 +1,10 @@
 {
   "variants": {
     "berries=false": {
-      "model": "pale-world:block/pale_vine"
+      "model": "paleworld:block/pale_vine"
     },
     "berries=true": {
-      "model": "pale-world:block/pale_vines_lit"
+      "model": "paleworld:block/pale_vines_lit"
     }
   }
 }

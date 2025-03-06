@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "pale-world:item/dying_azalea"
+    "model": "paleworld:item/dying_azalea"
   }
 }

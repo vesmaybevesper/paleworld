@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "pale-world:item/pale_berries"
+    "model": "paleworld:item/pale_berries"
   }
 }

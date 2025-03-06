@@ -1,10 +1,10 @@
 {
   "parent": "block/block",
   "textures": {
-    "top": "pale-world:block/small_dying_dripleaf_top",
-    "side": "pale-world:block/small_dying_dripleaf_side",
-    "stem": "pale-world:block/small_dying_dripleaf_stem_top",
-    "particle": "pale-world:block/small_dying_dripleaf_top"
+    "top": "paleworld:block/small_dying_dripleaf_top",
+    "side": "paleworld:block/small_dying_dripleaf_side",
+    "stem": "paleworld:block/small_dying_dripleaf_stem_top",
+    "particle": "paleworld:block/small_dying_dripleaf_top"
   },
   "elements": [
     {   "from": [ 8, 3, 8 ],

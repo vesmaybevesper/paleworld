@@ -1,5 +1,5 @@
 {
-  "parent": "pale-world:block/small_dying_dripleaf_top",
+  "parent": "paleworld:block/small_dying_dripleaf_top",
   "display": {
     "thirdperson_righthand": {
       "rotation": [ 0, 0, 0 ],

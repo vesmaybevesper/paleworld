@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cross",
   "textures": {
-    "cross": "pale-world:block/chrysanthemum"
+    "cross": "paleworld:block/chrysanthemum"
   }
 }

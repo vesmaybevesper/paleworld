@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "pale-world:item/pale_axolotl_bucket"
+    "model": "paleworld:item/pale_axolotl_bucket"
   }
 }

@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "pale-world:block/dying_azalea"
+      "model": "paleworld:block/dying_azalea"
     }
   }
 }

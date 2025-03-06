@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "pale-world:item/small_dying_dripleaf"
+    "model": "paleworld:item/small_dying_dripleaf"
   }
 }

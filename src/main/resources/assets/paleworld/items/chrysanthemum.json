@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "pale-world:item/chrysanthemum"
+    "model": "paleworld:item/chrysanthemum"
   }
 }

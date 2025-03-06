@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "pale-world:item/pale_axolotl_bucket"
+    "layer0": "paleworld:item/pale_axolotl_bucket"
   }
 }

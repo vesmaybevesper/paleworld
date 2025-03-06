@@ -1,5 +1,5 @@
 {
-  "parent": "pale-world:block/big_dying_dripleaf",
+  "parent": "paleworld:block/big_dying_dripleaf",
   "display": {
     "gui": {
       "rotation": [ 30, 225, 0 ],

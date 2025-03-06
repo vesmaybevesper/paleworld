@@ -1,11 +1,11 @@
 {
   "parent": "block/block",
   "textures": {
-    "top": "pale-world:block/big_dying_dripleaf_top",
-    "stem": "pale-world:block/big_dying_dripleaf_stem",
-    "side": "pale-world:block/big_dying_dripleaf_side",
-    "tip": "pale-world:block/big_dying_dripleaf_tip",
-    "particle": "pale-world:block/big_dying_dripleaf_top"
+    "top": "paleworld:block/big_dying_dripleaf_top",
+    "stem": "paleworld:block/big_dying_dripleaf_stem",
+    "side": "paleworld:block/big_dying_dripleaf_side",
+    "tip": "paleworld:block/big_dying_dripleaf_tip",
+    "particle": "paleworld:block/big_dying_dripleaf_top"
   },
   "elements": [
     {   "from": [ 0, 15, 0 ],
