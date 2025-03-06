@@ -2,6 +2,7 @@
 
 [CurseForge Page](https://www.curseforge.com/minecraft/mc-mods/pale-world)
 [Modrinth Page](https://modrinth.com/mod/pale-world)
+
 (the most recent updates will live here, i dont always update the github page)
 
 **_REQUIRED:_**
