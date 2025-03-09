@@ -1,12 +1,21 @@
+2.0.0+Alpha.3
+=
+
+_Added:_
+*
+
+_Changed:_
+* Changed mob spawn weights in Pale Garden
+* Made a custom foliage placer instead of placing air using the Dark Oak placer
+  * this fixes an issue where the "leaves"  of the bare trees were deleting actual leaves
+
 2.0.0+Alpha.2
 =
 
 _Added:_
 * Open Eyeblossoms now glow
 * Tall Pale Oaks (Stripped and Regular)
-* Chrysanthemum
-  * No generation for the time being
-    *  it's craft-able with a Sunflower and white dye for now
+
 
 _Changed:_
 * Fog is now customizable through the config
@@ -14,7 +23,7 @@ _Changed:_
   * While this seems like a nothing change, this massively changed the way Minecraft was rendering. Chunks mostly or totally in fog shouldn't completely unrender anymore.
     * This also mostly fixes the issue of seeing the skybox everywhere
 * Changed some tree gen numbers
-* 
+
 
 2.0.0+Alpha.1
 =

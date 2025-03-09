@@ -30,6 +30,7 @@ import vesper.pw.block.custom.PaleVineBodyBlock;
 import net.minecraft.block.BlockState;
 import vesper.pw.block.custom.PaleVines;
 import vesper.pw.block.custom.SmallDyingDripleafBlock;
+import vesper.pw.world.gen.feature.BlankLeaves;
 
 
 import java.util.List;
@@ -344,7 +345,7 @@ public class PaleWorldConfiguredFeatures {
                 BARE_PALE_OAK,
                 Feature.TREE,
                 new TreeFeatureConfig.Builder(BlockStateProvider.of(Blocks.PALE_OAK_LOG), new DarkOakTrunkPlacer(6,2,1),
-                        BlockStateProvider.of(Blocks.AIR), new DarkOakFoliagePlacer(ConstantIntProvider.create(0), ConstantIntProvider.create(0)),
+                        BlockStateProvider.of(Blocks.AIR), new BlankLeaves(ConstantIntProvider.create(0), ConstantIntProvider.create(0)),
                         new ThreeLayersFeatureSize(1,1,0,1,2, OptionalInt.empty()))
                         .decorators(ImmutableList.of(new PaleMossTreeDecorator(0.00F, 0.4F, 0.8F)))
                         .ignoreVines()
@@ -384,7 +385,7 @@ public class PaleWorldConfiguredFeatures {
                 BARE_SMALL_PALE_OAK,
                 Feature.TREE,
                 new TreeFeatureConfig.Builder(BlockStateProvider.of(Blocks.PALE_OAK_LOG), new ForkingTrunkPlacer(6,2,1),
-                        BlockStateProvider.of(Blocks.AIR), new DarkOakFoliagePlacer(ConstantIntProvider.create(0), ConstantIntProvider.create(0)),
+                        BlockStateProvider.of(Blocks.AIR), new BlankLeaves(ConstantIntProvider.create(0), ConstantIntProvider.create(0)),
                         new ThreeLayersFeatureSize(1,1,0,1,2, OptionalInt.empty()))
                         .decorators(ImmutableList.of(new PaleMossTreeDecorator(0.25F, 0.4F, 0.8F)))
                         .ignoreVines()
@@ -394,11 +395,12 @@ public class PaleWorldConfiguredFeatures {
                 BARE_STRIPPED_SMALL_PALE_OAK,
                 Feature.TREE,
                 new TreeFeatureConfig.Builder(BlockStateProvider.of(Blocks.STRIPPED_PALE_OAK_LOG), new ForkingTrunkPlacer(6,2,1),
-                        BlockStateProvider.of(Blocks.AIR), new DarkOakFoliagePlacer(ConstantIntProvider.create(0), ConstantIntProvider.create(0)),
+                        BlockStateProvider.of(Blocks.AIR), new BlankLeaves(ConstantIntProvider.create(0), ConstantIntProvider.create(0)),
                         new ThreeLayersFeatureSize(1,1,0,1,2, OptionalInt.empty()))
                         .decorators(ImmutableList.of(new PaleMossTreeDecorator(0.0F, 0.4F, 0.8F)))
                         .ignoreVines()
                         .build());
+
 
         /*register(configuredFeatureRegisterable, FALLEN_PALE_OAK, RegisterFeatures.FALLEN_TREE,);*/
 
