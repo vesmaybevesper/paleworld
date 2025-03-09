@@ -17,6 +17,7 @@ import vesper.pw.entity.PaleAxolotl.PaleAxolotl;
 import vesper.pw.entity.VampireBat.VampireBat;
 import vesper.pw.item.PaleWorldItemGroup;
 import vesper.pw.item.PaleWorldItems;
+import vesper.pw.modify.PaleGardenSpawnRate;
 import vesper.pw.world.gen.PaleWorldWorldGen;
 
 public class PaleWorld implements ModInitializer {
@@ -34,6 +35,7 @@ public class PaleWorld implements ModInitializer {
 		Entities.init();
 		FabricDefaultAttributeRegistry.register(Entities.PALE_AXOLOTL, PaleAxolotl.setAttributes());
 		FabricDefaultAttributeRegistry.register(Entities.VAMPIRE_BAT, VampireBat.createHostileAttributes());
+		PaleGardenSpawnRate.override();
 		LOGGER.info("Registered Entities");
 		Registry.register(Registries.PARTICLE_TYPE, Identifier.of(MOD_ID, "fog_particle"), FOG_PARTICLE);
 		PaleWorldItems.regModItems();
