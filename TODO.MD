@@ -13,7 +13,6 @@ TO-DO:
 
   
 - V2.0.0
-  - ~~Stripped Pale Trees in Pale Garden~~
   - New Flowers
     - chrysanthemum
       - fix texture
@@ -27,7 +26,6 @@ TO-DO:
     - ~~Fog~~
     - Add some particles into fog
     - Create a particle only fog / make fog work with shaders
-  - Reduce Normal Mob Spawns
   - Add More "Pale" Mobs
   - Add all new to lang
   - Fix no fog with shaders(?)

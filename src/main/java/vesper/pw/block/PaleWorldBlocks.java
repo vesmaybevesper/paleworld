@@ -107,7 +107,7 @@ public class PaleWorldBlocks {
                             .pistonBehavior(PistonBehavior.DESTROY)
     ));
 
-    public static final Block CHRYSANTHEMUM = regBlock(
+    /*public static final Block CHRYSANTHEMUM = regBlock(
             "chrysanthemum",
             (settings) -> new FlowerBlock(StatusEffects.WEAKNESS, 15.0F, settings),
             AbstractBlock.Settings.create()
@@ -118,7 +118,7 @@ public class PaleWorldBlocks {
                     .sounds(BlockSoundGroup.GRASS)
                     .offset(AbstractBlock.OffsetType.XZ)
                     .pistonBehavior(PistonBehavior.DESTROY)
-    );
+    );*/
 
     public static final Block WHITE_CRYSTAL = regBlock("white_crystal", new AmethystBlock(AbstractBlock.Settings.create()
             .registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(PaleWorld.MOD_ID, "white_crystal")))
@@ -128,6 +128,14 @@ public class PaleWorldBlocks {
             .pistonBehavior(PistonBehavior.NORMAL)
             .sounds(BlockSoundGroup.AMETHYST_BLOCK)
     ));
+
+    public static final Block PALE_STONE = regBlock("pale_stone", new Block(AbstractBlock.Settings.create()
+            .registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(PaleWorld.MOD_ID, "pale_stone")))
+            .pistonBehavior(PistonBehavior.NORMAL)
+            .sounds(BlockSoundGroup.TUFF)
+            .requiresTool()
+            .strength(1.5F)
+            .mapColor(MapColor.STONE_GRAY)));
 
     private static Block regBlock(String name, Block block) {
         regBlockItem(name, block);
@@ -161,7 +169,8 @@ public class PaleWorldBlocks {
             fabricItemGroupEntries.add(DYING_AZALEA);
             fabricItemGroupEntries.add(SMALL_DYING_DRIPLEAF);
             fabricItemGroupEntries.add(WHITE_CRYSTAL);
-            fabricItemGroupEntries.add(CHRYSANTHEMUM);
+            fabricItemGroupEntries.add(PALE_STONE);
+            //fabricItemGroupEntries.add(CHRYSANTHEMUM);
         });
     }
 

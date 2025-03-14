@@ -25,7 +25,7 @@ public class PaleSpikeFeature extends Feature<DefaultFeatureConfig> {
         for(structureWorldAccess = context.getWorld(); structureWorldAccess.isAir(blockPos) && blockPos.getY() > structureWorldAccess.getBottomY() + 2; blockPos = blockPos.down()) {
         }
 
-        if (!structureWorldAccess.getBlockState(blockPos).isOf(Blocks.PALE_MOSS_BLOCK)) {
+        if (!structureWorldAccess.getBlockState(blockPos).isOf(Blocks.GRASS_BLOCK) && !structureWorldAccess.getBlockState(blockPos).isOf(Blocks.PALE_MOSS_BLOCK)) {
             return false;
         } else {
             blockPos = blockPos.up(random.nextInt(4));
@@ -46,14 +46,14 @@ public class PaleSpikeFeature extends Feature<DefaultFeatureConfig> {
                         float h = (float)MathHelper.abs(n) - 0.25F;
                         if ((m == 0 && n == 0 || !(g * g + h * h > f * f)) && (m != -l && m != l && n != -l && n != l || !(random.nextFloat() > 0.75F))) {
                             BlockState blockState = structureWorldAccess.getBlockState(blockPos.add(m, k, n));
-                            if (blockState.isAir() || isSoil(blockState) || blockState.isOf(Blocks.PALE_MOSS_BLOCK) || blockState.isOf(Blocks.ICE)) {
-                                this.setBlockState(structureWorldAccess, blockPos.add(m, k, n), PaleWorldBlocks.WHITE_CRYSTAL.getDefaultState());
+                            if (blockState.isAir() || isSoil(blockState) || blockState.isOf(Blocks.PALE_MOSS_BLOCK) || blockState.isOf(Blocks.GRASS_BLOCK)) {
+                                this.setBlockState(structureWorldAccess, blockPos.add(m, k, n), PaleWorldBlocks.PALE_STONE.getDefaultState());
                             }
 
                             if (k != 0 && l > 1) {
                                 blockState = structureWorldAccess.getBlockState(blockPos.add(m, -k, n));
-                                if (blockState.isAir() || isSoil(blockState) || blockState.isOf(Blocks.PALE_MOSS_BLOCK) || blockState.isOf(Blocks.ICE)) {
-                                    this.setBlockState(structureWorldAccess, blockPos.add(m, -k, n), PaleWorldBlocks.WHITE_CRYSTAL.getDefaultState());
+                                if (blockState.isAir() || isSoil(blockState) || blockState.isOf(Blocks.PALE_MOSS_BLOCK) || blockState.isOf(Blocks.GRASS_BLOCK)) {
+                                    this.setBlockState(structureWorldAccess, blockPos.add(m, -k, n), PaleWorldBlocks.PALE_STONE.getDefaultState());
                                 }
                             }
                         }
@@ -78,11 +78,11 @@ public class PaleSpikeFeature extends Feature<DefaultFeatureConfig> {
 
                     while(blockPos2.getY() > 50) {
                         BlockState blockState2 = structureWorldAccess.getBlockState(blockPos2);
-                        if (!blockState2.isAir() && !isSoil(blockState2) && !blockState2.isOf(Blocks.SNOW_BLOCK) && !blockState2.isOf(Blocks.ICE) && !blockState2.isOf(PaleWorldBlocks.WHITE_CRYSTAL)) {
+                        if (!blockState2.isAir() && !isSoil(blockState2) && !blockState2.isOf(Blocks.GRASS_BLOCK) && !blockState2.isOf(Blocks.PALE_MOSS_BLOCK) && !blockState2.isOf(PaleWorldBlocks.PALE_STONE)) {
                             break;
                         }
 
-                        this.setBlockState(structureWorldAccess, blockPos2, PaleWorldBlocks.WHITE_CRYSTAL.getDefaultState());
+                        this.setBlockState(structureWorldAccess, blockPos2, PaleWorldBlocks.PALE_STONE.getDefaultState());
                         blockPos2 = blockPos2.down();
                         --p;
                         if (p <= 0) {
