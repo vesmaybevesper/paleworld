@@ -3,10 +3,10 @@
   "category": "building",
     "ingredients":
     [
-      "pale-world:white_crystal"
+      "paleworld:white_crystal"
     ],
   "result": {
     "count": 4,
-    "id": "pale-world:drained_crystal_fragment"
+    "id": "paleworld:drained_crystal_fragment"
   }
 }

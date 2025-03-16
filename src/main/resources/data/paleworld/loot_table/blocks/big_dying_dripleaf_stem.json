@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "pale-world:big_dying_dripleaf"
+          "name": "paleworld:big_dying_dripleaf"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "pale-world:blocks/big_dying_dripleaf"
+  "random_sequence": "paleworld:blocks/big_dying_dripleaf"
 }
