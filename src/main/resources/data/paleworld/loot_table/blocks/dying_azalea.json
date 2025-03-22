@@ -11,7 +11,7 @@
   "entries": [
     {
      "type": "minecraft:item",
-      "name": "pale-world:dying_azalea"
+      "name": "paleworld:dying_azalea"
     }
   ],
   "rolls": 1.0

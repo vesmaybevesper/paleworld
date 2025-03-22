@@ -8,6 +8,6 @@ import vesper.pw.world.PaleWorldPlacedFeatures;
 
 public class RockGen {
     public static void rockGenerator(){
-        /*BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.PALE_GARDEN), GenerationStep.Feature.SURFACE_STRUCTURES, PaleWorldPlacedFeatures.PALE_SPIKE);*/
+            BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.PALE_GARDEN), GenerationStep.Feature.SURFACE_STRUCTURES, PaleWorldPlacedFeatures.PALE_SPIKE);
     }
 }

@@ -46,6 +46,7 @@
 		"another-mod": "*"
 	},
 	"conflicts": {
-		"foggypalegarden": "*"
+		"foggypalegarden": "*",
+		"glowing-eyeblossom": "*"
 	}
 }

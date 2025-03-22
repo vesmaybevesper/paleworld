@@ -17,6 +17,8 @@ public class TreeGen {
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.PALE_GARDEN), GenerationStep.Feature.VEGETAL_DECORATION, PaleWorldPlacedFeatures.TALL_PALE_OAK);
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.PALE_GARDEN), GenerationStep.Feature.VEGETAL_DECORATION, PaleWorldPlacedFeatures.SMALL_PALE_OAK);
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.PALE_GARDEN), GenerationStep.Feature.VEGETAL_DECORATION, PaleWorldPlacedFeatures.STRIPPED_SMALL_PALE_OAK);
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.PALE_GARDEN), GenerationStep.Feature.VEGETAL_DECORATION, PaleWorldPlacedFeatures.STRIPPED_FALLEN_PALE_OAK);
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.PALE_GARDEN), GenerationStep.Feature.VEGETAL_DECORATION, PaleWorldPlacedFeatures.FALLEN_PALE_OAK);
     }
 
 

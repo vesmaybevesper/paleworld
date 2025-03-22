@@ -10,6 +10,7 @@ import net.minecraft.state.property.Properties;
 import net.minecraft.structure.processor.StructureProcessorList;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DataPool;
+import net.minecraft.util.collection.Pool;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.VerticalSurfaceType;
 import net.minecraft.util.math.intprovider.*;
@@ -17,10 +18,14 @@ import net.minecraft.world.gen.blockpredicate.BlockPredicate;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.size.ThreeLayersFeatureSize;
 import net.minecraft.world.gen.foliage.DarkOakFoliagePlacer;
+import net.minecraft.world.gen.placementmodifier.BiomePlacementModifier;
+import net.minecraft.world.gen.placementmodifier.CountPlacementModifier;
 import net.minecraft.world.gen.placementmodifier.PlacementModifier;
+import net.minecraft.world.gen.placementmodifier.SquarePlacementModifier;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import net.minecraft.world.gen.stateprovider.RandomizedIntBlockStateProvider;
 import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
+import net.minecraft.world.gen.treedecorator.AttachedToLeavesTreeDecorator;
 import net.minecraft.world.gen.treedecorator.PaleMossTreeDecorator;
 import net.minecraft.world.gen.trunk.DarkOakTrunkPlacer;
 import net.minecraft.world.gen.trunk.ForkingTrunkPlacer;
@@ -31,6 +36,8 @@ import net.minecraft.block.BlockState;
 import vesper.pw.block.custom.PaleVines;
 import vesper.pw.block.custom.SmallDyingDripleafBlock;
 import vesper.pw.world.gen.feature.BlankLeaves;
+import vesper.pw.world.gen.feature.FallenPaleOakConfig;
+import vesper.pw.world.gen.feature.RegisterFeatures;
 
 
 import java.util.List;
@@ -61,6 +68,7 @@ public class PaleWorldConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?,?>> BARE_PALE_OAK = registryKey("bare_pale_oak");
     public static final RegistryKey<ConfiguredFeature<?,?>> STRIPPED_BARE_PALE_OAK = registryKey("stripped_bare_pale_oak");
     public static final RegistryKey<ConfiguredFeature<?,?>> FALLEN_PALE_OAK = registryKey("fallen_pale_oak");
+    public static final RegistryKey<ConfiguredFeature<?,?>> STRIPPED_FALLEN_PALE_OAK = registryKey("stripped_fallen_pale_oak");
     public static final RegistryKey<ConfiguredFeature<?,?>> PALE_SPIKE = registryKey("pale_spike");
 
 
@@ -86,6 +94,19 @@ public class PaleWorldConfiguredFeatures {
                         Direction.UP, BlockPredicate.IS_AIR_OR_WATER, true),
                 new PlacementModifier[0]);
     }
+
+        private static FallenPaleOakConfig.Builder fallenPaleOak(){
+            return fallen(Blocks.PALE_OAK_LOG, 4, 7);
+        }
+
+    private static FallenPaleOakConfig.Builder strippedFallenPaleOak(){
+        return fallen(Blocks.STRIPPED_PALE_OAK_LOG, 4, 7);
+    }
+
+        private static FallenPaleOakConfig.Builder fallen(Block log, int minLength, int maxLength){
+            return (new FallenPaleOakConfig.Builder(BlockStateProvider.of(log), UniformIntProvider.create(minLength, maxLength)));
+        }
+
 
     public static void bootstrap(Registerable<ConfiguredFeature<?,?>> configuredFeatureRegisterable) {
         RegistryEntryLookup<ConfiguredFeature<?, ?>> registryEntryLookup = configuredFeatureRegisterable.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
@@ -402,9 +423,11 @@ public class PaleWorldConfiguredFeatures {
                         .build());
 
 
-        /*register(configuredFeatureRegisterable, FALLEN_PALE_OAK, RegisterFeatures.FALLEN_TREE,);*/
+        register(configuredFeatureRegisterable, FALLEN_PALE_OAK, PaleWorld.FALLEN_TREE, fallenPaleOak().build());
 
-        /*register(configuredFeatureRegisterable, PALE_SPIKE, RegisterFeatures.PALE_SPIKE_FEATURE);*/
+        register(configuredFeatureRegisterable, STRIPPED_FALLEN_PALE_OAK, PaleWorld.FALLEN_TREE, strippedFallenPaleOak().build());
+
+        register(configuredFeatureRegisterable, PALE_SPIKE, PaleWorld.PALE_SPIKE);
 
     }
 

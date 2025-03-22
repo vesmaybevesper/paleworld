@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "pale-world:small_dying_dripleaf"
+          "name": "paleworld:small_dying_dripleaf"
         }
       ],
       "rolls": 1.0
