@@ -5,8 +5,8 @@ TO-DO:
   - Better Effect on eating Pale Berries
   - Better Vampire Bat Behavior
   - More Drained Amethyst Fragment use
-    - Use for dimension portal (don't get excited this is wayyy down the line)
-    - Compass to pale garden
+    - Use for dimension portal (don't get too excited this is wayyy down the line)
+    - Compass to pale garden?
   - Pale Cave VFX
   - Pale Cave Structure(?)
   - Finalize Pale Apple implementation
@@ -23,7 +23,6 @@ TO-DO:
   - More Blocks
   - Increase biome size
   - VFX
-    - ~~Fog~~
     - Add some particles into fog
     - Create a particle only fog / make fog work with shaders
   - Add More "Pale" Mobs
