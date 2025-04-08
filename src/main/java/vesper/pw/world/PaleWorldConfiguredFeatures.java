@@ -9,7 +9,6 @@ import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.state.property.Properties;
 import net.minecraft.structure.processor.StructureProcessorList;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.collection.DataPool;
 import net.minecraft.util.collection.Pool;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.VerticalSurfaceType;
@@ -18,15 +17,13 @@ import net.minecraft.world.gen.blockpredicate.BlockPredicate;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.size.ThreeLayersFeatureSize;
 import net.minecraft.world.gen.foliage.DarkOakFoliagePlacer;
-import net.minecraft.world.gen.placementmodifier.BiomePlacementModifier;
-import net.minecraft.world.gen.placementmodifier.CountPlacementModifier;
 import net.minecraft.world.gen.placementmodifier.PlacementModifier;
-import net.minecraft.world.gen.placementmodifier.SquarePlacementModifier;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import net.minecraft.world.gen.stateprovider.RandomizedIntBlockStateProvider;
 import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
-import net.minecraft.world.gen.treedecorator.AttachedToLeavesTreeDecorator;
+import net.minecraft.world.gen.treedecorator.AttachedToLogsTreeDecorator;
 import net.minecraft.world.gen.treedecorator.PaleMossTreeDecorator;
+import net.minecraft.world.gen.treedecorator.TrunkVineTreeDecorator;
 import net.minecraft.world.gen.trunk.DarkOakTrunkPlacer;
 import net.minecraft.world.gen.trunk.ForkingTrunkPlacer;
 import vesper.pw.PaleWorld;
@@ -36,8 +33,6 @@ import net.minecraft.block.BlockState;
 import vesper.pw.block.custom.PaleVines;
 import vesper.pw.block.custom.SmallDyingDripleafBlock;
 import vesper.pw.world.gen.feature.BlankLeaves;
-import vesper.pw.world.gen.feature.FallenPaleOakConfig;
-import vesper.pw.world.gen.feature.RegisterFeatures;
 
 
 import java.util.List;
@@ -67,13 +62,12 @@ public class PaleWorldConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?,?>> BARE_STRIPPED_SMALL_PALE_OAK = registryKey("bare_stripped_small_pale_oak");
     public static final RegistryKey<ConfiguredFeature<?,?>> BARE_PALE_OAK = registryKey("bare_pale_oak");
     public static final RegistryKey<ConfiguredFeature<?,?>> STRIPPED_BARE_PALE_OAK = registryKey("stripped_bare_pale_oak");
-    public static final RegistryKey<ConfiguredFeature<?,?>> FALLEN_PALE_OAK = registryKey("fallen_pale_oak");
-    public static final RegistryKey<ConfiguredFeature<?,?>> STRIPPED_FALLEN_PALE_OAK = registryKey("stripped_fallen_pale_oak");
     public static final RegistryKey<ConfiguredFeature<?,?>> PALE_SPIKE = registryKey("pale_spike");
+    public static final RegistryKey<ConfiguredFeature<?,?>> FALLEN_PALE_OAK = registryKey("fallen_pale_oak");
 
 
     private static RegistryEntry<PlacedFeature> createSmallDyingDripleaf(){
-        return PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(DataPool.<BlockState>builder()
+        return PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(Pool.<BlockState>builder()
                         .add((BlockState) PaleWorldBlocks.SMALL_DYING_DRIPLEAF.getDefaultState().with(SmallDyingDripleafBlock.FACING, Direction.EAST), 1)
                         .add((BlockState) PaleWorldBlocks.SMALL_DYING_DRIPLEAF.getDefaultState().with(SmallDyingDripleafBlock.FACING, Direction.WEST), 1)
                         .add((BlockState) PaleWorldBlocks.SMALL_DYING_DRIPLEAF.getDefaultState().with(SmallDyingDripleafBlock.FACING, Direction.NORTH), 1)
@@ -83,7 +77,7 @@ public class PaleWorldConfiguredFeatures {
     }
 
     private static RegistryEntry<PlacedFeature> createBigDyingDripleaf(Direction direction) {
-        return PlacedFeatures.createEntry(Feature.BLOCK_COLUMN, new BlockColumnFeatureConfig(List.of(BlockColumnFeatureConfig.createLayer(new WeightedListIntProvider(DataPool.<IntProvider>builder()
+        return PlacedFeatures.createEntry(Feature.BLOCK_COLUMN, new BlockColumnFeatureConfig(List.of(BlockColumnFeatureConfig.createLayer(new WeightedListIntProvider(Pool.<IntProvider>builder()
                 .add(UniformIntProvider.create(0, 4), 2)
                 .add(ConstantIntProvider.create(0), 1).build()),
                 BlockStateProvider.of((BlockState)PaleWorldBlocks.BIG_DYING_DRIPLEAF_STEM.getDefaultState()
@@ -95,32 +89,28 @@ public class PaleWorldConfiguredFeatures {
                 new PlacementModifier[0]);
     }
 
-        private static FallenPaleOakConfig.Builder fallenPaleOak(){
-            return fallen(Blocks.PALE_OAK_LOG, 4, 7);
-        }
-
-    private static FallenPaleOakConfig.Builder strippedFallenPaleOak(){
-        return fallen(Blocks.STRIPPED_PALE_OAK_LOG, 4, 7);
+    private static FallenTreeFeatureConfig.Builder fallenPaleOak() {
+        return fallen(Blocks.PALE_OAK_LOG, 4, 7).stumpDecorators(ImmutableList.of(TrunkVineTreeDecorator.INSTANCE));
     }
 
-        private static FallenPaleOakConfig.Builder fallen(Block log, int minLength, int maxLength){
-            return (new FallenPaleOakConfig.Builder(BlockStateProvider.of(log), UniformIntProvider.create(minLength, maxLength)));
-        }
+    private static FallenTreeFeatureConfig.Builder fallen(Block log, int minLength, int maxLength) {
+        return (new FallenTreeFeatureConfig.Builder(BlockStateProvider.of(log), UniformIntProvider.create(minLength, maxLength))).logDecorators(ImmutableList.of());
+    }
 
 
     public static void bootstrap(Registerable<ConfiguredFeature<?,?>> configuredFeatureRegisterable) {
         RegistryEntryLookup<ConfiguredFeature<?, ?>> registryEntryLookup = configuredFeatureRegisterable.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
         RegistryEntryLookup<StructureProcessorList> registryEntryLookup2 = configuredFeatureRegisterable.getRegistryLookup(RegistryKeys.PROCESSOR_LIST);
 
-    // Underground / Pale Cave features
-        WeightedBlockStateProvider weightedBlockStateProvider = new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(PaleWorldBlocks.PALE_VINE_BODY.getDefaultState(), 4).add((BlockState)PaleWorldBlocks.PALE_VINE_BODY.getDefaultState().with(PaleVines.BERRIES, Boolean.TRUE), 1));
-        WeightedBlockStateProvider hangingWeighted = new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(Blocks.PALE_HANGING_MOSS.getDefaultState(), 2).add((BlockState)Blocks.PALE_HANGING_MOSS.getDefaultState(), 1));
+        // Underground / Pale Cave features
+        WeightedBlockStateProvider weightedBlockStateProvider = new WeightedBlockStateProvider(Pool.<BlockState>builder().add(PaleWorldBlocks.PALE_VINE_BODY.getDefaultState(), 4).add((BlockState)PaleWorldBlocks.PALE_VINE_BODY.getDefaultState().with(PaleVines.BERRIES, Boolean.TRUE), 1));
+        WeightedBlockStateProvider hangingWeighted = new WeightedBlockStateProvider(Pool.<BlockState>builder().add(Blocks.PALE_HANGING_MOSS.getDefaultState(), 2).add((BlockState)Blocks.PALE_HANGING_MOSS.getDefaultState(), 1));
 
-        RandomizedIntBlockStateProvider randomizedIntBlockStateProvider = new RandomizedIntBlockStateProvider(new WeightedBlockStateProvider(DataPool.<BlockState>builder()
+        RandomizedIntBlockStateProvider randomizedIntBlockStateProvider = new RandomizedIntBlockStateProvider(new WeightedBlockStateProvider(Pool.<BlockState>builder()
                 .add(PaleWorldBlocks.PALE_VINE.getDefaultState(), 4)
                 .add((BlockState)PaleWorldBlocks.PALE_VINE.getDefaultState().with(PaleVines.BERRIES, Boolean.TRUE), 1)), String.valueOf(PaleVineBodyBlock.AGE), UniformIntProvider.create(20, 23));
 
-        RandomizedIntBlockStateProvider hangingRandomized = new RandomizedIntBlockStateProvider(new WeightedBlockStateProvider(DataPool.<BlockState>builder()
+        RandomizedIntBlockStateProvider hangingRandomized = new RandomizedIntBlockStateProvider(new WeightedBlockStateProvider(Pool.<BlockState>builder()
                 .add(Blocks.PALE_HANGING_MOSS.getDefaultState(), 1)
                 .add((BlockState)Blocks.PALE_HANGING_MOSS.getDefaultState(), 1)), String.valueOf(PaleVineBodyBlock.AGE), UniformIntProvider.create(20, 23));
 
@@ -136,10 +126,10 @@ public class PaleWorldConfiguredFeatures {
                                 createBigDyingDripleaf(Direction.SOUTH),
                                 createBigDyingDripleaf(Direction.NORTH)})
                 )
-                );
+        );
 
-       register(configuredFeatureRegisterable, PALE_CAVE_VEG, Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(
-                DataPool.<BlockState>builder()
+        register(configuredFeatureRegisterable, PALE_CAVE_VEG, Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(
+                Pool.<BlockState>builder()
                         .add(Blocks.DEAD_BUSH.getDefaultState(),5)
                         .add(PaleWorldBlocks.DYING_AZALEA.getDefaultState(),2)
                         .add(Blocks.PALE_MOSS_CARPET.getDefaultState(), 25)
@@ -147,49 +137,49 @@ public class PaleWorldConfiguredFeatures {
                         .add(Blocks.TALL_GRASS.getDefaultState(),7))));
 
         register(configuredFeatureRegisterable, PALE_CAVE_CEILING_VEG_MIXED, Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(
-                DataPool.<BlockState>builder()
+                Pool.<BlockState>builder()
                         .add(Blocks.PALE_HANGING_MOSS.getDefaultState(),7)
                         .add(PaleWorldBlocks.PALE_VINE_BODY.getDefaultState(), 7)
                         .add(Blocks.AIR.getDefaultState(), 7))));
 
 
-       register(configuredFeatureRegisterable,
-               PALE_CAVE_PATCH,
-               Feature.VEGETATION_PATCH,
-               new VegetationPatchFeatureConfig(
-                       BlockTags.MOSS_REPLACEABLE,
-                       BlockStateProvider.of(Blocks.PALE_MOSS_BLOCK),
-                       PlacedFeatures.createEntry(registryEntryLookup.getOrThrow(PALE_CAVE_VEG)),
-                       VerticalSurfaceType.FLOOR,
-                       ConstantIntProvider.create(1),
-                       0.0f,
-                       5,
-                       0.8f,
-                       UniformIntProvider.create(4,7),
-                       0.3f
-               ));
+        register(configuredFeatureRegisterable,
+                PALE_CAVE_PATCH,
+                Feature.VEGETATION_PATCH,
+                new VegetationPatchFeatureConfig(
+                        BlockTags.MOSS_REPLACEABLE,
+                        BlockStateProvider.of(Blocks.PALE_MOSS_BLOCK),
+                        PlacedFeatures.createEntry(registryEntryLookup.getOrThrow(PALE_CAVE_VEG)),
+                        VerticalSurfaceType.FLOOR,
+                        ConstantIntProvider.create(1),
+                        0.0f,
+                        5,
+                        0.8f,
+                        UniformIntProvider.create(4,7),
+                        0.3f
+                ));
 
-       register(configuredFeatureRegisterable,
-               PALE_VINE,
-               Feature.BLOCK_COLUMN,
-               new BlockColumnFeatureConfig(
-                       List.of(
-                               BlockColumnFeatureConfig.createLayer(
-                                       new WeightedListIntProvider(
-                                               DataPool.<IntProvider>builder()
-                                                       .add(UniformIntProvider.create(0,19), 2)
-                                                       .add(UniformIntProvider.create(0,2),3)
-                                                       .add(UniformIntProvider.create(0,6),10)
-                                                       .build()
-                                       ),
-                                       weightedBlockStateProvider
-                               ),
-                               BlockColumnFeatureConfig.createLayer(ConstantIntProvider.create(1), randomizedIntBlockStateProvider)
-                       ),
-                       Direction.UP,
-                       BlockPredicate.IS_AIR,
-                       true
-               ));
+        register(configuredFeatureRegisterable,
+                PALE_VINE,
+                Feature.BLOCK_COLUMN,
+                new BlockColumnFeatureConfig(
+                        List.of(
+                                BlockColumnFeatureConfig.createLayer(
+                                        new WeightedListIntProvider(
+                                                Pool.<IntProvider>builder()
+                                                        .add(UniformIntProvider.create(0,19), 2)
+                                                        .add(UniformIntProvider.create(0,2),3)
+                                                        .add(UniformIntProvider.create(0,6),10)
+                                                        .build()
+                                        ),
+                                        weightedBlockStateProvider
+                                ),
+                                BlockColumnFeatureConfig.createLayer(ConstantIntProvider.create(1), randomizedIntBlockStateProvider)
+                        ),
+                        Direction.UP,
+                        BlockPredicate.IS_AIR,
+                        true
+                ));
 
         register(configuredFeatureRegisterable,
                 PALE_VINE_IN_MOSS,
@@ -197,7 +187,7 @@ public class PaleWorldConfiguredFeatures {
                 new BlockColumnFeatureConfig(
                         List.of(
                                 BlockColumnFeatureConfig.createLayer(
-                                        new WeightedListIntProvider(DataPool.<IntProvider>builder().add(UniformIntProvider.create(0,3), 2).add(UniformIntProvider.create(1,7),1).add(UniformIntProvider.create(0,1), 10).build()),
+                                        new WeightedListIntProvider(Pool.<IntProvider>builder().add(UniformIntProvider.create(0,3), 2).add(UniformIntProvider.create(1,7),1).add(UniformIntProvider.create(0,1), 10).build()),
                                         weightedBlockStateProvider
                                 ),
                                 BlockColumnFeatureConfig.createLayer(ConstantIntProvider.create(1), randomizedIntBlockStateProvider)
@@ -225,13 +215,13 @@ public class PaleWorldConfiguredFeatures {
                         0.3f
                 ));
 
-       register(configuredFeatureRegisterable, CEILING_HANGING_MOSS,
-               Feature.SIMPLE_BLOCK,
-               new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(
-                       DataPool.<BlockState>builder()
-                       .add(Blocks.PALE_HANGING_MOSS.getDefaultState(), 5)
-                               .add(Blocks.AIR.getDefaultState(), 7)
-               )));
+        register(configuredFeatureRegisterable, CEILING_HANGING_MOSS,
+                Feature.SIMPLE_BLOCK,
+                new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(
+                        Pool.<BlockState>builder()
+                                .add(Blocks.PALE_HANGING_MOSS.getDefaultState(), 5)
+                                .add(Blocks.AIR.getDefaultState(), 7)
+                )));
 
         register(configuredFeatureRegisterable,
                 HANGING_MOSS_IN_PALE,
@@ -249,50 +239,50 @@ public class PaleWorldConfiguredFeatures {
                         0.3F
                 ));
 
-       register(
-               configuredFeatureRegisterable,
-               CLAY_DRIPLEAF,
-               Feature.VEGETATION_PATCH,
-               new VegetationPatchFeatureConfig(
-                       BlockTags.LUSH_GROUND_REPLACEABLE,
-                       BlockStateProvider.of(Blocks.CLAY),
-                       PlacedFeatures.createEntry(registryEntryLookup.getOrThrow(DYING_DRIPLEAF)),
-                       VerticalSurfaceType.FLOOR,
-                       ConstantIntProvider.create(3),
-                       0.8F,
-                       2,
-                       0.5F,
-                       UniformIntProvider.create(4, 7),
-                       0.7F
-               ));
+        register(
+                configuredFeatureRegisterable,
+                CLAY_DRIPLEAF,
+                Feature.VEGETATION_PATCH,
+                new VegetationPatchFeatureConfig(
+                        BlockTags.LUSH_GROUND_REPLACEABLE,
+                        BlockStateProvider.of(Blocks.CLAY),
+                        PlacedFeatures.createEntry(registryEntryLookup.getOrThrow(DYING_DRIPLEAF)),
+                        VerticalSurfaceType.FLOOR,
+                        ConstantIntProvider.create(3),
+                        0.8F,
+                        2,
+                        0.5F,
+                        UniformIntProvider.create(4, 7),
+                        0.7F
+                ));
 
-               register(
-               configuredFeatureRegisterable,
-               CLAY_POOL_DRIPLEAF,
-               Feature.WATERLOGGED_VEGETATION_PATCH,
-               new VegetationPatchFeatureConfig(
-                       BlockTags.LUSH_GROUND_REPLACEABLE,
-                       BlockStateProvider.of(Blocks.CLAY),
-                       PlacedFeatures.createEntry(registryEntryLookup.getOrThrow(DYING_DRIPLEAF)),
-                       VerticalSurfaceType.FLOOR,
-                       ConstantIntProvider.create(3),
-                       0.8F,
-                       5,
-                       0.1F,
-                       UniformIntProvider.create(4, 7),
-                       0.7F
-               )
-       );
+        register(
+                configuredFeatureRegisterable,
+                CLAY_POOL_DRIPLEAF,
+                Feature.WATERLOGGED_VEGETATION_PATCH,
+                new VegetationPatchFeatureConfig(
+                        BlockTags.LUSH_GROUND_REPLACEABLE,
+                        BlockStateProvider.of(Blocks.CLAY),
+                        PlacedFeatures.createEntry(registryEntryLookup.getOrThrow(DYING_DRIPLEAF)),
+                        VerticalSurfaceType.FLOOR,
+                        ConstantIntProvider.create(3),
+                        0.8F,
+                        5,
+                        0.1F,
+                        UniformIntProvider.create(4, 7),
+                        0.7F
+                )
+        );
 
-       register(
-               configuredFeatureRegisterable,
-               PALE_CAVES_CLAY,
-               Feature.RANDOM_BOOLEAN_SELECTOR,
-                    new RandomBooleanFeatureConfig(
-                            PlacedFeatures.createEntry(registryEntryLookup.getOrThrow(CLAY_DRIPLEAF)),
-                            PlacedFeatures.createEntry(registryEntryLookup.getOrThrow(CLAY_POOL_DRIPLEAF))
-                    )
-       );
+        register(
+                configuredFeatureRegisterable,
+                PALE_CAVES_CLAY,
+                Feature.RANDOM_BOOLEAN_SELECTOR,
+                new RandomBooleanFeatureConfig(
+                        PlacedFeatures.createEntry(registryEntryLookup.getOrThrow(CLAY_DRIPLEAF)),
+                        PlacedFeatures.createEntry(registryEntryLookup.getOrThrow(CLAY_POOL_DRIPLEAF))
+                )
+        );
 
         register(
                 configuredFeatureRegisterable,
@@ -422,14 +412,10 @@ public class PaleWorldConfiguredFeatures {
                         .ignoreVines()
                         .build());
 
-
-        register(configuredFeatureRegisterable, FALLEN_PALE_OAK, PaleWorld.FALLEN_TREE, fallenPaleOak().build());
-
-        register(configuredFeatureRegisterable, STRIPPED_FALLEN_PALE_OAK, PaleWorld.FALLEN_TREE, strippedFallenPaleOak().build());
-
-        register(configuredFeatureRegisterable, PALE_SPIKE, PaleWorld.PALE_SPIKE);
+        register(configuredFeatureRegisterable, FALLEN_PALE_OAK, Feature.FALLEN_TREE, fallenPaleOak().build());
 
     }
+
 
     public static void register(Registerable<ConfiguredFeature<?, ?>> registerable, RegistryKey<ConfiguredFeature<?, ?>> key, Feature<DefaultFeatureConfig> feature) {
         register(registerable, key, feature, FeatureConfig.DEFAULT);

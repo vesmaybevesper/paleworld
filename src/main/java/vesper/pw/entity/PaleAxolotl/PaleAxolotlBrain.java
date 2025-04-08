@@ -101,7 +101,7 @@ public class PaleAxolotlBrain {
                                                 Pair.of(StrollTask.createDynamicRadius(0.5F), 2),
                                                 Pair.of(StrollTask.create(0.15F, false), 2),
                                                 Pair.of(GoToLookTargetTask.create(PaleAxolotlBrain::canGoToLookTarget, PaleAxolotlBrain::getTemptedSpeed, 3), 3),
-                                                Pair.of(TaskTriggerer.predicate(Entity::isInsideWaterOrBubbleColumn), 5),
+                                                Pair.of(TaskTriggerer.predicate(Entity::isTouchingWater), 5),
                                                 Pair.of(TaskTriggerer.predicate(Entity::isOnGround), 5)
                                         )
                                 )
@@ -115,21 +115,21 @@ public class PaleAxolotlBrain {
         Optional<LookTarget> optional = entity.getBrain().getOptionalRegisteredMemory(MemoryModuleType.LOOK_TARGET);
         if (optional.isPresent()) {
             BlockPos blockPos = ((LookTarget)optional.get()).getBlockPos();
-            return world.isWater(blockPos) == entity.isInsideWaterOrBubbleColumn();
+            return world.isWater(blockPos) == entity.isTouchingWater();
         } else {
             return false;
         }
     }
 
     private static float getTargetApproachingSpeed(LivingEntity entity) {
-        return entity.isInsideWaterOrBubbleColumn() ? 0.6F : 0.15F;
+        return entity.isTouchingWater() ? 0.6F : 0.15F;
     }
 
     private static float getAdultFollowingSpeed(LivingEntity entity) {
-        return entity.isInsideWaterOrBubbleColumn() ? 0.6F : 0.15F;
+        return entity.isTouchingWater() ? 0.6F : 0.15F;
     }
     private static float getTemptedSpeed(LivingEntity entity) {
-        return entity.isInsideWaterOrBubbleColumn() ? 0.5F : 0.15F;
+        return entity.isTouchingWater() ? 0.5F : 0.15F;
     }
 
     private static Optional<? extends LivingEntity> getAttackTarget(ServerWorld world, AxolotlEntity axolotl) {

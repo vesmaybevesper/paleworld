@@ -1,6 +1,0 @@
-{
-  "parent": "item/template_spawn_egg",
-  "textures": {
-    "layer0": "paleworld:item/vampire_bat_egg"
-  }
-}

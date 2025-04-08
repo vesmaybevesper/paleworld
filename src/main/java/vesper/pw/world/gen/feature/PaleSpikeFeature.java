@@ -28,11 +28,11 @@ public class PaleSpikeFeature extends Feature<DefaultFeatureConfig> {
         if (!structureWorldAccess.getBlockState(blockPos).isOf(Blocks.GRASS_BLOCK) && !structureWorldAccess.getBlockState(blockPos).isOf(Blocks.PALE_MOSS_BLOCK)) {
             return false;
         } else {
-            blockPos = blockPos.up(random.nextInt(4));
-            int i = random.nextInt(4) + 7;
-            int j = i / 4 + random.nextInt(2);
-            if (j > 1 && random.nextInt(60) == 0) {
-                blockPos = blockPos.up(10 + random.nextInt(30));
+            blockPos = blockPos.up(random.nextInt(10));
+            int i = random.nextInt(5) + 7;
+            int j = i / 4 + random.nextInt(5);
+            if (j >= 1 && random.nextInt(60) == 0) {
+                blockPos = blockPos.up(20 + random.nextInt(40));
             }
 
             for(int k = 0; k < i; ++k) {

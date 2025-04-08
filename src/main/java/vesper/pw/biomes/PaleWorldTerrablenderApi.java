@@ -14,6 +14,7 @@ public class PaleWorldTerrablenderApi implements TerraBlenderApi {
     @Override
     public void onTerraBlenderInitialized(){
         Regions.register(new PaleCaveRegion(Identifier.of(MOD_ID, "overworld"), palecaveweight));
+        Regions.register(new PaleGardenRegion(Identifier.of(MOD_ID, "overworld"), 2));
 
 
         SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MOD_ID, PaleWorldMaterialRules.makeRules());

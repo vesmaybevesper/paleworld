@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "minecraft:block/chrysanthemum"
+    "layer0": "paleworld:item/pale_axolotl_spawn_egg"
   }
 }

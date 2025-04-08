@@ -1,13 +1,39 @@
+2.0.0+Alpha.5
+=
+* Updated to 1.21.5
+
+2.0.0+Alpha.4
+=
+
+_Added:_
+* Pale Gardens can now be massive... have fun >:)
+
+_Changed:_
+* Decreased Pale Spike Generation
+* Increased possible size of Pale Spikes
+* New Palestone Texture
+
+_Fixed:_
+* Missing Item Group name after modid change
+
+
+
 2.0.0+Alpha.3
 =
 
 _Added:_
-*
+* Palestone
+  * Name subject to change
+  * Temp texture
+* Pale Spikes to Pale Gardens
+  * Palestone Monoliths
 
 _Changed:_
 * Changed mob spawn weights in Pale Garden
-* Made a custom foliage placer instead of placing air using the Dark Oak placer
-  * this fixes an issue where the "leaves"  of the bare trees were deleting actual leaves
+* Bare Pale Oak changes
+  * Made a custom foliage placer instead of placing air using the Dark Oak placer
+    * this fixes an issue where the "leaves" of the bare trees were deleting actual leaves
+  * Reduced weight and extra chance
 
 2.0.0+Alpha.2
 =

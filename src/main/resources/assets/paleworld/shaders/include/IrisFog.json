@@ -1,0 +1,11 @@
+{
+  "vertex": "IrisFog.vert",
+  "fragment": "IrisFog.fsh",
+  "attributes": ["Position", "Color"],
+  "samplers": {
+    "Texture0": ""
+  },
+  "uniforms": {
+    "Time": "time"
+  }
+}

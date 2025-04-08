@@ -41,22 +41,22 @@ public class PaleAxolotlModel extends EntityModel<PaleAxolotlRenderState> {
     public static TexturedModelData getTexturedModelData() {
         ModelData modelData = new ModelData();
         ModelPartData modelPartData = modelData.getRoot();
-        ModelPartData modelPartData2 = modelPartData.addChild("body", ModelPartBuilder.create().uv(0, 11).cuboid(-4.0F, -2.0F, -9.0F, 8.0F, 4.0F, 10.0F).uv(2, 17).cuboid(0.0F, -3.0F, -8.0F, 0.0F, 5.0F, 9.0F), ModelTransform.pivot(0.0F, 20.0F, 5.0F));
+        ModelPartData modelPartData2 = modelPartData.addChild("body", ModelPartBuilder.create().uv(0, 11).cuboid(-4.0F, -2.0F, -9.0F, 8.0F, 4.0F, 10.0F).uv(2, 17).cuboid(0.0F, -3.0F, -8.0F, 0.0F, 5.0F, 9.0F), ModelTransform.origin(0.0F, 20.0F, 5.0F));
         Dilation dilation = new Dilation(0.001F);
-        ModelPartData modelPartData3 = modelPartData2.addChild("head", ModelPartBuilder.create().uv(0, 1).cuboid(-4.0F, -3.0F, -5.0F, 8.0F, 5.0F, 5.0F, dilation), ModelTransform.pivot(0.0F, 0.0F, -9.0F));
+        ModelPartData modelPartData3 = modelPartData2.addChild("head", ModelPartBuilder.create().uv(0, 1).cuboid(-4.0F, -3.0F, -5.0F, 8.0F, 5.0F, 5.0F, dilation), ModelTransform.origin(0.0F, 0.0F, -9.0F));
         ModelPartBuilder modelPartBuilder = ModelPartBuilder.create().uv(3, 37).cuboid(-4.0F, -3.0F, 0.0F, 8.0F, 3.0F, 0.0F, dilation);
         ModelPartBuilder modelPartBuilder2 = ModelPartBuilder.create().uv(0, 40).cuboid(-3.0F, -5.0F, 0.0F, 3.0F, 7.0F, 0.0F, dilation);
         ModelPartBuilder modelPartBuilder3 = ModelPartBuilder.create().uv(11, 40).cuboid(0.0F, -5.0F, 0.0F, 3.0F, 7.0F, 0.0F, dilation);
-        modelPartData3.addChild("top_gills", modelPartBuilder, ModelTransform.pivot(0.0F, -3.0F, -1.0F));
-        modelPartData3.addChild("left_gills", modelPartBuilder2, ModelTransform.pivot(-4.0F, 0.0F, -1.0F));
-        modelPartData3.addChild("right_gills", modelPartBuilder3, ModelTransform.pivot(4.0F, 0.0F, -1.0F));
+        modelPartData3.addChild("top_gills", modelPartBuilder, ModelTransform.origin(0.0F, -3.0F, -1.0F));
+        modelPartData3.addChild("left_gills", modelPartBuilder2, ModelTransform.origin(-4.0F, 0.0F, -1.0F));
+        modelPartData3.addChild("right_gills", modelPartBuilder3, ModelTransform.origin(4.0F, 0.0F, -1.0F));
         ModelPartBuilder modelPartBuilder4 = ModelPartBuilder.create().uv(2, 13).cuboid(-1.0F, 0.0F, 0.0F, 3.0F, 5.0F, 0.0F, dilation);
         ModelPartBuilder modelPartBuilder5 = ModelPartBuilder.create().uv(2, 13).cuboid(-2.0F, 0.0F, 0.0F, 3.0F, 5.0F, 0.0F, dilation);
-        modelPartData2.addChild("right_hind_leg", modelPartBuilder5, ModelTransform.pivot(-3.5F, 1.0F, -1.0F));
-        modelPartData2.addChild("left_hind_leg", modelPartBuilder4, ModelTransform.pivot(3.5F, 1.0F, -1.0F));
-        modelPartData2.addChild("right_front_leg", modelPartBuilder5, ModelTransform.pivot(-3.5F, 1.0F, -8.0F));
-        modelPartData2.addChild("left_front_leg", modelPartBuilder4, ModelTransform.pivot(3.5F, 1.0F, -8.0F));
-        modelPartData2.addChild("tail", ModelPartBuilder.create().uv(2, 19).cuboid(0.0F, -3.0F, 0.0F, 0.0F, 5.0F, 12.0F), ModelTransform.pivot(0.0F, 0.0F, 1.0F));
+        modelPartData2.addChild("right_hind_leg", modelPartBuilder5, ModelTransform.origin(-3.5F, 1.0F, -1.0F));
+        modelPartData2.addChild("left_hind_leg", modelPartBuilder4, ModelTransform.origin(3.5F, 1.0F, -1.0F));
+        modelPartData2.addChild("right_front_leg", modelPartBuilder5, ModelTransform.origin(-3.5F, 1.0F, -8.0F));
+        modelPartData2.addChild("left_front_leg", modelPartBuilder4, ModelTransform.origin(3.5F, 1.0F, -8.0F));
+        modelPartData2.addChild("tail", ModelPartBuilder.create().uv(2, 19).cuboid(0.0F, -3.0F, 0.0F, 0.0F, 5.0F, 12.0F), ModelTransform.origin(0.0F, 0.0F, 1.0F));
         return TexturedModelData.of(modelData, 64, 64);
     }
 
@@ -69,7 +69,7 @@ public class PaleAxolotlModel extends EntityModel<PaleAxolotlRenderState> {
         float j = 1.0F - i;
         float k = 1.0F - Math.min(h, i);
         ModelPart var10000 = this.body;
-        var10000.yaw += paleAxolotlRenderState.yawDegrees * ((float)Math.PI / 180F);
+        var10000.yaw += paleAxolotlRenderState.relativeHeadYaw * ((float)Math.PI / 180F);
         this.setMovingInWaterAngles(paleAxolotlRenderState.age, paleAxolotlRenderState.pitch, Math.min(i, g));
         this.setStandingInWaterAngles(paleAxolotlRenderState.age, Math.min(j, g));
         this.setMovingOnGroundAngles(paleAxolotlRenderState.age, Math.min(i, h));
@@ -89,7 +89,7 @@ public class PaleAxolotlModel extends EntityModel<PaleAxolotlRenderState> {
             var10000 = this.head;
             var10000.pitch -= k * 1.8F * g;
             var10000 = this.body;
-            var10000.pivotY -= 0.45F * j * g;
+            var10000.originY -= 0.45F * j * g;
             var10000 = this.topGills;
             var10000.pitch += (-0.5F * i - 0.8F) * g;
             float l = (0.3F * i + 0.9F) * g;
@@ -123,7 +123,7 @@ public class PaleAxolotlModel extends EntityModel<PaleAxolotlRenderState> {
             ModelPart var10000 = this.body;
             var10000.pitch += k;
             var10000 = this.body;
-            var10000.pivotY -= j * g;
+            var10000.originY -= j * g;
             var10000 = this.head;
             var10000.pitch -= k;
             var10000 = this.topGills;

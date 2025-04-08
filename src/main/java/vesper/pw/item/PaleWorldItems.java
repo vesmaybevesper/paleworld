@@ -14,6 +14,7 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Rarity;
 import vesper.pw.PaleWorld;
 import vesper.pw.component.ConsumableComponents;
 import vesper.pw.component.FoodComponents;
@@ -37,7 +38,7 @@ public class PaleWorldItems {
 
     public static Item PALE_AXOLOTL_BUCKET = registerItems(new EntityBucketItem(Entities.PALE_AXOLOTL, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_AXOLOTL, new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT).registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(PaleWorld.MOD_ID,"pale_axolotl_bucket")))),PALE_AXOLOTL_BUCKET_KEY);
     public static Item DRAINED_CRYSTAL_FRAGMENT = registerItems("drained_crystal_fragment");
-    // public static Item PALE_COMPASS = registerItems(new PaleCompass(new Item.Settings().rarity(Rarity.UNCOMMON)), PALE_COMPASS_KEY);
+    // public static Item PALE_COMPASS = registerItems("pale_compass", (new Item.Settings().rarity(Rarity.UNCOMMON).registryKey(PALE_COMPASS_KEY)));
 
 
     private static RegistryKey<Item> keyOf(String id) {

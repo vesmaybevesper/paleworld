@@ -22,8 +22,6 @@ import vesper.pw.item.PaleWorldItemGroup;
 import vesper.pw.item.PaleWorldItems;
 import vesper.pw.modify.PaleGardenSpawnRate;
 import vesper.pw.world.gen.PaleWorldWorldGen;
-import vesper.pw.world.gen.feature.FallenPaleOak;
-import vesper.pw.world.gen.feature.FallenPaleOakConfig;
 import vesper.pw.world.gen.feature.PaleSpikeFeature;
 
 public class PaleWorld implements ModInitializer {
@@ -32,7 +30,6 @@ public class PaleWorld implements ModInitializer {
 	public static final SimpleParticleType FOG_PARTICLE = FabricParticleTypes.simple();
 
 	// Add to registries
-	public static final Feature<FallenPaleOakConfig> FALLEN_TREE;
 	public static final Feature<DefaultFeatureConfig> PALE_SPIKE;
 
 	private static <C extends FeatureConfig, F extends Feature<C>> F register(String name, F feature) {
@@ -40,7 +37,6 @@ public class PaleWorld implements ModInitializer {
 	}
 
 	static {
-		FALLEN_TREE = register("fallen_tree", new FallenPaleOak(FallenPaleOakConfig.CODEC));
 		PALE_SPIKE = register("pale_spike", new PaleSpikeFeature(DefaultFeatureConfig.CODEC));
 	}
 

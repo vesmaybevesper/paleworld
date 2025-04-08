@@ -24,7 +24,6 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.*;
 import org.jetbrains.annotations.Nullable;
 import vesper.pw.item.PaleWorldItems;
-
 import java.util.Comparator;
 import java.util.EnumSet;
 import java.util.List;
@@ -137,18 +136,14 @@ public class VampireBat extends FlyingEntity implements Monster {
     @Override
     public void readCustomDataFromNbt(NbtCompound nbt) {
         super.readCustomDataFromNbt(nbt);
-        if (nbt.contains("AX")) {
-            this.circlingCenter = new BlockPos(nbt.getInt("AX"), nbt.getInt("AY"), nbt.getInt("AZ"));
-        }
+        this.circlingCenter = (BlockPos)nbt.get("anchor_pos", BlockPos.CODEC).orElse(null);
 
     }
 
     @Override
     public void writeCustomDataToNbt(NbtCompound nbt) {
         super.writeCustomDataToNbt(nbt);
-        nbt.putInt("AX", this.circlingCenter.getX());
-        nbt.putInt("AY", this.circlingCenter.getY());
-        nbt.putInt("AZ", this.circlingCenter.getZ());
+        nbt.putNullable("anchor_pos", BlockPos.CODEC, this.circlingCenter);
     }
 
     @Override
@@ -308,12 +303,12 @@ class CircularMovementGoal extends MovementGoal {
     }
 
     private void adjustDirection(){
-        if (BlockPos.ORIGIN.equals(VampireBat.this.circlingCenter)) {
+        if (VampireBat.this.circlingCenter == null) {
             VampireBat.this.circlingCenter = VampireBat.this.getBlockPos();
         }
 
         this.angle += this.circlingDirection * 15.0F * ((float)Math.PI / 180F);
-        VampireBat.this.targetPosition = Vec3d.of(VampireBat.this.circlingCenter).add(this.radius * MathHelper.cos(this.angle), 4.0F + this.yOffset, this.radius * MathHelper.sin(this.angle));
+        VampireBat.this.targetPosition = Vec3d.of(VampireBat.this.circlingCenter).add((double)(this.radius * MathHelper.cos(this.angle)), (double)(-4.0F + this.yOffset), (double)(this.radius * MathHelper.sin(this.angle)));
     }
 
 
@@ -362,7 +357,7 @@ class SwoopGoal extends MovementGoal{
     public void tick() {
         LivingEntity livingEntity = VampireBat.this.getTarget();
         if (livingEntity != null) {
-            VampireBat.this.targetPosition = new Vec3d(livingEntity.getX(), livingEntity.getBodyY((double)0.5F), livingEntity.getZ());
+            VampireBat.this.targetPosition = new Vec3d(livingEntity.getBlockX(), livingEntity.getBodyY((double)0.5F), livingEntity.getZ());
             if (VampireBat.this.getBoundingBox().expand((double)0.2F).intersects(livingEntity.getBoundingBox())) {
                 VampireBat.this.tryAttack(castToServerWorld(VampireBat.this.getWorld()), livingEntity);
                 VampireBat.this.movementType = VampireBat.VampireBatMovementType.CIRCLE;

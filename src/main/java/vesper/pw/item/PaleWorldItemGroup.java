@@ -13,9 +13,9 @@ import vesper.pw.block.PaleWorldBlocks;
 
 public class PaleWorldItemGroup {
 
-    public static final ItemGroup PALE_WORLD = Registry.register(Registries.ITEM_GROUP, Identifier.of(PaleWorld.MOD_ID, "pale_world"), FabricItemGroup.builder()
+    public static final ItemGroup PALE_WORLD = Registry.register(Registries.ITEM_GROUP, Identifier.of(PaleWorld.MOD_ID, "paleworld"), FabricItemGroup.builder()
                     .icon(() -> new ItemStack(Blocks.PALE_MOSS_BLOCK))
-                    .displayName(Text.translatable("itemgroup.pale-world.pale-world"))
+                    .displayName(Text.translatable("itemgroup.paleworld.paleworld"))
                     .entries(((displayContext, entries) -> {
                         entries.add(PaleWorldBlocks.PETRIFIED_PALE_OAK);
                         entries.add(PaleWorldBlocks.WHITE_CRYSTAL);
@@ -26,7 +26,7 @@ public class PaleWorldItemGroup {
                         entries.add(PaleWorldItems.PALE_APPLE);
                         /*entries.add(PaleWorldBlocks.FLOWER_1);
                         entries.add(PaleWorldBlocks.FLOWER_2);*/
-                       // entries.add(PaleWorldBlocks.CHRYSANTHEMUM);
+                        entries.add(PaleWorldBlocks.CHRYSANTHEMUM);
                         entries.add(PaleWorldBlocks.DYING_AZALEA);
                         entries.add(PaleWorldBlocks.SMALL_DYING_DRIPLEAF);
                         entries.add(PaleWorldBlocks.BIG_DYING_DRIPLEAF);

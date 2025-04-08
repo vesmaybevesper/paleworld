@@ -107,7 +107,7 @@ public class PaleWorldBlocks {
                             .pistonBehavior(PistonBehavior.DESTROY)
     ));
 
-    /*public static final Block CHRYSANTHEMUM = regBlock(
+    public static final Block CHRYSANTHEMUM = regBlock(
             "chrysanthemum",
             (settings) -> new FlowerBlock(StatusEffects.WEAKNESS, 15.0F, settings),
             AbstractBlock.Settings.create()
@@ -118,7 +118,7 @@ public class PaleWorldBlocks {
                     .sounds(BlockSoundGroup.GRASS)
                     .offset(AbstractBlock.OffsetType.XZ)
                     .pistonBehavior(PistonBehavior.DESTROY)
-    );*/
+    );
 
     public static final Block WHITE_CRYSTAL = regBlock("white_crystal", new AmethystBlock(AbstractBlock.Settings.create()
             .registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(PaleWorld.MOD_ID, "white_crystal")))

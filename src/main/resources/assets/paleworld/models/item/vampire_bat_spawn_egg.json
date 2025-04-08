@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "minecraft:block/chrysanthemum"
+    "layer0": "minecraft:item/vampire_bat_spawn_egg"
   }
 }

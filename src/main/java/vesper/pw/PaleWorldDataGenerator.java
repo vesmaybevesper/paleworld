@@ -5,10 +5,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.minecraft.registry.RegistryBuilder;
 import net.minecraft.registry.RegistryKeys;
 import vesper.pw.biomes.PaleWorldBiomes;
-import vesper.pw.datagen.Advancements;
-import vesper.pw.datagen.LootTables;
-import vesper.pw.datagen.WorldGenerator;
-import vesper.pw.enchanting.Enchantments;
+import vesper.pw.datagen.*;
 import vesper.pw.world.PaleWorldConfiguredFeatures;
 import vesper.pw.world.PaleWorldPlacedFeatures;
 
@@ -20,6 +17,8 @@ public class PaleWorldDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(WorldGenerator::new);
 		pack.addProvider(Advancements::new);
 		pack.addProvider(LootTables::new);
+		pack.addProvider(EntityLootTables::new);
+		pack.addProvider(ModelProvider::new);
 	}
 
 	@Override
