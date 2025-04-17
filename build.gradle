@@ -6,6 +6,9 @@ plugins {
 version = project.mod_version
 group = project.maven_group
 
+loom{
+			accessWidenerPath = file("src/main/resources/paleworld.accessWidner")
+}
 base {
 	archivesName = project.archives_base_name
 }
@@ -29,11 +32,11 @@ repositories {
 		content {
 			includeGroup("software.bernie.geckolib")
 		}
-		/*maven {
-		name = 'BlameJared Maven (CrT / Bookshelf)'
-		url = 'https://maven.blamejared.com'
-	}
-	maven { url 'https://jitpack.io' }*/
+		maven {
+			name = 'BlameJared Maven (CrT / Bookshelf)'
+			url = 'https://maven.blamejared.com'
+		}
+		maven { url 'https://jitpack.io' }
 	}
 
 
@@ -42,6 +45,7 @@ repositories {
 			client = true
 		}
 	}
+}
 
 
 	dependencies {
@@ -54,6 +58,7 @@ repositories {
 		modImplementation include("maven.modrinth:midnightlib:${project.midnightlib_version}")
 		modCompileOnly("com.terraformersmc:modmenu:${project.modmenu_version}")
 		modCompileOnly "maven.modrinth:iris:${project.iris_version}"
+		//modImplementation include("org.anonvoto:glsl-transformer:1.0.0")
 
 
 		/*modImplementation include("foundry.veil:veil-fabric-1.21.1:${project.veil_version}") {
@@ -112,4 +117,3 @@ repositories {
 	tasks.withType(ProcessResources){
 		duplicatesStrategy = DuplicatesStrategy.WARN
 	}
-}
