@@ -32,11 +32,16 @@ repositories {
 		content {
 			includeGroup("software.bernie.geckolib")
 		}
+
 		maven {
 			name = 'BlameJared Maven (CrT / Bookshelf)'
 			url = 'https://maven.blamejared.com'
 		}
 		maven { url 'https://jitpack.io' }
+	}
+	maven {
+		name = "SmartBrainLib (SBL) Maven Repo"
+		url = "https://dl.cloudsmith.io/public/tslat/sbl/maven/"
 	}
 
 
@@ -45,7 +50,6 @@ repositories {
 			client = true
 		}
 	}
-}
 
 
 	dependencies {
@@ -54,6 +58,7 @@ repositories {
 		mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
 		modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 		modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+		modImplementation "net.tslat.smartbrainlib:SmartBrainLib-fabric-${project.minecraft_version}:${project.sbl_version}"
 		modImplementation include("com.github.glitchfiend:TerraBlender-fabric:${project.terrablender_version}")
 		modImplementation include("maven.modrinth:midnightlib:${project.midnightlib_version}")
 		modCompileOnly("com.terraformersmc:modmenu:${project.modmenu_version}")
@@ -114,6 +119,7 @@ repositories {
 			// retrieving dependencies.
 		}
 	}
-	tasks.withType(ProcessResources){
+	tasks.withType(ProcessResources) {
 		duplicatesStrategy = DuplicatesStrategy.WARN
 	}
+}
