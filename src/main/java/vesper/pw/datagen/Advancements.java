@@ -15,7 +15,6 @@ import net.minecraft.world.biome.BiomeKeys;
 import vesper.pw.PaleWorld;
 import vesper.pw.biomes.PaleWorldBiomes;
 import vesper.pw.item.PaleWorldItems;
-
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
 
@@ -31,8 +30,8 @@ public class Advancements extends FabricAdvancementProvider {
                 .create()
                 .display(
                         Items.PALE_MOSS_BLOCK,
-                        Text.translatable("Pale World"),
-                        Text.translatable("Load into a world with Pale World"),
+                        Text.translatable("advancement.pw.root"),
+                        Text.translatable("advancement.pw.rootText"),
                         Identifier.of("textures/gui/advancements/backgrounds/stone.png"),
                         AdvancementFrame.TASK,
                         true,
@@ -45,8 +44,8 @@ public class Advancements extends FabricAdvancementProvider {
                 .parent(root)
                 .display(
                         Items.DEAD_BUSH,
-                        Text.literal("Clinging To Life"),
-                        Text.literal("Step foot in the Pale Caves"),
+                        Text.translatable("advancement.pw.paleCaveEnter"),
+                        Text.translatable("advancement.pw.paleCaveEnterText"),
                         null,
                         AdvancementFrame.GOAL,
                         true,
@@ -60,8 +59,8 @@ public class Advancements extends FabricAdvancementProvider {
                 .parent(root)
                 .display(
                         Items.CREAKING_HEART,
-                        Text.literal("At the Heart"),
-                        Text.literal("Enter the Pale Garden"),
+                        Text.translatable("advancement.pw.paleGardenEnter"),
+                        Text.translatable("advancement.pw.paleGardenEnterText"),
                         null,
                         AdvancementFrame.GOAL,
                         true,
@@ -71,13 +70,30 @@ public class Advancements extends FabricAdvancementProvider {
                 .criterion("pale_garden_entered", TickCriterion.Conditions.createLocation(LocationPredicate.Builder.createBiome(wrapperLookup.getOrThrow(RegistryKeys.BIOME).getOrThrow(BiomeKeys.PALE_GARDEN))))
                 .build(consumer, PaleWorld.MOD_ID + "/pale_garden_entered");
 
+        AdvancementEntry paleScholar = Advancement.Builder.create()
+                .parent(paleGardenAdvance)
+                .display(
+                        Items.PALE_MOSS_BLOCK,
+                        Text.translatable("advancement.pw.paleScholar"),
+                        Text.translatable("advancement.pw.paleScholarText"),
+                        null,
+                        AdvancementFrame.CHALLENGE,
+                        true,
+                        true,
+                        false
+                )
+                .criterion("pale_garden_entered", TickCriterion.Conditions.createLocation(LocationPredicate.Builder.createBiome(wrapperLookup.getOrThrow(RegistryKeys.BIOME).getOrThrow(BiomeKeys.PALE_GARDEN))))
+                .criterion("pale_cave_entered", TickCriterion.Conditions.createLocation(LocationPredicate.Builder.createBiome(wrapperLookup.getOrThrow(RegistryKeys.BIOME).getOrThrow(PaleWorldBiomes.PALE_CAVE))))
+                .criterion("pale_forest_entered", TickCriterion.Conditions.createLocation(LocationPredicate.Builder.createBiome(wrapperLookup.getOrThrow(RegistryKeys.BIOME).getOrThrow(PaleWorldBiomes.PALE_VALLEY))))
+                .build(consumer, PaleWorld.MOD_ID + "/pale_scholar");
+
 
         AdvancementEntry paleAxolotlBucket = Advancement.Builder.create()
                 .parent(paleCaveAdvance)
                 .display(
                         PaleWorldItems.PALE_AXOLOTL_BUCKET,
-                        Text.translatable("You're My Friend Now"),
-                        Text.translatable("Bucket a Pale Axolotl"),
+                        Text.translatable("advancement.pw.axolotlPickUp"),
+                        Text.translatable("advancement.pw.axolotlPickUpText"),
                         null,
                         AdvancementFrame.TASK,
                         true,
@@ -91,8 +107,8 @@ public class Advancements extends FabricAdvancementProvider {
                 .parent(root)
                 .display(
                         PaleWorldItems.PALE_BERRIES,
-                        Text.translatable("That Can't Be Healthy"),
-                        Text.translatable("Eat all the Pale World food items"),
+                        Text.translatable("advancement.pw.eatAll"),
+                        Text.translatable("advancement.pw.eatAllText"),
                         null,
                         AdvancementFrame.TASK,
                         true,

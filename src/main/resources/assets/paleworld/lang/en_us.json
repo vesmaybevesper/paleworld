@@ -42,5 +42,20 @@
 
   "itemgroup.paleworld.paleworld": "Pale World",
   "entity.paleworld.pale_axolotl": "Pale Axolotl",
-  "entity.paleworld.vampire_bat": "Vampire Bat"
+  "entity.paleworld.vampire_bat": "Vampire Bat",
+
+
+
+  "advancement.pw.root": "Pale World",
+  "advancement.pw.rootText": "Load into a world with Pale World",
+  "advancement.pw.paleCaveEnter": "Clinging To Life",
+  "advancement.pw.paleCaveEnterText": "Step foot in the Pale Caves",
+  "advancement.pw.paleGardenEnter": "At the Heart",
+  "advancement.pw.paleGardenEnterText": "Enter the Pale Garden",
+  "advancement.pw.paleScholar": "Scholar of The Pale",
+  "advancement.pw.paleScholarText": "Visit every pale biome",
+  "advancement.pw.axolotlPickUp": "You're My Friend Now",
+  "advancement.pw.axolotlPickUpText": "Bucket a Pale Axolotl",
+  "advancement.pw.eatAll": "That Can't Be Healthy",
+  "advancement.pw.eatAllText": "Eat all the Pale World food items"
 }
