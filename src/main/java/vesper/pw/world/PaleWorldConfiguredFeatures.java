@@ -118,13 +118,12 @@ public class PaleWorldConfiguredFeatures {
                 DYING_DRIPLEAF,
                 Feature.SIMPLE_RANDOM_SELECTOR,
                 new SimpleRandomFeatureConfig(
-                        RegistryEntryList.of(new RegistryEntry[]{
-                                createSmallDyingDripleaf(),
+                        RegistryEntryList.of(createSmallDyingDripleaf(),
                                 createSmallDyingDripleaf(),
                                 createBigDyingDripleaf(Direction.EAST),
                                 createBigDyingDripleaf(Direction.WEST),
                                 createBigDyingDripleaf(Direction.SOUTH),
-                                createBigDyingDripleaf(Direction.NORTH)})
+                                createBigDyingDripleaf(Direction.NORTH))
                 )
         );
 
@@ -133,8 +132,9 @@ public class PaleWorldConfiguredFeatures {
                         .add(Blocks.DEAD_BUSH.getDefaultState(),5)
                         .add(PaleWorldBlocks.DYING_AZALEA.getDefaultState(),2)
                         .add(Blocks.PALE_MOSS_CARPET.getDefaultState(), 25)
-                        .add(Blocks.SHORT_GRASS.getDefaultState(),30)
-                        .add(Blocks.TALL_GRASS.getDefaultState(),7))));
+                        .add(Blocks.SHORT_GRASS.getDefaultState(),15)
+                        .add(Blocks.SHORT_DRY_GRASS.getDefaultState(),30)
+                        .add(Blocks.TALL_DRY_GRASS.getDefaultState(),7))));
 
         register(configuredFeatureRegisterable, PALE_CAVE_CEILING_VEG_MIXED, Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(
                 Pool.<BlockState>builder()
@@ -411,6 +411,8 @@ public class PaleWorldConfiguredFeatures {
                         .decorators(ImmutableList.of(new PaleMossTreeDecorator(0.0F, 0.4F, 0.8F)))
                         .ignoreVines()
                         .build());
+
+        register(configuredFeatureRegisterable, PALE_SPIKE, PaleWorld.PALE_SPIKE);
 
         register(configuredFeatureRegisterable, FALLEN_PALE_OAK, Feature.FALLEN_TREE, fallenPaleOak().build());
 
