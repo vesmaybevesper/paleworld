@@ -84,7 +84,7 @@ public class Advancements extends FabricAdvancementProvider {
                 )
                 .criterion("pale_garden_entered", TickCriterion.Conditions.createLocation(LocationPredicate.Builder.createBiome(wrapperLookup.getOrThrow(RegistryKeys.BIOME).getOrThrow(BiomeKeys.PALE_GARDEN))))
                 .criterion("pale_cave_entered", TickCriterion.Conditions.createLocation(LocationPredicate.Builder.createBiome(wrapperLookup.getOrThrow(RegistryKeys.BIOME).getOrThrow(PaleWorldBiomes.PALE_CAVE))))
-                .criterion("pale_forest_entered", TickCriterion.Conditions.createLocation(LocationPredicate.Builder.createBiome(wrapperLookup.getOrThrow(RegistryKeys.BIOME).getOrThrow(PaleWorldBiomes.PALE_VALLEY))))
+               //.criterion("pale_forest_entered", TickCriterion.Conditions.createLocation(LocationPredicate.Builder.createBiome(wrapperLookup.getOrThrow(RegistryKeys.BIOME).getOrThrow(PaleWorldBiomes.PALE_VALLEY))))
                 .build(consumer, PaleWorld.MOD_ID + "/pale_scholar");
 
 
