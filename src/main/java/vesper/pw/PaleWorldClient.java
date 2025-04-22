@@ -26,7 +26,7 @@ public class PaleWorldClient implements ClientModInitializer {
 		BlockRenderLayerMap.INSTANCE.putBlock(PaleWorldBlocks.SMALL_DYING_DRIPLEAF, RenderLayer.getCutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(PaleWorldBlocks.BIG_DYING_DRIPLEAF, RenderLayer.getCutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(PaleWorldBlocks.BIG_DYING_DRIPLEAF_STEM, RenderLayer.getCutout());
-		BlockRenderLayerMap.INSTANCE.putBlock(PaleWorldBlocks.CHRYSANTHEMUM, RenderLayer.getCutout());
+		// BlockRenderLayerMap.INSTANCE.putBlock(PaleWorldBlocks.CHRYSANTHEMUM, RenderLayer.getCutout());
 		PaleWorld.LOGGER.info("Client: Block Textures Registered");
 	}
 }

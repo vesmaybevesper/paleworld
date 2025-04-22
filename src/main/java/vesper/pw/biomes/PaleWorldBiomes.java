@@ -1,8 +1,6 @@
 package vesper.pw.biomes;
 
 
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.SpawnGroup;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
@@ -16,8 +14,6 @@ import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.carver.ConfiguredCarvers;
 import net.minecraft.world.gen.feature.*;
 import vesper.pw.PaleWorld;
-
-import vesper.pw.entity.Entities;
 import vesper.pw.world.PaleWorldPlacedFeatures;
 
 
@@ -27,7 +23,7 @@ public class PaleWorldBiomes {
 
     public static void bootstrap(Registerable<Biome> biomeRegisterable) {
         biomeRegisterable.register(PALE_CAVE, paleCave(biomeRegisterable));
-        /*biomeRegisterable.register(PALE_VALLEY, paleValley(biomeRegisterable));*/
+        biomeRegisterable.register(PALE_VALLEY, paleValley(biomeRegisterable));
     }
 
     public static void globalOverworldGeneration(GenerationSettings.LookupBackedBuilder builder) {
@@ -40,7 +36,6 @@ public class PaleWorldBiomes {
 
     private static Biome paleCave(Registerable<Biome> biomeRegisterable) {
         SpawnSettings.Builder spawner = new SpawnSettings.Builder();
-        /*spawner.spawn(SpawnGroup.AXOLOTLS, new SpawnSettings.SpawnEntry(EntityType.AXOLOTL, 1, 1, 1));*/
 
         DefaultBiomeFeatures.addBatsAndMonsters(spawner);
         DefaultBiomeFeatures.addOceanMobs(spawner,1,1,3);
@@ -79,14 +74,15 @@ public class PaleWorldBiomes {
             .build();
     }
 
-    /*public static Biome paleValley(Registerable<Biome> biomeRegisterable){
+
+    public static Biome paleValley(Registerable<Biome> biomeRegisterable){
 
         SpawnSettings.Builder spawner = new SpawnSettings.Builder();
         GenerationSettings.LookupBackedBuilder builder = new GenerationSettings.LookupBackedBuilder(biomeRegisterable.getRegistryLookup(RegistryKeys.PLACED_FEATURE), biomeRegisterable.getRegistryLookup(RegistryKeys.CONFIGURED_CARVER));
 
         DefaultBiomeFeatures.addBatsAndMonsters(spawner);
         DefaultBiomeFeatures.addFarmAnimals(spawner);
-       // builder.feature(GenerationStep.Feature.SURFACE_STRUCTURES, VillagePlacedFeatures.SPRUCE);
+
 
         return new Biome.Builder()
                 .precipitation(true)
@@ -103,5 +99,5 @@ public class PaleWorldBiomes {
                         .fogColor(0xff817770).build()
                 )
                 .build();
-    }*/
+    }
 }

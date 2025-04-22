@@ -1,3 +1,14 @@
+2.0.0+Alpha.6
+=
+
+_Changed:_
+*  All advancement text is now translatable
+  * You can submit translations on GitHub
+
+_Fixed:_
+* Pale Caves spawn again
+
+
 2.0.0+Alpha.5
 =
 * Updated to 1.21.5

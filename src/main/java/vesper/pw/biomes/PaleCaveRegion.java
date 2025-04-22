@@ -19,8 +19,8 @@ public class PaleCaveRegion extends Region {
 
     @Override
     public void addBiomes(Registry<Biome> registry, Consumer<Pair<MultiNoiseUtil.NoiseHypercube, RegistryKey<Biome>>> mapper) {
-        this.addModifiedVanillaOverworldBiomes(mapper, builder -> {
-            builder.replaceBiome(BiomeKeys.LUSH_CAVES, PaleWorldBiomes.PALE_CAVE);
+        this.addModifiedVanillaOverworldBiomes(mapper, modifiedVanillaOverworldBuilder -> {
+            modifiedVanillaOverworldBuilder.replaceBiome(BiomeKeys.LUSH_CAVES, PaleWorldBiomes.PALE_CAVE);
         });
     }
 }
