@@ -24,15 +24,15 @@ import vesper.pw.item.custom.PaleBerriesItem;
 import java.util.function.Function;
 
 public class PaleWorldItems {
-    public static final RegistryKey<Item> PALE_AXOLOTL_SPAWN_EGG_KEY = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(PaleWorld.MOD_ID, "pale_axolotl_egg"));
-    public static final RegistryKey<Item> VAMPIRE_BAT_SPAWN_EGG_KEY = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(PaleWorld.MOD_ID, "vampire_bat_egg"));
+    public static final RegistryKey<Item> PALE_AXOLOTL_SPAWN_EGG_KEY = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(PaleWorld.MOD_ID, "pale_axolotl_spawn_egg"));
+    public static final RegistryKey<Item> VAMPIRE_BAT_SPAWN_EGG_KEY = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(PaleWorld.MOD_ID, "vampire_bat_spawn_egg"));
     public static final RegistryKey<Item> PALE_AXOLOTL_BUCKET_KEY = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(PaleWorld.MOD_ID, "pale_axolotl_bucket"));
     public static final RegistryKey<Item> PALE_BERRIES_KEY = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(PaleWorld.MOD_ID, "pale_berries"));
     public static final RegistryKey<Item> PALE_COMPASS_KEY = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(PaleWorld.MOD_ID, "pale_compass"));
 
 
-    public static Item PALE_AXOLOTL_SPAWN_EGG = registerItems(new SpawnEggItem(Entities.PALE_AXOLOTL, new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(PaleWorld.MOD_ID, "pale_axolotl_egg")))), PALE_AXOLOTL_SPAWN_EGG_KEY);
-    public static Item VAMPIRE_BAT_SPAWN_EGG = registerItems(new SpawnEggItem(Entities.VAMPIRE_BAT, new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(PaleWorld.MOD_ID, "vampire_bat_egg")))), VAMPIRE_BAT_SPAWN_EGG_KEY);
+    public static Item PALE_AXOLOTL_SPAWN_EGG = registerItems(new SpawnEggItem(Entities.PALE_AXOLOTL, new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(PaleWorld.MOD_ID, "pale_axolotl_spawn_egg")))), PALE_AXOLOTL_SPAWN_EGG_KEY);
+    public static Item VAMPIRE_BAT_SPAWN_EGG = registerItems(new SpawnEggItem(Entities.VAMPIRE_BAT, new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(PaleWorld.MOD_ID, "vampire_bat_spawn_egg")))), VAMPIRE_BAT_SPAWN_EGG_KEY);
     public static Item PALE_BERRIES = registerItems(new PaleBerriesItem(new Item.Settings().food(FoodComponents.PALE_BERRIES, ConsumableComponents.PALE_BERRIES).registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(PaleWorld.MOD_ID, "pale_berries")))), PALE_BERRIES_KEY);
     public static Item PALE_APPLE = registerItems("pale_apple", new Item.Settings().food(FoodComponents.PALE_APPLE, ConsumableComponents.PALE_APPLE));
 
