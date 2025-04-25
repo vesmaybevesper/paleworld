@@ -1,3 +1,12 @@
+2.0.0+Alpha.7
+=
+
+_Changed:_
+* Changed ID of Pale Caves from "pale_cave" to "pale_caves"
+
+_Fixed:_
+  * Several Item Textures
+
 2.0.0+Alpha.6
 =
 
