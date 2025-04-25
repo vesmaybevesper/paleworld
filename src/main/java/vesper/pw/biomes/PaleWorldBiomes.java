@@ -18,7 +18,7 @@ import vesper.pw.world.PaleWorldPlacedFeatures;
 
 
 public class PaleWorldBiomes {
-    public static final RegistryKey<Biome> PALE_CAVE = RegistryKey.of(RegistryKeys.BIOME, Identifier.of(PaleWorld.MOD_ID, "pale_cave"));
+    public static final RegistryKey<Biome> PALE_CAVE = RegistryKey.of(RegistryKeys.BIOME, Identifier.of(PaleWorld.MOD_ID, "pale_caves"));
     public static final RegistryKey<Biome> PALE_VALLEY = RegistryKey.of(RegistryKeys.BIOME, Identifier.of(PaleWorld.MOD_ID, "pale_valley"));
 
     public static void bootstrap(Registerable<Biome> biomeRegisterable) {
