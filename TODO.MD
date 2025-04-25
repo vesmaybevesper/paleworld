@@ -25,4 +25,4 @@ TO-DO:
     - Add some particles into fog
     - Create a particle only fog / make fog work with shaders
   - Add More "Pale" Mobs
-  - Fix no fog with shaders(?)
+  - Fix textures
