@@ -6,15 +6,13 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.sound.BiomeMoodSound;
 import net.minecraft.util.Identifier;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.BiomeEffects;
-import net.minecraft.world.biome.GenerationSettings;
-import net.minecraft.world.biome.SpawnSettings;
+import net.minecraft.world.biome.*;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.carver.ConfiguredCarvers;
 import net.minecraft.world.gen.feature.*;
 import vesper.pw.PaleWorld;
 import vesper.pw.world.PaleWorldPlacedFeatures;
+import static vesper.pw.particle.ParticleTypes.MOSS_PARTICLE;
 
 
 public class PaleWorldBiomes {
@@ -46,6 +44,7 @@ public class PaleWorldBiomes {
         builder.carver(ConfiguredCarvers.CAVE);
         builder.carver(ConfiguredCarvers.CAVE_EXTRA_UNDERGROUND);
         builder.carver(ConfiguredCarvers.CANYON);
+        BiomeParticleConfig config = new BiomeParticleConfig(MOSS_PARTICLE, 0.05F);
 
         DefaultBiomeFeatures.addDefaultOres(builder);
         DefaultBiomeFeatures.addClayOre(builder);
@@ -70,8 +69,10 @@ public class PaleWorldBiomes {
                         .grassColor(0xff778272)
                         .foliageColor(0xff878D76)
                         .fogColor(0xff817770)
-                        .moodSound(BiomeMoodSound.CAVE).build())
-            .build();
+                        .moodSound(BiomeMoodSound.CAVE)
+                        .particleConfig(config)
+                        .build())
+                .build();
     }
 
 

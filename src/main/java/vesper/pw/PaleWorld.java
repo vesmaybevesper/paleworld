@@ -21,6 +21,7 @@ import vesper.pw.entity.VampireBat.VampireBat;
 import vesper.pw.item.PaleWorldItemGroup;
 import vesper.pw.item.PaleWorldItems;
 import vesper.pw.modify.PaleGardenSpawnRate;
+import vesper.pw.particle.ParticleTypes;
 import vesper.pw.world.gen.PaleWorldWorldGen;
 import vesper.pw.world.gen.feature.PaleSpikeFeature;
 
@@ -53,7 +54,7 @@ public class PaleWorld implements ModInitializer {
 		FabricDefaultAttributeRegistry.register(Entities.VAMPIRE_BAT, VampireBat.createHostileAttributes());
 		PaleGardenSpawnRate.override();
 		LOGGER.info("Registered Entities");
-		Registry.register(Registries.PARTICLE_TYPE, Identifier.of(MOD_ID, "fog_particle"), FOG_PARTICLE);
+		ParticleTypes.register();
 		PaleWorldItems.regModItems();
 		PaleWorldBlocks.regModBlocks();
 		PaleWorldItemGroup.regItemGroups();
