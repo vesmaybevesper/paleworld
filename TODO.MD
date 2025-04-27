@@ -3,13 +3,12 @@ TO-DO:
 
 - Do Whenever
   - Better Effect on eating Pale Berries
-  - Better Vampire Bat Behavior
   - More Drained Amethyst Fragment use
     - Use for dimension portal (don't get too excited this is wayyy down the line)
     - Compass to pale garden?
-  - Pale Cave VFX
   - Pale Cave Structure(?)
   - Finalize Pale Apple implementation
+  - Make better mob AI
 
   
 - V2.0.0
