@@ -7,7 +7,6 @@ import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
 import net.minecraft.particle.SimpleParticleType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import net.minecraft.util.Identifier;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.FeatureConfig;
@@ -21,7 +20,7 @@ import vesper.pw.entity.VampireBat.VampireBat;
 import vesper.pw.item.PaleWorldItemGroup;
 import vesper.pw.item.PaleWorldItems;
 import vesper.pw.modify.PaleGardenSpawnRate;
-import vesper.pw.particle.ParticleTypes;
+import vesper.pw.client.render.particle.ParticleTypes;
 import vesper.pw.world.gen.PaleWorldWorldGen;
 import vesper.pw.world.gen.feature.PaleSpikeFeature;
 

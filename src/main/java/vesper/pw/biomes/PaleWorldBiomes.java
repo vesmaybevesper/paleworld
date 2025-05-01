@@ -12,7 +12,7 @@ import net.minecraft.world.gen.carver.ConfiguredCarvers;
 import net.minecraft.world.gen.feature.*;
 import vesper.pw.PaleWorld;
 import vesper.pw.world.PaleWorldPlacedFeatures;
-import static vesper.pw.particle.ParticleTypes.MOSS_PARTICLE;
+import static vesper.pw.client.render.particle.ParticleTypes.MOSS_PARTICLE;
 
 
 public class PaleWorldBiomes {

@@ -23,7 +23,9 @@ public class ModelProvider extends FabricModelProvider {
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         blockStateModelGenerator.registerSimpleCubeAll(PaleWorldBlocks.PALE_STONE);
         blockStateModelGenerator.registerSimpleCubeAll(PaleWorldBlocks.WHITE_CRYSTAL);
-
+        blockStateModelGenerator.registerTintableCross(PaleWorldBlocks.CHRYSANTHEMUM, BlockStateModelGenerator.CrossType.NOT_TINTED);
+        blockStateModelGenerator.registerTintableCross(PaleWorldBlocks.RAFFLESIA, BlockStateModelGenerator.CrossType.NOT_TINTED);
+        blockStateModelGenerator.registerTintableCross(PaleWorldBlocks.ASPHODEL, BlockStateModelGenerator.CrossType.NOT_TINTED);
     }
 
     @Override
@@ -33,8 +35,6 @@ public class ModelProvider extends FabricModelProvider {
         itemModelGenerator.register(Item.fromBlock(PaleWorldBlocks.BIG_DYING_DRIPLEAF));
         itemModelGenerator.register(Item.fromBlock(PaleWorldBlocks.SMALL_DYING_DRIPLEAF));
         itemModelGenerator.register(Item.fromBlock(PaleWorldBlocks.DYING_AZALEA));
-        /*itemModelGenerator.register(Item.fromBlock(PaleWorldBlocks.PALE_STONE));
-        itemModelGenerator.register(Item.fromBlock(PaleWorldBlocks.WHITE_CRYSTAL));*/
         itemModelGenerator.register(Item.fromBlock(PaleWorldBlocks.PETRIFIED_PALE_OAK));
         itemModelGenerator.register(Item.fromBlock(PaleWorldBlocks.PALE_VINE));
     }

@@ -17,6 +17,8 @@ public class LootTables extends FabricBlockLootTableProvider {
         addDrop(PaleWorldBlocks.WHITE_CRYSTAL);
         addDrop(PaleWorldBlocks.PALE_STONE);
         addDrop(PaleWorldBlocks.CHRYSANTHEMUM);
+        addDrop(PaleWorldBlocks.RAFFLESIA);
+        addDrop(PaleWorldBlocks.ASPHODEL);
 
     }
 }

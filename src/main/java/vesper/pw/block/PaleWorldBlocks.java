@@ -109,9 +109,35 @@ public class PaleWorldBlocks {
 
     public static final Block CHRYSANTHEMUM = regBlock(
             "chrysanthemum",
-            (settings) -> new FlowerBlock(StatusEffects.WEAKNESS, 15.0F, settings),
+            (settings) -> new FlowerBlock(StatusEffects.REGENERATION, 10.0F, settings),
             AbstractBlock.Settings.create()
                     .registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(PaleWorld.MOD_ID, "chrysanthemum")))
+                    .mapColor(MapColor.OFF_WHITE)
+                    .noCollision()
+                    .breakInstantly()
+                    .sounds(BlockSoundGroup.GRASS)
+                    .offset(AbstractBlock.OffsetType.XZ)
+                    .pistonBehavior(PistonBehavior.DESTROY)
+    );
+
+    public static final Block RAFFLESIA = regBlock(
+            "rafflesia",
+            (settings) -> new RafflesiaBlock(StatusEffects.NAUSEA, 10.0F, settings),
+            AbstractBlock.Settings.create()
+                    .registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(PaleWorld.MOD_ID, "rafflesia")))
+                    .mapColor(MapColor.RED)
+                    .noCollision()
+                    .breakInstantly()
+                    .sounds(BlockSoundGroup.GRASS)
+                    .offset(AbstractBlock.OffsetType.XZ)
+                    .pistonBehavior(PistonBehavior.DESTROY)
+    );
+
+    public static final Block ASPHODEL = regBlock(
+            "asphodel",
+            (settings) -> new FlowerBlock(StatusEffects.LUCK, 15.0F, settings),
+            AbstractBlock.Settings.create()
+                    .registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(PaleWorld.MOD_ID, "asphodel")))
                     .mapColor(MapColor.OFF_WHITE)
                     .noCollision()
                     .breakInstantly()
@@ -170,7 +196,9 @@ public class PaleWorldBlocks {
             fabricItemGroupEntries.add(SMALL_DYING_DRIPLEAF);
             fabricItemGroupEntries.add(WHITE_CRYSTAL);
             fabricItemGroupEntries.add(PALE_STONE);
-            //fabricItemGroupEntries.add(CHRYSANTHEMUM);
+            fabricItemGroupEntries.add(CHRYSANTHEMUM);
+            fabricItemGroupEntries.add(ASPHODEL);
+            fabricItemGroupEntries.add(RAFFLESIA);
         });
     }
 

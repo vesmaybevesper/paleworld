@@ -2,7 +2,6 @@ package vesper.pw.world;
 
 import net.minecraft.block.Blocks;
 import net.minecraft.registry.Registerable;
-import net.minecraft.registry.RegistryEntryLookup;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.entry.RegistryEntry;
@@ -14,7 +13,6 @@ import net.minecraft.world.gen.blockpredicate.BlockPredicate;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.placementmodifier.*;
 import vesper.pw.PaleWorld;
-import vesper.pw.PaleWorldConfig;
 
 import java.util.List;
 
@@ -42,6 +40,7 @@ public class PaleWorldPlacedFeatures {
     public static final RegistryKey<PlacedFeature> BARE_PALE_OAK = registryKey("bare_pale_oak");
     public static final RegistryKey<PlacedFeature> STRIPPED_BARE_PALE_OAK = registryKey("stripped_bare_pale_oak");
     public static final RegistryKey<PlacedFeature> PALE_SPIKE = registryKey("pale_spike");
+    public static final RegistryKey<PlacedFeature> CHRYSANTHEMUM = registryKey("chrysanthemum_patch");
 
 
     public static void bootstrap(Registerable<PlacedFeature> registerable){
@@ -215,7 +214,9 @@ public class PaleWorldPlacedFeatures {
                 configuredFeatures.getOrThrow(PaleWorldConfiguredFeatures.BARE_STRIPPED_SMALL_PALE_OAK),
                 VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(1, 0.005F, 2), Blocks.PALE_OAK_SAPLING));
 
-        register(registerable, PALE_SPIKE, configuredFeatures.getOrThrow(PaleWorldConfiguredFeatures.PALE_SPIKE), new PlacementModifier[]{RarityFilterPlacementModifier.of(45), CountPlacementModifier.of(2), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of()});
+        register(registerable, PALE_SPIKE, configuredFeatures.getOrThrow(PaleWorldConfiguredFeatures.PALE_SPIKE), new PlacementModifier[]{RarityFilterPlacementModifier.of(30), CountPlacementModifier.of(2), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of()});
+
+        register(registerable, CHRYSANTHEMUM, configuredFeatures.getOrThrow(PaleWorldConfiguredFeatures.CHRYSANTHEMUM), new PlacementModifier[]{RarityFilterPlacementModifier.of(3), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of()});
 
     }
 
@@ -235,4 +236,5 @@ public class PaleWorldPlacedFeatures {
     private static <FC extends FeatureConfig, F extends Feature<FC>> void register(Registerable<PlacedFeature> context, RegistryKey<PlacedFeature> key, RegistryEntry<ConfiguredFeature<?,?>> configuredFeatureRegistryEntry, PlacementModifier... modifiers){
             register(context, key, configuredFeatureRegistryEntry, List.of(modifiers));
     }
+
 }

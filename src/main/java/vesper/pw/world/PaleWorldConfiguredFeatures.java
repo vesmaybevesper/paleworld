@@ -13,15 +13,16 @@ import net.minecraft.util.collection.Pool;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.VerticalSurfaceType;
 import net.minecraft.util.math.intprovider.*;
+import net.minecraft.util.math.noise.DoublePerlinNoiseSampler;
 import net.minecraft.world.gen.blockpredicate.BlockPredicate;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.size.ThreeLayersFeatureSize;
 import net.minecraft.world.gen.foliage.DarkOakFoliagePlacer;
 import net.minecraft.world.gen.placementmodifier.PlacementModifier;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
+import net.minecraft.world.gen.stateprovider.NoiseBlockStateProvider;
 import net.minecraft.world.gen.stateprovider.RandomizedIntBlockStateProvider;
 import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
-import net.minecraft.world.gen.treedecorator.AttachedToLogsTreeDecorator;
 import net.minecraft.world.gen.treedecorator.PaleMossTreeDecorator;
 import net.minecraft.world.gen.treedecorator.TrunkVineTreeDecorator;
 import net.minecraft.world.gen.trunk.DarkOakTrunkPlacer;
@@ -64,6 +65,7 @@ public class PaleWorldConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?,?>> STRIPPED_BARE_PALE_OAK = registryKey("stripped_bare_pale_oak");
     public static final RegistryKey<ConfiguredFeature<?,?>> PALE_SPIKE = registryKey("pale_spike");
     public static final RegistryKey<ConfiguredFeature<?,?>> FALLEN_PALE_OAK = registryKey("fallen_pale_oak");
+    public static final RegistryKey<ConfiguredFeature<?,?>> CHRYSANTHEMUM = registryKey("chrysanthemum");
 
 
     private static RegistryEntry<PlacedFeature> createSmallDyingDripleaf(){
@@ -97,6 +99,9 @@ public class PaleWorldConfiguredFeatures {
         return (new FallenTreeFeatureConfig.Builder(BlockStateProvider.of(log), UniformIntProvider.create(minLength, maxLength))).logDecorators(ImmutableList.of());
     }
 
+    private static RandomPatchFeatureConfig createRandomPatchFeatureConfig(BlockStateProvider block, int tries) {
+        return ConfiguredFeatures.createRandomPatchFeatureConfig(tries, PlacedFeatures.createEntry((Feature)Feature.SIMPLE_BLOCK, (FeatureConfig)(new SimpleBlockFeatureConfig(block))));
+    }
 
     public static void bootstrap(Registerable<ConfiguredFeature<?,?>> configuredFeatureRegisterable) {
         RegistryEntryLookup<ConfiguredFeature<?, ?>> registryEntryLookup = configuredFeatureRegisterable.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
@@ -416,6 +421,8 @@ public class PaleWorldConfiguredFeatures {
 
         register(configuredFeatureRegisterable, FALLEN_PALE_OAK, Feature.FALLEN_TREE, fallenPaleOak().build());
 
+        register(configuredFeatureRegisterable, CHRYSANTHEMUM, Feature.FLOWER, new RandomPatchFeatureConfig(50, 4, 2, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, (new SimpleBlockFeatureConfig(new NoiseBlockStateProvider(2345L, new DoublePerlinNoiseSampler.NoiseParameters(0, 1.0, new double[0]), 0.020833334F, List.of(PaleWorldBlocks.CHRYSANTHEMUM.getDefaultState())))))));
+
     }
 
 
@@ -438,6 +445,5 @@ public class PaleWorldConfiguredFeatures {
     private static <C extends FeatureConfig, F extends Feature<C>> F register(String name, F feature) {
         return (F)(Registry.register(Registries.FEATURE, name, feature));
     }
-
 
 }

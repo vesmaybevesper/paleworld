@@ -24,9 +24,9 @@ public class PaleWorldItemGroup {
                      // entries.add(PaleWorldItems.PALE_COMPASS);
                         entries.add(PaleWorldItems.PALE_BERRIES);
                         entries.add(PaleWorldItems.PALE_APPLE);
-                        /*entries.add(PaleWorldBlocks.FLOWER_1);
-                        entries.add(PaleWorldBlocks.FLOWER_2);*/
                         entries.add(PaleWorldBlocks.CHRYSANTHEMUM);
+                        entries.add(PaleWorldBlocks.ASPHODEL);
+                        entries.add(PaleWorldBlocks.RAFFLESIA);
                         entries.add(PaleWorldBlocks.DYING_AZALEA);
                         entries.add(PaleWorldBlocks.SMALL_DYING_DRIPLEAF);
                         entries.add(PaleWorldBlocks.BIG_DYING_DRIPLEAF);
