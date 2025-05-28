@@ -65,7 +65,7 @@ public class BackgroundRendererMixin {
                 fogStart = (viewDistance * 0.8F) + fogFade * (PaleWorldConfig.fogStart - (viewDistance * 0.8F));
                 fogEnd = (viewDistance) + fogFade * (PaleWorldConfig.fogEnd - (viewDistance));
                 fogAlphaBase = PaleWorldConfig.fogTransparency;
-                fogShape = FogShape.CYLINDER;
+                fogShape = FogShape.SPHERE;
             }
 
             float fogRed = color.x + fogFade * (0.8F - color.x);
