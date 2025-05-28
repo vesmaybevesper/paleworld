@@ -1,4 +1,5 @@
 {
+	"accessWidener": "paleworld.accesswidener",
 	"schemaVersion": 1,
 	"id": "paleworld",
 	"version": "${version}",
@@ -6,6 +7,9 @@
 	"description": "It's the Creaking's world, we just live in it.",
 	"authors": [
 		"VesMaybeVesper"
+	],
+	"artist": [
+		"Flubs"
 	],
 	"contributors": [
 		"Hoku the cat"
