@@ -23,8 +23,6 @@ import vesper.pw.registry.tags.EntityTypeTags;
 public class Enchantments {
     public static final RegistryKey<Enchantment> PRISMATIC = of("prismatic");
 
-    public Enchantments(){}
-
     public static void bootstrap(Registerable<Enchantment> registerable){
         RegistryEntryLookup<Item> registryEntryLookup = registerable.getRegistryLookup(RegistryKeys.ITEM);
         RegistryEntryLookup<Enchantment> registryEntryLookup2 = registerable.getRegistryLookup(RegistryKeys.ENCHANTMENT);
@@ -45,6 +43,6 @@ public class Enchantments {
     }
 
     private static RegistryKey<Enchantment> of(String id) {
-        return RegistryKey.of(RegistryKeys.ENCHANTMENT, Identifier.ofVanilla(id));
+        return RegistryKey.of(RegistryKeys.ENCHANTMENT, Identifier.of(id));
     }
 }

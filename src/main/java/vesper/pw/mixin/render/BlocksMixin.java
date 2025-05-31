@@ -10,7 +10,6 @@ import vesper.pw.PaleWorldConfig;
 
 @Mixin(Blocks.class)
 public class BlocksMixin {
-
     @ModifyExpressionValue(method = "<clinit>", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/AbstractBlock$Settings;create()Lnet/minecraft/block/AbstractBlock$Settings;"), slice = @Slice(from = @At(value = "CONSTANT", args = "stringValue=open_eyeblossom")))
     private static AbstractBlock.Settings openEyeblossom(AbstractBlock.Settings settings){
         if (PaleWorldConfig.horrorMode){

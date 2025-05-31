@@ -17,7 +17,7 @@ public class PaleWorldItemGroup {
                     .icon(() -> new ItemStack(Blocks.PALE_MOSS_BLOCK))
                     .displayName(Text.translatable("itemgroup.paleworld.paleworld"))
                     .entries(((displayContext, entries) -> {
-                        entries.add(PaleWorldBlocks.PETRIFIED_PALE_OAK);
+                      //entries.add(PaleWorldBlocks.PETRIFIED_PALE_OAK);
                         entries.add(PaleWorldBlocks.WHITE_CRYSTAL);
                         entries.add(PaleWorldBlocks.PALE_STONE);
                         entries.add(PaleWorldItems.DRAINED_CRYSTAL_FRAGMENT);
@@ -25,8 +25,8 @@ public class PaleWorldItemGroup {
                         entries.add(PaleWorldItems.PALE_BERRIES);
                         entries.add(PaleWorldItems.PALE_APPLE);
                         entries.add(PaleWorldBlocks.CHRYSANTHEMUM);
-                        entries.add(PaleWorldBlocks.ASPHODEL);
-                        entries.add(PaleWorldBlocks.RAFFLESIA);
+                       // entries.add(PaleWorldBlocks.ASPHODEL);
+                       // entries.add(PaleWorldBlocks.RAFFLESIA);
                         entries.add(PaleWorldBlocks.DYING_AZALEA);
                         entries.add(PaleWorldBlocks.SMALL_DYING_DRIPLEAF);
                         entries.add(PaleWorldBlocks.BIG_DYING_DRIPLEAF);

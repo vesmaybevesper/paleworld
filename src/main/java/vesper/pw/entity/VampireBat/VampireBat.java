@@ -112,7 +112,7 @@ public class VampireBat extends FlyingEntity implements Monster {
         }
     }
 
-    public static boolean canMobSpawn(EntityType<? extends MobEntity> entityType, WorldAccess worldAccess, SpawnReason spawnReason, BlockPos pos, Random random){
+    public boolean canMobSpawn(EntityType<? extends MobEntity> entityType, WorldAccess worldAccess, SpawnReason spawnReason, BlockPos pos, Random random){
         return worldAccess.getLightLevel(pos) <= 7 || SpawnReason.isAnySpawner(spawnReason);
     }
 

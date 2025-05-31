@@ -12,15 +12,9 @@ TO-DO:
 
   
 - V2.0.0
-  - New Flowers
-    - chrysanthemum
-      - fix texture
-      - add to gen
-    - flower 2
-    - flower 3
+  - Finish New Flowers
   - Structures
   - More Blocks
   - VFX
-    - Add some particles into fog
     - Create a particle only fog / make fog work with shaders
   - Add More "Pale" Mobs
