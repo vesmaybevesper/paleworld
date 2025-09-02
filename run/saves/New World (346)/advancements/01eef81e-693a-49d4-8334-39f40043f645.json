@@ -1,0 +1,106 @@
+{
+  "minecraft:paleworld/root": {
+    "criteria": {
+      "pale_world_load": "2025-08-26 18:59:06 -0400"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/crafting_table": {
+    "criteria": {
+      "unlock_right_away": "2025-08-26 18:59:06 -0400"
+    },
+    "done": true
+  },
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "minecraft:old_growth_birch_forest": "2025-09-01 15:53:18 -0400",
+      "minecraft:snowy_slopes": "2025-08-26 19:00:40 -0400",
+      "minecraft:dark_forest": "2025-09-01 15:53:29 -0400",
+      "minecraft:forest": "2025-08-26 19:00:31 -0400",
+      "minecraft:taiga": "2025-08-26 18:59:07 -0400",
+      "minecraft:river": "2025-08-26 18:59:51 -0400",
+      "minecraft:pale_garden": "2025-09-01 15:53:30 -0400"
+    },
+    "done": false
+  },
+  "minecraft:recipes/transportation/mangrove_boat": {
+    "criteria": {
+      "in_water": "2025-08-26 18:59:13 -0400"
+    },
+    "done": true
+  },
+  "minecraft:paleworld/pale_scholar": {
+    "criteria": {
+      "pale_garden_entered": "2025-09-01 15:53:30 -0400",
+      "pale_forest_entered": "2025-08-26 18:59:13 -0400"
+    },
+    "done": false
+  },
+  "minecraft:recipes/transportation/acacia_boat": {
+    "criteria": {
+      "in_water": "2025-08-26 18:59:13 -0400"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/cherry_boat": {
+    "criteria": {
+      "in_water": "2025-08-26 18:59:13 -0400"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/pale_oak_boat": {
+    "criteria": {
+      "in_water": "2025-08-26 18:59:13 -0400"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/bamboo_raft": {
+    "criteria": {
+      "in_water": "2025-08-26 18:59:13 -0400"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/spruce_boat": {
+    "criteria": {
+      "in_water": "2025-08-26 18:59:13 -0400"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/birch_boat": {
+    "criteria": {
+      "in_water": "2025-08-26 18:59:13 -0400"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/oak_boat": {
+    "criteria": {
+      "in_water": "2025-08-26 18:59:13 -0400"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/jungle_boat": {
+    "criteria": {
+      "in_water": "2025-08-26 18:59:13 -0400"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/dark_oak_boat": {
+    "criteria": {
+      "in_water": "2025-08-26 18:59:13 -0400"
+    },
+    "done": true
+  },
+  "minecraft:adventure/root": {
+    "criteria": {
+      "killed_by_something": "2025-08-27 16:05:48 -0400"
+    },
+    "done": true
+  },
+  "minecraft:paleworld/pale_garden_entered": {
+    "criteria": {
+      "pale_garden_entered": "2025-09-01 15:53:30 -0400"
+    },
+    "done": true
+  },
+  "DataVersion": 4435
+}

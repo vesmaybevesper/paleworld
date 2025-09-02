@@ -1,0 +1,1 @@
+/summon paleworld:vampire_bat -1200.75 92.00 -1445.99 {noAI:1b}
