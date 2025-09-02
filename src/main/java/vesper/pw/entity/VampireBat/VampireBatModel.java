@@ -3,17 +3,24 @@ package vesper.pw.entity.VampireBat;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumer;
+import net.minecraft.client.render.entity.animation.Animation;
 import net.minecraft.client.render.entity.animation.BatAnimations;
 import net.minecraft.client.render.entity.model.EntityModel;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
+import software.bernie.geckolib.animatable.GeoAnimatable;
+import software.bernie.geckolib.model.DefaultedEntityGeoModel;
+import software.bernie.geckolib.model.DefaultedGeoModel;
+import software.bernie.geckolib.model.GeoModel;
+import software.bernie.geckolib.renderer.base.GeoRenderState;
+import software.bernie.geckolib.renderer.layer.AutoGlowingGeoLayer;
 import vesper.pw.PaleWorld;
 
-public class VampireBatModel extends EntityModel<VampireBatRenderState> {
+public class VampireBatModel extends GeoModel<VampireBat> {
 
-    public static final EntityModelLayer VAMPIRE_BAT = new EntityModelLayer(Identifier.of(PaleWorld.MOD_ID, "vampire_bat"), "main");
+    public static final EntityModelLayer VAMPIRE_BAT = new EntityModelLayer(Identifier.of(PaleWorld.MOD_ID, ""), "vampire_bat");
 
     private final ModelPart head;
     private final ModelPart body;
@@ -22,9 +29,11 @@ public class VampireBatModel extends EntityModel<VampireBatRenderState> {
     private final ModelPart rightWingTip;
     private final ModelPart leftWingTip;
     private final ModelPart feet;
+    private final Animation flyinganimation;
+    private final Animation roostanimation;
 
     public VampireBatModel(ModelPart modelPart) {
-        super(modelPart, RenderLayer::getEntityCutout);
+        super();
         this.body = modelPart.getChild("body");
         this.head = modelPart.getChild("head");
         this.rightWing = this.body.getChild("right_wing");
@@ -32,6 +41,8 @@ public class VampireBatModel extends EntityModel<VampireBatRenderState> {
         this.leftWing = this.body.getChild("left_wing");
         this.leftWingTip = this.leftWing.getChild("left_wing_tip");
         this.feet = this.body.getChild("feet");
+        this.flyinganimation = VampireBatAnimations.FLYING.createAnimation(modelPart);
+        this.roostanimation = VampireBatAnimations.ROOSTING.createAnimation(modelPart);
     }
 
     public static TexturedModelData getTexturedModelData() {
@@ -49,7 +60,23 @@ public class VampireBatModel extends EntityModel<VampireBatRenderState> {
         return TexturedModelData.of(modelData, 32, 32);
     }
 
-    public void setAngles(VampireBatRenderState entity) {
+    @Override
+    public Identifier getModelResource(GeoRenderState renderState) {
+        return Identifier.of(PaleWorld.MOD_ID, "geckolib/models/vampire_bat");
+    }
+
+    @Override
+    public Identifier getTextureResource(GeoRenderState renderState) {
+        return Identifier.of(PaleWorld.MOD_ID, "textures/entity/vampire_bat.png");
+    }
+
+
+    @Override
+    public Identifier getAnimationResource(VampireBat animatable) {
+        return Identifier.of(PaleWorld.MOD_ID, "geckolib/animations/vampire_bat");
+    }
+
+    /*public void setAngles(VampireBatRenderState<> entity) {
         super.setAngles(entity);
         float f = entity.wingFlapProgress * 7.448451F * ((float)Math.PI / 10F);
         this.leftWingTip.yaw = MathHelper.cos(f) * 16.0F * ((float)Math.PI / 80F);
@@ -62,14 +89,12 @@ public class VampireBatModel extends EntityModel<VampireBatRenderState> {
         if (entity.roosting) {
             this.setRoostingHeadAngles(entity.relativeHeadYaw);
         }
-        this.animate(entity.flyingAnimationState, BatAnimations.FLYING, entity.age, 1.0F);
-        this.animate(entity.roostingAnimationState, BatAnimations.ROOSTING, entity.age, 1.0F);
+        this.flyinganimation.apply(VampireBatRenderState.flyingAnimationState, entity.age, 1.0F);
+        this.roostanimation.apply(VampireBatRenderState.roostingAnimationState, entity.age, 1.0F);
     }
     private void setRoostingHeadAngles(float yaw) {
         this.head.yaw = yaw * ((float)Math.PI / 180F);
-    }
-
-
-    }
+    }*/
+}
 
 

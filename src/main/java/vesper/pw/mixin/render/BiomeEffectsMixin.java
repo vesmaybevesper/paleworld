@@ -11,6 +11,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import vesper.pw.biomes.PaleWorldBiomes;
 
 @Mixin(BiomeEffects.class)
 public class BiomeEffectsMixin {
@@ -23,7 +24,7 @@ public class BiomeEffectsMixin {
         BlockPos pos = MinecraftClient.getInstance().player.getBlockPos();
         assert world != null;
         RegistryEntry<Biome> biome = world.getBiome(pos);
-		if (biome.matchesKey(BiomeKeys.PALE_GARDEN)){
+		if (biome.matchesKey(BiomeKeys.PALE_GARDEN) || biome.matchesKey(PaleWorldBiomes.PALE_VALLEY)){
 			cir.setReturnValue(0Xe3e4e6);
 		}
 

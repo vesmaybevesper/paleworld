@@ -1,9 +1,9 @@
+/*
 package vesper.pw.client.render;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.render.BackgroundRenderer;
-import net.minecraft.client.render.FogShape;
+import net.minecraft.client.render.fog.FogRenderer;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -37,7 +37,7 @@ public class ModiferRenderer {
 
     @Environment(EnvType.CLIENT)
     static class FogData {
-        public final BackgroundRenderer.FogType fogType;
+        public final FogRenderer.FogType fogType;
         public float fogStart;
         public float fogEnd;
         public FogShape fogShape;
@@ -72,3 +72,4 @@ public class ModiferRenderer {
         }
     }
 }
+*/

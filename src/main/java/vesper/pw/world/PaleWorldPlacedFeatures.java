@@ -41,13 +41,14 @@ public class PaleWorldPlacedFeatures {
     public static final RegistryKey<PlacedFeature> STRIPPED_BARE_PALE_OAK = registryKey("stripped_bare_pale_oak");
     public static final RegistryKey<PlacedFeature> PALE_SPIKE = registryKey("pale_spike");
     public static final RegistryKey<PlacedFeature> CHRYSANTHEMUM = registryKey("chrysanthemum_patch");
+    public static final RegistryKey<PlacedFeature> ASPHODEL = registryKey("asphodel_patch");
 
 
     public static void bootstrap(Registerable<PlacedFeature> registerable){
         var configuredFeatures = registerable.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
 
 
-        // Pale CAve Features
+        // Pale Cave Features
 
         register(
                 registerable,
@@ -214,10 +215,11 @@ public class PaleWorldPlacedFeatures {
                 configuredFeatures.getOrThrow(PaleWorldConfiguredFeatures.BARE_STRIPPED_SMALL_PALE_OAK),
                 VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(1, 0.005F, 2), Blocks.PALE_OAK_SAPLING));
 
-        register(registerable, PALE_SPIKE, configuredFeatures.getOrThrow(PaleWorldConfiguredFeatures.PALE_SPIKE), new PlacementModifier[]{RarityFilterPlacementModifier.of(30), CountPlacementModifier.of(2), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of()});
+        register(registerable, PALE_SPIKE, configuredFeatures.getOrThrow(PaleWorldConfiguredFeatures.PALE_SPIKE), RarityFilterPlacementModifier.of(30), CountPlacementModifier.of(2), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of());
 
-        register(registerable, CHRYSANTHEMUM, configuredFeatures.getOrThrow(PaleWorldConfiguredFeatures.CHRYSANTHEMUM), new PlacementModifier[]{RarityFilterPlacementModifier.of(3), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of()});
+        register(registerable, CHRYSANTHEMUM, configuredFeatures.getOrThrow(PaleWorldConfiguredFeatures.CHRYSANTHEMUM), RarityFilterPlacementModifier.of(3), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of());
 
+        register(registerable, ASPHODEL, configuredFeatures.getOrThrow(PaleWorldConfiguredFeatures.ASPHODEL), RarityFilterPlacementModifier.of(3), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of());
     }
 
 

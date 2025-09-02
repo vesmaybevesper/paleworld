@@ -1,68 +1,39 @@
 package vesper.pw.client.render.particle;
 
-import net.minecraft.client.MinecraftClient;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.minecraft.client.particle.AscendingParticle;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.client.particle.ParticleFactory;
-import net.minecraft.client.particle.ParticleTextureSheet;
 import net.minecraft.client.particle.SpriteProvider;
-import net.minecraft.client.render.Camera;
-import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.particle.SimpleParticleType;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.random.Random;
 import org.jetbrains.annotations.Nullable;
 
-import java.awt.*;
-
-public class FogParticle extends BaseParticle {
-    protected FogParticle(ClientWorld clientWorld, double d, double e, double f, SpriteProvider provider) {
-        super(clientWorld, d, e, f);
-        this.setSprite(provider.getSprite(clientWorld.random));
-        this.maxAge = 125;
-        assert MinecraftClient.getInstance().cameraEntity != null;
-        final double distance = MinecraftClient.getInstance().cameraEntity.getPos().distanceTo(new Vec3d(x,y,z));
-
-        Color color = new Color(0Xccccd9);
+public class FogParticle extends AscendingParticle {
+    protected FogParticle(ClientWorld world, double x, double y, double z, double velocityX, double velocityY, double velocityZ, float scaleMultiplier, SpriteProvider spriteProvider) {
+        super(world, x, y, z, 0.1f, -0.1f, 0.1f, velocityX, velocityY, velocityZ, scaleMultiplier, spriteProvider, 1, 100, 0.0025f, true);
 
     }
 
-    @Override
-    public void tick() {
-        super.tick();
-        assert MinecraftClient.getInstance().cameraEntity != null;
-        final double distance = MinecraftClient.getInstance().cameraEntity.getPos().distanceTo(new Vec3d(x,y,z));
-        BlockPos pos = this.pos.offset(Direction.Axis.Y, 2);
+    @Environment(EnvType.CLIENT)
+    public static class Factory implements ParticleFactory<SimpleParticleType>{
+        private final SpriteProvider spriteProvider;
 
-
-        if (this.onGround){
-            this.markDead();
-        }
-    }
-
-    @Override
-    public void render(VertexConsumer vertexConsumer, Camera camera, float tickDelta) {
-        Vec3d cameraPos = camera.getPos();
-    }
-
-    @Override
-    public ParticleTextureSheet getType() {
-        return ParticleTextureSheet.PARTICLE_SHEET_TRANSLUCENT;
-    }
-
-    public static class FogFactory implements ParticleFactory<SimpleParticleType>{
-
-        private SpriteProvider provider;
-
-        public void ParticleFactory(SpriteProvider provider){
-            this.provider = provider;
+        public Factory(SpriteProvider spriteProvider){
+            this.spriteProvider = spriteProvider;
         }
 
         @Override
         public @Nullable Particle createParticle(SimpleParticleType parameters, ClientWorld world, double x, double y, double z, double velocityX, double velocityY, double velocityZ) {
-            return new FogParticle(world, x,y,z, this.provider);
+            Random random1 = world.random;
+            double velX = (double) random1.nextFloat() * -1.9 * (double) random1.nextFloat() * 0.1;
+            double velY = (double) random1.nextFloat() * (double) -0.5F * (double) random1.nextFloat() * 0.1 * (double) 0.5F;
+            double velZ = (double) random1.nextFloat() * -1.9 * (double) random1.nextFloat() * 0.1;
+            return new FogParticle(world, x,y,z, velX, velY, velZ, 1.0f, this.spriteProvider);
         }
     }
+
 
 }

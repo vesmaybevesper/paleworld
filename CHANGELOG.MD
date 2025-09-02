@@ -1,8 +1,68 @@
+2.1.0+Alpha.2
+=
+_Added:_
+* Added subtle fog to Sparse Pale Garden
+* Springs now spawn in Sparse Pale Gardens
+
+_Fixed:_
+* Added Sparse Pale Garden to the Scholar of The Pale advancement
+* Vampire Bats spawn again
+  * They are still very broken
+
+
+
+2.0.0
+=
+_Added:_
+* World Gen
+  * Seven new tree variants
+    * Stripped Pale Oak
+    * Small Pale Oak
+    * Small Stripped Pale Oak
+    * Bare Pale Oak
+    * Bare Stripped Pale Oak
+    * Tall Pale Oaks (Stripped and Regular)
+  * Pale Stone Spikes
+    * Spawn in Pale Gardens
+  * Added Chrysanthemums
+* Visuals
+  * Added fog the Pale Garden
+    * customizable though the config/ Mod Menu
+  * Open Eyeblossoms now emit light
+  * Horror Mode
+    * Added a mod to the config to make fog more intense and Eyeblossoms darker
+  * Added Falling Moss Particles to the Pave Caves
+* "At the Heart" advancement
+* Added Pale Stone
+* Some Pale Gardens may spawn with increased size
+  * this is on top of the size increase in 1.21.5
+* Added support for Fog
+
+_Changed:_
+* Tweaked Pale Cave ceiling generation
+* Vampire Bats now spawn in the Pale Garden
+* Pale Apples are now always consumable
+* Changed mob spawn weights in Pale Garden
+* Added Dead Bushes to the Pale Caves
+
+2.0.0+Beta.1
+=
+
+_Added:_
+* Support for Fog
+
+_Changed:_
+* Updated Chrysanthemum texture
+
 2.0.0+Alpha.8
 =
 
 _Added:_
 * Added Falling Moss Particles to the Pave Caves
+* Added Chrysanthemums
+
+_Changed:_
+* Set Fog Type to Sphere
 
 
 

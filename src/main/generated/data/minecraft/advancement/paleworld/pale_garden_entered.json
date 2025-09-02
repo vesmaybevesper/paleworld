@@ -1,0 +1,40 @@
+{
+  "parent": "minecraft:paleworld/root",
+  "criteria": {
+    "pale_garden_entered": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biomes": "minecraft:pale_garden"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.pw.paleGardenEnterText"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "minecraft:creaking_heart"
+    },
+    "title": {
+      "translate": "advancement.pw.paleGardenEnter"
+    }
+  },
+  "requirements": [
+    [
+      "pale_garden_entered"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -13,7 +13,7 @@ import net.minecraft.util.math.random.Random;;
 
 public class RafflesiaParticle extends AscendingParticle {
     protected RafflesiaParticle(ClientWorld world, double x, double y, double z, double velocityX, double velocityY, double velocityZ, float scaleMultiplier, SpriteProvider spriteProvider) {
-        super(world, x, y, z, 1, 1, 1, velocityX, velocityY, velocityZ, 10, spriteProvider, 1F, 100, 0.025F, true);
+        super(world, x, y, z, 1, 1, 1, velocityX, velocityY, velocityZ, 1, spriteProvider, 1F, 100, 0.025F, true);
     }
 
     @Environment(EnvType.CLIENT)

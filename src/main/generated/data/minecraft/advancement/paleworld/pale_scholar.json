@@ -1,0 +1,78 @@
+{
+  "parent": "minecraft:paleworld/pale_garden_entered",
+  "criteria": {
+    "pale_cave_entered": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biomes": "paleworld:pale_caves"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
+    "pale_forest_entered": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biomes": "paleworld:sparse_pale_garden"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
+    "pale_garden_entered": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biomes": "minecraft:pale_garden"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.pw.paleScholarText"
+    },
+    "frame": "challenge",
+    "icon": {
+      "count": 1,
+      "id": "minecraft:pale_moss_block"
+    },
+    "title": {
+      "translate": "advancement.pw.paleScholar"
+    }
+  },
+  "requirements": [
+    [
+      "pale_garden_entered"
+    ],
+    [
+      "pale_cave_entered"
+    ],
+    [
+      "pale_forest_entered"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

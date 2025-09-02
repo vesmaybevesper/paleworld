@@ -84,7 +84,7 @@ public class PaleAxolotlBrain {
                                 new RandomTask<>(
                                         ImmutableList.of(
                                                 Pair.of(new TemptTask(PaleAxolotlBrain::getTemptedSpeed), 1),
-                                                Pair.of(WalkTowardsClosestAdultTask.create(WALK_TOWARD_ADULT_RANGE, PaleAxolotlBrain::getAdultFollowingSpeed), 1)
+                                                Pair.of(WalkTowardsEntityTask.create(WALK_TOWARD_ADULT_RANGE, PaleAxolotlBrain::getAdultFollowingSpeed, MemoryModuleType.NEAREST_VISIBLE_ADULT, true), 1)
                                         )
                                 )
                         ),

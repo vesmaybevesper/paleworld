@@ -163,6 +163,16 @@ public class PaleWorldBlocks {
             .strength(1.5F)
             .mapColor(MapColor.STONE_GRAY)));
 
+    public static final Block STRIPPED_CREAKING_HEART = regBlock("stripped_creaking_heart", new CreakingHeartBlock(AbstractBlock.Settings.create()
+            .registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(PaleWorld.MOD_ID, "stripped_creaking_heart")))
+            .pistonBehavior(PistonBehavior.NORMAL)
+            .sounds(BlockSoundGroup.CREAKING_HEART)
+            .requiresTool()
+            .strength(10)
+            .instrument(NoteBlockInstrument.BASEDRUM)
+            .mapColor(MapColor.ORANGE)
+    ));
+
     private static Block regBlock(String name, Block block) {
         regBlockItem(name, block);
         return Registry.register(Registries.BLOCK, Identifier.of(PaleWorld.MOD_ID, name), block);
@@ -199,6 +209,7 @@ public class PaleWorldBlocks {
             fabricItemGroupEntries.add(CHRYSANTHEMUM);
             fabricItemGroupEntries.add(ASPHODEL);
             fabricItemGroupEntries.add(RAFFLESIA);
+            fabricItemGroupEntries.add(STRIPPED_CREAKING_HEART);
         });
     }
 

@@ -18,6 +18,7 @@ public class PaleWorldItemGroup {
                     .displayName(Text.translatable("itemgroup.paleworld.paleworld"))
                     .entries(((displayContext, entries) -> {
                       //entries.add(PaleWorldBlocks.PETRIFIED_PALE_OAK);
+                        //entries.add(PaleWorldBlocks.STRIPPED_CREAKING_HEART);
                         entries.add(PaleWorldBlocks.WHITE_CRYSTAL);
                         entries.add(PaleWorldBlocks.PALE_STONE);
                         entries.add(PaleWorldItems.DRAINED_CRYSTAL_FRAGMENT);

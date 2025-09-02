@@ -1,9 +1,11 @@
 package vesper.pw.block.custom;
 
 import net.minecraft.block.*;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -37,6 +39,13 @@ public class RafflesiaBlock extends FlowerBlock {
     @Override
     public @Nullable StatusEffectInstance getContactEffect() {
         return new StatusEffectInstance(StatusEffects.NAUSEA);
+    }
+
+    @Override
+    public void onSteppedOn(World world, BlockPos pos, BlockState state, Entity entity) {
+        if (entity instanceof PlayerEntity) {
+            ((PlayerEntity) entity).addStatusEffect((StatusEffectInstance) StatusEffects.NAUSEA);
+        }
     }
 
     @Override

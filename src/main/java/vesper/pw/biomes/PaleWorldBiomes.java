@@ -17,7 +17,7 @@ import static vesper.pw.client.render.particle.ParticleTypes.MOSS_PARTICLE;
 
 public class PaleWorldBiomes {
     public static final RegistryKey<Biome> PALE_CAVE = RegistryKey.of(RegistryKeys.BIOME, Identifier.of(PaleWorld.MOD_ID, "pale_caves"));
-    public static final RegistryKey<Biome> PALE_VALLEY = RegistryKey.of(RegistryKeys.BIOME, Identifier.of(PaleWorld.MOD_ID, "pale_valley"));
+    public static final RegistryKey<Biome> PALE_VALLEY = RegistryKey.of(RegistryKeys.BIOME, Identifier.of(PaleWorld.MOD_ID, "sparse_pale_garden"));
 
     public static void bootstrap(Registerable<Biome> biomeRegisterable) {
         biomeRegisterable.register(PALE_CAVE, paleCave(biomeRegisterable));
@@ -81,14 +81,15 @@ public class PaleWorldBiomes {
         SpawnSettings.Builder spawner = new SpawnSettings.Builder();
         GenerationSettings.LookupBackedBuilder builder = new GenerationSettings.LookupBackedBuilder(biomeRegisterable.getRegistryLookup(RegistryKeys.PLACED_FEATURE), biomeRegisterable.getRegistryLookup(RegistryKeys.CONFIGURED_CARVER));
 
+        DefaultBiomeFeatures.addSprings(builder);
         DefaultBiomeFeatures.addBatsAndMonsters(spawner);
         DefaultBiomeFeatures.addFarmAnimals(spawner);
-
+        DefaultBiomeFeatures.addForestGrass(builder);
 
         return new Biome.Builder()
                 .precipitation(true)
-                .downfall(1)
-                .temperature(1)
+                .downfall(0.8f)
+                .temperature(0.7f)
                 .generationSettings(builder.build())
                 .spawnSettings(spawner.build())
                 .effects((new BiomeEffects.Builder())

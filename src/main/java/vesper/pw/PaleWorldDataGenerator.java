@@ -6,6 +6,7 @@ import net.minecraft.registry.RegistryBuilder;
 import net.minecraft.registry.RegistryKeys;
 import vesper.pw.biomes.PaleWorldBiomes;
 import vesper.pw.datagen.*;
+import vesper.pw.enchanting.Enchantments;
 import vesper.pw.world.PaleWorldConfiguredFeatures;
 import vesper.pw.world.PaleWorldPlacedFeatures;
 
@@ -19,6 +20,7 @@ public class PaleWorldDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(LootTables::new);
 		pack.addProvider(EntityLootTables::new);
 		pack.addProvider(ModelProvider::new);
+		//pack.addProvider(RecipeProvider::new);
 	}
 
 	@Override
@@ -26,6 +28,6 @@ public class PaleWorldDataGenerator implements DataGeneratorEntrypoint {
 		registryBuilder.addRegistry(RegistryKeys.BIOME, PaleWorldBiomes::bootstrap);
 		registryBuilder.addRegistry(RegistryKeys.CONFIGURED_FEATURE, PaleWorldConfiguredFeatures::bootstrap);
 		registryBuilder.addRegistry(RegistryKeys.PLACED_FEATURE, PaleWorldPlacedFeatures::bootstrap);
-		// registryBuilder.addRegistry(RegistryKeys.ENCHANTMENT, Enchantments::bootstrap);
+		registryBuilder.addRegistry(RegistryKeys.ENCHANTMENT, Enchantments::bootstrap);
 	}
 }

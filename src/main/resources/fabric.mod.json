@@ -41,7 +41,7 @@
 	],
 	"depends": {
 		"fabricloader": ">=0.16.13",
-		"minecraft": "~1.21",
+		"minecraft": ">=1.21.6",
 		"java": ">=21",
 		"terrablender": ">=5.0.0.0",
 		"fabric-api": "*"

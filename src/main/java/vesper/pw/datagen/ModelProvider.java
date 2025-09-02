@@ -28,6 +28,7 @@ public class ModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerTintableCross(PaleWorldBlocks.ASPHODEL, BlockStateModelGenerator.CrossType.NOT_TINTED);
     }
 
+
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
         itemModelGenerator.register(PaleWorldItems.PALE_AXOLOTL_SPAWN_EGG);

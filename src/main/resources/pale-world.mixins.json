@@ -4,13 +4,13 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "render.BiomeEffectsMixin",
-    "render.BlocksMixin"
+    "blocks.BlocksMixin"
   ],
   "injectors": {
     "defaultRequire": 1
   },
   "client": [
-    "render.BackgroundRendererMixin",
+    "render.FogRendererMixin",
     "render.BiomeEffectsMixin"
   ]
 }

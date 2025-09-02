@@ -16,10 +16,11 @@ public class EntityGen {
     public static void addSpawns(){
         BiomeModifications.addSpawn(BiomeSelectors.includeByKey(PaleWorldBiomes.PALE_CAVE), SpawnGroup.AXOLOTLS, Entities.PALE_AXOLOTL, 3, 1, 1);
         BiomeModifications.addSpawn(BiomeSelectors.includeByKey(PaleWorldBiomes.PALE_CAVE), SpawnGroup.MONSTER, Entities.VAMPIRE_BAT, 50, 1, 3);
-        BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.PALE_GARDEN), SpawnGroup.MONSTER, Entities.VAMPIRE_BAT, 25, 1, 3);
+        BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.PALE_GARDEN), SpawnGroup.MONSTER, Entities.VAMPIRE_BAT, 25, 1, 2);
+        BiomeModifications.addSpawn(BiomeSelectors.includeByKey(PaleWorldBiomes.PALE_VALLEY), SpawnGroup.MONSTER, Entities.VAMPIRE_BAT, 25, 1, 1);
 
         SpawnRestriction.register(Entities.PALE_AXOLOTL, SpawnLocationTypes.IN_WATER, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, AxolotlEntity::canSpawn);
-        SpawnRestriction.register(Entities.VAMPIRE_BAT, SpawnLocationTypes.UNRESTRICTED, Heightmap.Type.WORLD_SURFACE, VampireBat::canMobSpawn);
+        SpawnRestriction.register(Entities.VAMPIRE_BAT, SpawnLocationTypes.UNRESTRICTED, Heightmap.Type.WORLD_SURFACE, VampireBat::canSpawn);
 
     }
 }

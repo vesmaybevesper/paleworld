@@ -1,0 +1,26 @@
+{
+  "criteria": {
+    "pale_world_load": {
+      "trigger": "minecraft:tick"
+    }
+  },
+  "display": {
+    "background": "minecraft:textures/gui/advancements/backgrounds/stone.png",
+    "description": {
+      "translate": "advancement.pw.rootText"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:pale_moss_block"
+    },
+    "title": {
+      "translate": "advancement.pw.root"
+    }
+  },
+  "requirements": [
+    [
+      "pale_world_load"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

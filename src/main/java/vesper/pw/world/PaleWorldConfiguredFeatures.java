@@ -66,6 +66,7 @@ public class PaleWorldConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?,?>> PALE_SPIKE = registryKey("pale_spike");
     public static final RegistryKey<ConfiguredFeature<?,?>> FALLEN_PALE_OAK = registryKey("fallen_pale_oak");
     public static final RegistryKey<ConfiguredFeature<?,?>> CHRYSANTHEMUM = registryKey("chrysanthemum");
+    public static final RegistryKey<ConfiguredFeature<?,?>> ASPHODEL = registryKey("asphodel");
 
 
     private static RegistryEntry<PlacedFeature> createSmallDyingDripleaf(){
@@ -421,8 +422,21 @@ public class PaleWorldConfiguredFeatures {
 
         register(configuredFeatureRegisterable, FALLEN_PALE_OAK, Feature.FALLEN_TREE, fallenPaleOak().build());
 
-        register(configuredFeatureRegisterable, CHRYSANTHEMUM, Feature.FLOWER, new RandomPatchFeatureConfig(50, 4, 2, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, (new SimpleBlockFeatureConfig(new NoiseBlockStateProvider(2345L, new DoublePerlinNoiseSampler.NoiseParameters(0, 1.0, new double[0]), 0.020833334F, List.of(PaleWorldBlocks.CHRYSANTHEMUM.getDefaultState())))))));
+        register(configuredFeatureRegisterable,
+                CHRYSANTHEMUM,
+                Feature.FLOWER,
+                new RandomPatchFeatureConfig(50, 4, 2, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
+                        (new SimpleBlockFeatureConfig(new NoiseBlockStateProvider(2345L, new DoublePerlinNoiseSampler.NoiseParameters
+                                (0, 1.0, new double[0]), 0.020833334F,
+                                List.of(PaleWorldBlocks.CHRYSANTHEMUM.getDefaultState())))))));
 
+        register(configuredFeatureRegisterable,
+                ASPHODEL,
+                Feature.FLOWER,
+                new RandomPatchFeatureConfig(40, 3, 1, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
+                        (new SimpleBlockFeatureConfig(new NoiseBlockStateProvider(2345L, new DoublePerlinNoiseSampler.NoiseParameters
+                                (0, 1.0, new double[0]), 0.020833334F,
+                                List.of(PaleWorldBlocks.ASPHODEL.getDefaultState())))))));
     }
 
 

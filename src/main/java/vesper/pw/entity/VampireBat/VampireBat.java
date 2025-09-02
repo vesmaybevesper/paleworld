@@ -1,179 +1,212 @@
 package vesper.pw.entity.VampireBat;
 
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.*;
-import net.minecraft.entity.ai.TargetPredicate;
-import net.minecraft.entity.ai.control.BodyControl;
-import net.minecraft.entity.ai.control.LookControl;
-import net.minecraft.entity.ai.goal.*;
+import net.minecraft.entity.ai.brain.Brain;
+import net.minecraft.entity.ai.brain.MemoryModuleType;
+import net.minecraft.entity.ai.control.FlightMoveControl;
+import net.minecraft.entity.ai.control.MoveControl;
+import net.minecraft.entity.ai.pathing.BirdNavigation;
+import net.minecraft.entity.ai.pathing.EntityNavigation;
+import net.minecraft.entity.attribute.AttributeContainer;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
+import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.*;
+import net.minecraft.entity.passive.PigEntity;
+import net.minecraft.entity.passive.SheepEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NbtCompound;
+import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.world.*;
+import net.tslat.smartbrainlib.api.SmartBrainOwner;
+import net.tslat.smartbrainlib.api.core.BrainActivityGroup;
+import net.tslat.smartbrainlib.api.core.SmartBrainProvider;
+import net.tslat.smartbrainlib.api.core.behaviour.FirstApplicableBehaviour;
+import net.tslat.smartbrainlib.api.core.behaviour.OneRandomBehaviour;
+import net.tslat.smartbrainlib.api.core.behaviour.custom.attack.AnimatableMeleeAttack;
+import net.tslat.smartbrainlib.api.core.behaviour.custom.look.LookAtTarget;
+import net.tslat.smartbrainlib.api.core.behaviour.custom.misc.AvoidSun;
+import net.tslat.smartbrainlib.api.core.behaviour.custom.misc.Idle;
+import net.tslat.smartbrainlib.api.core.behaviour.custom.move.EscapeSun;
+import net.tslat.smartbrainlib.api.core.behaviour.custom.move.MoveToWalkTarget;
+import net.tslat.smartbrainlib.api.core.behaviour.custom.path.SetRandomFlyingTarget;
+import net.tslat.smartbrainlib.api.core.behaviour.custom.path.SetWalkTargetToAttackTarget;
+import net.tslat.smartbrainlib.api.core.behaviour.custom.target.*;
+import net.tslat.smartbrainlib.api.core.navigation.SmoothFlyingPathNavigation;
+import net.tslat.smartbrainlib.api.core.sensor.ExtendedSensor;
+import net.tslat.smartbrainlib.api.core.sensor.vanilla.NearbyLivingEntitySensor;
+import net.tslat.smartbrainlib.api.core.sensor.vanilla.NearbyPlayersSensor;
 import org.jetbrains.annotations.Nullable;
+import software.bernie.geckolib.animatable.GeoAnimatable;
+import software.bernie.geckolib.animatable.GeoEntity;
+import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.animatable.manager.AnimatableManager;
+import software.bernie.geckolib.animatable.processing.AnimationController;
+import software.bernie.geckolib.animatable.processing.AnimationTest;
+import software.bernie.geckolib.animation.PlayState;
+import software.bernie.geckolib.animation.RawAnimation;
+import software.bernie.geckolib.util.GeckoLibUtil;
+import vesper.pw.entity.PaleAxolotl.PaleAxolotl;
 import vesper.pw.item.PaleWorldItems;
-import java.util.Comparator;
-import java.util.EnumSet;
+
 import java.util.List;
-import java.util.Random;
 
 
-public class VampireBat extends FlyingEntity implements Monster {
+public class VampireBat extends PathAwareEntity implements Flutterer, Monster, SmartBrainOwner<VampireBat>, GeoEntity {
     private static final TrackedData<Byte> VAMPIRE_BAT_FLAGS = DataTracker.registerData(VampireBat.class, TrackedDataHandlerRegistry.BYTE);
-    Vec3d targetPosition;
-    VampireBatMovementType movementType;
-    BlockPos circlingCenter;
+    protected boolean isFlying = false;
+    protected final BirdNavigation flyingNav;
+    protected final EntityNavigation walkNav;
+    protected final FlightMoveControl flightControl;
+    private final AnimatableInstanceCache geoCache = GeckoLibUtil.createInstanceCache(this);
+    protected static final RawAnimation FLYING_ANIM = RawAnimation.begin().thenLoop("vb.fly");
+
 
     public VampireBat(EntityType<? extends VampireBat> entityType, World world) {
         super(entityType, world);
-        this.targetPosition = Vec3d.ZERO;
-        this.circlingCenter = BlockPos.ORIGIN;
-        this.movementType = VampireBatMovementType.CIRCLE;
+        this.flightControl = new FlightMoveControl(this, 10, true);
+        this.flyingNav = new BirdNavigation(this, world);
+        this.walkNav = this.navigation;
+        this.walkNav.setCanSwim(true);
+
+
         this.experiencePoints = 5;
-        this.moveControl = new VBMoveControl(this);
-        this.lookControl = new VBLookControl(this);
-
-
         if (!world.isClient) {
             this.setRoosting(false);
         }
     }
 
-    protected BodyControl createBodyControl() {
-        return new VBBodyControl(this);
-    }
-
-    static class VBLookControl extends LookControl {
-        public VBLookControl(MobEntity mobEntity) {
-            super(mobEntity);
-        }
-
-        public void tick() {
-        }
-    }
-
-    class VBMoveControl extends net.minecraft.entity.ai.control.MoveControl {
-        public VBMoveControl(MobEntity entity) {
-            super(entity);
-        }
-
-        private float targetSpeed = 0.1F;
-
-
-        public void tick() {
-            if (VampireBat.this.horizontalCollision) {
-                VampireBat.this.setYaw(VampireBat.this.getYaw() + 180.0F);
-                this.targetSpeed = 0.1F;
-            }
-
-            double d = VampireBat.this.targetPosition.x - VampireBat.this.getX();
-            double e = VampireBat.this.targetPosition.y - VampireBat.this.getY();
-            double f = VampireBat.this.targetPosition.z - VampireBat.this.getZ();
-            double g = Math.sqrt(d * d + f * f);
-            if (Math.abs(g) > (double)1.0E-5F) {
-                double h = (double)1.0F - Math.abs(e * (double)0.7F) / g;
-                d *= h;
-                f *= h;
-                g = Math.sqrt(d * d + f * f);
-                double i = Math.sqrt(d * d + f * f + e * e);
-                float j = VampireBat.this.getYaw();
-                float k = (float)MathHelper.atan2(f, d);
-                float l = MathHelper.wrapDegrees(VampireBat.this.getYaw() + 90.0F);
-                float m = MathHelper.wrapDegrees(k * (180F / (float)Math.PI));
-                VampireBat.this.setYaw(MathHelper.stepUnwrappedAngleTowards(l, m, 4.0F) - 90.0F);
-                VampireBat.this.bodyYaw = VampireBat.this.getYaw();
-                if (MathHelper.angleBetween(j, VampireBat.this.getYaw()) < 3.0F) {
-                    this.targetSpeed = MathHelper.stepTowards(this.targetSpeed, 1.8F, 0.005F * (1.8F / this.targetSpeed));
-                } else {
-                    this.targetSpeed = MathHelper.stepTowards(this.targetSpeed, 0.2F, 0.025F);
-                }
-
-                float n = (float)(-(MathHelper.atan2(-e, g) * (double)(180F / (float)Math.PI)));
-                VampireBat.this.setPitch(n);
-                float o = VampireBat.this.getYaw() + 90.0F;
-                double p = (double)(this.targetSpeed * MathHelper.cos(o * ((float)Math.PI / 180F))) * Math.abs(d / i);
-                double q = (double)(this.targetSpeed * MathHelper.sin(o * ((float)Math.PI / 180F))) * Math.abs(f / i);
-                double r = (double)(this.targetSpeed * MathHelper.sin(n * ((float)Math.PI / 180F))) * Math.abs(e / i);
-                Vec3d vec3d = VampireBat.this.getVelocity();
-                VampireBat.this.setVelocity(vec3d.add((new Vec3d(p, r, q)).subtract(vec3d).multiply(0.2)));
-            }
-        }
-    }
-
-    public boolean canMobSpawn(EntityType<? extends MobEntity> entityType, WorldAccess worldAccess, SpawnReason spawnReason, BlockPos pos, Random random){
-        return worldAccess.getLightLevel(pos) <= 7 || SpawnReason.isAnySpawner(spawnReason);
-    }
-
-    class VBBodyControl extends BodyControl {
-        public VBBodyControl(final MobEntity entity) {
-            super(entity);
-        }
-
-        public void tick() {
-            VampireBat.this.headYaw = VampireBat.this.bodyYaw;
-            VampireBat.this.bodyYaw = VampireBat.this.getYaw();
-        }
+    @Override
+    protected EntityNavigation createNavigation(World world) {
+        final SmoothFlyingPathNavigation nav = new SmoothFlyingPathNavigation(this, world);
+        nav.setCanSwim(true);
+        return nav;
     }
 
     @Override
-    public @Nullable EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData) {
-        this.circlingCenter = this.getBlockPos().up(5);
-        return super.initialize(world, difficulty, spawnReason, entityData);
-    }
+    public MoveControl getMoveControl() {
+        this.moveControl = this.flightControl;
 
-    @Override
-    public void readCustomDataFromNbt(NbtCompound nbt) {
-        super.readCustomDataFromNbt(nbt);
-        this.circlingCenter = (BlockPos)nbt.get("anchor_pos", BlockPos.CODEC).orElse(null);
-
-    }
-
-    @Override
-    public void writeCustomDataToNbt(NbtCompound nbt) {
-        super.writeCustomDataToNbt(nbt);
-        nbt.putNullable("anchor_pos", BlockPos.CODEC, this.circlingCenter);
+        return this.moveControl;
     }
 
     @Override
     protected void initGoals() {
-        this.goalSelector.add(3, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
-        this.goalSelector.add(3, new CircularMovementGoal());
-        this.goalSelector.add(2, new SwoopGoal());
-        this.goalSelector.add(2, new StartAttackGoal());
-        this.targetSelector.add(1, new FindTargetGoal());
-
     }
 
-    public static DefaultAttributeContainer.Builder createHostileAttributes() {
-        return HostileEntity.createHostileAttributes()
-                .add(EntityAttributes.FOLLOW_RANGE, (double)35.0F)
-                .add(EntityAttributes.FLYING_SPEED, (double)2F)
-                .add(EntityAttributes.ATTACK_DAMAGE, (double)3.0F);
-    }
-    public int getWingFlapTickOffset() {
-        return this.getId() * 3;
+
+    @Override
+    protected Brain.Profile<?> createBrainProfile() {
+        return new SmartBrainProvider<>(this);
     }
 
     @Override
-    protected void initDataTracker(DataTracker.Builder builder) {
-        super.initDataTracker(builder);
-        builder.add(VAMPIRE_BAT_FLAGS, (byte) 0);
+    public List<? extends ExtendedSensor<? extends VampireBat>> getSensors() {
+        return List.of(
+                new NearbyPlayersSensor<>(),
+                new NearbyLivingEntitySensor<VampireBat>()
+                        .setPredicate((target, entity) ->
+                                        target instanceof PlayerEntity ||
+                                        target instanceof PigEntity ||
+                                        target instanceof SheepEntity ||
+                                        target instanceof PaleAxolotl)
+        );
     }
 
-    boolean testTargetPredicate(ServerWorld world, LivingEntity target, TargetPredicate predicate) {
-        return predicate.test(world, this, target);
+    @Override
+    public BrainActivityGroup<? extends VampireBat> getCoreTasks() {
+        return BrainActivityGroup.coreTasks(
+                new AvoidSun(),
+                new EscapeSun<>().cooldownFor(entity -> 20),
+                new LookAtTarget<>(),
+                new MoveToWalkTarget<>()
+        );
+    }
+
+    @Override
+    public BrainActivityGroup<? extends VampireBat> getIdleTasks() {
+        return BrainActivityGroup.idleTasks(
+                new FirstApplicableBehaviour<VampireBat>(
+                        new TargetOrRetaliate<>().useMemory(MemoryModuleType.NEAREST_ATTACKABLE),
+                        new SetPlayerLookTarget<>(),
+                        new SetRandomLookTarget<>()
+                ),
+                new OneRandomBehaviour<>(
+                        new SetRandomFlyingTarget<VampireBat>().verticalWeight(entity -> -(entity.getRandom().nextInt(10) == 0 ? 1 : 0)).setRadius(4, 4).startCondition(VampireBat::isInAir),
+                        new Idle<>().runFor(entity -> entity.getRandom().nextBetween(30,60))
+                )
+        );
+    }
+
+    @Override
+    public BrainActivityGroup<? extends VampireBat> getFightTasks() {
+        return BrainActivityGroup.fightTasks(
+                new InvalidateAttackTarget<>(),
+                new FirstApplicableBehaviour<>(
+                        new AnimatableMeleeAttack<>(0).whenStarting(entity -> setAttacking(true)).whenStarting(entity -> setAttacking(false)),
+                        new SetWalkTargetToAttackTarget<>()
+                )
+        );
+    }
+
+    @Override
+    public void tickMovement() {
+        super.tickMovement();
+        this.tickHandSwing();
+
+        if (this.getWorld().isClient()) {
+            this.isFlying = true;
+        }
+
+        if (isFlyingVehicle() && this.isFlying){
+            setVelocity(getVelocity().subtract(0, getAttributeValue(EntityAttributes.GRAVITY), 0));
+        }
+
+        assert MinecraftClient.getInstance().world != null;
+        if (this.getPos().y < MinecraftClient.getInstance().world.getHeight() + 1){
+            this.setVelocity(getVelocity().x, getVelocity().y + 0.0002f, getVelocity().z);
+        }
+    }
+
+    @Override
+    protected boolean isAffectedByDaylight() {
+        return true;
+    }
+
+    @Override
+    protected void mobTick(ServerWorld world) {
+        tickBrain(this);
+
+        boolean wasFlying = isInAir();
+
+        this.isFlying = true;
+
+        if (!wasFlying){
+            getNavigation();
+            getMoveControl();
+        }
+        setNoGravity(true);
+    }
+
+    @Override
+    public void tick() {
+        super.tick();
+    }
+
+    public int getWingFlapTickOffset() {
+        return this.getId() * 3;
     }
 
     public void setRoosting(boolean roosting) {
@@ -187,17 +220,87 @@ public class VampireBat extends FlyingEntity implements Monster {
 
     }
 
-    static enum VampireBatMovementType {
-        CIRCLE,
-        SWOOP;
+    public boolean isRoosting() {
+        return ((Byte)this.dataTracker.get(VAMPIRE_BAT_FLAGS) & 1) != 0;
+    }
 
-        private VampireBatMovementType() {
-        }
+    public static DefaultAttributeContainer.Builder createHostileAttributes() {
+        return HostileEntity.createHostileAttributes()
+                .add(EntityAttributes.FOLLOW_RANGE, (double)35.0F)
+                .add(EntityAttributes.FLYING_SPEED, (double)2F)
+                .add(EntityAttributes.ATTACK_DAMAGE, (double)3.0F);
+    }
+
+    public static boolean canSpawn(EntityType<VampireBat> vampireBatEntityType, ServerWorldAccess serverWorldAccess, SpawnReason spawnReason, BlockPos blockPos, Random random) {
+        return serverWorldAccess.getLightLevel(blockPos) <= 7 || SpawnReason.isAnySpawner(spawnReason);
+    }
+
+    @Override
+    protected void initDataTracker(DataTracker.Builder builder) {
+        super.initDataTracker(builder);
+        builder.add(VAMPIRE_BAT_FLAGS, (byte) 0);
+    }
+
+    @Override
+    public boolean isInAir() {
+       return this.isFlying;
+    }
+
+    @Override
+    public boolean handleFallDamage(double fallDistance, float damagePerDistance, DamageSource damageSource) {
+        return false;
     }
 
     @Override
     protected boolean isDisallowedInPeaceful() {
         return true;
+    }
+
+    @Override
+    public boolean tryAttack(ServerWorld world, Entity target) {
+        if (super.tryAttack(world, target)){
+            onAttacking(target);
+
+            return true;
+        }
+
+        return false;
+    }
+
+    @Override
+    public boolean damage(ServerWorld world, DamageSource source, float amount) {
+        if (super.damage(world, source, (float) this.getAttributeValue(EntityAttributes.ATTACK_DAMAGE))){
+            onDamaged(source);
+
+            return true;
+        }
+
+        return false;
+    }
+
+    @Override
+    protected void applyDamage(ServerWorld world, DamageSource source, float amount) {
+        super.applyDamage(world, source, (float) this.getAttributeValue(EntityAttributes.ATTACK_DAMAGE));
+    }
+
+    @Override
+    public boolean isClimbing() {
+        return false;
+    }
+
+    @Override
+    protected void travelFlying(Vec3d movementInput, float speed) {
+        super.travelFlying(movementInput, 0.2f);
+    }
+
+    @Override
+    public void travel(Vec3d movementInput) {
+        travelFlying(movementInput, 0.2f);
+    }
+
+    @Override
+    public @Nullable EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData) {
+        return super.initialize(world, difficulty, spawnReason, entityData);
     }
 
     @Nullable
@@ -215,12 +318,6 @@ public class VampireBat extends FlyingEntity implements Monster {
         return SoundEvents.ENTITY_BAT_DEATH;
     }
 
-
-    public boolean isRoosting() {
-        return ((Byte)this.dataTracker.get(VAMPIRE_BAT_FLAGS) & 1) != 0;
-    }
-
-
     @Override
     protected boolean shouldDropLoot() {
         return true;
@@ -231,236 +328,17 @@ public class VampireBat extends FlyingEntity implements Monster {
         return new ItemStack(PaleWorldItems.VAMPIRE_BAT_SPAWN_EGG);
     }
 
-    abstract class MovementGoal extends Goal {
-        public MovementGoal() {
-            this.setControls(EnumSet.of(Control.MOVE));
-        }
-
-        protected boolean isNearTarget() {
-            return VampireBat.this.targetPosition.squaredDistanceTo(VampireBat.this.getX(), VampireBat.this.getY(), VampireBat.this.getZ()) < (double)4.0F;
-        }
+    @Override
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
+        controllerRegistrar.add(new AnimationController<VampireBat>("flying", 5, this::flyingAnimationController));
     }
-class CircularMovementGoal extends MovementGoal {
-    private float angle;
-    private float radius;
-    private float yOffset;
-    private float circlingDirection;
 
-    CircularMovementGoal(){
+    protected <E extends VampireBat> PlayState flyingAnimationController(final AnimationTest<E> animationTest){
+        return animationTest.setAndContinue(FLYING_ANIM);
     }
 
     @Override
-    public boolean canStart() {
-        return VampireBat.this.getTarget() == null || VampireBat.this.movementType == VampireBat.VampireBatMovementType.CIRCLE;
-    }
-
-    @Override
-    public void start() {
-        this.radius = 15.0F + VampireBat.this.random.nextFloat() * 10.0F;
-        this.yOffset = 4.0F + VampireBat.this.random.nextFloat() * 9.0F;
-        this.circlingDirection = VampireBat.this.random.nextBoolean() ? 1.0F : -1.0F;
-        this.adjustDirection();
-    }
-
-    @Override
-    public void stop() {
-        super.stop();
-    }
-
-    @Override
-    public void tick() {
-        if (VampireBat.this.random.nextInt(this.getTickCount(350)) == 0) {
-            this.yOffset = 4.0F + VampireBat.this.random.nextFloat() * 9.0F;
-        }
-
-        if (VampireBat.this.random.nextInt(this.getTickCount(250)) == 0) {
-            ++this.radius;
-            if (this.radius > 45.0F) {
-                this.radius = 15.0F;
-                this.circlingDirection = -this.circlingDirection;
-            }
-        }
-
-        if (VampireBat.this.random.nextInt(this.getTickCount(450)) == 0) {
-            this.angle = VampireBat.this.random.nextFloat() * 2.0F * (float)Math.PI;
-            this.adjustDirection();
-        }
-
-        if (this.isNearTarget()) {
-            this.adjustDirection();
-        }
-
-        if (VampireBat.this.targetPosition.y < VampireBat.this.getY() && !VampireBat.this.getWorld().isAir(VampireBat.this.getBlockPos().down(1))) {
-            this.yOffset = Math.max(1.0F, this.yOffset);
-            this.adjustDirection();
-        }
-
-        if (VampireBat.this.targetPosition.y > VampireBat.this.getY() && !VampireBat.this.getWorld().isAir(VampireBat.this.getBlockPos().up(1))) {
-            this.yOffset = Math.min(-1.0F, this.yOffset);
-            this.adjustDirection();
-        }
-
-    }
-
-    private void adjustDirection(){
-        if (VampireBat.this.circlingCenter == null) {
-            VampireBat.this.circlingCenter = VampireBat.this.getBlockPos();
-        }
-
-        this.angle += this.circlingDirection * 15.0F * ((float)Math.PI / 180F);
-        VampireBat.this.targetPosition = Vec3d.of(VampireBat.this.circlingCenter).add((double)(this.radius * MathHelper.cos(this.angle)), (double)(-4.0F + this.yOffset), (double)(this.radius * MathHelper.sin(this.angle)));
-    }
-
-
-}
-
-class SwoopGoal extends MovementGoal{
-
-        SwoopGoal(){
-
-        }
-    @Override
-    public boolean canStart() {
-        return VampireBat.this.getTarget() != null && VampireBat.this.movementType == VampireBat.VampireBatMovementType.SWOOP;
-    }
-
-    @Override
-    public boolean shouldContinue() {
-        LivingEntity livingEntity = VampireBat.this.getTarget();
-        if (livingEntity == null) {
-            return false;
-        } else if (!livingEntity.isAlive()) {
-            return false;
-        } else {
-            if (livingEntity instanceof PlayerEntity) {
-                PlayerEntity playerEntity = (PlayerEntity)livingEntity;
-                if (livingEntity.isSpectator() || playerEntity.isCreative()) {
-                    return false;
-                }
-            }
-
-            return this.canStart();
-        }
-    }
-
-    @Override
-    public void start() {
-    }
-
-    @Override
-    public void stop() {
-        VampireBat.this.setTarget(null);
-        VampireBat.this.movementType = VampireBatMovementType.CIRCLE;
-    }
-
-    @Override
-    public void tick() {
-        LivingEntity livingEntity = VampireBat.this.getTarget();
-        if (livingEntity != null) {
-            VampireBat.this.targetPosition = new Vec3d(livingEntity.getBlockX(), livingEntity.getBodyY((double)0.5F), livingEntity.getZ());
-            if (VampireBat.this.getBoundingBox().expand((double)0.2F).intersects(livingEntity.getBoundingBox())) {
-                VampireBat.this.tryAttack(castToServerWorld(VampireBat.this.getWorld()), livingEntity);
-                VampireBat.this.movementType = VampireBat.VampireBatMovementType.CIRCLE;
-                if (!VampireBat.this.isSilent()) {
-                    VampireBat.this.getWorld().syncWorldEvent(1039, VampireBat.this.getBlockPos(), 0);
-                }
-            } else if (VampireBat.this.horizontalCollision || VampireBat.this.hurtTime > 0) {
-                VampireBat.this.movementType = VampireBat.VampireBatMovementType.CIRCLE;
-            }
-        }
-    }
-}
-
-    class StartAttackGoal extends Goal{
-
-        private int cooldown;
-
-        StartAttackGoal(){
-        }
-
-        @Override
-        public boolean canStart() {
-            LivingEntity livingEntity = VampireBat.this.getTarget();
-            return livingEntity != null ? VampireBat.this.testTargetPredicate(castToServerWorld(VampireBat.this.getWorld()), livingEntity, TargetPredicate.DEFAULT) : false;
-        }
-
-        @Override
-        public void start() {
-            this.cooldown = this.getTickCount(10);
-            VampireBat.this.movementType = VampireBatMovementType.CIRCLE;
-            this.startSwoop();
-        }
-
-        @Override
-        public void stop() {
-            VampireBat.this.circlingCenter = VampireBat.this.getWorld().getTopPosition(Heightmap.Type.MOTION_BLOCKING, VampireBat.this.circlingCenter).up(10 + VampireBat.this.random.nextInt(20));
-        }
-
-        @Override
-        public void tick() {
-            if (VampireBat.this.movementType == VampireBatMovementType.CIRCLE){
-                --this.cooldown;
-                if(this.cooldown <= 0){
-                    VampireBat.this.movementType = VampireBatMovementType.SWOOP;
-                    this.startSwoop();
-                    this.cooldown = this.getTickCount(8 + VampireBat.this.random.nextInt(4) * 20);
-                    VampireBat.this.playAttackSound();
-                }
-            }
-        }
-
-        public void startSwoop(){
-            VampireBat.this.circlingCenter = VampireBat.this.getTarget().getBlockPos().up(20 + VampireBat.this.random.nextInt(20));
-            if (VampireBat.this.circlingCenter.getY() < VampireBat.this.getWorld().getSeaLevel()){
-                VampireBat.this.circlingCenter = new BlockPos(VampireBat.this.circlingCenter.getX(), VampireBat.this.getWorld().getSeaLevel() + 1, VampireBat.this.circlingCenter.getZ());
-            }
-        }
-    }
-
-    class FindTargetGoal extends Goal {
-        private final TargetPredicate PLAYERS_IN_RANGE_PREDICATE = TargetPredicate.createAttackable().setBaseMaxDistance((double)64.0F);
-        private int delay = toGoalTicks(20);
-
-        FindTargetGoal(){}
-
-        @Override
-        public boolean canStart() {
-            if (this.delay > 0) {
-                --this.delay;
-                return false;
-            } else {
-                this.delay = toGoalTicks(60);
-                ServerWorld serverWorld = castToServerWorld(VampireBat.this.getWorld());
-                List<PlayerEntity> list = serverWorld.getPlayers(this.PLAYERS_IN_RANGE_PREDICATE, VampireBat.this, VampireBat.this.getBoundingBox().expand((double)16.0F, (double)64.0F, (double)16.0F));
-                if (!list.isEmpty()) {
-                    list.sort(Comparator.comparing(Entity::getY).reversed());
-
-                    for(PlayerEntity playerEntity : list) {
-                        if (VampireBat.this.testTargetPredicate(serverWorld, playerEntity, TargetPredicate.DEFAULT)) {
-                            VampireBat.this.setTarget(playerEntity);
-                            return true;
-                        }
-                    }
-                }
-
-                return false;
-            }
-        }
-
-        @Override
-        public boolean shouldContinue() {
-            LivingEntity livingEntity = VampireBat.this.getTarget();
-            return livingEntity != null && VampireBat.this.testTargetPredicate(castToServerWorld(VampireBat.this.getWorld()), livingEntity, TargetPredicate.DEFAULT);
-        }
-    }
-
-    @Override
-    public boolean canSpawn(WorldAccess world, SpawnReason spawnReason) {
-        return super.canSpawn(world, spawnReason);
-    }
-
-    @Override
-    public boolean canSpawn(WorldView world) {
-        return super.canSpawn(world);
+    public AnimatableInstanceCache getAnimatableInstanceCache() {
+        return this.geoCache;
     }
 }

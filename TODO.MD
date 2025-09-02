@@ -9,6 +9,7 @@ TO-DO:
   - Pale Cave Structure(?)
   - Finalize Pale Apple implementation
   - Make better mob AI
+    - Pale Axolotl
 
   
 - V2.0.0

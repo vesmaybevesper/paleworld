@@ -13,6 +13,7 @@ public class CustomSounds {
 
     public static final SoundEvent PALE_CAVE_ATMOS = registerSounds("pale-cave-ambi");
     public static final SoundEvent ENGINE_LOOP = registerSounds("engine");
+    public static final SoundEvent EYEBLOSSOM_AMBI = registerSounds("eyeblossom_ambiance");
 
     public static SoundEvent registerSounds(String id) {
         Identifier identifier = Identifier.of(PaleWorld.MOD_ID, id);
