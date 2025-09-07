@@ -1,0 +1,107 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"pa.walk": {
+			"loop": true,
+			"animation_length": 1,
+			"bones": {
+				"hindLeft": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 20]
+						},
+						"0.25": {
+							"vector": [0, 11, 20]
+						},
+						"0.5": {
+							"vector": [0, 0, 20]
+						},
+						"0.75": {
+							"vector": [0, -11, 20]
+						},
+						"1.0": {
+							"vector": [0, 0, 20]
+						}
+					}
+				},
+				"pale_axolotl": {
+					"position": {
+						"vector": [0, 2, 0]
+					}
+				},
+				"Tail": {
+					"rotation": {
+						"vector": [0, 0, 0]
+					}
+				},
+				"frontLeft": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 20]
+						},
+						"0.25": {
+							"vector": [0, 11, 20]
+						},
+						"0.5": {
+							"vector": [0, 0, 20]
+						},
+						"0.75": {
+							"vector": [0, -11, 20]
+						},
+						"1.0": {
+							"vector": [0, 0, 20]
+						}
+					}
+				},
+				"hindRight": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, -20]
+						},
+						"0.25": {
+							"vector": [0, 11, -20]
+						},
+						"0.5": {
+							"vector": [0, 0, -20]
+						},
+						"0.75": {
+							"vector": [0, -11, -20]
+						},
+						"1.0": {
+							"vector": [0, 0, -20]
+						}
+					}
+				},
+				"frontRight": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, -20]
+						},
+						"0.25": {
+							"vector": [0, 11, -20]
+						},
+						"0.5": {
+							"vector": [0, 0, -20]
+						},
+						"0.75": {
+							"vector": [0, -11, -20]
+						},
+						"1.0": {
+							"vector": [0, 0, -20]
+						}
+					}
+				}
+			}
+		},
+		"pa.swim": {
+			"loop": true
+		},
+		"pa.idle": {
+			"loop": true
+		},
+		"pa.play_dead": {
+			"loop": true
+		}
+	},
+	"geckolib_format_version": 2
+}

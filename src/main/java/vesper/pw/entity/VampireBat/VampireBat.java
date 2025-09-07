@@ -139,13 +139,13 @@ public class VampireBat extends PathAwareEntity implements Flutterer, Monster, S
     public BrainActivityGroup<? extends VampireBat> getIdleTasks() {
         return BrainActivityGroup.idleTasks(
                 new FirstApplicableBehaviour<VampireBat>(
-                        new TargetOrRetaliate<>().useMemory(MemoryModuleType.NEAREST_ATTACKABLE),
                         new SetPlayerLookTarget<>(),
                         new SetRandomLookTarget<>()
                 ),
                 new OneRandomBehaviour<>(
                         new SetRandomFlyingTarget<VampireBat>().verticalWeight(entity -> -(entity.getRandom().nextInt(10) == 0 ? 1 : 0)).setRadius(4, 4).startCondition(VampireBat::isInAir),
-                        new Idle<>().runFor(entity -> entity.getRandom().nextBetween(30,60))
+                        new Idle<>().runFor(entity -> entity.getRandom().nextBetween(30,60)),
+                        new TargetOrRetaliate<>().useMemory(MemoryModuleType.NEAREST_ATTACKABLE).cooldownForBetween(1200, 2400)
                 )
         );
     }
@@ -205,10 +205,6 @@ public class VampireBat extends PathAwareEntity implements Flutterer, Monster, S
         super.tick();
     }
 
-    public int getWingFlapTickOffset() {
-        return this.getId() * 3;
-    }
-
     public void setRoosting(boolean roosting) {
         if (this.dataTracker == null) return;
         byte b = (Byte)this.dataTracker.get(VAMPIRE_BAT_FLAGS);
@@ -243,7 +239,7 @@ public class VampireBat extends PathAwareEntity implements Flutterer, Monster, S
 
     @Override
     public boolean isInAir() {
-       return this.isFlying;
+       return true;
     }
 
     @Override
@@ -305,7 +301,7 @@ public class VampireBat extends PathAwareEntity implements Flutterer, Monster, S
 
     @Nullable
     public SoundEvent getAmbientSound() {
-        return this.isRoosting() && this.random.nextInt(4) != 0 ? null : SoundEvents.ENTITY_BAT_AMBIENT;
+        return SoundEvents.ENTITY_BAT_AMBIENT;
     }
 
     @Override

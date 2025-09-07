@@ -6,9 +6,11 @@ import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.client.render.entity.model.ModelTransformer;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
+import software.bernie.geckolib.model.GeoModel;
+import software.bernie.geckolib.renderer.base.GeoRenderState;
 import vesper.pw.PaleWorld;
 
-public class PaleAxolotlModel extends EntityModel<PaleAxolotlRenderState> {
+public class PaleAxolotlModel extends GeoModel<PaleAxolotl> {
 
     public static final EntityModelLayer PALE_AXOLOTL = new EntityModelLayer(Identifier.of(PaleWorld.MOD_ID, "pale_axolotl"), "main");
 
@@ -26,7 +28,7 @@ public class PaleAxolotlModel extends EntityModel<PaleAxolotlRenderState> {
     private final ModelPart rightGills;
 
     public PaleAxolotlModel(ModelPart root) {
-        super(root);
+        super();
         this.body = root.getChild("body");
         this.head = this.body.getChild("head");
         this.rightHindLeg = this.body.getChild("right_hind_leg");
@@ -60,7 +62,7 @@ public class PaleAxolotlModel extends EntityModel<PaleAxolotlRenderState> {
         return TexturedModelData.of(modelData, 64, 64);
     }
 
-    public void setAngles(PaleAxolotlRenderState paleAxolotlRenderState) {
+    /*public void setAngles(PaleAxolotlRenderState paleAxolotlRenderState) {
         super.setAngles(paleAxolotlRenderState);
         float f = paleAxolotlRenderState.playingDeadValue;
         float g = paleAxolotlRenderState.inWaterValue;
@@ -256,7 +258,20 @@ public class PaleAxolotlModel extends EntityModel<PaleAxolotlRenderState> {
             var2 = this.rightFrontLeg;
             var2.roll += -this.leftFrontLeg.roll * f;
         }
+    }*/
+
+    @Override
+    public Identifier getModelResource(GeoRenderState renderState) {
+        return Identifier.of(PaleWorld.MOD_ID, "geckolib/models/pale_axolotl");
     }
 
+    @Override
+    public Identifier getTextureResource(GeoRenderState renderState) {
+        return Identifier.of(PaleWorld.MOD_ID, "textures/entity/pale_axolotl.png");
+    }
 
+    @Override
+    public Identifier getAnimationResource(PaleAxolotl animatable) {
+        return Identifier.of(PaleWorld.MOD_ID, "geckolib/animations/pale_axolotl");
+    }
 }

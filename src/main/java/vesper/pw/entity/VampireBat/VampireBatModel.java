@@ -29,8 +29,7 @@ public class VampireBatModel extends GeoModel<VampireBat> {
     private final ModelPart rightWingTip;
     private final ModelPart leftWingTip;
     private final ModelPart feet;
-    private final Animation flyinganimation;
-    private final Animation roostanimation;
+
 
     public VampireBatModel(ModelPart modelPart) {
         super();
@@ -41,8 +40,6 @@ public class VampireBatModel extends GeoModel<VampireBat> {
         this.leftWing = this.body.getChild("left_wing");
         this.leftWingTip = this.leftWing.getChild("left_wing_tip");
         this.feet = this.body.getChild("feet");
-        this.flyinganimation = VampireBatAnimations.FLYING.createAnimation(modelPart);
-        this.roostanimation = VampireBatAnimations.ROOSTING.createAnimation(modelPart);
     }
 
     public static TexturedModelData getTexturedModelData() {
