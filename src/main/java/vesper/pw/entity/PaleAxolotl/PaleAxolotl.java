@@ -40,7 +40,7 @@ public class PaleAxolotl extends AxolotlEntity implements Bucketable, GeoEntity,
     public final AnimationState idleAnimation = new AnimationState();
     private int idleAnimationTimeout = 0;
     private final AnimatableInstanceCache geoCache = GeckoLibUtil.createInstanceCache(this);
-    protected static final RawAnimation WALK_ANIM = RawAnimation.begin().then("pa.walk", Animation.LoopType.LOOP);
+    protected static final RawAnimation WALK_ANIM = RawAnimation.begin().thenLoop("pa.walk");
     protected static final RawAnimation SWIM_ANIM = RawAnimation.begin().thenLoop("pa.swim");
     protected static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenLoop("pa.idle");
     protected static final RawAnimation PLAY_DEAD_ANIM = RawAnimation.begin().thenLoop("pa.play_dead");
@@ -157,15 +157,14 @@ public class PaleAxolotl extends AxolotlEntity implements Bucketable, GeoEntity,
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
         controllerRegistrar.add(new AnimationController<PaleAxolotl>("walk", 5, this::walkAnimController));
-        /*controllerRegistrar.add(new AnimationController<PaleAxolotl>("swim", 5, this::swimAnimController));
+        controllerRegistrar.add(new AnimationController<PaleAxolotl>("swim", 5, this::swimAnimController));
         controllerRegistrar.add(new AnimationController<PaleAxolotl>("idle", 5, this::idleAnimController));
-        controllerRegistrar.add(new AnimationController<PaleAxolotl>("play_dead", 5, this::playDeadAnimController));*/
+        controllerRegistrar.add(new AnimationController<PaleAxolotl>("play_dead", 5, this::playDeadAnimController));
     }
 
     private <E extends PaleAxolotl>PlayState walkAnimController(final AnimationTest<E> animationTest){
         if (animationTest.isMoving() && !this.submergedInWater) {
-            animationTest.setAnimation(WALK_ANIM);
-            return PlayState.CONTINUE;
+            return animationTest.setAndContinue(WALK_ANIM);
         }
         return PlayState.STOP;
     }
