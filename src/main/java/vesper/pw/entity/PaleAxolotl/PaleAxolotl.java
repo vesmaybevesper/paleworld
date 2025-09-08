@@ -162,10 +162,10 @@ public class PaleAxolotl extends AxolotlEntity implements Bucketable, GeoEntity,
     }
 
     private <E extends PaleAxolotl>PlayState walkAnimController(final AnimationTest<E> animationTest){
-        if (!animationTest.isMoving() || !this.isOnGround()) {
-            return PlayState.STOP;
+        if (animationTest.isMoving() && this.isOnGround()) {
+            return animationTest.setAndContinue(WALK_ANIM);
         }
-        return animationTest.setAndContinue(WALK_ANIM);
+        return PlayState.STOP;
     }
 
     protected <E extends PaleAxolotl> PlayState swimAnimController(final AnimationTest<E> animationTest){
