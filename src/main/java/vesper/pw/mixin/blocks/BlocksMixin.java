@@ -22,7 +22,7 @@ public class BlocksMixin {
         return settings.luminance(blockstate -> 5);
     }
 
-    @ModifyExpressionValue(method = "<clinit>", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/Blocks;createFlowerPotSettings()Lnet/minecraft/block/AbstractBlock$Settings;"))
+    @ModifyExpressionValue(method = "<clinit>", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/Blocks;createFlowerPotSettings()Lnet/minecraft/block/AbstractBlock$Settings;"), slice = @Slice(from = @At(value = "CONSTANT", args = "stringValue=potted_open_eyeblossom")))
     private static AbstractBlock.Settings pottedOpenEyeblossom(AbstractBlock.Settings settings){
         if (PaleWorldConfig.horrorMode){
                 return settings.luminance(blockstate -> 3);
