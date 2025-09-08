@@ -27,6 +27,7 @@ import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.animatable.manager.AnimatableManager;
 import software.bernie.geckolib.animatable.processing.AnimationController;
 import software.bernie.geckolib.animatable.processing.AnimationTest;
+import software.bernie.geckolib.animation.Animation;
 import software.bernie.geckolib.animation.PlayState;
 import software.bernie.geckolib.animation.RawAnimation;
 import software.bernie.geckolib.util.GeckoLibUtil;
@@ -39,7 +40,7 @@ public class PaleAxolotl extends AxolotlEntity implements Bucketable, GeoEntity,
     public final AnimationState idleAnimation = new AnimationState();
     private int idleAnimationTimeout = 0;
     private final AnimatableInstanceCache geoCache = GeckoLibUtil.createInstanceCache(this);
-    protected static final RawAnimation WALK_ANIM = RawAnimation.begin().thenLoop("pa.walk");
+    protected static final RawAnimation WALK_ANIM = RawAnimation.begin().then("pa.walk", Animation.LoopType.LOOP);
     protected static final RawAnimation SWIM_ANIM = RawAnimation.begin().thenLoop("pa.swim");
     protected static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenLoop("pa.idle");
     protected static final RawAnimation PLAY_DEAD_ANIM = RawAnimation.begin().thenLoop("pa.play_dead");
@@ -156,28 +157,29 @@ public class PaleAxolotl extends AxolotlEntity implements Bucketable, GeoEntity,
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
         controllerRegistrar.add(new AnimationController<PaleAxolotl>("walk", 5, this::walkAnimController));
-        controllerRegistrar.add(new AnimationController<PaleAxolotl>("swim", 5, this::swimAnimController));
+        /*controllerRegistrar.add(new AnimationController<PaleAxolotl>("swim", 5, this::swimAnimController));
         controllerRegistrar.add(new AnimationController<PaleAxolotl>("idle", 5, this::idleAnimController));
-        controllerRegistrar.add(new AnimationController<PaleAxolotl>("play_dead", 5, this::playDeadAnimController));
+        controllerRegistrar.add(new AnimationController<PaleAxolotl>("play_dead", 5, this::playDeadAnimController));*/
     }
 
     private <E extends PaleAxolotl>PlayState walkAnimController(final AnimationTest<E> animationTest){
-        if (animationTest.isMoving() && this.isOnGround()) {
-            return animationTest.setAndContinue(WALK_ANIM);
+        if (animationTest.isMoving() && !this.submergedInWater) {
+            animationTest.setAnimation(WALK_ANIM);
+            return PlayState.CONTINUE;
         }
         return PlayState.STOP;
     }
 
     protected <E extends PaleAxolotl> PlayState swimAnimController(final AnimationTest<E> animationTest){
-        if (!animationTest.isMoving() || !this.submergedInWater){
-            return PlayState.STOP;
+        if (animationTest.isMoving() && this.submergedInWater){
+            return animationTest.setAndContinue(SWIM_ANIM);
         }
-        return animationTest.setAndContinue(SWIM_ANIM);
+        return PlayState.STOP;
     }
 
 
     protected <E extends PaleAxolotl> PlayState idleAnimController(final AnimationTest<E> animationTest){
-        if (this.getNavigation().isIdle()){
+        if (this.navigation.isIdle()){
             return animationTest.setAndContinue(IDLE_ANIM);
         }
 
