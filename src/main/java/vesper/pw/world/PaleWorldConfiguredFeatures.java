@@ -23,8 +23,7 @@ import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import net.minecraft.world.gen.stateprovider.NoiseBlockStateProvider;
 import net.minecraft.world.gen.stateprovider.RandomizedIntBlockStateProvider;
 import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
-import net.minecraft.world.gen.treedecorator.PaleMossTreeDecorator;
-import net.minecraft.world.gen.treedecorator.TrunkVineTreeDecorator;
+import net.minecraft.world.gen.treedecorator.*;
 import net.minecraft.world.gen.trunk.DarkOakTrunkPlacer;
 import net.minecraft.world.gen.trunk.ForkingTrunkPlacer;
 import vesper.pw.PaleWorld;
@@ -36,6 +35,8 @@ import vesper.pw.block.custom.SmallDyingDripleafBlock;
 import vesper.pw.world.gen.feature.BlankLeaves;
 
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.OptionalInt;
 
@@ -65,6 +66,10 @@ public class PaleWorldConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?,?>> STRIPPED_BARE_PALE_OAK = registryKey("stripped_bare_pale_oak");
     public static final RegistryKey<ConfiguredFeature<?,?>> PALE_SPIKE = registryKey("pale_spike");
     public static final RegistryKey<ConfiguredFeature<?,?>> FALLEN_PALE_OAK = registryKey("fallen_pale_oak");
+    public static final RegistryKey<ConfiguredFeature<?,?>> TALL_PALE_OAK_WITH_HEART = registryKey("tall_pale_oak_with_heart");
+    public static final RegistryKey<ConfiguredFeature<?,?>> SMALL_PALE_OAK_WITH_HEART = registryKey("small_pale_oak_with_heart");
+    public static final RegistryKey<ConfiguredFeature<?,?>> BARE_SMALL_PALE_OAK_WITH_HEART = registryKey("bare_small_pale_oak_with_heart");
+    public static final RegistryKey<ConfiguredFeature<?,?>> BARE_PALE_OAK_WITH_HEART = registryKey("bare_pale_oak_with_heart");
     public static final RegistryKey<ConfiguredFeature<?,?>> CHRYSANTHEMUM = registryKey("chrysanthemum");
     public static final RegistryKey<ConfiguredFeature<?,?>> ASPHODEL = registryKey("asphodel");
 
@@ -415,6 +420,51 @@ public class PaleWorldConfiguredFeatures {
                         BlockStateProvider.of(Blocks.AIR), new BlankLeaves(ConstantIntProvider.create(0), ConstantIntProvider.create(0)),
                         new ThreeLayersFeatureSize(1,1,0,1,2, OptionalInt.empty()))
                         .decorators(ImmutableList.of(new PaleMossTreeDecorator(0.0F, 0.4F, 0.8F)))
+                        .ignoreVines()
+                        .build());
+
+        // Pale Oaks with creaking hearts
+
+        register(configuredFeatureRegisterable,
+                TALL_PALE_OAK_WITH_HEART,
+                Feature.TREE,
+                new TreeFeatureConfig.Builder(BlockStateProvider.of(Blocks.PALE_OAK_LOG), new DarkOakTrunkPlacer(10,4,2),
+                        BlockStateProvider.of(Blocks.PALE_OAK_LEAVES), new DarkOakFoliagePlacer(ConstantIntProvider.create(0), ConstantIntProvider.create(0)),
+                        new ThreeLayersFeatureSize(1,1,0,1,2, OptionalInt.empty()))
+                        .decorators(ImmutableList.of(new PaleMossTreeDecorator(0.25F, 0.4F, 0.8F), new CreakingHeartTreeDecorator(1.0f)))
+                        .ignoreVines()
+                        .build());
+
+
+        register(configuredFeatureRegisterable,
+                BARE_PALE_OAK_WITH_HEART,
+                Feature.TREE,
+                new TreeFeatureConfig.Builder(BlockStateProvider.of(Blocks.PALE_OAK_LOG), new DarkOakTrunkPlacer(6,2,1),
+                        BlockStateProvider.of(Blocks.AIR), new BlankLeaves(ConstantIntProvider.create(0), ConstantIntProvider.create(0)),
+                        new ThreeLayersFeatureSize(1,1,0,1,2, OptionalInt.empty()))
+                        .decorators(ImmutableList.of(new PaleMossTreeDecorator(0.00F, 0.4F, 0.8F), new CreakingHeartTreeDecorator(1.0f)))
+                        .ignoreVines()
+                        .build());
+
+
+        register(configuredFeatureRegisterable,
+                SMALL_PALE_OAK_WITH_HEART,
+                Feature.TREE,
+                new TreeFeatureConfig.Builder(BlockStateProvider.of(Blocks.PALE_OAK_LOG), new ForkingTrunkPlacer(6,2,1),
+                        BlockStateProvider.of(Blocks.PALE_OAK_LEAVES), new DarkOakFoliagePlacer(ConstantIntProvider.create(0), ConstantIntProvider.create(0)),
+                        new ThreeLayersFeatureSize(1,1,0,1,2, OptionalInt.empty()))
+                        .decorators(ImmutableList.of(new PaleMossTreeDecorator(0.25F, 0.4F, 0.8F), new CreakingHeartTreeDecorator(1.0f)))
+                        .ignoreVines()
+                        .build());
+
+
+        register(configuredFeatureRegisterable,
+                BARE_SMALL_PALE_OAK_WITH_HEART,
+                Feature.TREE,
+                new TreeFeatureConfig.Builder(BlockStateProvider.of(Blocks.PALE_OAK_LOG), new ForkingTrunkPlacer(6,2,1),
+                        BlockStateProvider.of(Blocks.AIR), new BlankLeaves(ConstantIntProvider.create(0), ConstantIntProvider.create(0)),
+                        new ThreeLayersFeatureSize(1,1,0,1,2, OptionalInt.empty()))
+                        .decorators(ImmutableList.of(new PaleMossTreeDecorator(0.25F, 0.4F, 0.8F), new CreakingHeartTreeDecorator(1.0f)))
                         .ignoreVines()
                         .build());
 

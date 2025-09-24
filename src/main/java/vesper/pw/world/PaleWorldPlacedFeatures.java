@@ -33,11 +33,15 @@ public class PaleWorldPlacedFeatures {
     public static final RegistryKey<PlacedFeature> STRIPPED_PALE_OAK = registryKey("stripped_pale_oak");
     public static final RegistryKey<PlacedFeature> TALL_STRIPPED_PALE_OAK = registryKey("tall_stripped_pale_oak");
     public static final RegistryKey<PlacedFeature> TALL_PALE_OAK = registryKey("tall_pale_oak");
+    public static final RegistryKey<PlacedFeature> TALL_PALE_OAK_WITH_HEART = registryKey("tall_pale_oak_with_heart");
     public static final RegistryKey<PlacedFeature> SMALL_PALE_OAK = registryKey("small_pale_oak");
+    public static final RegistryKey<PlacedFeature> SMALL_PALE_OAK_WITH_HEART = registryKey("small_pale_oak_with_heart");
     public static final RegistryKey<PlacedFeature> STRIPPED_SMALL_PALE_OAK = registryKey("stripped_small_pale_oak");
     public static final RegistryKey<PlacedFeature> BARE_SMALL_PALE_OAK = registryKey("bare_small_pale_oak");
+    public static final RegistryKey<PlacedFeature> BARE_SMALL_PALE_OAK_WITH_HEART = registryKey("bare_small_pale_oak_with_heart");
     public static final RegistryKey<PlacedFeature> BARE_STRIPPED_SMALL_PALE_OAK = registryKey("bare_stripped_small_pale_oak");
     public static final RegistryKey<PlacedFeature> BARE_PALE_OAK = registryKey("bare_pale_oak");
+    public static final RegistryKey<PlacedFeature> BARE_PALE_OAK_WITH_HEART = registryKey("bare_pale_oak_with_heart");
     public static final RegistryKey<PlacedFeature> STRIPPED_BARE_PALE_OAK = registryKey("stripped_bare_pale_oak");
     public static final RegistryKey<PlacedFeature> PALE_SPIKE = registryKey("pale_spike");
     public static final RegistryKey<PlacedFeature> CHRYSANTHEMUM = registryKey("chrysanthemum_patch");
@@ -173,6 +177,10 @@ public class PaleWorldPlacedFeatures {
                 configuredFeatures.getOrThrow(PaleWorldConfiguredFeatures.BARE_PALE_OAK),
                 VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(2, 0.005F, 1), Blocks.PALE_OAK_SAPLING));
 
+        register(registerable,
+                BARE_PALE_OAK_WITH_HEART,
+                configuredFeatures.getOrThrow(PaleWorldConfiguredFeatures.BARE_PALE_OAK_WITH_HEART),
+                VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(2, 0.005F, 1), Blocks.PALE_OAK_SAPLING));
 
         register(registerable,
                STRIPPED_PALE_OAK,
@@ -190,15 +198,25 @@ public class PaleWorldPlacedFeatures {
                 VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(4, 0.5F, 2), Blocks.PALE_OAK_SAPLING));
 
         register(registerable,
+                TALL_PALE_OAK_WITH_HEART,
+                configuredFeatures.getOrThrow(PaleWorldConfiguredFeatures.TALL_PALE_OAK_WITH_HEART),
+                VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(4, 0.5F, 2), Blocks.PALE_OAK_SAPLING));
+
+        register(registerable,
                STRIPPED_BARE_PALE_OAK,
                 configuredFeatures.getOrThrow(PaleWorldConfiguredFeatures.STRIPPED_BARE_PALE_OAK),
                 VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(1, 0.005F, 1), Blocks.PALE_OAK_SAPLING));
-
 
         register(registerable,
                SMALL_PALE_OAK,
                 configuredFeatures.getOrThrow(PaleWorldConfiguredFeatures.SMALL_PALE_OAK),
                 VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(4, 0.5F, 2), Blocks.PALE_OAK_SAPLING));
+
+        register(registerable,
+                SMALL_PALE_OAK_WITH_HEART,
+                configuredFeatures.getOrThrow(PaleWorldConfiguredFeatures.SMALL_PALE_OAK_WITH_HEART),
+                VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(4, 0.5F, 2), Blocks.PALE_OAK_SAPLING));
+
 
         register(registerable,
                STRIPPED_SMALL_PALE_OAK,
@@ -208,6 +226,11 @@ public class PaleWorldPlacedFeatures {
         register(registerable,
                 BARE_SMALL_PALE_OAK,
                 configuredFeatures.getOrThrow(PaleWorldConfiguredFeatures.BARE_SMALL_PALE_OAK),
+                VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(2, 0.005F, 2), Blocks.PALE_OAK_SAPLING));
+
+        register(registerable,
+                BARE_SMALL_PALE_OAK_WITH_HEART,
+                configuredFeatures.getOrThrow(PaleWorldConfiguredFeatures.BARE_SMALL_PALE_OAK_WITH_HEART),
                 VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(2, 0.005F, 2), Blocks.PALE_OAK_SAPLING));
 
         register(registerable,
