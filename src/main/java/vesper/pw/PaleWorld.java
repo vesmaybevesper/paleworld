@@ -45,6 +45,7 @@ public class PaleWorld implements ModInitializer {
 
     @Override
 	public void onInitialize() {
+        LOGGER.info("Not all who wander are lost, but I sure am");
 		// Register Items, Blocks and World Gen
 		MidnightConfig.init(PaleWorld.MOD_ID, PaleWorldConfig.class);
 		LOGGER.info("Registered Config");
