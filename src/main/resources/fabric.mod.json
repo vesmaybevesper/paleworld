@@ -1,6 +1,6 @@
 {
+    "schemaVersion": 1,
 	"accessWidener": "paleworld.accesswidener",
-	"schemaVersion": 1,
 	"id": "paleworld",
 	"version": "${version}",
 	"name": "Pale World",
@@ -40,11 +40,14 @@
 		"pale-world.mixins.json"
 	],
 	"depends": {
-		"fabricloader": ">=0.16.13",
+		"fabricloader": ">=0.17.2",
 		"minecraft": ">=1.21.6",
 		"java": ">=21",
 		"terrablender": ">=5.0.0.0",
-		"fabric-api": "*"
+		"fabric-api": "*",
+        "eveningstarlib": ">=1.0.2.2",
+        "smartbrainlib": ">=1.16.8",
+        "geckolib": ">=5.2.0"
 	},
 	"suggests": {
 	},
