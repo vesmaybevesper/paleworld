@@ -18,7 +18,7 @@
 				{
 					"name": "head & gills",
 					"parent": "pale_axolotl",
-					"pivot": [0, 0, 0]
+					"pivot": [0, 3, -5]
 				},
 				{
 					"name": "head",
@@ -31,7 +31,7 @@
 				{
 					"name": "leftGills",
 					"parent": "head & gills",
-					"pivot": [2, 0, -4.5],
+					"pivot": [4, 0, -4.5],
 					"rotation": [0, 12.5, 0],
 					"cubes": [
 						{"origin": [5, 4, -4], "size": [1, 2, 0], "inflate": 0.001, "uv": [12, 41]},
@@ -68,8 +68,13 @@
 					]
 				},
 				{
-					"name": "Tail",
+					"name": "Body + Tail",
 					"parent": "pale_axolotl",
+					"pivot": [0, 2, -3]
+				},
+				{
+					"name": "Tail",
+					"parent": "Body + Tail",
 					"pivot": [0, 2, 7],
 					"cubes": [
 						{"origin": [0, 0, 7], "size": [0, 5, 4], "inflate": 0.001, "uv": [10, 27]},
@@ -81,7 +86,7 @@
 				},
 				{
 					"name": "Body",
-					"parent": "pale_axolotl",
+					"parent": "Body + Tail",
 					"pivot": [0, 0, 2],
 					"cubes": [
 						{"origin": [-4, 0, -3], "size": [8, 4, 10], "uv": [0, 11]},
@@ -91,7 +96,7 @@
 				},
 				{
 					"name": "hindLeft",
-					"parent": "pale_axolotl",
+					"parent": "Body + Tail",
 					"pivot": [4, 0, 3.5],
 					"cubes": [
 						{"origin": [6, 0, 3], "size": [3, 0, 2], "inflate": 0.001, "pivot": [8, 0, 4], "rotation": [0, -90, 0], "uv": [0, 16]},
@@ -100,7 +105,7 @@
 				},
 				{
 					"name": "frontLeft",
-					"parent": "pale_axolotl",
+					"parent": "Body + Tail",
 					"pivot": [4, 0, -1.5],
 					"cubes": [
 						{"origin": [7, 0, 1], "size": [3, 0, 2], "inflate": 0.001, "pivot": [10, 0, 0], "rotation": [0, -90, 0], "uv": [0, 16]},
@@ -109,7 +114,7 @@
 				},
 				{
 					"name": "hindRight",
-					"parent": "pale_axolotl",
+					"parent": "Body + Tail",
 					"pivot": [-4, 0, 3.5],
 					"cubes": [
 						{"origin": [-10, 0, 2], "size": [3, 0, 2], "inflate": 0.001, "pivot": [-8, 0, 3], "rotation": [0, 90, 0], "uv": [0, 16]},
@@ -118,7 +123,7 @@
 				},
 				{
 					"name": "frontRight",
-					"parent": "pale_axolotl",
+					"parent": "Body + Tail",
 					"pivot": [-4, 0, -1.5],
 					"cubes": [
 						{"origin": [-10, 0, -3], "size": [3, 0, 2], "inflate": 0.001, "pivot": [-8, 0, -2], "rotation": [0, 90, 0], "uv": [0, 16]},
