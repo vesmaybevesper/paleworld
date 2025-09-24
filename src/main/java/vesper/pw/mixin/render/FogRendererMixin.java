@@ -43,7 +43,7 @@ public abstract class FogRendererMixin {
         if (!ESLModChecks.isShaders()) {
             BlockPos pos = player.getBlockPos();
             RegistryEntry<Biome> biome = world.getBiome(pos);
-            if (!biome.matchesKey(BiomeKeys.PALE_GARDEN) || !biome.matchesKey(PaleWorldBiomes.PALE_VALLEY)) return;
+            if (!biome.matchesKey(BiomeKeys.PALE_GARDEN) && !biome.matchesKey(PaleWorldBiomes.PALE_VALLEY)) return;
             int topY = world.getTopY(Heightmap.Type.WORLD_SURFACE, pos.getX(), pos.getZ());
 
             if (biome.matchesKey(BiomeKeys.PALE_GARDEN)) {
