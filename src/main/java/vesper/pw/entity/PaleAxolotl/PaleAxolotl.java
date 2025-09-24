@@ -21,13 +21,11 @@ import net.tslat.smartbrainlib.api.SmartBrainOwner;
 import net.tslat.smartbrainlib.api.core.sensor.ExtendedSensor;
 import net.tslat.smartbrainlib.api.core.sensor.vanilla.AxolotlSpecificSensor;
 import net.tslat.smartbrainlib.api.core.sensor.vanilla.NearbyLivingEntitySensor;
-import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.animatable.manager.AnimatableManager;
 import software.bernie.geckolib.animatable.processing.AnimationController;
 import software.bernie.geckolib.animatable.processing.AnimationTest;
-import software.bernie.geckolib.animation.Animation;
 import software.bernie.geckolib.animation.PlayState;
 import software.bernie.geckolib.animation.RawAnimation;
 import software.bernie.geckolib.util.GeckoLibUtil;
@@ -77,7 +75,7 @@ public class PaleAxolotl extends AxolotlEntity implements Bucketable, GeoEntity,
 
     @Override
     public boolean isFromBucket() {
-        return (Boolean)this.dataTracker.get(FROM_BUCKET);
+        return this.dataTracker.get(FROM_BUCKET);
     }
 
     @Override
@@ -163,14 +161,14 @@ public class PaleAxolotl extends AxolotlEntity implements Bucketable, GeoEntity,
     }
 
     private <E extends PaleAxolotl>PlayState walkAnimController(final AnimationTest<E> animationTest){
-        if (animationTest.isMoving() && !this.submergedInWater) {
+        if (animationTest.isMoving() && !this.touchingWater) {
             return animationTest.setAndContinue(WALK_ANIM);
         }
         return PlayState.STOP;
     }
 
     protected <E extends PaleAxolotl> PlayState swimAnimController(final AnimationTest<E> animationTest){
-        if (animationTest.isMoving() && this.submergedInWater){
+        if (animationTest.isMoving() && this.touchingWater || this.submergedInWater || this.touchingWater){
             return animationTest.setAndContinue(SWIM_ANIM);
         }
         return PlayState.STOP;
@@ -178,7 +176,7 @@ public class PaleAxolotl extends AxolotlEntity implements Bucketable, GeoEntity,
 
 
     protected <E extends PaleAxolotl> PlayState idleAnimController(final AnimationTest<E> animationTest){
-        if (this.navigation.isIdle()){
+        if (!animationTest.isMoving() && !this.touchingWater){
             return animationTest.setAndContinue(IDLE_ANIM);
         }
 
