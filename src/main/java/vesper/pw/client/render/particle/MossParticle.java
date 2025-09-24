@@ -11,7 +11,7 @@ import org.jetbrains.annotations.Nullable;
 public class MossParticle extends AscendingParticle {
 
     public MossParticle(ClientWorld world, double x, double y, double z,  double velocityX, double velocityY, double velocityZ, float scaleMultiplier, SpriteProvider spriteProvider) {
-        super(world, x, y, z, 0.1f, -0.1f, 0.1f, velocityX, velocityY, velocityZ, scaleMultiplier, spriteProvider, 10000f, 100, 0.025F, true);
+        super(world, x, y, z, 0.1f, -0.1f, 0.1f, velocityX, velocityY, velocityZ, scaleMultiplier, spriteProvider, 1000000000000000f, 100, 0.025F, true);
     }
 
 
