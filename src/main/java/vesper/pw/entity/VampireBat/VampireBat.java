@@ -64,7 +64,7 @@ import vesper.pw.item.PaleWorldItems;
 import java.util.List;
 
 
-public class VampireBat extends PathAwareEntity implements Flutterer, Monster, SmartBrainOwner<VampireBat>, GeoEntity {
+public class VampireBat extends HostileEntity implements Flutterer, SmartBrainOwner<VampireBat>, GeoEntity {
     private static final TrackedData<Byte> VAMPIRE_BAT_FLAGS = DataTracker.registerData(VampireBat.class, TrackedDataHandlerRegistry.BYTE);
     protected boolean isFlying = false;
     protected final BirdNavigation flyingNav;
@@ -83,7 +83,7 @@ public class VampireBat extends PathAwareEntity implements Flutterer, Monster, S
 
 
         this.experiencePoints = 5;
-        if (!world.isClient) {
+        if (!world.isClient()) {
             this.setRoosting(false);
         }
     }
@@ -166,7 +166,7 @@ public class VampireBat extends PathAwareEntity implements Flutterer, Monster, S
         super.tickMovement();
         this.tickHandSwing();
 
-        if (this.getWorld().isClient()) {
+        if (this.getEntityWorld().isClient()) {
             this.isFlying = true;
         }
 
@@ -175,7 +175,7 @@ public class VampireBat extends PathAwareEntity implements Flutterer, Monster, S
         }
 
         assert MinecraftClient.getInstance().world != null;
-        if (this.getPos().y < MinecraftClient.getInstance().world.getHeight() + 1){
+        if (this.getEntityPos().getY() < MinecraftClient.getInstance().world.getHeight() + 1){
             this.setVelocity(getVelocity().x, getVelocity().y + 0.0002f, getVelocity().z);
         }
     }
@@ -228,7 +228,7 @@ public class VampireBat extends PathAwareEntity implements Flutterer, Monster, S
     }
 
     public static boolean canSpawn(EntityType<VampireBat> vampireBatEntityType, ServerWorldAccess serverWorldAccess, SpawnReason spawnReason, BlockPos blockPos, Random random) {
-        return serverWorldAccess.getLightLevel(blockPos) <= 7 || SpawnReason.isAnySpawner(spawnReason);
+        return serverWorldAccess.getLightLevel(blockPos) <= 7 || SpawnReason.isAnySpawner(spawnReason) && serverWorldAccess.getDifficulty() != Difficulty.PEACEFUL;
     }
 
     @Override
@@ -245,11 +245,6 @@ public class VampireBat extends PathAwareEntity implements Flutterer, Monster, S
     @Override
     public boolean handleFallDamage(double fallDistance, float damagePerDistance, DamageSource damageSource) {
         return false;
-    }
-
-    @Override
-    protected boolean isDisallowedInPeaceful() {
-        return true;
     }
 
     @Override
@@ -315,7 +310,7 @@ public class VampireBat extends PathAwareEntity implements Flutterer, Monster, S
     }
 
     @Override
-    protected boolean shouldDropLoot() {
+    protected boolean shouldDropLoot(ServerWorld world) {
         return true;
     }
 

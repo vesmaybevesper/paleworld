@@ -31,8 +31,10 @@ public class PaleWorldItems {
     public static final RegistryKey<Item> PALE_COMPASS_KEY = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(PaleWorld.MOD_ID, "pale_compass"));
 
 
-    public static Item PALE_AXOLOTL_SPAWN_EGG = registerItems(new SpawnEggItem(Entities.PALE_AXOLOTL, new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(PaleWorld.MOD_ID, "pale_axolotl_spawn_egg")))), PALE_AXOLOTL_SPAWN_EGG_KEY);
-    public static Item VAMPIRE_BAT_SPAWN_EGG = registerItems(new SpawnEggItem(Entities.VAMPIRE_BAT, new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(PaleWorld.MOD_ID, "vampire_bat_spawn_egg")))), VAMPIRE_BAT_SPAWN_EGG_KEY);
+    //public static Item PALE_AXOLOTL_SPAWN_EGG = registerItems(new SpawnEggItem(Entities.PALE_AXOLOTL, new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(PaleWorld.MOD_ID, "pale_axolotl_spawn_egg")))), PALE_AXOLOTL_SPAWN_EGG_KEY);
+    public static Item PALE_AXOLOTL_SPAWN_EGG = registerItems(RegistryKey.of(RegistryKeys.ITEM, Identifier.of("pale_axolotl_spawn_egg")), SpawnEggItem::new, (new Item.Settings().spawnEgg(Entities.PALE_AXOLOTL)));
+    //public static Item VAMPIRE_BAT_SPAWN_EGG = registerItems(new SpawnEggItem(Entities.VAMPIRE_BAT, new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(PaleWorld.MOD_ID, "vampire_bat_spawn_egg")))), VAMPIRE_BAT_SPAWN_EGG_KEY);
+    public static Item VAMPIRE_BAT_SPAWN_EGG = registerItems(RegistryKey.of(RegistryKeys.ITEM, Identifier.of("vampire_bat_spawn_egg")), SpawnEggItem::new, (new Item.Settings().spawnEgg(Entities.VAMPIRE_BAT)));
     public static Item PALE_BERRIES = registerItems(new PaleBerriesItem(new Item.Settings().food(FoodComponents.PALE_BERRIES, ConsumableComponents.PALE_BERRIES).registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(PaleWorld.MOD_ID, "pale_berries")))), PALE_BERRIES_KEY);
     public static Item PALE_APPLE = registerItems("pale_apple", new Item.Settings().food(FoodComponents.PALE_APPLE, ConsumableComponents.PALE_APPLE));
 

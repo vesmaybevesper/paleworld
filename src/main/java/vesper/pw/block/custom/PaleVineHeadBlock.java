@@ -37,7 +37,7 @@ public class PaleVineHeadBlock extends AbstractPlantStemBlock implements PaleVin
 
     @Override
     protected void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
-        if (!world.isClient) {world.scheduleBlockTick(pos, this, 20);}
+        if (!world.isClient()) {world.scheduleBlockTick(pos, this, 20);}
         super.onBlockAdded(state, world, pos, oldState, notify);
     }
 

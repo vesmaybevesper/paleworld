@@ -24,7 +24,7 @@ public class Enchantments {
     public static final RegistryKey<Enchantment> PRISMATIC = of("prismatic");
 
     public static void bootstrap(Registerable<Enchantment> registerable){
-        RegistryEntryLookup<Item> registryEntryLookup = registerable.getRegistryLookup(RegistryKeys.ITEM);
+        /*RegistryEntryLookup<Item> registryEntryLookup = registerable.getRegistryLookup(RegistryKeys.ITEM);
         RegistryEntryLookup<Enchantment> registryEntryLookup2 = registerable.getRegistryLookup(RegistryKeys.ENCHANTMENT);
         RegistryEntryLookup<EntityType<?>> registryEntryLookup3 = registerable.getRegistryLookup(RegistryKeys.ENTITY_TYPE);
         register(registerable, PRISMATIC, Enchantment.builder(Enchantment.definition(registryEntryLookup.getOrThrow(ItemTags.WEAPON_ENCHANTABLE),
@@ -34,7 +34,7 @@ public class Enchantments {
                 .exclusiveSet(registryEntryLookup2.getOrThrow(EnchantmentTags.DAMAGE_EXCLUSIVE_SET))
                 .addEffect(EnchantmentEffectComponentTypes.DAMAGE, new AddEnchantmentEffect(EnchantmentLevelBasedValue.linear(2.5F)),
                         EntityPropertiesLootCondition.builder(LootContext.EntityTarget.THIS,
-                                EntityPredicate.Builder.create().type(EntityTypePredicate.create(registryEntryLookup3, EntityTypeTags.PRISMATIC)))));
+                                EntityPredicate.Builder.create().type(EntityTypePredicate.create(registryEntryLookup3, EntityTypeTags.PRISMATIC)))));*/
     }
 
 

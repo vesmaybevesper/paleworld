@@ -24,11 +24,10 @@ public class RafflesiaParticle extends AscendingParticle {
         }
 
         @Override
-        public @Nullable Particle createParticle(SimpleParticleType parameters, ClientWorld world, double x, double y, double z, double velocityX, double velocityY, double velocityZ) {
-            Random random1 = world.random;
-            double velX = (double) random1.nextFloat() * -1.9 * (double) random1.nextFloat() * 0.1;
-            double velY = (double) random1.nextFloat() * -0.5 * (double) random1.nextFloat() * 0.1 * (double) 0.5F;
-            double velZ = (double) random1.nextFloat() * -1.9 * (double) random1.nextFloat() * 0.1;
+        public @Nullable Particle createParticle(SimpleParticleType parameters, ClientWorld world, double x, double y, double z, double velocityX, double velocityY, double velocityZ, Random random) {
+            double velX = (double) random.nextFloat() * -1.9 * (double) random.nextFloat() * 0.1;
+            double velY = (double) random.nextFloat() * -0.5 * (double) random.nextFloat() * 0.1 * (double) 0.5F;
+            double velZ = (double) random.nextFloat() * -1.9 * (double) random.nextFloat() * 0.1;
             return new RafflesiaParticle(world, x, y, z, velX, velY, velZ, 1.0f, this.spriteProvider);
         }
     }
