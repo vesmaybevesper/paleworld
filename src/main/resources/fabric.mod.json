@@ -41,18 +41,17 @@
 	],
 	"depends": {
 		"fabricloader": ">=0.17.2",
-		"minecraft": ">=1.21.6",
+		"minecraft": ">=1.21.9",
 		"java": ">=21",
-		"terrablender": ">=5.0.0.0",
+		"terrablender": ">=6.0.0.4",
 		"fabric-api": "*",
         "eveningstarlib": ">=1.0.2.2",
-        "smartbrainlib": ">=1.16.8",
-        "geckolib": ">=5.2.0"
+        "smartbrainlib": ">=1.16.10",
+        "geckolib": ">=5.2.2"
 	},
 	"suggests": {
 	},
 	"conflicts": {
-		"foggypalegarden": "*",
 		"glowing-eyeblossom": "*",
 		"paleworldfx": "*"
 	}
