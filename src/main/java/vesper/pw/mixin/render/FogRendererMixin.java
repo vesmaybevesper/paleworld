@@ -1,6 +1,7 @@
 package vesper.pw.mixin.render;
 
 import com.llamalad7.mixinextras.sugar.Local;
+import dev.vesper.eveningstarlib.fabric.ESLModChecks;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.render.Camera;
 import net.minecraft.client.render.RenderTickCounter;
@@ -20,7 +21,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
-import vesper.esl.ESLModChecks;
 import vesper.pw.PaleWorldConfig;
 import vesper.pw.biomes.PaleWorldBiomes;
 import vesper.pw.utils.varHolder;
