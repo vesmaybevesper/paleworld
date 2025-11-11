@@ -1,59 +1,33 @@
 {
-    "schemaVersion": 1,
-	"accessWidener": "paleworld.accesswidener",
-	"id": "paleworld",
-	"version": "${version}",
-	"name": "Pale World",
-	"description": "It's the Creaking's world, we just live in it.",
-	"authors": [
-		"VesMaybeVesper"
-	],
-	"artist": [
-		"Flubs"
-	],
-	"contributors": [
-		"Hoku the cat"
-	],
-	"contact": {
-		"homepage": "https://modrinth.com/mod/paleworld",
-		"sources": "https://github.com/vesmaybevesper/paleworld",
-		"issues": "https://github.com/vesmaybevesper/paleworld/issues"
-	},
-	"license": "All Rights Reserved",
-	"icon": "assets/paleworld/icon.png",
-	"environment": "*",
-	"entrypoints": {
-		"main": [
-			"vesper.pw.PaleWorld"
-		],
-		"client": [
-			"vesper.pw.PaleWorldClient"
-		],
-		"fabric-datagen": [
-			"vesper.pw.PaleWorldDataGenerator"
-		],
-		"terrablender": [
-			"vesper.pw.biomes.PaleWorldTerrablenderApi"
-		]
-	},
-	"mixins": [
-		"pale-world.mixins.json"
-	],
-	"depends": {
-		"fabricloader": ">=0.17.2",
-		"minecraft": ">=1.21.6",
-		"java": ">=21",
-		"terrablender": ">=5.0.0.0",
-		"fabric-api": "*",
-        "eveningstarlib": ">=1.0.2.2",
-        "smartbrainlib": ">=1.16.8",
-        "geckolib": ">=5.2.0"
-	},
-	"suggests": {
-	},
-	"conflicts": {
-		"foggypalegarden": "*",
-		"glowing-eyeblossom": "*",
-		"paleworldfx": "*"
-	}
+  "schemaVersion": 1,
+  "id": "paleworld",
+  "name": "Pale World",
+  "version": "${version}",
+  "authors": ["VesMaybeVesper"],
+  "contact": {
+    "sources": "",
+    "issues": ""
+  },
+  "description": "It's the Creaking's world, we just live in it.",
+  "icon": "assets/icon.png",
+  "license": "ARR",
+  "environment": "*",
+  "accessWidener": "paleworld.accesswidener",
+  "entrypoints": {
+    "main": [
+      "dev.vesper.paleworld.fabric.FabricEntrypoint"
+    ],
+    "client": [
+      "dev.vesper.paleworld.fabric.FabricClientEntrypoint"
+    ],
+    "fabric-datagen": [
+      "dev.vesper.paleworld.fabric.datagen.FabricDataGeneratorEntrypoint"
+    ]
+  },
+  "mixins": [
+    "paleworld.mixins.json"
+  ],
+  "depends": {
+    "fabric-api": "*"
+  }
 }
