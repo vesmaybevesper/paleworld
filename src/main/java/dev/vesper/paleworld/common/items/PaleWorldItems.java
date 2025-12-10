@@ -1,7 +1,9 @@
 package dev.vesper.paleworld.common.items;
 
 import dev.vesper.paleworld.PaleWorld;
+import dev.vesper.paleworld.common.items.custom.PaleBerriesItem;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -59,7 +61,7 @@ public class PaleWorldItems {
 		if (item instanceof BlockItem blockItem) {
 			blockItem.appendBlocks(Item.BY_BLOCK, item);
 		}
-		return Registry.register(Registries.ITEM, key, item);
+		return Registry.register(BuiltInRegistries.ITEM, key, item);
 	}
 
 	public static void regModItems(){}
