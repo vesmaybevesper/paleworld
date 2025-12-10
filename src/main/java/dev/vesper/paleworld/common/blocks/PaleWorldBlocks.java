@@ -1,7 +1,9 @@
-package dev.vesper.paleworld.common.world.blocks;
+package dev.vesper.paleworld.common.blocks;
 
-import dev.vesper.paleworld.common.world.blocks.custom.BigDyingDripleafBlock;
-import dev.vesper.paleworld.common.world.blocks.custom.BigDyingDripleafStemBlock;
+import dev.vesper.paleworld.common.blocks.custom.BigDyingDripleafBlock;
+import dev.vesper.paleworld.common.blocks.custom.BigDyingDripleafStemBlock;
+import dev.vesper.paleworld.common.blocks.custom.PaleVineBodyBlock;
+import dev.vesper.paleworld.common.blocks.custom.PaleVines;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
@@ -43,7 +45,7 @@ public class PaleWorldBlocks {
 	}
 
 	public static final Block PALE_VINE = regBlock("pale_vine",
-			new PaleVinePlantBlock(
+			new PaleVineHeadBlock(
 					GrowingPlantBodyBlock.Properties.of()
 							.setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(MOD_ID, "pale_vine")))
 							.noCollision()
@@ -64,10 +66,10 @@ public class PaleWorldBlocks {
 							.sound(SoundType.CAVE_VINES)
 							.randomTicks()
 							.lightLevel(PaleVines.getLightLevelProvider(7))
-							.breakInstantly()
+							.instabreak()
 							.mapColor(MapColor.COLOR_GRAY)
 							.pushReaction(PushReaction.DESTROY)
-							.nonOpaque()
+							.noOcclusion()
 			));
 	public static final Block BIG_DYING_DRIPLEAF_STEM = regBlock("big_dying_dripleaf_stem",
 			new BigDyingDripleafStemBlock(

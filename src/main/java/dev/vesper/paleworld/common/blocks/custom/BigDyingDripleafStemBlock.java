@@ -1,4 +1,4 @@
-package dev.vesper.paleworld.common.world.blocks.custom;
+package dev.vesper.paleworld.common.blocks.custom;
 
 import dev.vesper.paleworld.common.world.blocks.PaleWorldBlocks;
 import net.minecraft.BlockUtil;
