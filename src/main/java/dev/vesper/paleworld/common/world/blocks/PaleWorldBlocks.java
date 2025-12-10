@@ -1,6 +1,7 @@
 package dev.vesper.paleworld.common.world.blocks;
 
 import dev.vesper.paleworld.common.world.blocks.custom.BigDyingDripleafBlock;
+import dev.vesper.paleworld.common.world.blocks.custom.BigDyingDripleafStemBlock;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
