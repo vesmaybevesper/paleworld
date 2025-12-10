@@ -1,129 +1,71 @@
-@file:Suppress("UnstableApiUsage")
-
 plugins {
-    id("fabric-loom")
-    id("dev.kikugie.postprocess.jsonlang")
-    id("me.modmuss50.mod-publish-plugin")
+	id("mod-platform")
+	id("fabric-loom")
 }
 
-tasks.named<ProcessResources>("processResources") {
-    fun prop(name: String) = project.property(name) as String
-
-    val props = HashMap<String, String>().apply {
-        this["version"] = prop("mod.version")
-        this["minecraft"] = prop("deps.minecraft")
-    }
-
-    filesMatching(listOf("fabric.mod.json", "META-INF/neoforge.mods.toml", "META-INF/mods.toml")) {
-        expand(props)
-    }
+platform {
+	loader = "fabric"
+	dependencies {
+		required("minecraft") {
+			versionRange = prop("deps.minecraft")
+		}
+		required("fabric-api") {
+			slug("fabric-api")
+			versionRange = ">=${prop("deps.fabric-api")}"
+		}
+		required("fabricloader") {
+			versionRange = ">=${libs.fabric.loader.get().version}"
+		}
+		optional("modmenu") {}
+	}
 }
-
-version = "${property("mod.version")}+${property("deps.minecraft")}-fabric"
-base.archivesName = property("mod.id") as String
 
 loom {
-    accessWidenerPath = rootProject.file("src/main/resources/${property("mod.id")}.accesswidener")
-}
-
-jsonlang {
-    languageDirectories = listOf("assets/${property("mod.id")}/lang")
-    prettyPrint = true
-}
-
-repositories {
-    mavenLocal()
-    maven("https://maven.minecraftforge.net/")
-    maven("https://maven.isxander.dev/releases")
-    maven("https://dl.cloudsmith.io/public/tslat/sbl/maven/")
-    maven("https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/")
-    maven("https://api.modrinth.com/maven")
-    maven("https://maven.terraformersmc.com/")
-    maven("https://maven.shedaniel.me/")
-}
-
-dependencies {
-    minecraft("com.mojang:minecraft:${property("deps.minecraft")}")
-    mappings(loom.layered {
-        officialMojangMappings()
-        if (hasProperty("deps.parchment"))
-            parchment("org.parchmentmc.data:parchment-${property("deps.parchment")}@zip")
-    })
-    //mappings("dev.lambdaurora:yalmm:1.21.6+build.13")
-    modImplementation("net.fabricmc:fabric-loader:${property("deps.fabric-loader")}")
-    modImplementation("net.fabricmc.fabric-api:fabric-api:${property("deps.fabric-api")}")
-    modImplementation("maven.modrinth:eveningstarlib:${property("deps.eveningstarlib")}")
-    modApi("me.shedaniel.cloth:cloth-config-fabric:${property("deps.cloth")}")
-    modImplementation("com.github.glitchfiend:TerraBlender-fabric:${property("deps.terrablender")}")
-    modImplementation("net.tslat.smartbrainlib:SmartBrainLib-fabric-1.21.6:${property("deps.smartbrainlib")}")
-    modImplementation("software.bernie.geckolib:geckolib-fabric-1.21.6:${property("deps.geckolib")}")
-    modImplementation("com.terraformersmc:modmenu:15.0.0-beta.3")
-
-    val modules = listOf("transitive-access-wideners-v1", "registry-sync-v0", "resource-loader-v0")
-    for (it in modules) modImplementation(fabricApi.module("fabric-$it", property("deps.fabric-api") as String))
+	accessWidenerPath = rootProject.file("src/main/resources/${prop("mod.id")}.accesswidener")
+	runs.named("client") {
+		client()
+		ideConfigGenerated(true)
+		runDir = "run/"
+		environment = "client"
+		programArgs("--username=Dev")
+		configName = "Fabric Client"
+	}
+	runs.named("server") {
+		server()
+		ideConfigGenerated(true)
+		runDir = "run/"
+		environment = "server"
+		configName = "Fabric Server"
+	}
 }
 
 fabricApi {
-    configureDataGeneration() {
-        outputDirectory = file("$rootDir/src/main/generated")
-        client = true
-    }
+	configureDataGeneration() {
+		outputDirectory = file("${rootDir}/versions/datagen/${stonecutter.current.version.split("-")[0]}/src/main/generated")
+		client = true
+	}
 }
 
-tasks {
-    processResources {
-        exclude("**/neoforge.mods.toml", "**/mods.toml")
-    }
-
-    register<Copy>("buildAndCollect") {
-        group = "build"
-        from(remapJar.map { it.archiveFile })
-        into(rootProject.layout.buildDirectory.file("libs/${project.property("mod.version")}"))
-        dependsOn("build")
-    }
+repositories{
+	maven("https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/")
+	maven("https://dl.cloudsmith.io/public/tslat/sbl/maven/")
+	maven("https://maven.minecraftforge.net/")
+	maven("https://api.modrinth.com/maven")
+	maven("https://maven.isxander.dev/releases")
 }
 
-java {
-    withSourcesJar()
-    val javaCompat = if (stonecutter.eval(stonecutter.current.version, ">=1.21")) {
-        JavaVersion.VERSION_21
-    } else {
-        JavaVersion.VERSION_17
-    }
-    sourceCompatibility = javaCompat
-    targetCompatibility = javaCompat
-}
-
-val additionalVersionsStr = findProperty("publish.additionalVersions") as String?
-val additionalVersions: List<String> = additionalVersionsStr
-    ?.split(",")
-    ?.map { it.trim() }
-    ?.filter { it.isNotEmpty() }
-    ?: emptyList()
-
-publishMods {
-    file = tasks.remapJar.map { it.archiveFile.get() }
-    additionalFiles.from(tasks.remapSourcesJar.map { it.archiveFile.get() })
-
-    type = BETA
-    displayName = "${property("mod.name")} ${property("mod.version")} for ${stonecutter.current.version} Fabric"
-    version = "${property("mod.version")}+${property("deps.minecraft")}-fabric"
-    changelog = provider { rootProject.file("CHANGELOG.md").readText() }
-    modLoaders.add("fabric")
-
-    modrinth {
-        projectId = property("publish.modrinth") as String
-        accessToken = env.MODRINTH_API_KEY.orNull()
-        minecraftVersions.add(stonecutter.current.version)
-        minecraftVersions.addAll(additionalVersions)
-        requires("fabric-api")
-    }
-
-    curseforge {
-        projectId = property("publish.curseforge") as String
-        accessToken = env.CURSEFORGE_API_KEY.orNull()
-        minecraftVersions.add(stonecutter.current.version)
-        minecraftVersions.addAll(additionalVersions)
-        requires("fabric-api")
-    }
+dependencies {
+	minecraft("com.mojang:minecraft:${prop("deps.minecraft")}")
+	mappings(
+		loom.layered {
+			officialMojangMappings()
+			if (hasProperty("deps.parchment")) parchment("org.parchmentmc.data:parchment-${prop("deps.parchment")}@zip")
+		})
+	modImplementation(libs.fabric.loader)
+	modImplementation("net.fabricmc.fabric-api:fabric-api:${prop("deps.fabric-api")}")
+	modImplementation("software.bernie.geckolib:geckolib-fabric-${prop("deps.minecraft")}:${prop("deps.geckolib")}")
+	modImplementation("net.tslat.smartbrainlib:SmartBrainLib-fabric-${prop("deps.minecraft")}:${prop("deps.smartbrainlib")}")
+	modImplementation("com.github.glitchfiend:TerraBlender-fabric:${prop("deps.minecraft")}-${prop("deps.terrablender")}")
+	modImplementation("maven.modrinth:eveningstarlib:${prop("deps.eveningstarlib")}")
+	modImplementation("dev.isxander:yet-another-config-lib:${prop("deps.yacl")}")
 }

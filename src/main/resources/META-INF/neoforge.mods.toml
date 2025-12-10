@@ -1,26 +1,21 @@
 modLoader = "javafml"
 loaderVersion = "[2,)"
-license = "ARR"
+license = "${license}"
+issueTrackerURL = "${issues_url}"
 
 [[mods]]
-modId = "paleworld"
-displayName = "Pale World"
+modId = "${id}"
+displayName = "${name}"
 version = "${version}"
-displayURL = ""
+displayURL = "${homepage_url}"
+modUrl = "${homepage_url}"
 logoFile = "assets/icon.png"
-authors = "VesMaybeVesper"
-description = '''It's the Creaking's world, we just live in it.'''
+authors = "${authors}"
+logoBlur = false
+credits = "${contributors}"
+
+description = '''${description}'''
 
 [[mixins]]
-config = "modtemplate.mixins.json"
-
-[[dependencies.paleworld]]
-modId = "neoforge"
-type = "required"
-versionRange = "[1,)"
-ordering = "NONE"
-side = "BOTH"
-
-[[dependencies.paleworld]]
-modId = "minecraft"
-type = "required"
+config = "${id}.mixins.json"
+${dependencies}

@@ -1,5 +1,5 @@
 {
-  "package": "dev.spagurder.modtemplate.mixin",
+  "package": "dev.vesper.paleworld.mixin",
   "required": true,
   "minVersion": "0.8",
   "compatibilityLevel": "JAVA_21",
@@ -7,7 +7,7 @@
     "defaultRequire": 1
   },
   "mixins": [
-    "dev.vesper.paleworld.mixin.ExampleMixin"
+    ""
   ],
   "client": []
 }
