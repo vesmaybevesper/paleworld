@@ -2,8 +2,12 @@ package dev.vesper.paleworld.common.blocks;
 
 import dev.vesper.paleworld.common.blocks.custom.BigDyingDripleafBlock;
 import dev.vesper.paleworld.common.blocks.custom.BigDyingDripleafStemBlock;
+import dev.vesper.paleworld.common.blocks.custom.DyingAzalea;
 import dev.vesper.paleworld.common.blocks.custom.PaleVineBodyBlock;
+import dev.vesper.paleworld.common.blocks.custom.PaleVineHeadBlock;
 import dev.vesper.paleworld.common.blocks.custom.PaleVines;
+import dev.vesper.paleworld.common.blocks.custom.RafflesiaBlock;
+import dev.vesper.paleworld.common.blocks.custom.SmallDyingDripleafBlock;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
@@ -95,7 +99,7 @@ public class PaleWorldBlocks {
 
 	public static final Block SMALL_DYING_DRIPLEAF = regBlock(
 			"small_dying_dripleaf",
-			new SmallDripleafBlock(
+			new SmallDyingDripleafBlock(
 					BlockBehaviour.Properties.of()
 							.setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(MOD_ID, "small_dying_dripleaf")))
 							.mapColor(MapColor.COLOR_BROWN)
