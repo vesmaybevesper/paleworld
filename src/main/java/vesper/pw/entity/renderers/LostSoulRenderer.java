@@ -11,6 +11,6 @@ import vesper.pw.entity.LostSoul.LostSoulModel;
 public class LostSoulRenderer<R extends LivingEntityRenderState & GeoRenderState> extends GeoEntityRenderer<LostSoul, R> {
     public LostSoulRenderer(EntityRendererFactory.Context context) {
         super(context, new LostSoulModel());
-        addRenderLayer(new AutoGlowingGeoLayer<>(this));
+        withRenderLayer(new AutoGlowingGeoLayer<>(this));
     }
 }

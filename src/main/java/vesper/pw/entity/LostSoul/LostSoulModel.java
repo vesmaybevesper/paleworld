@@ -11,7 +11,7 @@ public class LostSoulModel extends DefaultedEntityGeoModel<LostSoul> {
         private final Identifier texture = Identifier.tryParse(PaleWorld.MOD_ID, "textures/entity/lost_soul.png");
 
     public LostSoulModel() {
-        super(Identifier.of(PaleWorld.MOD_ID, "lost_soul"), true);
+        super(Identifier.of(PaleWorld.MOD_ID, "lost_soul"), "bb_main");
     }
 
     @Override

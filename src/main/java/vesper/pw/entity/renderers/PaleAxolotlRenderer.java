@@ -11,7 +11,7 @@ import vesper.pw.entity.PaleAxolotl.PaleAxolotlModel;
 public class PaleAxolotlRenderer<R extends LivingEntityRenderState & GeoRenderState> extends GeoEntityRenderer<PaleAxolotl, R> {
     public PaleAxolotlRenderer(EntityRendererFactory.Context context) {
         super(context, new PaleAxolotlModel(context.getPart(PaleAxolotlModel.PALE_AXOLOTL)));
-        addRenderLayer(new AutoGlowingGeoLayer<>(this));
+        withRenderLayer(new AutoGlowingGeoLayer<>(this));
     }
 }
 

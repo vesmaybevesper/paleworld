@@ -11,6 +11,6 @@ import vesper.pw.entity.VampireBat.VampireBatModel;
 public class VampireBatRenderer<R extends LivingEntityRenderState & GeoRenderState> extends GeoEntityRenderer<VampireBat, R> {
     public VampireBatRenderer(EntityRendererFactory.Context context) {
         super(context, new VampireBatModel(context.getPart(VampireBatModel.VAMPIRE_BAT)));
-        addRenderLayer(new AutoGlowingGeoLayer<>(this));
+        withRenderLayer(new AutoGlowingGeoLayer<>(this));
     }
 }

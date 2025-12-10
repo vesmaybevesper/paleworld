@@ -1,5 +1,6 @@
 package vesper.pw.effects.fog;
 
+import net.minecraft.client.render.Camera;
 import net.minecraft.client.render.RenderTickCounter;
 import net.minecraft.client.render.fog.FogData;
 import net.minecraft.client.render.fog.StatusEffectFogModifier;
@@ -8,6 +9,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -23,24 +25,23 @@ public class BrightnessEffectFogModifier extends StatusEffectFogModifier {
         return ModStatusEffects.BRIGHTNESS;
     }
 
-    @Override
-    public void applyStartEndModifier(FogData data, Entity cameraEntity, BlockPos cameraPos, ClientWorld world, float viewDistance, RenderTickCounter tickCounter) {
-            if (cameraEntity instanceof LivingEntity livingEntity){
-                StatusEffectInstance statusEffectInstance = livingEntity.getStatusEffect(this.getStatusEffect());
-                if (statusEffectInstance != null){
-                    float f = MathHelper.lerp(statusEffectInstance.getFadeFactor(livingEntity, tickCounter.getTickProgress(false)), viewDistance, 15.0f);
-                    publicF = f;
-                    data.environmentalStart = f * 0.75f;
-                    data.environmentalEnd = f;
-                    data.skyEnd = f;
-                    data.cloudEnd = f;
-                }
-            }
-    }
-
     public float applyBrightnessModifier(LivingEntity cameraEntity, float brightness, float tickProgress){
         StatusEffectInstance statusEffectInstance = cameraEntity.getStatusEffect(this.getStatusEffect());
         return statusEffectInstance != null ? Math.max(statusEffectInstance.getFadeFactor(cameraEntity, tickProgress), brightness) : brightness;
     }
 
+    @Override
+    public void applyStartEndModifier(FogData data, Camera camera, ClientWorld clientWorld, float f, RenderTickCounter renderTickCounter) {
+        /*if (cameraEntity instanceof PlayerEntity player){
+            StatusEffectInstance statusEffectInstance = player.getStatusEffect(this.getStatusEffect());
+            if (statusEffectInstance != null){
+                float f = MathHelper.lerp(statusEffectInstance.getFadeFactor(player, renderTickCounter.getTickProgress(false)), viewDistance, 15.0f);
+                publicF = f;
+                data.environmentalStart = f * 0.75f;
+                data.environmentalEnd = f;
+                data.skyEnd = f;
+                data.cloudEnd = f;
+            }
+        }*/
+    }
 }

@@ -6,6 +6,7 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.sound.BiomeMoodSound;
 import net.minecraft.util.Identifier;
+import net.minecraft.world.attribute.AmbientParticle;
 import net.minecraft.world.biome.*;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.carver.ConfiguredCarvers;
@@ -35,7 +36,7 @@ public class PaleWorldBiomes {
     private static Biome paleCave(Registerable<Biome> biomeRegisterable) {
         SpawnSettings.Builder spawner = new SpawnSettings.Builder();
 
-        DefaultBiomeFeatures.addBatsAndMonsters(spawner);
+        DefaultBiomeFeatures.addCaveAndMonsters(spawner);
         DefaultBiomeFeatures.addOceanMobs(spawner,1,1,3);
 
         GenerationSettings.LookupBackedBuilder builder = new GenerationSettings.LookupBackedBuilder(biomeRegisterable.getRegistryLookup(RegistryKeys.PLACED_FEATURE), biomeRegisterable.getRegistryLookup(RegistryKeys.CONFIGURED_CARVER));
@@ -44,7 +45,7 @@ public class PaleWorldBiomes {
         builder.carver(ConfiguredCarvers.CAVE);
         builder.carver(ConfiguredCarvers.CAVE_EXTRA_UNDERGROUND);
         builder.carver(ConfiguredCarvers.CANYON);
-        BiomeParticleConfig config = new BiomeParticleConfig(MOSS_PARTICLE, 0.05F);
+        AmbientParticle config = new AmbientParticle(MOSS_PARTICLE, 0.05F);
 
         DefaultBiomeFeatures.addDefaultOres(builder);
         DefaultBiomeFeatures.addClayOre(builder);
@@ -82,7 +83,7 @@ public class PaleWorldBiomes {
         GenerationSettings.LookupBackedBuilder builder = new GenerationSettings.LookupBackedBuilder(biomeRegisterable.getRegistryLookup(RegistryKeys.PLACED_FEATURE), biomeRegisterable.getRegistryLookup(RegistryKeys.CONFIGURED_CARVER));
 
         DefaultBiomeFeatures.addSprings(builder);
-        DefaultBiomeFeatures.addBatsAndMonsters(spawner);
+        DefaultBiomeFeatures.addCaveAndMonsters(spawner);
         DefaultBiomeFeatures.addFarmAnimals(spawner);
         DefaultBiomeFeatures.addForestGrass(builder);
 
