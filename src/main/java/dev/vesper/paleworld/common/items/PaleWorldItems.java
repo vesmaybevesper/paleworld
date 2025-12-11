@@ -2,6 +2,8 @@ package dev.vesper.paleworld.common.items;
 
 import dev.vesper.paleworld.PaleWorld;
 import dev.vesper.paleworld.common.items.custom.PaleBerriesItem;
+import dev.vesper.paleworld.common.properties.PaleWorldConsumables;
+import dev.vesper.paleworld.common.properties.PaleWorldFoodProperties;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -29,8 +31,8 @@ public class PaleWorldItems {
 	public static Item PALE_AXOLOTL_SPAWN_EGG = registerItems(ResourceKey.create(Registries.ITEM, ResourceLocation.withDefaultNamespace("pale_axolotl_spawn_egg")), SpawnEggItem::new, (new Item.Properties().spawnEgg(Entities.PALE_AXOLOTL)));
 	//public static Item VAMPIRE_BAT_SPAWN_EGG = registerItems(new SpawnEggItem(Entities.VAMPIRE_BAT, new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(PaleWorld.MOD_ID, "vampire_bat_spawn_egg")))), VAMPIRE_BAT_SPAWN_EGG_KEY);
 	public static Item VAMPIRE_BAT_SPAWN_EGG = registerItems(ResourceKey.create(Registries.ITEM, ResourceLocation.withDefaultNamespace("vampire_bat_spawn_egg")), SpawnEggItem::new, (new Item.Properties().spawnEgg(Entities.VAMPIRE_BAT)));
-	public static Item PALE_BERRIES = registerItems(new PaleBerriesItem(new Item.Properties().food(FoodComponents.PALE_BERRIES, ConsumableComponents.PALE_BERRIES).registryKey(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(PaleWorld.MOD_ID, "pale_berries")))), PALE_BERRIES_KEY);
-	public static Item PALE_APPLE = registerItems("pale_apple", new Item.Properties().food(FoodComponents.PALE_APPLE, ConsumableComponents.PALE_APPLE));
+	public static Item PALE_BERRIES = registerItems(new PaleBerriesItem(new Item.Properties().food(PaleWorldFoodProperties.PALE_BERRIES, PaleWorldConsumables.PALE_BERRIES).registryKey(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(PaleWorld.MOD_ID, "pale_berries")))), PALE_BERRIES_KEY);
+	public static Item PALE_APPLE = registerItems("pale_apple", new Item.Properties().food(PaleWorldFoodProperties.PALE_APPLE, PaleWorldConsumables.PALE_APPLE));
 
 	public static Item PALE_AXOLOTL_BUCKET = registerItems(new MobBucketItem(Entities.PALE_AXOLOTL, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_AXOLOTL, new Item.Properties().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT).registryKey(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(PaleWorld.MOD_ID,"pale_axolotl_bucket")))),PALE_AXOLOTL_BUCKET_KEY);
 	public static Item DRAINED_CRYSTAL_FRAGMENT = registerItems("drained_crystal_fragment");
