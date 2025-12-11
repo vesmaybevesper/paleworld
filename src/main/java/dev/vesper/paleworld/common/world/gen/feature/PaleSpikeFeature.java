@@ -1,7 +1,7 @@
 package dev.vesper.paleworld.common.world.gen.feature;
 
 import com.mojang.serialization.Codec;
-import dev.vesper.paleworld.common.world.blocks.PaleWorldBlocks;
+import dev.vesper.paleworld.common.blocks.PaleWorldBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;

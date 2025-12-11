@@ -53,14 +53,15 @@ repositories{
 	maven("https://maven.minecraftforge.net/")
 	maven("https://api.modrinth.com/maven")
 	maven("https://maven.isxander.dev/releases")
+	maven("https://maven.terraformersmc.com/")
 }
 
 dependencies {
 	implementation("software.bernie.geckolib:geckolib-neoforge-${prop("deps.minecraft")}:${prop("deps.geckolib")}")
 	implementation("net.tslat.smartbrainlib:SmartBrainLib-neoforge-${prop("deps.minecraft")}:${prop("deps.smartbrainlib")}")
-	implementation("com.github.glitchfiend:TerraBlender-neoforge:${prop("deps.minecraft")}-${prop("deps.terrablender")}")
 	implementation("maven.modrinth:eveningstarlib:${prop("deps.eveningstarlib")}")
 	compileOnly("dev.isxander:yet-another-config-lib:${prop("deps.yacl")}")
+	implementation("com.terraformersmc:biolith-neoforge:${prop("deps.biolith")}")
 }
 
 tasks.named("createMinecraftArtifacts") {

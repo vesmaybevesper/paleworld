@@ -52,6 +52,7 @@ repositories{
 	maven("https://maven.minecraftforge.net/")
 	maven("https://api.modrinth.com/maven")
 	maven("https://maven.isxander.dev/releases")
+	maven("https://maven.terraformersmc.com/")
 }
 
 dependencies {
@@ -65,7 +66,7 @@ dependencies {
 	modImplementation("net.fabricmc.fabric-api:fabric-api:${prop("deps.fabric-api")}")
 	modImplementation("software.bernie.geckolib:geckolib-fabric-${prop("deps.minecraft")}:${prop("deps.geckolib")}")
 	modImplementation("net.tslat.smartbrainlib:SmartBrainLib-fabric-${prop("deps.minecraft")}:${prop("deps.smartbrainlib")}")
-	modImplementation("com.github.glitchfiend:TerraBlender-fabric:${prop("deps.minecraft")}-${prop("deps.terrablender")}")
 	modImplementation("maven.modrinth:eveningstarlib:${prop("deps.eveningstarlib")}")
 	modImplementation("dev.isxander:yet-another-config-lib:${prop("deps.yacl")}")
+	modImplementation("com.terraformersmc:biolith-fabric:${prop("deps.biolith")}")
 }
