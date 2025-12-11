@@ -1,5 +1,6 @@
 package dev.vesper.paleworld.common.blocks.custom;
 
+import dev.vesper.paleworld.common.client.render.particle.ParticleTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
