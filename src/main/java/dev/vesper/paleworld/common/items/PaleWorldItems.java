@@ -1,6 +1,7 @@
 package dev.vesper.paleworld.common.items;
 
 import dev.vesper.paleworld.PaleWorld;
+import dev.vesper.paleworld.common.entity.Entities;
 import dev.vesper.paleworld.common.items.custom.PaleBerriesItem;
 import dev.vesper.paleworld.common.properties.PaleWorldConsumables;
 import dev.vesper.paleworld.common.properties.PaleWorldFoodProperties;
