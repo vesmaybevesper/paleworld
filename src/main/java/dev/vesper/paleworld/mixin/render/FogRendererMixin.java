@@ -21,6 +21,8 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
+import static dev.vesper.paleworld.common.util.varHolder.fogEnvEnd;
+import static dev.vesper.paleworld.common.util.varHolder.fogFade;
 
 @Mixin(FogRenderer.class)
 public class FogRendererMixin {
@@ -55,12 +57,12 @@ public class FogRendererMixin {
 					fogData.environmentalStart = (renderDistanceBlocks * 0.8F) + fogFade * (0.1F - (renderDistanceBlocks * 0.8F));
 					fogData.environmentalEnd = (renderDistanceBlocks + fogFade * (8F - (renderDistanceBlocks)));
 					fogAlphaBase = 0.99F;
-					varHolder.fogEnvEnd = fogData.environmentalEnd;
+					fogEnvEnd = fogData.environmentalEnd;
 				} else {
 					fogData.environmentalStart = (renderDistanceBlocks * 0.8F) + fogFade * (PaleWorldConfig.fogStart - (renderDistanceBlocks * 0.8F));
 					fogData.environmentalEnd = (renderDistanceBlocks + fogFade * (PaleWorldConfig.fogEnd - (renderDistanceBlocks)));
 					fogAlphaBase = PaleWorldConfig.fogTransparency;
-					varHolder.fogEnvEnd = fogData.environmentalEnd;
+					fogEnvEnd = fogData.environmentalEnd;
 				}
 				fogData.skyEnd = fogData.environmentalEnd;
 				fogData.cloudEnd = fogData.environmentalEnd;
@@ -82,7 +84,7 @@ public class FogRendererMixin {
 
 				fogData.environmentalStart = (renderDistanceBlocks * 0.8F) + fogFade * (PaleWorldConfig.fogStart - (renderDistanceBlocks * 0.8F));
 				fogData.environmentalEnd = (renderDistanceBlocks + fogFade * (32 - (renderDistanceBlocks)));
-				varHolder.fogEnvEnd = fogData.environmentalEnd;
+				fogEnvEnd = fogData.environmentalEnd;
 				fogData.skyEnd = fogData.environmentalEnd;
 				fogData.cloudEnd = fogData.environmentalEnd;
 				color.x = color.x + fogFade * (0.8F - color.x);
