@@ -2,6 +2,7 @@ package dev.vesper.paleworld.platform.fabric.datagen;
 
 //? fabric {
 import dev.vesper.paleworld.common.world.PaleWorldConfiguredFeatures;
+import dev.vesper.paleworld.common.world.PaleWorldPlacedFeatures;
 import dev.vesper.paleworld.platform.fabric.datagen.genFrom.Advancements;
 import dev.vesper.paleworld.platform.fabric.datagen.genFrom.LootTables;
 import dev.vesper.paleworld.platform.fabric.datagen.genFrom.ModelProvider;
