@@ -222,7 +222,7 @@ public class PaleWorldBlocks {
 		Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(MOD_ID, item), new BlockItem(block, new Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(MOD_ID, item))).useItemDescriptionPrefix()));
 	}
 
-	private static void regModBlocks(){
+	public static void regModBlocks(){
 		//? fabric{
 		ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.SEARCH).register(entries -> {
 

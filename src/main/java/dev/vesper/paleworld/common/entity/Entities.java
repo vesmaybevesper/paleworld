@@ -13,6 +13,8 @@ import net.minecraft.world.entity.MobCategory;
 import static dev.vesper.paleworld.PaleWorld.MOD_ID;
 
 public class Entities {
+	public static void init(){}
+
 	private static final ResourceKey<EntityType<?>> PALE_AXOLOTL_KEY = ResourceKey.create(
 			BuiltInRegistries.ENTITY_TYPE.key(),
 			ResourceLocation.fromNamespaceAndPath(MOD_ID, "pale_axolotl")

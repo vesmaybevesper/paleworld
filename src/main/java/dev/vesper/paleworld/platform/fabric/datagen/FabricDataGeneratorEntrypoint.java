@@ -1,6 +1,7 @@
 package dev.vesper.paleworld.platform.fabric.datagen;
 
 //? fabric {
+import dev.vesper.paleworld.common.biomes.PaleWorldBiomes;
 import dev.vesper.paleworld.common.world.PaleWorldConfiguredFeatures;
 import dev.vesper.paleworld.common.world.PaleWorldPlacedFeatures;
 import dev.vesper.paleworld.platform.fabric.datagen.genFrom.Advancements;

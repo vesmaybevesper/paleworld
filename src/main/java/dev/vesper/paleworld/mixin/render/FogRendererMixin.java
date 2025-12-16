@@ -2,6 +2,7 @@ package dev.vesper.paleworld.mixin.render;
 
 import com.llamalad7.mixinextras.sugar.Local;
 import dev.vesper.eveningstarlib.fabric.ESLModChecks;
+import dev.vesper.paleworld.common.biomes.PaleWorldBiomes;
 import net.minecraft.client.Camera;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.multiplayer.ClientLevel;

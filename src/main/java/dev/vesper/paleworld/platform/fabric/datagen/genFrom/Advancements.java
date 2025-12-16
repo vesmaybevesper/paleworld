@@ -1,5 +1,6 @@
 package dev.vesper.paleworld.platform.fabric.datagen.genFrom;
 //? fabric{
+import dev.vesper.paleworld.common.biomes.PaleWorldBiomes;
 import dev.vesper.paleworld.common.items.PaleWorldItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricAdvancementProvider;
@@ -119,8 +120,8 @@ public class Advancements extends FabricAdvancementProvider {
 						true,
 						false
 				)
-				.addCriterion("pale_berry_eaten", ConsumeItemTrigger.TriggerInstance.usedItem(registryLookup.getOrThrow(Registries.ITEM), PaleWorldItems.PALE_BERRIES))
-				.addCriterion("pale_apple_eaten", ConsumeItemTrigger.TriggerInstance.usedItem(registryLookup.getOrThrow(Registries.ITEM), PaleWorldItems.PALE_APPLE))
+				.addCriterion("pale_berry_eaten", ConsumeItemTrigger.TriggerInstance.usedItem(registryLookup.lookupOrThrow(Registries.ITEM), PaleWorldItems.PALE_BERRIES))
+				.addCriterion("pale_apple_eaten", ConsumeItemTrigger.TriggerInstance.usedItem(registryLookup.lookupOrThrow(Registries.ITEM), PaleWorldItems.PALE_APPLE))
 				.save(consumer, MOD_ID + "/eat_pale_berry");
 	}
 }

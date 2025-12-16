@@ -1,5 +1,6 @@
 package dev.vesper.paleworld.common.entity;
 
+import dev.vesper.paleworld.common.biomes.PaleWorldBiomes;
 import dev.vesper.paleworld.common.entity.VampireBat.VampireBat;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;

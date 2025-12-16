@@ -10,7 +10,6 @@ public class FabricEntrypoint implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		PaleWorld.onInitialize();
-		FabricEventSubscriber.registerEvents();
 	}
 }
 //?}

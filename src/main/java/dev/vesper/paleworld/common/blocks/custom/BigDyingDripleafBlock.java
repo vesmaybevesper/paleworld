@@ -1,6 +1,7 @@
 package dev.vesper.paleworld.common.blocks.custom;
 
-import dev.vesper.paleworld.common.world.blocks.PaleWorldBlocks;
+
+import dev.vesper.paleworld.common.blocks.PaleWorldBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.tags.BlockTags;

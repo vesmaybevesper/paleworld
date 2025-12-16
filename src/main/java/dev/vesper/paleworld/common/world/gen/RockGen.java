@@ -7,7 +7,7 @@ import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.levelgen.GenerationStep;
 
 public class RockGen {
-	public void generate(){
+	public static void generate(){
 		BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.PALE_GARDEN), GenerationStep.Decoration.SURFACE_STRUCTURES, PaleWorldPlacedFeatures.PALE_SPIKE);
 	}
 }

@@ -32,5 +32,5 @@ public class PaleWorldItemGroup {
 				output.accept(PaleWorldItems.VAMPIRE_BAT_SPAWN_EGG);
 			}))).build());
 //?}
-	static void regItemGroup(){}
+	public static void regItemGroup(){}
 }

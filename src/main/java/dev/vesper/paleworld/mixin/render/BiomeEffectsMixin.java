@@ -1,5 +1,6 @@
 package dev.vesper.paleworld.mixin.render;
 
+import dev.vesper.paleworld.common.biomes.PaleWorldBiomes;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;

@@ -18,4 +18,6 @@ public class ParticleTypes {
 	private static SimpleParticleType registerParticle(String name, SimpleParticleType particleType){
 		return Registry.register(BuiltInRegistries.PARTICLE_TYPE, ResourceLocation.fromNamespaceAndPath(MOD_ID, name), particleType);
 	}
+
+	public static void register(){}
 }
