@@ -1,6 +1,7 @@
 package dev.vesper.paleworld.mixin.blocks;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
+import dev.vesper.paleworld.common.config.PaleWorldConfig;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import org.spongepowered.asm.mixin.Mixin;
