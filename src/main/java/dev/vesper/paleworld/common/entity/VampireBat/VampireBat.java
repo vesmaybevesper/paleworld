@@ -185,23 +185,22 @@ public class VampireBat extends Monster implements FlyingAnimal, SmartBrainOwner
 	public void tick() {
 		super.tick();
 	}
-
-	// yeah idk why it doesn't like this afaik this is my functioning code direct ported from Yarn to Mojmap but i could've mis-mapped something somewhere
+	
 	public void setRoosting(boolean roosting){
 		if (this.entityData == null) return;
 
-		byte flags = this.entityData.get(VAMPIRE_BAT_FLAGS);
+		byte flags = (Byte) this.entityData.get(VAMPIRE_BAT_FLAGS);
 		if (roosting){
-			this.entityData.set(VAMPIRE_BAT_FLAGS, (flags | 1));
+			this.entityData.set(VAMPIRE_BAT_FLAGS, (byte) (flags | 1));
 		} else {
-			this.entityData.set(VAMPIRE_BAT_FLAGS, (flags & -2));
+			this.entityData.set(VAMPIRE_BAT_FLAGS, (byte) (flags & ~1));
 		}
 	}
 
 	@Override
 	protected void defineSynchedData(SynchedEntityData.Builder builder) {
 		super.defineSynchedData(builder);
-		builder.define(VAMPIRE_BAT_FLAGS, 0);
+		builder.define(VAMPIRE_BAT_FLAGS, (byte) 0);
 	}
 
 
