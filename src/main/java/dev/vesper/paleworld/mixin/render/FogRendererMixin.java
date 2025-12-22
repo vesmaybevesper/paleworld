@@ -1,7 +1,12 @@
 package dev.vesper.paleworld.mixin.render;
 
 import com.llamalad7.mixinextras.sugar.Local;
+//? fabric{
 import dev.vesper.eveningstarlib.fabric.ESLModChecks;
+//?}
+//? neoforge{
+/*import dev.vesper.eveningstarlib.neoforge.ESLModChecks;
+*///?}
 import dev.vesper.paleworld.common.biomes.PaleWorldBiomes;
 import dev.vesper.paleworld.common.config.PaleWorldConfig;
 import net.minecraft.client.Camera;

@@ -185,7 +185,7 @@ public class VampireBat extends Monster implements FlyingAnimal, SmartBrainOwner
 	public void tick() {
 		super.tick();
 	}
-	
+
 	public void setRoosting(boolean roosting){
 		if (this.entityData == null) return;
 

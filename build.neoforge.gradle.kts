@@ -12,6 +12,26 @@ platform {
 		required("neoforge") {
 			forgeVersionRange = "[1,)"
 		}
+		required("biolith"){
+			slug("biolith")
+			versionRange = ">=${prop("deps.biolith")}"
+		}
+		required("geckolib"){
+			slug("geckolib")
+			versionRange = ">=${prop("deps.geckolib")}"
+		}
+		required("smartbrainlib"){
+			slug("smartbrainlib")
+			versionRange = ">=${prop("deps.smartbrainlib")}"
+		}
+		required("eveningstarlib"){
+			slug("eveningstarlib")
+			versionRange = ">=${prop("deps.eveningstarlib")}"
+		}
+		required("yacl"){
+			slug("yacl")
+			versionRange = ">=${prop("deps.yacl")}"
+		}
 	}
 }
 

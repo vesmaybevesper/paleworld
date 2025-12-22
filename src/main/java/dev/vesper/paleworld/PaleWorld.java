@@ -1,8 +1,8 @@
 package dev.vesper.paleworld;
 
+import dev.vesper.paleworld.common.biomes.PaleWorldBiomePlacement;
 import dev.vesper.paleworld.common.blocks.PaleWorldBlocks;
 import dev.vesper.paleworld.common.client.render.particle.FogParticle;
-import dev.vesper.paleworld.common.client.render.particle.LostSoulParticle;
 import dev.vesper.paleworld.common.client.render.particle.MossParticle;
 import dev.vesper.paleworld.common.client.render.particle.ParticleTypes;
 import dev.vesper.paleworld.common.client.render.particle.RafflesiaParticle;
@@ -37,7 +37,7 @@ import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 //?} neoforge {
-/*import com.example.modtemplate.platform.neoforge.NeoforgePlatform;
+/*import dev.vesper.paleworld.platform.neoforge.NeoforgePlatform;
  *///?}
 
 @SuppressWarnings("LoggingSimilarMessage")
@@ -81,6 +81,7 @@ public class PaleWorld {
 		//LOGGER.info("Registered Effects");
         /*CustomSounds.init();
         LOGGER.info("Registered Sounds");*/
+		PaleWorldBiomePlacement.place();
 		PaleWorldWorldGen.genWorld();
 		EntityGen.addSpawns();
 		LOGGER.info("Registered Generation");
@@ -111,7 +112,7 @@ public class PaleWorld {
 		ParticleFactoryRegistry.getInstance().register(ParticleTypes.MOSS_PARTICLE, MossParticle.Factory::new);
 		ParticleFactoryRegistry.getInstance().register(ParticleTypes.FOG_PARTICLE, FogParticle.Factory::new);
 		ParticleFactoryRegistry.getInstance().register(ParticleTypes.RAFFLESIA_PARTICLE, RafflesiaParticle.Factory::new);
-		ParticleFactoryRegistry.getInstance().register(ParticleTypes.LOST_SOUL_AURA, LostSoulParticle.Factory::new);
+		//ParticleFactoryRegistry.getInstance().register(ParticleTypes.LOST_SOUL_AURA, LostSoulParticle.Factory::new);
 		//?}
 		PaleWorld.LOGGER.info("Client: Particles Registered");
 	}

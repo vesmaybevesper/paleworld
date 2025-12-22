@@ -10,6 +10,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
@@ -20,7 +21,7 @@ public class PaleBerriesItem extends Item {
 	}
 
 	@Override
-	public InteractionResult useOn(UseOnContext useOnContext) {
+	public @NotNull InteractionResult useOn(UseOnContext useOnContext) {
 		Level level = useOnContext.getLevel();
 		BlockPos pos = useOnContext.getClickedPos();
 		Direction side = useOnContext.getClickedFace();

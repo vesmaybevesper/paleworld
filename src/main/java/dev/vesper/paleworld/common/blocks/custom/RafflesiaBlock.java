@@ -4,6 +4,7 @@ import dev.vesper.paleworld.common.client.render.particle.ParticleTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -59,6 +60,6 @@ public class RafflesiaBlock extends FlowerBlock {
 		double d = x + randomSource.nextDouble();
 		double e = y + 0.7;
 		double f = z + randomSource.nextDouble();
-		level.addParticle(ParticleTypes.RAFFLESIA_PARTICLE, d, e, f, 0, 0, 0);
+		level.addParticle((ParticleOptions) ParticleTypes.RAFFLESIA_PARTICLE, d, e, f, 0, 0, 0);
 	}
 }

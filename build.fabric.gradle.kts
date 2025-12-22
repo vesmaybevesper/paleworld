@@ -16,6 +16,26 @@ platform {
 		required("fabricloader") {
 			versionRange = ">=${libs.fabric.loader.get().version}"
 		}
+		required("biolith"){
+			slug("biolith")
+			versionRange = ">=${prop("deps.biolith")}"
+		}
+		required("geckolib"){
+			slug("geckolib")
+			versionRange = ">=${prop("deps.geckolib")}"
+		}
+		required("smartbrainlib"){
+			slug("smartbrainlib")
+			versionRange = ">=${prop("deps.smartbrainlib")}"
+		}
+		required("eveningstarlib"){
+			slug("eveningstarlib")
+			versionRange = ">=${prop("deps.eveningstarlib")}"
+		}
+		required("yacl"){
+			slug("yacl")
+			versionRange = ">=${prop("deps.yacl")}"
+		}
 		optional("modmenu") {}
 	}
 }
@@ -69,4 +89,5 @@ dependencies {
 	modImplementation("maven.modrinth:eveningstarlib:${prop("deps.eveningstarlib")}")
 	modImplementation("dev.isxander:yet-another-config-lib:${prop("deps.yacl")}")
 	modImplementation("com.terraformersmc:biolith-fabric:${prop("deps.biolith")}")
+	modImplementation("com.terraformersmc:modmenu:${prop("deps.modmenu")}")
 }

@@ -1,7 +1,9 @@
 package dev.vesper.paleworld.common.modify;
 
+//? fabric{
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
+//?}
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -10,7 +12,13 @@ import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.Biome;
 
 public class PaleGardenMobSpawnRates {
+	//? !1.21.11{
 	public static ResourceKey<Biome> paleGardenKey = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath("minecraft", "pale_garden"));
+	//?}
+
+	//? 1.21.11{
+
+	//?}
 
 	public static void override(){
 		BiomeModifications.addSpawn(

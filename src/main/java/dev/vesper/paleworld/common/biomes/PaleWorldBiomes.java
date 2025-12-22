@@ -2,6 +2,7 @@ package dev.vesper.paleworld.common.biomes;
 
 import dev.vesper.paleworld.PaleWorld;
 import dev.vesper.paleworld.common.world.PaleWorldPlacedFeatures;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.data.worldgen.BootstrapContext;
@@ -46,7 +47,7 @@ public class PaleWorldBiomes {
 		builder.addCarver(Carvers.CAVE);
 		builder.addCarver(Carvers.CAVE_EXTRA_UNDERGROUND);
 		builder.addCarver(Carvers.CANYON);
-		AmbientParticleSettings config = new AmbientParticleSettings(MOSS_PARTICLE, 0.05F);
+		AmbientParticleSettings config = new AmbientParticleSettings((ParticleOptions) MOSS_PARTICLE, 0.05F);
 
 		BiomeDefaultFeatures.addDefaultOres(builder);
 		BiomeDefaultFeatures.addLushCavesSpecialOres(builder);

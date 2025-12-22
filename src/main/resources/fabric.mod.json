@@ -30,7 +30,10 @@
       "dev.vesper.paleworld.platform.fabric.FabricClientEntrypoint"
     ],
     "fabric-datagen": [
-      "dev.vesper.paleworld.platform.fabric.FabricDataGeneratorEntrypoint"
+      "dev.vesper.paleworld.platform.fabric.datagen.FabricDataGeneratorEntrypoint"
+    ],
+    "modmenu": [
+      "dev.vesper.paleworld.platform.fabric.ModMenuInit"
     ]
   },
   "mixins": [

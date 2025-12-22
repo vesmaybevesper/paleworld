@@ -10,7 +10,7 @@ import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.util.RandomSource;
 import org.jetbrains.annotations.Nullable;
 
-public class LostSoulParticle extends SingleQuadParticle {
+/*public class LostSoulParticle extends SingleQuadParticle {
 	protected LostSoulParticle(ClientLevel clientLevel, double d, double e, double f, TextureAtlasSprite textureAtlasSprite) {
 		super(clientLevel, d, e, f, textureAtlasSprite);
 	}
@@ -33,4 +33,4 @@ public class LostSoulParticle extends SingleQuadParticle {
 			return new LostSoulParticle(clientLevel, d,e,f, this.spriteSet.get(randomSource));
 		}
 	}
-}
+}*/
