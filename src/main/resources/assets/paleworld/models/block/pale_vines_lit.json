@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "paleworld:block/pale_vines_lit"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "metal_whistle": {
+    "subtitle": "sound.pale-world.pale-cave-ambi",
+    "sounds": [
+      "pale-world:pale-cave-ambi"
+    ]
+  },
+  "engine": {
+    "subtitle": "sound.pale-world.engine",
+    "sounds": [
+      "pale-world:engine"
+    ]
+  }
+}
