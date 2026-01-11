@@ -4,9 +4,15 @@ package dev.vesper.paleworld.common.modify;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 //?}
+import dev.vesper.paleworld.PaleWorld;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
+//? <1.21.11{
 import net.minecraft.resources.ResourceLocation;
+//?}
+//? 1.21.11{
+/*import net.minecraft.resources.Identifier;
+*///?}
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.Biome;
@@ -17,10 +23,11 @@ public class PaleGardenMobSpawnRates {
 	//?}
 
 	//? 1.21.11{
-
-	//?}
+	/*public static ResourceKey<Biome> paleGardenKey = ResourceKey.create(Registries.BIOME, Identifier.fromNamespaceAndPath("minecraft", "pale_garden"));
+	*///?}
 
 	public static void override(){
+		//? fabric{
 		BiomeModifications.addSpawn(
 				BiomeSelectors.includeByKey(paleGardenKey),
 				MobCategory.MONSTER,
@@ -83,5 +90,10 @@ public class PaleGardenMobSpawnRates {
 				1,
 				2
 		);
+		//?}
+		//? neoforge{
+		// nothing to do here cause NF spawns are data driven why TF cant the data driven stuff be the same across loaders aaaaaaa
+		//?}
 	}
+
 }

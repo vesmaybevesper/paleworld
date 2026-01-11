@@ -26,8 +26,18 @@ import net.minecraft.world.entity.ai.memory.MemoryModuleType;
 import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.animal.FlyingAnimal;
+//?<1.21.11{
 import net.minecraft.world.entity.animal.Pig;
+//?}
+//? >=1.21.6{
 import net.minecraft.world.entity.animal.sheep.Sheep;
+//?}
+//? 1.21.4{
+/*import net.minecraft.world.entity.animal.Sheep;
+*///?}
+//?1.21.11{
+/*import net.minecraft.world.entity.animal.pig.Pig;
+*///?}
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -37,6 +47,7 @@ import net.minecraft.world.phys.Vec3;
 import net.tslat.smartbrainlib.api.SmartBrainOwner;
 import net.tslat.smartbrainlib.api.core.BrainActivityGroup;
 import net.tslat.smartbrainlib.api.core.SmartBrainProvider;
+import net.tslat.smartbrainlib.api.core.behaviour.ExtendedBehaviour;
 import net.tslat.smartbrainlib.api.core.behaviour.FirstApplicableBehaviour;
 import net.tslat.smartbrainlib.api.core.behaviour.OneRandomBehaviour;
 import net.tslat.smartbrainlib.api.core.behaviour.custom.attack.AnimatableMeleeAttack;
@@ -59,11 +70,26 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
+//? >=1.21.6 && !1.21.11{
 import software.bernie.geckolib.animatable.manager.AnimatableManager;
 import software.bernie.geckolib.animatable.processing.AnimationController;
 import software.bernie.geckolib.animatable.processing.AnimationTest;
+//?}
+//? 1.21.4{
+/*import software.bernie.geckolib.animation.AnimatableManager;
+import software.bernie.geckolib.animation.AnimationController;
+import software.bernie.geckolib.animation.AnimationState;
+*///?}
+//?<1.21.11{
 import software.bernie.geckolib.animation.PlayState;
+//?}
+import software.bernie.geckolib.animatable.manager.AnimatableManager;
 import software.bernie.geckolib.animation.RawAnimation;
+//?1.21.11{
+/*import software.bernie.geckolib.animation.AnimationController;
+import software.bernie.geckolib.animation.object.PlayState;
+import software.bernie.geckolib.animation.state.AnimationTest;
+*///?}
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.List;
@@ -122,7 +148,7 @@ public class VampireBat extends Monster implements FlyingAnimal, SmartBrainOwner
 				new MoveToWalkTarget<>()
 		);
 	}
-
+//? >=1.21.6{
 	@Override
 	public BrainActivityGroup<? extends VampireBat> getIdleTasks() {
 		return BrainActivityGroup.idleTasks(
@@ -137,6 +163,23 @@ public class VampireBat extends Monster implements FlyingAnimal, SmartBrainOwner
 				)
 		);
 	}
+	//?}
+	//? 1.21.4{
+	/*@Override
+	public BrainActivityGroup<? extends VampireBat> getIdleTasks() {
+		return BrainActivityGroup.idleTasks(
+				new FirstApplicableBehaviour<VampireBat>(
+						new SetPlayerLookTarget<>(),
+						new SetRandomLookTarget<>()
+				),
+				new OneRandomBehaviour<>(
+						new SetRandomFlyingTarget<VampireBat>().verticalWeight(entity -> -(entity.getRandom().nextInt(10) == 0 ? 1 : 0)).setRadius(4, 4).startCondition(VampireBat::isFlying),
+						new Idle<>().runFor(entity -> entity.getRandom().nextIntBetweenInclusive(30, 60)),
+						(ExtendedBehaviour) new TargetOrRetaliate<>().useMemory(MemoryModuleType.NEAREST_ATTACKABLE)
+				)
+		);
+	}
+	*///?}
 
 	@Override
 	public BrainActivityGroup<? extends VampireBat> getFightTasks() {
@@ -157,10 +200,12 @@ public class VampireBat extends Monster implements FlyingAnimal, SmartBrainOwner
 		if (this.level().isClientSide()){
 			this.isFlying = true;
 		}
-
+//? >=1.21.6{
 		if (isFlyingVehicle() && this.isFlying){
 			setDeltaMovement(getDeltaMovement().subtract(0, getAttributeValue(Attributes.GRAVITY), 0));
 		}
+		//?}
+		// im pretty sure isFlyingVehicle() is always false so this isn't doing anything but thats something to test later
 
 		assert Minecraft.getInstance().level != null;
 		if (this.getOnPos().getY() < Minecraft.getInstance().level.getHeight() + 1){
@@ -225,10 +270,18 @@ public class VampireBat extends Monster implements FlyingAnimal, SmartBrainOwner
 		return true;
 	}
 
+	//? >=1.21.6{
 	@Override
 	public boolean causeFallDamage(double d, float f, DamageSource damageSource) {
 		return false;
 	}
+	//?}
+//? 1.21.4{
+	/*@Override
+	public boolean causeFallDamage(float f, float g, DamageSource damageSource) {
+		return false;
+	}
+	*///?}
 
 	@Override
 	public boolean hurtServer(ServerLevel serverLevel, DamageSource damageSource, float f) {
@@ -249,6 +302,7 @@ public class VampireBat extends Monster implements FlyingAnimal, SmartBrainOwner
 		return false;
 	}
 
+	//? >=1.21.6{
 	@Override
 	protected void travelFlying(Vec3 vec3, float f) {
 		super.travelFlying(vec3, 0.2f);
@@ -258,6 +312,7 @@ public class VampireBat extends Monster implements FlyingAnimal, SmartBrainOwner
 	public void travel(Vec3 vec3) {
 		travelFlying(vec3, 0.2f);
 	}
+	//?}
 
 	@Override
 	public @Nullable SpawnGroupData finalizeSpawn(ServerLevelAccessor serverLevelAccessor, DifficultyInstance difficultyInstance, EntitySpawnReason entitySpawnReason, @Nullable SpawnGroupData spawnGroupData) {
@@ -283,10 +338,19 @@ public class VampireBat extends Monster implements FlyingAnimal, SmartBrainOwner
 		return SoundEvents.BAT_DEATH;
 	}
 
+	//? >= 1.21.9{
 	@Override
 	protected boolean shouldDropLoot(ServerLevel serverLevel) {
 		return true;
 	}
+	//?}
+
+	//? <=1.21.8{
+	/*@Override
+	protected boolean shouldDropLoot() {
+		return true;
+	}
+	*///?}
 
 	@Override
 	public @Nullable ItemStack getPickResult() {
@@ -305,7 +369,7 @@ public class VampireBat extends Monster implements FlyingAnimal, SmartBrainOwner
 								target instanceof PaleAxolotl)
 		);
 	}
-
+//? >=1.21.6{
 	@Override
 	public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
 		controllers.add(new AnimationController<VampireBat>("flying", 5, this::flyingAnimationController));
@@ -314,6 +378,17 @@ public class VampireBat extends Monster implements FlyingAnimal, SmartBrainOwner
 	protected <E extends VampireBat> PlayState flyingAnimationController(final AnimationTest<E> animationTest){
 		return animationTest.setAndContinue(FLYING_ANIM);
 	}
+	//?}
+//? 1.21.4{
+	/*@Override
+	public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+		controllers.add(new AnimationController<VampireBat>(this,"flying", 5, this::flyingAnimationController));
+	}
+
+	protected <E extends VampireBat> PlayState flyingAnimationController(final AnimationState<E> animationTest){
+		return animationTest.setAndContinue(FLYING_ANIM);
+	}
+	*///?}
 
 	@Override
 	public AnimatableInstanceCache getAnimatableInstanceCache() {

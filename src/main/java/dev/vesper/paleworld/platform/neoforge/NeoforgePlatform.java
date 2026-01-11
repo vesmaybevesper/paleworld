@@ -1,8 +1,8 @@
 package dev.vesper.paleworld.platform.neoforge;
 
 //? neoforge {
-/*
-import dev.vesper.paleworld.platform.Platform;
+
+/*import dev.vesper.paleworld.platform.Platform;
 import net.neoforged.fml.ModList;
 
 public class NeoforgePlatform implements Platform {

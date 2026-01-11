@@ -7,15 +7,26 @@ import net.minecraft.client.model.geom.builders.CubeListBuilder;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
+//?<1.21.11{
 import net.minecraft.resources.ResourceLocation;
+//?}
+//? 1.21.11{
+/*import net.minecraft.resources.Identifier;
+*///?}
+import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.model.GeoModel;
 import software.bernie.geckolib.renderer.base.GeoRenderState;
+
 
 import static dev.vesper.paleworld.PaleWorld.MOD_ID;
 
 public class VampireBatModel extends GeoModel<VampireBat> {
-
+//?<1.21.11{
 	public static final ModelLayerLocation VAMPIRE_BAT = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(MOD_ID, ""), "vampire_bat");
+	//?}
+	//?1.21.11{
+	/*public static final ModelLayerLocation VAMPIRE_BAT = new ModelLayerLocation(Identifier.fromNamespaceAndPath(MOD_ID, ""), "vampire_bat");
+	*///?}
 
 	private final ModelPart head;
 	private final ModelPart body;
@@ -51,6 +62,7 @@ public class VampireBatModel extends GeoModel<VampireBat> {
 		return LayerDefinition.create(modelData, 32, 32);
 	}
 
+	//? <1.21.11{
 	@Override
 	public ResourceLocation getModelResource(GeoRenderState renderState) {
 		return ResourceLocation.fromNamespaceAndPath(MOD_ID, "geckolib/models/vampire_bat");
@@ -65,4 +77,21 @@ public class VampireBatModel extends GeoModel<VampireBat> {
 	public ResourceLocation getAnimationResource(VampireBat animatable) {
 		return ResourceLocation.fromNamespaceAndPath(MOD_ID, "geckolib/animations/vampire_bat");
 	}
+	//?}
+	//? 1.21.11{
+	/*@Override
+	public Identifier getModelResource(GeoRenderState renderState) {
+		return Identifier.fromNamespaceAndPath(MOD_ID, "geckolib/models/vampire_bat");
+	}
+
+	@Override
+	public Identifier getTextureResource(GeoRenderState renderState) {
+		return Identifier.fromNamespaceAndPath(MOD_ID, "textures/entity/vampire_bat.png");
+	}
+
+	@Override
+	public Identifier getAnimationResource(VampireBat animatable) {
+		return Identifier.fromNamespaceAndPath(MOD_ID, "geckolib/animations/vampire_bat");
+	}
+	*///?}
 }

@@ -8,9 +8,16 @@ import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.Carvers;
 import net.minecraft.resources.ResourceKey;
+//? <1.21.11{
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.biome.AmbientMoodSettings;
 import net.minecraft.world.level.biome.AmbientParticleSettings;
+//?}
+//? 1.21.11{
+/*import net.minecraft.world.attribute.AmbientMoodSettings;
+import net.minecraft.world.attribute.AmbientParticle;
+import net.minecraft.resources.Identifier;
+*///?}
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeGenerationSettings;
 import net.minecraft.world.level.biome.BiomeSpecialEffects;
@@ -20,8 +27,14 @@ import net.minecraft.world.level.levelgen.GenerationStep;
 import static dev.vesper.paleworld.common.client.render.particle.ParticleTypes.MOSS_PARTICLE;
 
 public class PaleWorldBiomes {
+	//? <1.21.11{
 	public static final ResourceKey<Biome> PALE_CAVE = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(PaleWorld.MOD_ID, "pale_caves"));
 	public static final ResourceKey<Biome> PALE_VALLEY = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(PaleWorld.MOD_ID, "sparse_pale_garden"));
+	//?}
+	//? 1.21.11{
+	/*public static final ResourceKey<Biome> PALE_CAVE = ResourceKey.create(Registries.BIOME, Identifier.fromNamespaceAndPath(PaleWorld.MOD_ID, "pale_caves"));
+	public static final ResourceKey<Biome> PALE_VALLEY = ResourceKey.create(Registries.BIOME, Identifier.fromNamespaceAndPath(PaleWorld.MOD_ID, "sparse_pale_garden"));
+	*///?}
 
 	public static void bootstrap(BootstrapContext<Biome> context){
 		context.register(PALE_CAVE, paleCave(context));
@@ -47,7 +60,12 @@ public class PaleWorldBiomes {
 		builder.addCarver(Carvers.CAVE);
 		builder.addCarver(Carvers.CAVE_EXTRA_UNDERGROUND);
 		builder.addCarver(Carvers.CANYON);
+		//? <1.21.11{
 		AmbientParticleSettings config = new AmbientParticleSettings((ParticleOptions) MOSS_PARTICLE, 0.05F);
+		//?}
+		//? 1.21.11{
+		/*AmbientParticle config = new AmbientParticle((ParticleOptions) MOSS_PARTICLE, 0.05F);
+		*///?}
 
 		BiomeDefaultFeatures.addDefaultOres(builder);
 		BiomeDefaultFeatures.addLushCavesSpecialOres(builder);
@@ -67,13 +85,15 @@ public class PaleWorldBiomes {
 				.mobSpawnSettings(spawner.build())
 				.specialEffects((new BiomeSpecialEffects.Builder())
 						.waterColor(0xff76889D)
+						//? <1.21.11{
 						.waterFogColor(0xff556980)
 						.skyColor(0xffb9b9b9)
-						.grassColorOverride(0xff778272)
-						.foliageColorOverride(0xff878D76)
 						.fogColor(0xff817770)
 						.ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
 						.ambientParticle(config)
+						//?}
+						.grassColorOverride(0xff778272)
+						.foliageColorOverride(0xff878D76)
 						.build())
 				.build();
 	}
@@ -97,11 +117,14 @@ public class PaleWorldBiomes {
 				.mobSpawnSettings(spawner.build())
 				.specialEffects((new BiomeSpecialEffects.Builder())
 						.waterColor(0xff76889D)
+						//? <1.21.11{
 						.waterFogColor(0xff556980)
 						.skyColor(0xffb9b9b9)
+						.fogColor(0xff817770)
+						//?}
 						.grassColorOverride(0xff778272)
 						.foliageColorOverride(0xff878D76)
-						.fogColor(0xff817770).build()
+						.build()
 				)
 				.build();
 	}

@@ -1,11 +1,16 @@
 package dev.vesper.paleworld.common.blocks.custom;
 
 import dev.vesper.paleworld.common.blocks.PaleWorldBlocks;
+//? <1.21.11{
 import net.minecraft.BlockUtil;
+//?}
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
+//? 1.21.11{
+/*import net.minecraft.util.BlockUtil;
+*///?}
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;

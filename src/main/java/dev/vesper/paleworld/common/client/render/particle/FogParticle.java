@@ -22,6 +22,7 @@ public class FogParticle extends BaseAshSmokeParticle {
 			this.spriteSet = spriteSet;
 		}
 
+		//? >=1.21.9{
 		@Override
 		public @Nullable Particle createParticle(SimpleParticleType particleOptions, ClientLevel clientLevel, double d, double e, double f, double g, double h, double i, RandomSource randomSource) {
 			double velX = (double) randomSource.nextFloat() * -1.9 * (double) randomSource.nextFloat() * 0.1;
@@ -29,5 +30,15 @@ public class FogParticle extends BaseAshSmokeParticle {
 			double velZ = (double) randomSource.nextFloat() * -1.9 * (double) randomSource.nextFloat() * 0.1;
 			return new FogParticle(clientLevel, d,e,f, velX, velY, velZ, 1.0f, this.spriteSet);
 		}
+		//?}
+		//? <=1.21.8{
+		/*@Override
+		public @Nullable Particle createParticle(SimpleParticleType particleOptions, ClientLevel clientLevel, double d, double e, double f, double g, double h, double i) {
+			double velX = (double) clientLevel.getRandom().nextFloat() * -1.9 * (double) clientLevel.getRandom().nextFloat() * 0.1;
+			double velY = (double) clientLevel.getRandom().nextFloat() * (double) -0.5F * (double) clientLevel.getRandom().nextFloat() * 0.1 * (double) 0.5F;
+			double velZ = (double) clientLevel.getRandom().nextFloat() * -1.9 * (double) clientLevel.getRandom().nextFloat() * 0.1;
+			return new FogParticle(clientLevel, d,e,f, velX, velY, velZ, 1.0f, this.spriteSet);
+		}
+		*///?}
 	}
 }

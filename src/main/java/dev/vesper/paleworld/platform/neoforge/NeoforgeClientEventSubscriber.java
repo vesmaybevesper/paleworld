@@ -1,8 +1,8 @@
 package dev.vesper.paleworld.platform.neoforge;
 
 //? neoforge {
-/*
-import dev.vesper.paleworld.PaleWorld;
+
+/*import dev.vesper.paleworld.PaleWorld;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;

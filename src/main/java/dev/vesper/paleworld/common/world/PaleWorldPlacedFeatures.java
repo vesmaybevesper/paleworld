@@ -7,8 +7,13 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
+//?1.21.11{
+/*import net.minecraft.resources.Identifier;
+*///?}
 import net.minecraft.resources.ResourceKey;
+//?<1.21.11{
 import net.minecraft.resources.ResourceLocation;
+//?}
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
@@ -25,39 +30,40 @@ import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.placement.PlacementModifier;
 import net.minecraft.world.level.levelgen.placement.RandomOffsetPlacement;
 import net.minecraft.world.level.levelgen.placement.RarityFilter;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
 public class PaleWorldPlacedFeatures {
-	public static final ResourceKey<PlacedFeature> PALE_CAVE_VEG = registryKey("pale_cave_veg");
-	public static final ResourceKey<PlacedFeature> PALE_CAVE_PATCH = registryKey("pale_cave_patch");
-	public static final ResourceKey<PlacedFeature> PALE_CAVE_CEILING_PATCH = registryKey("pale_cave_ceiling_patch");
-	public static final ResourceKey<PlacedFeature> PALE_CAVE_CEILING_PATCH_MIXED = registryKey("pale_cave_ceiling_patch_mixed");
-	public static final ResourceKey<PlacedFeature> HANGING_MOSS_CEILING = registryKey("hanging_moss_ceiling");
-	public static final ResourceKey<PlacedFeature> CLAY_WITH_DYING_DRIPLEAF = registryKey("clay_with_dying_dripleaf");
-	public static final ResourceKey<PlacedFeature> CLAY_POOL_WITH_DYING_DRIPLEAF = registryKey("clay_pool_with_dying_dripleaf");
-	public static final ResourceKey<PlacedFeature> PALE_CAVE_CLAY = registryKey("pale_cave_clay");
-	public static final ResourceKey<PlacedFeature> PALE_VINE = registryKey("pale_vine_feature");
-	public static final ResourceKey<PlacedFeature> PALE_GEODE = registryKey("pale_geode");
-	public static final ResourceKey<PlacedFeature> STRIPPED_PALE_OAK = registryKey("stripped_pale_oak");
-	public static final ResourceKey<PlacedFeature> TALL_STRIPPED_PALE_OAK = registryKey("tall_stripped_pale_oak");
-	public static final ResourceKey<PlacedFeature> TALL_PALE_OAK = registryKey("tall_pale_oak");
-	public static final ResourceKey<PlacedFeature> TALL_PALE_OAK_WITH_HEART = registryKey("tall_pale_oak_with_heart");
-	public static final ResourceKey<PlacedFeature> SMALL_PALE_OAK = registryKey("small_pale_oak");
-	public static final ResourceKey<PlacedFeature> SMALL_PALE_OAK_WITH_HEART = registryKey("small_pale_oak_with_heart");
-	public static final ResourceKey<PlacedFeature> STRIPPED_SMALL_PALE_OAK = registryKey("stripped_small_pale_oak");
-	public static final ResourceKey<PlacedFeature> BARE_SMALL_PALE_OAK = registryKey("bare_small_pale_oak");
-	public static final ResourceKey<PlacedFeature> BARE_SMALL_PALE_OAK_WITH_HEART = registryKey("bare_small_pale_oak_with_heart");
-	public static final ResourceKey<PlacedFeature> BARE_STRIPPED_SMALL_PALE_OAK = registryKey("bare_stripped_small_pale_oak");
-	public static final ResourceKey<PlacedFeature> BARE_PALE_OAK = registryKey("bare_pale_oak");
-	public static final ResourceKey<PlacedFeature> BARE_PALE_OAK_WITH_HEART = registryKey("bare_pale_oak_with_heart");
-	public static final ResourceKey<PlacedFeature> STRIPPED_BARE_PALE_OAK = registryKey("stripped_bare_pale_oak");
-	public static final ResourceKey<PlacedFeature> PALE_SPIKE = registryKey("pale_spike");
-	public static final ResourceKey<PlacedFeature> CHRYSANTHEMUM = registryKey("chrysanthemum_patch");
-	public static final ResourceKey<PlacedFeature> ASPHODEL = registryKey("asphodel_patch");
+	public static final ResourceKey<@NotNull PlacedFeature> PALE_CAVE_VEG = registryKey("pale_cave_veg");
+	public static final ResourceKey<@NotNull PlacedFeature> PALE_CAVE_PATCH = registryKey("pale_cave_patch");
+	public static final ResourceKey<@NotNull PlacedFeature> PALE_CAVE_CEILING_PATCH = registryKey("pale_cave_ceiling_patch");
+	public static final ResourceKey<@NotNull PlacedFeature> PALE_CAVE_CEILING_PATCH_MIXED = registryKey("pale_cave_ceiling_patch_mixed");
+	public static final ResourceKey<@NotNull PlacedFeature> HANGING_MOSS_CEILING = registryKey("hanging_moss_ceiling");
+	public static final ResourceKey<@NotNull PlacedFeature> CLAY_WITH_DYING_DRIPLEAF = registryKey("clay_with_dying_dripleaf");
+	public static final ResourceKey<@NotNull PlacedFeature> CLAY_POOL_WITH_DYING_DRIPLEAF = registryKey("clay_pool_with_dying_dripleaf");
+	public static final ResourceKey<@NotNull PlacedFeature> PALE_CAVE_CLAY = registryKey("pale_cave_clay");
+	public static final ResourceKey<@NotNull PlacedFeature> PALE_VINE = registryKey("pale_vine_feature");
+	public static final ResourceKey<@NotNull PlacedFeature> PALE_GEODE = registryKey("pale_geode");
+	public static final ResourceKey<@NotNull PlacedFeature> STRIPPED_PALE_OAK = registryKey("stripped_pale_oak");
+	public static final ResourceKey<@NotNull PlacedFeature> TALL_STRIPPED_PALE_OAK = registryKey("tall_stripped_pale_oak");
+	public static final ResourceKey<@NotNull PlacedFeature> TALL_PALE_OAK = registryKey("tall_pale_oak");
+	public static final ResourceKey<@NotNull PlacedFeature> TALL_PALE_OAK_WITH_HEART = registryKey("tall_pale_oak_with_heart");
+	public static final ResourceKey<@NotNull PlacedFeature> SMALL_PALE_OAK = registryKey("small_pale_oak");
+	public static final ResourceKey<@NotNull PlacedFeature> SMALL_PALE_OAK_WITH_HEART = registryKey("small_pale_oak_with_heart");
+	public static final ResourceKey<@NotNull PlacedFeature> STRIPPED_SMALL_PALE_OAK = registryKey("stripped_small_pale_oak");
+	public static final ResourceKey<@NotNull PlacedFeature> BARE_SMALL_PALE_OAK = registryKey("bare_small_pale_oak");
+	public static final ResourceKey<@NotNull PlacedFeature> BARE_SMALL_PALE_OAK_WITH_HEART = registryKey("bare_small_pale_oak_with_heart");
+	public static final ResourceKey<@NotNull PlacedFeature> BARE_STRIPPED_SMALL_PALE_OAK = registryKey("bare_stripped_small_pale_oak");
+	public static final ResourceKey<@NotNull PlacedFeature> BARE_PALE_OAK = registryKey("bare_pale_oak");
+	public static final ResourceKey<@NotNull PlacedFeature> BARE_PALE_OAK_WITH_HEART = registryKey("bare_pale_oak_with_heart");
+	public static final ResourceKey<@NotNull PlacedFeature> STRIPPED_BARE_PALE_OAK = registryKey("stripped_bare_pale_oak");
+	public static final ResourceKey<@NotNull PlacedFeature> PALE_SPIKE = registryKey("pale_spike");
+	public static final ResourceKey<@NotNull PlacedFeature> CHRYSANTHEMUM = registryKey("chrysanthemum_patch");
+	public static final ResourceKey<@NotNull PlacedFeature> ASPHODEL = registryKey("asphodel_patch");
 
 
-	public static void bootstrap(BootstrapContext<PlacedFeature> registerable){
+	public static void bootstrap(BootstrapContext<@NotNull PlacedFeature> registerable){
 		var configuredFeatures = registerable.lookup(Registries.CONFIGURED_FEATURE);
 
 
@@ -259,15 +265,20 @@ public class PaleWorldPlacedFeatures {
 
 
 
-	public static ResourceKey<PlacedFeature> registryKey(String name){
+	public static ResourceKey<@NotNull PlacedFeature> registryKey(String name){
+		//?<1.21.11{
 		return ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PaleWorld.MOD_ID, name));
+		//?}
+		//?1.21.11{
+		/*return ResourceKey.create(Registries.PLACED_FEATURE, Identifier.fromNamespaceAndPath(PaleWorld.MOD_ID, name));
+		*///?}
 	}
 
-	private static void register(BootstrapContext<PlacedFeature> context, ResourceKey<PlacedFeature> key, Holder<ConfiguredFeature<?,?>> configuredFeatureRegistryEntry, List<PlacementModifier> modifiers) {
+	private static void register(BootstrapContext<@NotNull PlacedFeature> context, ResourceKey<@NotNull PlacedFeature> key, Holder<@NotNull ConfiguredFeature<?,?>> configuredFeatureRegistryEntry, List<PlacementModifier> modifiers) {
 		context.register(key, new PlacedFeature(configuredFeatureRegistryEntry, List.copyOf(modifiers)));
 	}
 
-	private static <FC extends FeatureConfiguration, F extends Feature<FC>> void register(BootstrapContext<PlacedFeature> context, ResourceKey<PlacedFeature> key, Holder<ConfiguredFeature<?,?>> configuredFeatureRegistryEntry, PlacementModifier... modifiers){
+	private static <FC extends FeatureConfiguration, F extends Feature<@NotNull FC>> void register(BootstrapContext<@NotNull PlacedFeature> context, ResourceKey<@NotNull PlacedFeature> key, Holder<@NotNull ConfiguredFeature<?,?>> configuredFeatureRegistryEntry, PlacementModifier... modifiers){
 		register(context, key, configuredFeatureRegistryEntry, List.of(modifiers));
 	}
 

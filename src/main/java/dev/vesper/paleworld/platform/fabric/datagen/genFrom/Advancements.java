@@ -7,15 +7,25 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricAdvancementProvider;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.advancements.AdvancementType;
+//?<1.21.11{
 import net.minecraft.advancements.critereon.ConsumeItemTrigger;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.advancements.critereon.LocationPredicate;
 import net.minecraft.advancements.critereon.PlayerTrigger;
+import net.minecraft.resources.ResourceLocation;
+//?}
+//?1.21.11{
+/*import net.minecraft.advancements.criterion.ConsumeItemTrigger;
+import net.minecraft.advancements.criterion.InventoryChangeTrigger;
+import net.minecraft.advancements.criterion.LocationPredicate;
+import net.minecraft.advancements.criterion.PlayerTrigger;
+import net.minecraft.resources.Identifier;
+*///?}
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
 
 import java.util.concurrent.CompletableFuture;
@@ -29,14 +39,20 @@ public class Advancements extends FabricAdvancementProvider {
 	}
 
 	@Override
-	public void generateAdvancement(HolderLookup.Provider registryLookup, Consumer<AdvancementHolder> consumer) {
+	public void generateAdvancement(HolderLookup.Provider registryLookup,  Consumer<AdvancementHolder> consumer) {
+		HolderLookup.RegistryLookup<Biome> biomeGetter = registryLookup.lookupOrThrow(Registries.BIOME);
 		AdvancementHolder root = Advancement.Builder
 				.advancement()
 					.display(
 							Items.PALE_MOSS_BLOCK,
 							Component.translatable("advancement.root"),
 							Component.translatable("advancement.rootText"),
+							//?<1.21.11{
 							ResourceLocation.parse("textures/gui/advancements/backgrounds/stone.png"),
+							//?}
+							//?1.21.11{
+							/*Identifier.parse("textures/gui/advancements/backgrounds/stone.png"),
+							*///?}
 							AdvancementType.TASK,
 							true,
 							true,
@@ -57,7 +73,7 @@ public class Advancements extends FabricAdvancementProvider {
 						true,
 						false
 				)
-				.addCriterion("pale_cave_entered", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(registryLookup.getOrThrow(Registries.BIOME).value().getOrThrow(PaleWorldBiomes.PALE_CAVE))))
+				.addCriterion("pale_cave_entered", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(biomeGetter.getOrThrow(PaleWorldBiomes.PALE_CAVE))))
 				.save(consumer, MOD_ID + "/pale_cave_entered");
 
 		AdvancementHolder paleGardenAdvance = Advancement.Builder.advancement()
@@ -72,7 +88,7 @@ public class Advancements extends FabricAdvancementProvider {
 						true,
 						false
 				)
-				.addCriterion("pale_garden_entered", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(registryLookup.getOrThrow(Registries.BIOME).value().getOrThrow(Biomes.PALE_GARDEN))))
+				.addCriterion("pale_garden_entered", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(biomeGetter.getOrThrow(Biomes.PALE_GARDEN))))
 				.save(consumer, MOD_ID + "/pale_garden_entered");
 
 		AdvancementHolder paleScholar = Advancement.Builder.advancement()
@@ -87,9 +103,9 @@ public class Advancements extends FabricAdvancementProvider {
 						true,
 						false
 				)
-				.addCriterion("pale_garden_entered", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(registryLookup.getOrThrow(Registries.BIOME).value().getOrThrow(Biomes.PALE_GARDEN))))
-				.addCriterion("pale_cave_entered", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(registryLookup.getOrThrow(Registries.BIOME).value().getOrThrow(PaleWorldBiomes.PALE_CAVE))))
-				.addCriterion("pale_forest_entered", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(registryLookup.getOrThrow(Registries.BIOME).value().getOrThrow(PaleWorldBiomes.PALE_VALLEY))))
+				.addCriterion("pale_garden_entered", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(biomeGetter.getOrThrow(Biomes.PALE_GARDEN))))
+				.addCriterion("pale_cave_entered", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(biomeGetter.getOrThrow(PaleWorldBiomes.PALE_CAVE))))
+				.addCriterion("pale_forest_entered", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(biomeGetter.getOrThrow(PaleWorldBiomes.PALE_VALLEY))))
 				.save(consumer, MOD_ID + "/pale_scholar");
 
 

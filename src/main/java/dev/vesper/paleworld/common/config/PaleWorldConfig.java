@@ -8,9 +8,15 @@ import dev.isxander.yacl3.config.v2.api.autogen.FloatField;
 import dev.isxander.yacl3.config.v2.api.serializer.GsonConfigSerializerBuilder;
 import dev.isxander.yacl3.platform.YACLPlatform;
 import net.minecraft.client.gui.screens.Screen;
+//? 1.21.11{
+/*import net.minecraft.resources.Identifier;
+*///?}
+//?<1.21.11{
 import net.minecraft.resources.ResourceLocation;
+//?}
 
 public class PaleWorldConfig {
+	//?<1.21.11{
 	public static ConfigClassHandler<PaleWorldConfig> CONFIG = ConfigClassHandler.createBuilder(PaleWorldConfig.class)
 			.id(ResourceLocation.fromNamespaceAndPath("paleworld", "config"))
 			.serializer(config -> GsonConfigSerializerBuilder.create(config)
@@ -18,6 +24,16 @@ public class PaleWorldConfig {
 					.setJson5(true)
 					.build())
 			.build();
+	//?}
+	//? 1.21.11{
+	/*public static ConfigClassHandler<PaleWorldConfig> CONFIG = ConfigClassHandler.createBuilder(PaleWorldConfig.class)
+			.id(Identifier.fromNamespaceAndPath("paleworld", "config"))
+			.serializer(config -> GsonConfigSerializerBuilder.create(config)
+					.setPath(YACLPlatform.getConfigDir().resolve("paleworld.json5"))
+					.setJson5(true)
+					.build())
+			.build();
+	*///?}
 
 	public static Screen config(Screen parent){
 		return CONFIG.generateGui().generateScreen(parent);

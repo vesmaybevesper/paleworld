@@ -15,8 +15,6 @@ import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.entity.animal.axolotl.Axolotl;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.levelgen.Heightmap;
-import net.neoforged.bus.api.EventPriority;
-import net.neoforged.neoforge.common.NeoForge;
 
 public class EntityGen {
 	public static void addSpawns(){

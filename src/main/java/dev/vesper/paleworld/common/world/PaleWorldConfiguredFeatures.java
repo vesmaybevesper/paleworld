@@ -17,8 +17,13 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
+//?1.21.11{
+/*import net.minecraft.resources.Identifier;
+*///?}
 import net.minecraft.resources.ResourceKey;
+//?<1.21.11{
 import net.minecraft.resources.ResourceLocation;
+//?}
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.random.WeightedList;
 import net.minecraft.util.valueproviders.ConstantInt;
@@ -526,6 +531,11 @@ public class PaleWorldConfiguredFeatures {
 	}
 
 	public static ResourceKey<ConfiguredFeature<?, ?>> resourceKey(String name){
+		//?<1.21.11{
 		return ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PaleWorld.MOD_ID, name));
+		//?}
+		//?1.21.11{
+		/*return ResourceKey.create(Registries.CONFIGURED_FEATURE, Identifier.fromNamespaceAndPath(PaleWorld.MOD_ID, name));
+		*///?}
 	}
 }

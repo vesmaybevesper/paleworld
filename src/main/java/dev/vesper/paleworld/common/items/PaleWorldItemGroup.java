@@ -8,7 +8,12 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+//?<1.21.11{
 import net.minecraft.resources.ResourceLocation;
+//?}
+//?1.21.11{
+/*import net.minecraft.resources.Identifier;
+*///?}
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.ItemStack;
@@ -28,6 +33,7 @@ public class PaleWorldItemGroup {
 	*///?}
 
 	//? fabric{
+	//?<1.21.11{
 	public static final CreativeModeTab PALE_WORLD = Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, ResourceLocation.fromNamespaceAndPath(MOD_ID, "paleworld"), FabricItemGroup.builder()
 			.icon(() -> new ItemStack(Blocks.PALE_MOSS_BLOCK))
 			.title(Component.translatable("itemgroup.paleworld"))
@@ -45,6 +51,26 @@ public class PaleWorldItemGroup {
 				output.accept(PaleWorldItems.PALE_AXOLOTL_SPAWN_EGG);
 				output.accept(PaleWorldItems.VAMPIRE_BAT_SPAWN_EGG);
 			}))).build());
+	//?}
+	//?1.21.11{
+	/*public static final CreativeModeTab PALE_WORLD = Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, Identifier.fromNamespaceAndPath(MOD_ID, "paleworld"), FabricItemGroup.builder()
+			.icon(() -> new ItemStack(Blocks.PALE_MOSS_BLOCK))
+			.title(Component.translatable("itemgroup.paleworld"))
+			.displayItems((((itemDisplayParameters, output) -> {
+				output.accept(PaleWorldBlocks.WHITE_CRYSTAL);
+				output.accept(PaleWorldBlocks.PALE_STONE);
+				output.accept(PaleWorldItems.DRAINED_CRYSTAL_FRAGMENT);
+				output.accept(PaleWorldItems.PALE_BERRIES);
+				output.accept(PaleWorldItems.PALE_APPLE);
+				output.accept(PaleWorldBlocks.CHRYSANTHEMUM);
+				output.accept(PaleWorldBlocks.DYING_AZALEA);
+				output.accept(PaleWorldBlocks.SMALL_DYING_DRIPLEAF);
+				output.accept(PaleWorldBlocks.BIG_DYING_DRIPLEAF);
+				output.accept(PaleWorldItems.PALE_AXOLOTL_BUCKET);
+				output.accept(PaleWorldItems.PALE_AXOLOTL_SPAWN_EGG);
+				output.accept(PaleWorldItems.VAMPIRE_BAT_SPAWN_EGG);
+			}))).build());
+	*///?}
 //?}
 
 	//? neoforge{

@@ -70,6 +70,9 @@ public class PaleWorld {
 		FabricDefaultAttributeRegistry.register(Entities.VAMPIRE_BAT, VampireBat.createHostileAttributes());
 		//FabricDefaultAttributeRegistry.register(Entities.LOST_SOUL, LostSoul.createAttributes());
 		//?}
+		//? neoforge{
+
+		//?}
 		PaleGardenMobSpawnRates.override();
 		LOGGER.info("Registered Entities");
 		ParticleTypes.register();

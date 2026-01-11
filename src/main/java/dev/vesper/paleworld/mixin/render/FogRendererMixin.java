@@ -1,12 +1,7 @@
 package dev.vesper.paleworld.mixin.render;
 
 import com.llamalad7.mixinextras.sugar.Local;
-//? fabric{
-import dev.vesper.eveningstarlib.fabric.ESLModChecks;
-//?}
-//? neoforge{
-/*import dev.vesper.eveningstarlib.neoforge.ESLModChecks;
-*///?}
+import dev.vesper.eveningstarlib.common.ESLModChecks;
 import dev.vesper.paleworld.common.biomes.PaleWorldBiomes;
 import dev.vesper.paleworld.common.config.PaleWorldConfig;
 import net.minecraft.client.Camera;
@@ -21,6 +16,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.levelgen.Heightmap;
+import net.minecraft.world.level.material.FogType;
 import org.joml.Vector4f;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
@@ -38,7 +34,12 @@ public class FogRendererMixin {
 	private static final float FADE_SPEED = 0.002f;
 
 	@Inject(method = "setupFog", at = @At(value = "INVOKE", target = "Lcom/mojang/blaze3d/systems/RenderSystem;getDevice()Lcom/mojang/blaze3d/systems/GpuDevice;", shift = At.Shift.BEFORE), locals = LocalCapture.CAPTURE_FAILHARD, cancellable = true)
+	//?<1.21.11{
 	private void modifySetupFog(Camera camera, int i, boolean bl, DeltaTracker deltaTracker, float f, ClientLevel clientLevel, CallbackInfoReturnable<Vector4f> cir, @Local Vector4f color, @Local(ordinal = 2) float renderDistanceBlocks, @Local Entity entity, @Local FogData fogData){
+		//?}
+		//?1.21.11{
+		/*private void modifySetupFog(Camera camera, int i, DeltaTracker deltaTracker, float f, ClientLevel clientLevel, CallbackInfoReturnable<Vector4f> cir, float g, Vector4f color, float renderDistanceBlocks, FogType fogType, Entity entity, FogData fogData, float j){
+		*///?}
 		if (!(entity instanceof Player player)) return;
 
 		if (!ESLModChecks.isShaders()){

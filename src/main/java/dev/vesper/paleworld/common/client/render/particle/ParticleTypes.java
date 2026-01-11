@@ -6,8 +6,12 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.BuiltInRegistries;
+//? 1.21.11{
+/*import net.minecraft.resources.Identifier;
+*///?}
+//? <1.21.11{
 import net.minecraft.resources.ResourceLocation;
-import net.neoforged.neoforge.registries.DeferredRegister;
+//?}
 
 import java.util.function.Supplier;
 
@@ -31,7 +35,12 @@ public class ParticleTypes {
 	public static final Supplier<SimpleParticleType> LOST_SOUL_AURA = PARTICLE_TYPES.register("lost_soul_aura", () -> new SimpleParticleType(false));
 	*///?}
 	private static SimpleParticleType registerParticle(String name, SimpleParticleType particleType){
+		//? <1.21.11{
 		return Registry.register(BuiltInRegistries.PARTICLE_TYPE, ResourceLocation.fromNamespaceAndPath(MOD_ID, name), particleType);
+		//?}
+		//? 1.21.11{
+		/*return Registry.register(BuiltInRegistries.PARTICLE_TYPE, Identifier.fromNamespaceAndPath(MOD_ID, name), particleType);
+		*///?}
 	}
 
 	public static void register(){}
