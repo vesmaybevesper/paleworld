@@ -504,17 +504,17 @@ public class PaleWorldConfiguredFeatures {
 		register(configuredFeatureRegisterable,
 				CHRYSANTHEMUM,
 				Feature.FLOWER,
-				new RandomPatchConfiguration(50, 4, 2, PlacementUtils.inlinePlaced(Feature.SIMPLE_BLOCK,
+				new RandomPatchConfiguration(50, 4, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
 						(new SimpleBlockConfiguration(new NoiseProvider(2345L, new NormalNoise.NoiseParameters
-								(0, 1.0, new double[0]), 0.020833334F,
+								(0, 1.0), 0.020833334F,
 								List.of(PaleWorldBlocks.CHRYSANTHEMUM.defaultBlockState())))))));
 
 		register(configuredFeatureRegisterable,
 				ASPHODEL,
 				Feature.FLOWER,
-				new RandomPatchConfiguration(40, 3, 1, PlacementUtils.inlinePlaced(Feature.SIMPLE_BLOCK,
+				new RandomPatchConfiguration(40, 3, 1, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
 						(new SimpleBlockConfiguration(new NoiseProvider(2345L, new NormalNoise.NoiseParameters
-								(0, 1.0, new double[0]), 0.020833334F,
+								(0, 1.0), 0.020833334F,
 								List.of(PaleWorldBlocks.ASPHODEL.defaultBlockState())))))));
 	}
 
