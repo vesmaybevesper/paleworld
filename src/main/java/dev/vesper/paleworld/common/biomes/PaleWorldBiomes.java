@@ -108,6 +108,11 @@ public class PaleWorldBiomes {
 		BiomeDefaultFeatures.commonSpawns(spawner);
 		BiomeDefaultFeatures.farmAnimals(spawner);
 		BiomeDefaultFeatures.addForestGrass(builder);
+		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PaleWorldPlacedFeatures.BARE_STRIPPED_SMALL_PALE_OAK);
+		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PaleWorldPlacedFeatures.BARE_SMALL_PALE_OAK);
+		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PaleWorldPlacedFeatures.SMALL_PALE_OAK);
+		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PaleWorldPlacedFeatures.STRIPPED_SMALL_PALE_OAK);
+		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PaleWorldPlacedFeatures.CHRYSANTHEMUM);
 
 		return new Biome.BiomeBuilder()
 				.hasPrecipitation(true)

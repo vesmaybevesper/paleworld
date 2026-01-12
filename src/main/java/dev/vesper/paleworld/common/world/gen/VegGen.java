@@ -13,7 +13,6 @@ public class VegGen {
 	public static void generateVeg(){
 		//? fabric{
 		BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.PALE_GARDEN), GenerationStep.Decoration.VEGETAL_DECORATION, PaleWorldPlacedFeatures.CHRYSANTHEMUM);
-		BiomeModifications.addFeature(BiomeSelectors.includeByKey(PaleWorldBiomes.PALE_VALLEY), GenerationStep.Decoration.VEGETAL_DECORATION, PaleWorldPlacedFeatures.CHRYSANTHEMUM);
 		//?}
 	}
 }

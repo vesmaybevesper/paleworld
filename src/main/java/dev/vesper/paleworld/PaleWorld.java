@@ -1,6 +1,7 @@
 package dev.vesper.paleworld;
 
 import dev.vesper.paleworld.common.biomes.PaleWorldBiomePlacement;
+import dev.vesper.paleworld.common.biomes.surface.MaterialRules;
 import dev.vesper.paleworld.common.blocks.PaleWorldBlocks;
 import dev.vesper.paleworld.common.client.render.particle.FogParticle;
 import dev.vesper.paleworld.common.client.render.particle.MossParticle;
@@ -28,17 +29,12 @@ import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfigur
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-//? fabric {
 import dev.vesper.paleworld.platform.fabric.FabricPlatform;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
-//?} neoforge {
-/*import dev.vesper.paleworld.platform.neoforge.NeoforgePlatform;
- *///?}
 
 @SuppressWarnings("LoggingSimilarMessage")
 public class PaleWorld {
@@ -84,7 +80,7 @@ public class PaleWorld {
 		//LOGGER.info("Registered Effects");
         /*CustomSounds.init();
         LOGGER.info("Registered Sounds");*/
-
+		MaterialRules.init();
 		PaleWorldBiomePlacement.place();
 		PaleWorldWorldGen.genWorld();
 		EntityGen.addSpawns();
