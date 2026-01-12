@@ -36,7 +36,10 @@ platform {
 			slug("yacl")
 			versionRange = ">=${prop("deps.yacl")}"
 		}
-		optional("modmenu") {}
+		optional("modmenu") {
+			slug("modmenu")
+			versionRange = ">=${prop("deps.modmenu")}"
+		}
 	}
 }
 

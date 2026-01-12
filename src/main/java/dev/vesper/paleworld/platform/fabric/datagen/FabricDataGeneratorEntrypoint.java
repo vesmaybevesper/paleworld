@@ -7,6 +7,7 @@ import dev.vesper.paleworld.common.world.PaleWorldPlacedFeatures;
 import dev.vesper.paleworld.platform.fabric.datagen.genFrom.Advancements;
 import dev.vesper.paleworld.platform.fabric.datagen.genFrom.LootTables;
 import dev.vesper.paleworld.platform.fabric.datagen.genFrom.ModelProvider;
+import dev.vesper.paleworld.platform.fabric.datagen.genFrom.WorldGenerator;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -22,6 +23,7 @@ public class FabricDataGeneratorEntrypoint implements DataGeneratorEntrypoint {
 		pack.addProvider(Advancements::new);
 		pack.addProvider(LootTables::new);
 		pack.addProvider(ModelProvider::new);
+		pack.addProvider(WorldGenerator::new);
 	}
 
 	@Override

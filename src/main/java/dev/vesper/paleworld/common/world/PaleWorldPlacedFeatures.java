@@ -3,6 +3,7 @@ package dev.vesper.paleworld.common.world;
 import dev.vesper.paleworld.PaleWorld;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
+import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
@@ -64,7 +65,7 @@ public class PaleWorldPlacedFeatures {
 
 
 	public static void bootstrap(BootstrapContext<@NotNull PlacedFeature> registerable){
-		var configuredFeatures = registerable.lookup(Registries.CONFIGURED_FEATURE);
+		HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = registerable.lookup(Registries.CONFIGURED_FEATURE);
 
 
 		// Pale Cave Features

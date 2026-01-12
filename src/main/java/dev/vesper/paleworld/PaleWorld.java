@@ -84,6 +84,7 @@ public class PaleWorld {
 		//LOGGER.info("Registered Effects");
         /*CustomSounds.init();
         LOGGER.info("Registered Sounds");*/
+
 		PaleWorldBiomePlacement.place();
 		PaleWorldWorldGen.genWorld();
 		EntityGen.addSpawns();
