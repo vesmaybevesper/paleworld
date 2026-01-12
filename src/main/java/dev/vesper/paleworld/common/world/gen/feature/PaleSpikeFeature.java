@@ -25,6 +25,7 @@ public class PaleSpikeFeature extends Feature<NoneFeatureConfiguration> {
 
 		WorldGenLevel structureWorldAccess;
 		for (structureWorldAccess = featurePlaceContext.level(); structureWorldAccess.isEmptyBlock(blockPos) && blockPos.getY() > structureWorldAccess.getMinY() + 2; blockPos = blockPos.below()){
+
 		}
 
 		if (!structureWorldAccess.getBlockState(blockPos).is(Blocks.GRASS_BLOCK) && !structureWorldAccess.getBlockState(blockPos).is(Blocks.PALE_MOSS_BLOCK)){
