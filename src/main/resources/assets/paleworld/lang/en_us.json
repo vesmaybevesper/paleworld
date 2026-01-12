@@ -28,6 +28,10 @@
   "item.paleworld.white_crystal": "Drained Amethyst",
   "item.paleworld.drained_crystal_fragment": "Drained Amethyst Fragment",
   "item.paleworld.pale_apple": "Pale Apple",
+  "item.paleworld.pale_stone": "Palestone",
+  "item.paleworld.chrysanthemum": "Chrysanthemum",
+  "item.minecraft.pale_axolotl_spawn_egg": "Pale Axolotl Spawn Egg",
+  "item.minecraft.vampire_bat_spawn_egg": "Vampire Bat Spawn Egg",
 
   "block.paleworld.pale_vine": "Pale Vine",
   "block.paleworld.pale_vine_body": "Pale Vine",
@@ -39,7 +43,7 @@
   "block.paleworld.pale_stone": "Palestone",
   "block.paleworld.chrysanthemum": "Chrysanthemum",
 
-  "itemgroup.paleworld.paleworld": "Pale World",
+  "itemgroup.paleworld": "Pale World",
   "entity.paleworld.pale_axolotl": "Pale Axolotl",
   "entity.paleworld.vampire_bat": "Vampire Bat",
 

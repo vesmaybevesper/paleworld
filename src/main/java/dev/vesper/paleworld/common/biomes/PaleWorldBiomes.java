@@ -92,6 +92,7 @@ public class PaleWorldBiomes {
 						.ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
 						.ambientParticle(config)
 						//?}
+						// need to find the replacments of this for new versions
 						.grassColorOverride(0xff778272)
 						.foliageColorOverride(0xff878D76)
 						.build())
