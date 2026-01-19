@@ -273,7 +273,7 @@ public class PaleWorldBlocks {
 		Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(MOD_ID, item), new BlockItem(block, new Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(MOD_ID, item))).useItemDescriptionPrefix()));
 	}
 	//?}
-	//? 1.21.11{
+	//? >=1.21.11{
 	/*public static final Block PALE_VINE = regBlock("pale_vine",
 			new PaleVineHeadBlock(
 					GrowingPlantBodyBlock.Properties.of()
