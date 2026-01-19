@@ -1,5 +1,5 @@
 [versions]
-stonecutter = "0.8.2"
+stonecutter = "0.8.3"
 stonecutter-postprocess = "2.1-beta.8"
 mod-publish = "1.1.0"
 dotenv-gradle = "4.0.0"
@@ -7,6 +7,7 @@ fabric-loom = "1.14-SNAPSHOT"
 neoforge-moddev = "2.0.134"
 foojay = "1.0.0"
 fabric-loader= "0.18.4"
+fletching-table = "0.1.0-alpha.22"
 
 [libraries]
 kikugie-postprocess = { module = "dev.kikugie:postprocess", version.ref = "stonecutter-postprocess" }
@@ -14,6 +15,7 @@ mod-publish-plugin = { module = "me.modmuss50:mod-publish-plugin", version.ref =
 kikugie-stonecutter = { module = "dev.kikugie:stonecutter", version.ref = "stonecutter" }
 fabric-loader = { module = "net.fabricmc:fabric-loader", version.ref = "fabric-loader" }
 foojay-resolver = { module = "org.gradle.toolchains:foojay-resolver", version.ref = "foojay" }
+fletching-table = { module = "dev.kikugie:fletching-table", version.ref = "fletching-table" }
 
 [plugins]
 stonecutter = { id = "dev.kikugie.stonecutter", version.ref = "stonecutter" }
@@ -22,5 +24,6 @@ fabric-loom = { id = "fabric-loom", version.ref = "fabric-loom" }
 neoforged-moddev = { id = "net.neoforged.moddev", version.ref = "neoforge-moddev" }
 jsonlang-postprocess = { id = "dev.kikugie.postprocess.jsonlang", version.ref = "stonecutter-postprocess" }
 mod-publish-plugin = { id = "me.modmuss50.mod-publish-plugin", version.ref = "mod-publish" }
+fletching-table = { id = "dev.kikugie.fletching-table", version.ref = "fletching-table" }
 
 
