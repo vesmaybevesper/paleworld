@@ -215,9 +215,7 @@ abstract class ModPlatformPlugin @Inject constructor() : Plugin<Project> {
 
 			val modrinthAccessToken = env("MODRINTH_API_TOKEN")
 			val curseforgeAccessToken = env("CURSEFORGE_API_TOKEN")
-			if (!envTrue("ENABLE_PUBLISHING")) {
-				dryRun = true
-			}
+			dryRun = false
 
 			val jarTask = tasks.named(ext.jarTask.get()).map { it as Jar }
 			val srcJarTask = tasks.named(ext.sourcesJarTask.get()).map { it as Jar }
@@ -251,7 +249,8 @@ abstract class ModPlatformPlugin @Inject constructor() : Plugin<Project> {
 	) = modrinth {
 		if (staging) apiEndpoint = "https://staging-api.modrinth.com/v2"
 		projectId = project.prop("publish.modrinth")
-		accessToken = acesssToken
+		// ADD API TOKEN TO PUBLISH
+		accessToken = ""
 		minecraftVersions.addAll(listOf(currentVersion) + additionalVersions)
 
 		if (!staging) {
@@ -270,7 +269,8 @@ abstract class ModPlatformPlugin @Inject constructor() : Plugin<Project> {
 		acesssToken: String?
 	) = curseforge {
 		projectId = project.prop("publish.curseforge")
-		accessToken = acesssToken
+		// ADD API TOKEN TO PUBLISH
+		accessToken = ""
 		minecraftVersions.addAll(listOf(currentVersion) + additionalVersions)
 
 		deps.required.forEach { dep -> whenNotNull(dep.curseforge) { requires(it) } }
