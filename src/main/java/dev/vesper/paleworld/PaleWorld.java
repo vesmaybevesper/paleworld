@@ -36,7 +36,7 @@ import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 
-@SuppressWarnings("LoggingSimilarMessage")
+@SuppressWarnings({"LoggingSimilarMessage"})
 public class PaleWorld {
 
 	public static final String MOD_ID = /*$ mod_id*/ "paleworld";
@@ -62,6 +62,7 @@ public class PaleWorld {
 		LOGGER.info("Initializing {} on {}", MOD_ID, PaleWorld.xplat().loader());
 		Entities.init();
 		//? fabric{
+		// these yell about failing but work fine
 		FabricDefaultAttributeRegistry.register(Entities.PALE_AXOLOTL, PaleAxolotl.setAttributes().build());
 		FabricDefaultAttributeRegistry.register(Entities.VAMPIRE_BAT, VampireBat.createHostileAttributes());
 		//FabricDefaultAttributeRegistry.register(Entities.LOST_SOUL, LostSoul.createAttributes());
