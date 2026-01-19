@@ -62,7 +62,7 @@ public class PaleWorld {
 		LOGGER.info("Initializing {} on {}", MOD_ID, PaleWorld.xplat().loader());
 		Entities.init();
 		//? fabric{
-		FabricDefaultAttributeRegistry.register(Entities.PALE_AXOLOTL, PaleAxolotl.setAttributes());
+		FabricDefaultAttributeRegistry.register(Entities.PALE_AXOLOTL, PaleAxolotl.setAttributes().build());
 		FabricDefaultAttributeRegistry.register(Entities.VAMPIRE_BAT, VampireBat.createHostileAttributes());
 		//FabricDefaultAttributeRegistry.register(Entities.LOST_SOUL, LostSoul.createAttributes());
 		//?}

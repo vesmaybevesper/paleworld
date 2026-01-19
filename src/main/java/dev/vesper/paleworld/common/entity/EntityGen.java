@@ -1,6 +1,7 @@
 package dev.vesper.paleworld.common.entity;
 
 import dev.vesper.paleworld.common.biomes.PaleWorldBiomes;
+import dev.vesper.paleworld.common.entity.PaleAxolotl.PaleAxolotl;
 import dev.vesper.paleworld.common.entity.VampireBat.VampireBat;
 //? fabric{
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
@@ -24,7 +25,7 @@ public class EntityGen {
 		BiomeModifications.addSpawn(BiomeSelectors.includeByKey(Biomes.PALE_GARDEN), MobCategory.MONSTER, Entities.VAMPIRE_BAT, 25, 1, 2);
 		BiomeModifications.addSpawn(BiomeSelectors.includeByKey(PaleWorldBiomes.PALE_VALLEY), MobCategory.MONSTER, Entities.VAMPIRE_BAT, 25, 1, 1);
 
-		SpawnPlacements.register(Entities.PALE_AXOLOTL, SpawnPlacementTypes.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Axolotl::checkAxolotlSpawnRules);
+		SpawnPlacements.register(Entities.PALE_AXOLOTL, SpawnPlacementTypes.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, PaleAxolotl::canSpawn);
 		SpawnPlacements.register(Entities.VAMPIRE_BAT, SpawnPlacementTypes.NO_RESTRICTIONS, Heightmap.Types.WORLD_SURFACE, VampireBat::canSpawn);
 		//?}
 

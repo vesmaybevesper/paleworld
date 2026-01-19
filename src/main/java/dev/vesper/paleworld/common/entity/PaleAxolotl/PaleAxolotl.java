@@ -1,12 +1,17 @@
 package dev.vesper.paleworld.common.entity.PaleAxolotl;
 
 import dev.vesper.paleworld.common.items.PaleWorldItems;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.navigation.AmphibiousPathNavigation;
@@ -15,12 +20,14 @@ import net.minecraft.world.entity.animal.Bucketable;
 import net.minecraft.world.entity.animal.axolotl.Axolotl;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.pathfinder.PathType;
 import net.minecraft.world.phys.Vec3;
 import net.tslat.smartbrainlib.api.SmartBrainOwner;
 import net.tslat.smartbrainlib.api.core.sensor.ExtendedSensor;
 import net.tslat.smartbrainlib.api.core.sensor.vanilla.AxolotlSpecificSensor;
 import net.tslat.smartbrainlib.api.core.sensor.vanilla.NearbyLivingEntitySensor;
+import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.animatable.manager.AnimatableManager;
@@ -55,7 +62,7 @@ public class PaleAxolotl extends Axolotl implements Bucketable, GeoEntity, Smart
 	}
 
 	public static AttributeSupplier.Builder	setAttributes(){
-		return PaleAxolotl.createAnimalAttributes()
+		return Mob.createMobAttributes()
 				.add(Attributes.MAX_HEALTH, 14)
 				.add(Attributes.ATTACK_DAMAGE, 2)
 				.add(Attributes.ATTACK_SPEED, 2)
@@ -63,6 +70,16 @@ public class PaleAxolotl extends Axolotl implements Bucketable, GeoEntity, Smart
 				.add(Attributes.STEP_HEIGHT, .75)
 				.add(Attributes.JUMP_STRENGTH, 2)
 				.add(Attributes.TEMPT_RANGE, 5);
+	}
+
+	public static boolean canSpawn(EntityType<PaleAxolotl> EntityType, ServerLevelAccessor serverWorldAccess, EntitySpawnReason spawnReason, BlockPos blockPos, RandomSource random){
+		return serverWorldAccess.getBlockState(blockPos.below()).is(BlockTags.AXOLOTLS_SPAWNABLE_ON) || EntitySpawnReason.isSpawner(spawnReason);
+	}
+
+	@Override
+	protected void defineSynchedData(SynchedEntityData.Builder builder) {
+		super.defineSynchedData(builder);
+		builder.define(FROM_BUCKET, false);
 	}
 
 	@Override
@@ -76,12 +93,12 @@ public class PaleAxolotl extends Axolotl implements Bucketable, GeoEntity, Smart
 	}
 
 	@Override
-	public ItemStack getBucketItemStack() {
+	public @NotNull ItemStack getBucketItemStack() {
 		return new ItemStack(PaleWorldItems.PALE_AXOLOTL_BUCKET);
 	}
 
 	@Override
-	public SoundEvent getPickupSound() {
+	public @NotNull SoundEvent getPickupSound() {
 		return SoundEvents.BUCKET_FILL_AXOLOTL;
 	}
 
@@ -91,9 +108,7 @@ public class PaleAxolotl extends Axolotl implements Bucketable, GeoEntity, Smart
 	}
 
 	@Override
-	protected void registerGoals() {
-
-	}
+	protected void registerGoals() {}
 
 	private void setAnimationStates(){
 		if (this.idleAnimationTimeout <= 0){
@@ -105,7 +120,7 @@ public class PaleAxolotl extends Axolotl implements Bucketable, GeoEntity, Smart
 	}
 
 	@Override
-	protected PathNavigation createNavigation(Level level) {
+	protected @NotNull PathNavigation createNavigation(Level level) {
 		return new AmphibiousPathNavigation(this, level);
 	}
 
