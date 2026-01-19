@@ -1,5 +1,6 @@
+_Given the scale of changes this version (what with switching to an entirely different mappings and all) I fully expect issues, please report them to me on GitHub or Discord!_
+
 - Switch to Mojang Mappings
 - Set up a range of version support
-  - Initially I was going to support back to 1.21.4, however, there were several issues with this. If I can get it working that'll be supported as well!
 - Switch to YACL for config
 - Switch to Biolith for biomes
