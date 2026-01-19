@@ -39,8 +39,8 @@ public class PaleWorldItems {
 	public static Item PALE_BERRIES = registerItems(new PaleBerriesItem(new Item.Properties().food(PaleWorldFoodProperties.PALE_BERRIES, PaleWorldConsumables.PALE_BERRIES).setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(PaleWorld.MOD_ID, "pale_berries")))), PALE_BERRIES_KEY);
 
 	//? 1.21.10{
-	public static Item PALE_AXOLOTL_SPAWN_EGG = registerItems(ResourceKey.create(Registries.ITEM, ResourceLocation.withDefaultNamespace("pale_axolotl_spawn_egg")), SpawnEggItem::new, (new Item.Properties().spawnEgg(Entities.PALE_AXOLOTL)));
-	public static Item VAMPIRE_BAT_SPAWN_EGG = registerItems(ResourceKey.create(Registries.ITEM, ResourceLocation.withDefaultNamespace("vampire_bat_spawn_egg")), SpawnEggItem::new, (new Item.Properties().spawnEgg(Entities.VAMPIRE_BAT)));
+	public static Item PALE_AXOLOTL_SPAWN_EGG = registerItems(new SpawnEggItem(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(PaleWorld.MOD_ID, "pale_axolotl_spawn_egg"))).spawnEgg(Entities.PALE_AXOLOTL)), PALE_AXOLOTL_SPAWN_EGG_KEY);
+	public static Item VAMPIRE_BAT_SPAWN_EGG = registerItems(new SpawnEggItem(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(PaleWorld.MOD_ID, "vampire_bat_spawn_egg"))).spawnEgg(Entities.VAMPIRE_BAT)), VAMPIRE_BAT_SPAWN_EGG_KEY);
 	//?}
 	//? <=1.21.8{
 	/*public static Item PALE_AXOLOTL_SPAWN_EGG = registerItems(new SpawnEggItem(Entities.PALE_AXOLOTL, new Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(PaleWorld.MOD_ID, "pale_axolotl_spawn_egg")))), PALE_AXOLOTL_SPAWN_EGG_KEY);
@@ -54,8 +54,8 @@ public class PaleWorldItems {
 	public static final ResourceKey<Item> PALE_BERRIES_KEY = ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(PaleWorld.MOD_ID, "pale_berries"));
 	public static final ResourceKey<Item> PALE_COMPASS_KEY = ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(PaleWorld.MOD_ID, "pale_compass"));
 
-	public static Item PALE_AXOLOTL_SPAWN_EGG = registerItems(ResourceKey.create(Registries.ITEM, Identifier.withDefaultNamespace("pale_axolotl_spawn_egg")), SpawnEggItem::new, (new Item.Properties().spawnEgg(Entities.PALE_AXOLOTL)));
-	public static Item VAMPIRE_BAT_SPAWN_EGG = registerItems(ResourceKey.create(Registries.ITEM, Identifier.withDefaultNamespace("vampire_bat_spawn_egg")), SpawnEggItem::new, (new Item.Properties().spawnEgg(Entities.VAMPIRE_BAT)));
+	public static Item PALE_AXOLOTL_SPAWN_EGG = registerItems(new SpawnEggItem(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(PaleWorld.MOD_ID, "pale_axolotl_spawn_egg"))).spawnEgg(Entities.PALE_AXOLOTL)), PALE_AXOLOTL_SPAWN_EGG_KEY);
+	public static Item VAMPIRE_BAT_SPAWN_EGG = registerItems(new SpawnEggItem(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(PaleWorld.MOD_ID, "vampire_bat_spawn_egg"))).spawnEgg(Entities.VAMPIRE_BAT)), VAMPIRE_BAT_SPAWN_EGG_KEY);
 	public static Item PALE_BERRIES = registerItems(new PaleBerriesItem(new Item.Properties().food(PaleWorldFoodProperties.PALE_BERRIES, PaleWorldConsumables.PALE_BERRIES).setId(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(PaleWorld.MOD_ID, "pale_berries")))), PALE_BERRIES_KEY);
 	public static Item PALE_AXOLOTL_BUCKET = registerItems(new MobBucketItem(Entities.PALE_AXOLOTL, Fluids.WATER, SoundEvents.BUCKET_EMPTY_AXOLOTL, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY).setId(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(PaleWorld.MOD_ID,"pale_axolotl_bucket")))),PALE_AXOLOTL_BUCKET_KEY);
 	*///?}
