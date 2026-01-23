@@ -1,1 +1,1 @@
-- Fix missing textures (#7)
+- Re-add (most) missing biome cosmetics to 1.21.11

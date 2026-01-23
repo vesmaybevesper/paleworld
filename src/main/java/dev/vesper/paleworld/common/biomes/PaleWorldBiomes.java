@@ -1,6 +1,7 @@
 package dev.vesper.paleworld.common.biomes;
 
 import dev.vesper.paleworld.PaleWorld;
+import dev.vesper.paleworld.common.client.render.particle.ParticleTypes;
 import dev.vesper.paleworld.common.world.PaleWorldPlacedFeatures;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.registries.Registries;
@@ -13,16 +14,24 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.biome.AmbientMoodSettings;
 import net.minecraft.world.level.biome.AmbientParticleSettings;
 //?}
-//? 1.21.11{
-/*import net.minecraft.world.attribute.AmbientMoodSettings;
+//? >=1.21.11{
+/*import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.attribute.AmbientMoodSettings;
 import net.minecraft.world.attribute.AmbientParticle;
 import net.minecraft.resources.Identifier;
+import net.minecraft.world.attribute.AmbientSounds;
+import net.minecraft.world.attribute.BackgroundMusic;
+import net.minecraft.world.attribute.EnvironmentAttributeMap;
+import net.minecraft.world.attribute.EnvironmentAttributes;
 *///?}
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeGenerationSettings;
 import net.minecraft.world.level.biome.BiomeSpecialEffects;
 import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.levelgen.GenerationStep;
+
+import java.util.List;
+import java.util.Optional;
 
 import static dev.vesper.paleworld.common.client.render.particle.ParticleTypes.MOSS_PARTICLE;
 
@@ -92,10 +101,19 @@ public class PaleWorldBiomes {
 						.ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
 						.ambientParticle(config)
 						//?}
-						// need to find the replacments of this for new versions
 						.grassColorOverride(0xff778272)
 						.foliageColorOverride(0xff878D76)
 						.build())
+				//? >=1.21.11{
+				/*.putAttributes(EnvironmentAttributeMap.builder()
+						.set(EnvironmentAttributes.AMBIENT_PARTICLES, List.of(new AmbientParticle(MOSS_PARTICLE, 0.5f)))
+						.set(EnvironmentAttributes.WATER_FOG_COLOR, 0xff556980)
+						.set(EnvironmentAttributes.SKY_COLOR, 0xffb9b9b9)
+						.set(EnvironmentAttributes.FOG_COLOR, 0xff817770)
+						//.set(EnvironmentAttributes.AMBIENT_SOUNDS, new AmbientSounds(Optional.of(SoundEvents.AMBIENT_CAVE)))
+						.set(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_LUSH_CAVES))
+						.build())
+				*///?}
 				.build();
 	}
 
@@ -132,6 +150,13 @@ public class PaleWorldBiomes {
 						.foliageColorOverride(0xff878D76)
 						.build()
 				)
+				//? >=1.21.11{
+				/*.putAttributes(EnvironmentAttributeMap.builder()
+						.set(EnvironmentAttributes.WATER_FOG_COLOR, 0xff556980)
+						.set(EnvironmentAttributes.SKY_COLOR, 0xffb9b9b9)
+						.set(EnvironmentAttributes.FOG_COLOR, 0xff817770)
+						.build())
+				*///?}
 				.build();
 	}
 }
