@@ -72,9 +72,6 @@ public class PaleWorldBiomes {
 		//? <1.21.11{
 		AmbientParticleSettings config = new AmbientParticleSettings((ParticleOptions) MOSS_PARTICLE, 0.05F);
 		//?}
-		//? 1.21.11{
-		/*AmbientParticle config = new AmbientParticle((ParticleOptions) MOSS_PARTICLE, 0.05F);
-		*///?}
 
 		BiomeDefaultFeatures.addDefaultOres(builder);
 		BiomeDefaultFeatures.addLushCavesSpecialOres(builder);
