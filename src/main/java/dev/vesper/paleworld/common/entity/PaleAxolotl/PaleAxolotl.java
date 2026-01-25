@@ -73,7 +73,7 @@ public class PaleAxolotl extends Axolotl implements Bucketable, GeoEntity, Smart
 	}
 
 	public static boolean canSpawn(EntityType<PaleAxolotl> EntityType, ServerLevelAccessor serverWorldAccess, EntitySpawnReason spawnReason, BlockPos blockPos, RandomSource random){
-		return serverWorldAccess.getBlockState(blockPos.below()).is(BlockTags.AXOLOTLS_SPAWNABLE_ON) || EntitySpawnReason.isSpawner(spawnReason);
+		return serverWorldAccess.getBlockState(blockPos.below()).is(BlockTags.AXOLOTLS_SPAWNABLE_ON);
 	}
 
 	@Override
