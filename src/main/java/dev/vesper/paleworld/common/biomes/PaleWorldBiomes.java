@@ -64,15 +64,15 @@ public class PaleWorldBiomes {
 		BiomeDefaultFeatures.oceanSpawns(spawner,1,1,3);
 
 		BiomeGenerationSettings.Builder builder = new BiomeGenerationSettings.Builder(biomeRegisterable.lookup(Registries.PLACED_FEATURE), biomeRegisterable.lookup(Registries.CONFIGURED_CARVER));
-		builder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, PaleWorldPlacedFeatures.PALE_GEODE);
 		globalOverworldGeneration(builder);
 		builder.addCarver(Carvers.CAVE);
 		builder.addCarver(Carvers.CAVE_EXTRA_UNDERGROUND);
 		builder.addCarver(Carvers.CANYON);
 		//? <1.21.11{
-		AmbientParticleSettings config = new AmbientParticleSettings((ParticleOptions) MOSS_PARTICLE, 0.05F);
+		AmbientParticleSettings config = new AmbientParticleSettings((ParticleOptions) MOSS_PARTICLE, 0.01F);
 		//?}
 
+		builder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, PaleWorldPlacedFeatures.PALE_GEODE);
 		BiomeDefaultFeatures.addDefaultOres(builder);
 		BiomeDefaultFeatures.addLushCavesSpecialOres(builder);
 		BiomeDefaultFeatures.addDefaultSoftDisks(builder);
@@ -103,7 +103,7 @@ public class PaleWorldBiomes {
 						.build())
 				//? >=1.21.11{
 				/*.putAttributes(EnvironmentAttributeMap.builder()
-						.set(EnvironmentAttributes.AMBIENT_PARTICLES, List.of(new AmbientParticle(MOSS_PARTICLE, 0.5f)))
+						.set(EnvironmentAttributes.AMBIENT_PARTICLES, List.of(new AmbientParticle(MOSS_PARTICLE, 0.1f)))
 						.set(EnvironmentAttributes.WATER_FOG_COLOR, 0xff556980)
 						.set(EnvironmentAttributes.SKY_COLOR, 0xffb9b9b9)
 						.set(EnvironmentAttributes.FOG_COLOR, 0xff817770)
