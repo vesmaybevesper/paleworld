@@ -20,7 +20,7 @@ import net.minecraft.world.level.levelgen.Heightmap;
 public class EntityGen {
 	public static void addSpawns(){
 		//? fabric{
-		BiomeModifications.addSpawn(BiomeSelectors.includeByKey(PaleWorldBiomes.PALE_CAVE), MobCategory.AXOLOTLS, Entities.PALE_AXOLOTL, 3, 1, 1);
+		BiomeModifications.addSpawn(BiomeSelectors.includeByKey(PaleWorldBiomes.PALE_CAVE), MobCategory.AXOLOTLS, Entities.PALE_AXOLOTL, 5, 1, 1);
 		BiomeModifications.addSpawn(BiomeSelectors.includeByKey(PaleWorldBiomes.PALE_CAVE), MobCategory.MONSTER, Entities.VAMPIRE_BAT, 50, 1, 3);
 		BiomeModifications.addSpawn(BiomeSelectors.includeByKey(Biomes.PALE_GARDEN), MobCategory.MONSTER, Entities.VAMPIRE_BAT, 25, 1, 2);
 		BiomeModifications.addSpawn(BiomeSelectors.includeByKey(PaleWorldBiomes.PALE_VALLEY), MobCategory.MONSTER, Entities.VAMPIRE_BAT, 25, 1, 1);
