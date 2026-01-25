@@ -48,10 +48,10 @@ public class Advancements extends FabricAdvancementProvider {
 							Component.translatable("advancement.root"),
 							Component.translatable("advancement.rootText"),
 							//?<1.21.11{
-							ResourceLocation.parse("textures/gui/advancements/backgrounds/stone.png"),
+							ResourceLocation.fromNamespaceAndPath("minecraft","gui/advancements/backgrounds/stone"),
 							//?}
 							//?1.21.11{
-							/*Identifier.parse("textures/gui/advancements/backgrounds/stone.png"),
+							/*Identifier.fromNamespaceAndPath("minecraft","gui/advancements/backgrounds/stone"),
 							*///?}
 							AdvancementType.TASK,
 							true,
