@@ -1,9 +1,6 @@
-- Add more Falling Moss Particle shapes
-- Change Falling Moss Particle to a color better matching Pale Moss
-- Slightly increase spawning chance of Pale Axolotls
-- Switch to Biolith for biomes
-  - Sparse Pale Garden is now a sub-biome of the Pale Garden, and should spawn around the edge of them
-- Switch to YACL for config
-- Set up a range of version support
-  - My plan once 26.1 hits is to support a years worth of versions at a time (i.e. I will support 26.x until 27.x comes out at which point I will support 27.x and so on)
-- [Beta Relative] Fixed broken advancements background texture
+- Nerf Vampire Bats
+  - Significantly reduced flying speed: 2 → 0.25
+  - Significantly reduced max health: 20 → 5
+  - Reduced damage: 3 → 1
+  - Increased hitbox: .25 x .5 → .7f x 1
+- Fixed incorrect Pale Axolotl hitbox on 1.21.11

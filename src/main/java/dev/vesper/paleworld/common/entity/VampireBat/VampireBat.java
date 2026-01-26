@@ -255,19 +255,20 @@ public class VampireBat extends Monster implements FlyingAnimal, SmartBrainOwner
 
 	@Override
 	public boolean isFlying() {
-		return false;
+		return !isRoosting();
 	}
 
 	public static AttributeSupplier.Builder createHostileAttributes() {
 		return Monster.createMonsterAttributes()
 				.add(Attributes.FOLLOW_RANGE, (double)35.0F)
-				.add(Attributes.FLYING_SPEED, (double)2F)
-				.add(Attributes.ATTACK_DAMAGE, (double)3.0F);
+				.add(Attributes.FLYING_SPEED, (double).25F)
+				.add(Attributes.ATTACK_DAMAGE, (double)1.0F)
+				.add(Attributes.MAX_HEALTH, (double)5F);
 	}
 
 	@Override
 	public boolean isFallFlying() {
-		return true;
+		return false;
 	}
 
 	//? >=1.21.6{

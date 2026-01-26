@@ -51,14 +51,14 @@ public class Entities {
 			FabricEntityType.Builder.createLiving(PaleAxolotl::new, MobCategory.WATER_AMBIENT, builder -> builder).sized(.75f, .45f).build(PALE_AXOLOTL_KEY));
 
 	public static final EntityType<VampireBat> VAMPIRE_BAT = Registry.register(BuiltInRegistries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(MOD_ID, "vampire_bat"),
-			FabricEntityType.Builder.createLiving(VampireBat::new, MobCategory.MONSTER, builder -> builder).sized(.25f, .5f).build(VAMPIRE_BAT_KEY));
+			FabricEntityType.Builder.createLiving(VampireBat::new, MobCategory.MONSTER, builder -> builder).sized(.75f, 1f).build(VAMPIRE_BAT_KEY));
 	//?}
 	//?1.21.11{
 	/*public static final EntityType<PaleAxolotl> PALE_AXOLOTL = Registry.register(BuiltInRegistries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(MOD_ID, "pale_axolotl"),
-			FabricEntityType.Builder.createLiving(PaleAxolotl::new, MobCategory.WATER_AMBIENT, builder -> builder).sized(.25f, .25f).build(PALE_AXOLOTL_KEY));
+			FabricEntityType.Builder.createLiving(PaleAxolotl::new, MobCategory.WATER_AMBIENT, builder -> builder).sized(.75f, .45f).build(PALE_AXOLOTL_KEY));
 
 	public static final EntityType<VampireBat> VAMPIRE_BAT = Registry.register(BuiltInRegistries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(MOD_ID, "vampire_bat"),
-			FabricEntityType.Builder.createLiving(VampireBat::new, MobCategory.MONSTER, builder -> builder).sized(.25f, .5f).build(VAMPIRE_BAT_KEY));
+			FabricEntityType.Builder.createLiving(VampireBat::new, MobCategory.MONSTER, builder -> builder).sized(.75f, 1f).build(VAMPIRE_BAT_KEY));
 	*///?}
 	//?}
 
