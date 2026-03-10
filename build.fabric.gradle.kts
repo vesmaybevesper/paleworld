@@ -93,4 +93,5 @@ dependencies {
 	modImplementation("dev.isxander:yet-another-config-lib:${prop("deps.yacl")}")
 	modImplementation("com.terraformersmc:biolith-fabric:${prop("deps.biolith")}")
 	modImplementation("com.terraformersmc:modmenu:${prop("deps.modmenu")}")
+	compileOnly("maven.modrinth:iris:${prop("deps.iris")}")
 }
