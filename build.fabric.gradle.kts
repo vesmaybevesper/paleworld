@@ -1,6 +1,6 @@
 plugins {
 	id("mod-platform")
-	id("fabric-loom")
+	id("net.fabricmc.fabric-loom")
 }
 
 platform {
@@ -80,18 +80,13 @@ repositories{
 
 dependencies {
 	minecraft("com.mojang:minecraft:${prop("deps.minecraft")}")
-	mappings(
-		loom.layered {
-			officialMojangMappings()
-			if (hasProperty("deps.parchment")) parchment("org.parchmentmc.data:parchment-${prop("deps.parchment")}@zip")
-		})
-	modImplementation(libs.fabric.loader)
-	modImplementation("net.fabricmc.fabric-api:fabric-api:${prop("deps.fabric-api")}")
-	modImplementation("software.bernie.geckolib:geckolib-fabric-${prop("deps.minecraft")}:${prop("deps.geckolib")}")
-	modImplementation("net.tslat.smartbrainlib:SmartBrainLib-fabric-${prop("deps.minecraft")}:${prop("deps.smartbrainlib")}")
-	modImplementation("maven.modrinth:eveningstarlib:${prop("deps.eveningstarlib")}")
-	modImplementation("dev.isxander:yet-another-config-lib:${prop("deps.yacl")}")
-	modImplementation("com.terraformersmc:biolith-fabric:${prop("deps.biolith")}")
-	modImplementation("com.terraformersmc:modmenu:${prop("deps.modmenu")}")
+	implementation(libs.fabric.loader)
+	implementation("net.fabricmc.fabric-api:fabric-api:${prop("deps.fabric-api")}")
+	//implementation("software.bernie.geckolib:geckolib-fabric-${prop("deps.minecraft")}:${prop("deps.geckolib")}")
+	//implementation("net.tslat.smartbrainlib:SmartBrainLib-fabric-${prop("deps.minecraft")}:${prop("deps.smartbrainlib")}")
+	//implementation("maven.modrinth:eveningstarlib:${prop("deps.eveningstarlib")}")
+	implementation("dev.isxander:yet-another-config-lib:${prop("deps.yacl")}")
+	//implementation("com.terraformersmc:biolith-fabric:${prop("deps.biolith")}")
+	implementation("com.terraformersmc:modmenu:${prop("deps.modmenu")}")
 	compileOnly("maven.modrinth:iris:${prop("deps.iris")}")
 }

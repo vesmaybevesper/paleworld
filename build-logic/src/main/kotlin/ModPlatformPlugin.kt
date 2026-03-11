@@ -29,8 +29,8 @@ abstract class ModPlatformPlugin @Inject constructor() : Plugin<Project> {
 
 		val extension = extensions.create("platform", ModPlatformExtensionImpl::class.java).apply {
 			loader.convention(inferredLoader)
-			jarTask.convention(if (inferredLoaderIsFabric) "remapJar" else "jar")
-			sourcesJarTask.convention(if (inferredLoaderIsFabric) "remapSourcesJar" else "sourcesJar")
+			jarTask.convention( "jar")
+			sourcesJarTask.convention("sourcesJar")
 		}
 
 		afterEvaluate {
@@ -169,10 +169,7 @@ abstract class ModPlatformPlugin @Inject constructor() : Plugin<Project> {
 	private fun Project.configureJava(stonecutter: StonecutterBuildExtension) {
 		extensions.configure<JavaPluginExtension>("java") {
 			withSourcesJar()
-			val javaVersion = if (stonecutter.eval(
-					stonecutter.current.version, ">=1.21"
-				)
-			) JavaVersion.VERSION_21 else JavaVersion.VERSION_17
+			val javaVersion = JavaVersion.VERSION_25
 			sourceCompatibility = javaVersion
 			targetCompatibility = javaVersion
 		}
