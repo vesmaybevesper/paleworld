@@ -3,17 +3,9 @@ package dev.vesper.paleworld.common.client.render.particle;
 import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
 //?}
 import net.minecraft.core.Registry;
-import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.BuiltInRegistries;
-//? 1.21.11{
-/*import net.minecraft.resources.Identifier;
-*///?}
-//? <1.21.11{
-import net.minecraft.resources.ResourceLocation;
-//?}
-
-import java.util.function.Supplier;
+import net.minecraft.resources.Identifier;
 
 import static dev.vesper.paleworld.PaleWorld.MOD_ID;
 
@@ -35,12 +27,8 @@ public class ParticleTypes {
 	public static final Supplier<SimpleParticleType> LOST_SOUL_AURA = PARTICLE_TYPES.register("lost_soul_aura", () -> new SimpleParticleType(false));
 	*///?}
 	private static SimpleParticleType registerParticle(String name, SimpleParticleType particleType){
-		//? <1.21.11{
-		return Registry.register(BuiltInRegistries.PARTICLE_TYPE, ResourceLocation.fromNamespaceAndPath(MOD_ID, name), particleType);
-		//?}
-		//? 1.21.11{
-		/*return Registry.register(BuiltInRegistries.PARTICLE_TYPE, Identifier.fromNamespaceAndPath(MOD_ID, name), particleType);
-		*///?}
+		return Registry.register(BuiltInRegistries.PARTICLE_TYPE, Identifier.fromNamespaceAndPath(MOD_ID, name), particleType);
+
 	}
 
 	public static void register(){}

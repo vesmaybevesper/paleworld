@@ -1,5 +1,7 @@
 package dev.vesper.paleworld.common.entity.PaleAxolotl;
 
+import com.geckolib.model.GeoModel;
+import com.geckolib.renderer.base.GeoRenderState;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
@@ -9,25 +11,13 @@ import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.MeshTransformer;
 import net.minecraft.client.model.geom.builders.PartDefinition;
-//?<1.21.11{
-import net.minecraft.resources.ResourceLocation;
-//?}
-//?1.21.11{
-/*import net.minecraft.resources.Identifier;
-*///?}
-import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib.model.GeoModel;
-import software.bernie.geckolib.renderer.base.GeoRenderState;
+import net.minecraft.resources.Identifier;
+import org.jspecify.annotations.NonNull;
 
 import static dev.vesper.paleworld.PaleWorld.MOD_ID;
 
 public class PaleAxolotlModel extends GeoModel<PaleAxolotl> {
-//?<1.21.11{
-	public static final ModelLayerLocation PALE_AXOLOTL = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(MOD_ID, "pale_axolotl"), "main");
-	//?}
-	//?1.21.11{
-	/*public static final ModelLayerLocation PALE_AXOLOTL = new ModelLayerLocation(Identifier.fromNamespaceAndPath(MOD_ID, "pale_axolotl"), "main");
-	*///?}
+	public static final ModelLayerLocation PALE_AXOLOTL = new ModelLayerLocation(Identifier.fromNamespaceAndPath(MOD_ID, "pale_axolotl"), "main");
 
 	public static final float MOVING_IN_WATER_LEG_PITCH = 1.8849558F;
 	public static final MeshTransformer BABY_TRANSFORMER = MeshTransformer.scaling(0.5F);
@@ -77,37 +67,19 @@ public class PaleAxolotlModel extends GeoModel<PaleAxolotl> {
 		modelPartData2.addOrReplaceChild("tail", CubeListBuilder.create().texOffs(2, 19).addBox(0.0F, -3.0F, 0.0F, 0.0F, 5.0F, 12.0F), PartPose.offset(0.0F, 0.0F, 1.0F));
 		return LayerDefinition.create(modelData, 64, 64);
 	}
-//?<1.21.11{
-	@Override
-	public ResourceLocation getModelResource(GeoRenderState renderState) {
-		return ResourceLocation.fromNamespaceAndPath(MOD_ID, "geckolib/models/pale_axolotl");
-	}
 
 	@Override
-	public ResourceLocation getTextureResource(GeoRenderState renderState) {
-		return ResourceLocation.fromNamespaceAndPath(MOD_ID, "textures/entity/pale_axolotl.png");
-	}
-
-	@Override
-	public ResourceLocation getAnimationResource(PaleAxolotl animatable) {
-		return ResourceLocation.fromNamespaceAndPath(MOD_ID, "geckolib/animations/pale_axolotl");
-	}
-	//?}
-
-	//?1.21.11{
-	/*@Override
-	public Identifier getModelResource(GeoRenderState renderState) {
+	public @NonNull Identifier getModelResource(@NonNull GeoRenderState renderState) {
 		return Identifier.fromNamespaceAndPath(MOD_ID, "geckolib/models/pale_axolotl");
 	}
 
 	@Override
-	public Identifier getTextureResource(GeoRenderState renderState) {
+	public @NonNull Identifier getTextureResource(@NonNull GeoRenderState renderState) {
 		return Identifier.fromNamespaceAndPath(MOD_ID, "textures/entity/pale_axolotl.png");
 	}
 
 	@Override
-	public Identifier getAnimationResource(PaleAxolotl animatable) {
+	public @NonNull Identifier getAnimationResource(PaleAxolotl animatable) {
 		return Identifier.fromNamespaceAndPath(MOD_ID, "geckolib/animations/pale_axolotl");
 	}
-	*///?}
 }

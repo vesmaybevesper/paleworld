@@ -10,12 +10,12 @@ import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.Carvers;
 import net.minecraft.resources.ResourceKey;
 //? <1.21.11{
-import net.minecraft.resources.ResourceLocation;
+/*import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.biome.AmbientMoodSettings;
 import net.minecraft.world.level.biome.AmbientParticleSettings;
-//?}
+*///?}
 //? >=1.21.11{
-/*import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.attribute.AmbientMoodSettings;
 import net.minecraft.world.attribute.AmbientParticle;
 import net.minecraft.resources.Identifier;
@@ -23,7 +23,7 @@ import net.minecraft.world.attribute.AmbientSounds;
 import net.minecraft.world.attribute.BackgroundMusic;
 import net.minecraft.world.attribute.EnvironmentAttributeMap;
 import net.minecraft.world.attribute.EnvironmentAttributes;
-*///?}
+//?}
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeGenerationSettings;
 import net.minecraft.world.level.biome.BiomeSpecialEffects;
@@ -36,14 +36,8 @@ import java.util.Optional;
 import static dev.vesper.paleworld.common.client.render.particle.ParticleTypes.MOSS_PARTICLE;
 
 public class PaleWorldBiomes {
-	//? <1.21.11{
-	public static final ResourceKey<Biome> PALE_CAVE = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(PaleWorld.MOD_ID, "pale_caves"));
-	public static final ResourceKey<Biome> PALE_VALLEY = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(PaleWorld.MOD_ID, "sparse_pale_garden"));
-	//?}
-	//? 1.21.11{
-	/*public static final ResourceKey<Biome> PALE_CAVE = ResourceKey.create(Registries.BIOME, Identifier.fromNamespaceAndPath(PaleWorld.MOD_ID, "pale_caves"));
+	public static final ResourceKey<Biome> PALE_CAVE = ResourceKey.create(Registries.BIOME, Identifier.fromNamespaceAndPath(PaleWorld.MOD_ID, "pale_caves"));
 	public static final ResourceKey<Biome> PALE_VALLEY = ResourceKey.create(Registries.BIOME, Identifier.fromNamespaceAndPath(PaleWorld.MOD_ID, "sparse_pale_garden"));
-	*///?}
 
 	public static void bootstrap(BootstrapContext<Biome> context){
 		context.register(PALE_CAVE, paleCave(context));
@@ -68,9 +62,6 @@ public class PaleWorldBiomes {
 		builder.addCarver(Carvers.CAVE);
 		builder.addCarver(Carvers.CAVE_EXTRA_UNDERGROUND);
 		builder.addCarver(Carvers.CANYON);
-		//? <1.21.11{
-		AmbientParticleSettings config = new AmbientParticleSettings((ParticleOptions) MOSS_PARTICLE, 0.01F);
-		//?}
 
 		builder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, PaleWorldPlacedFeatures.PALE_GEODE);
 		BiomeDefaultFeatures.addDefaultOres(builder);
@@ -91,18 +82,10 @@ public class PaleWorldBiomes {
 				.mobSpawnSettings(spawner.build())
 				.specialEffects((new BiomeSpecialEffects.Builder())
 						.waterColor(0xff76889D)
-						//? <1.21.11{
-						.waterFogColor(0xff556980)
-						.skyColor(0xffb9b9b9)
-						.fogColor(0xff817770)
-						.ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
-						.ambientParticle(config)
-						//?}
 						.grassColorOverride(0xff778272)
 						.foliageColorOverride(0xff878D76)
 						.build())
-				//? >=1.21.11{
-				/*.putAttributes(EnvironmentAttributeMap.builder()
+				.putAttributes(EnvironmentAttributeMap.builder()
 						.set(EnvironmentAttributes.AMBIENT_PARTICLES, List.of(new AmbientParticle(MOSS_PARTICLE, 0.1f)))
 						.set(EnvironmentAttributes.WATER_FOG_COLOR, 0xff556980)
 						.set(EnvironmentAttributes.SKY_COLOR, 0xffb9b9b9)
@@ -110,7 +93,6 @@ public class PaleWorldBiomes {
 						//.set(EnvironmentAttributes.AMBIENT_SOUNDS, new AmbientSounds(Optional.of(SoundEvents.AMBIENT_CAVE)))
 						.set(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_LUSH_CAVES))
 						.build())
-				*///?}
 				.build();
 	}
 
@@ -138,22 +120,15 @@ public class PaleWorldBiomes {
 				.mobSpawnSettings(spawner.build())
 				.specialEffects((new BiomeSpecialEffects.Builder())
 						.waterColor(0xff76889D)
-						//? <1.21.11{
-						.waterFogColor(0xff556980)
-						.skyColor(0xffb9b9b9)
-						.fogColor(0xff817770)
-						//?}
 						.grassColorOverride(0xff778272)
 						.foliageColorOverride(0xff878D76)
 						.build()
 				)
-				//? >=1.21.11{
-				/*.putAttributes(EnvironmentAttributeMap.builder()
+				.putAttributes(EnvironmentAttributeMap.builder()
 						.set(EnvironmentAttributes.WATER_FOG_COLOR, 0xff556980)
 						.set(EnvironmentAttributes.SKY_COLOR, 0xffb9b9b9)
 						.set(EnvironmentAttributes.FOG_COLOR, 0xff817770)
 						.build())
-				*///?}
 				.build();
 	}
 }

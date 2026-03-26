@@ -10,7 +10,6 @@ import dev.vesper.paleworld.platform.fabric.datagen.genFrom.ModelProvider;
 import dev.vesper.paleworld.platform.fabric.datagen.genFrom.WorldGenerator;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
 

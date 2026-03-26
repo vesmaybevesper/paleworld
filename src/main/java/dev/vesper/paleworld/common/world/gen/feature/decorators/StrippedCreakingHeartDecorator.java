@@ -1,3 +1,4 @@
+/*
 package dev.vesper.paleworld.common.world.gen.feature.decorators;
 
 import com.mojang.serialization.Codec;
@@ -10,7 +11,6 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CreakingHeartBlock;
 import net.minecraft.world.level.block.state.properties.CreakingHeartState;
-import net.minecraft.world.level.levelgen.feature.treedecorators.CreakingHeartDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
 
@@ -60,3 +60,4 @@ public class StrippedCreakingHeartDecorator extends TreeDecorator {
 		}
 	}
 }
+*/

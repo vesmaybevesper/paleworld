@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(BiomeSpecialEffects.class)
 public class BiomeEffectsMixin {
 //? <1.21.11{
-	@Inject(method = "getFogColor", at = @At("HEAD"), cancellable = true)
+	/*@Inject(method = "getFogColor", at = @At("HEAD"), cancellable = true)
 	private void forceFogColor(CallbackInfoReturnable<Integer> cir){
 		Level world =  Minecraft.getInstance().level;
 		assert Minecraft.getInstance().player != null;
@@ -28,5 +28,5 @@ public class BiomeEffectsMixin {
 			cir.setReturnValue(0Xe3e4e6);
 		}
 	}
-	//?}
+	*///?}
 }

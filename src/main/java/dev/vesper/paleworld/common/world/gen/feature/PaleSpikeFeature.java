@@ -1,3 +1,4 @@
+/*
 package dev.vesper.paleworld.common.world.gen.feature;
 
 import com.mojang.serialization.Codec;
@@ -99,3 +100,4 @@ public class PaleSpikeFeature extends Feature<NoneFeatureConfiguration> {
 		}
 	}
 }
+*/

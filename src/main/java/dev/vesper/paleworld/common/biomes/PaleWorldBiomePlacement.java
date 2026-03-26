@@ -2,7 +2,6 @@ package dev.vesper.paleworld.common.biomes;
 
 import com.terraformersmc.biolith.api.biome.BiomePlacement;
 import com.terraformersmc.biolith.api.biome.sub.CriterionBuilder;
-import com.terraformersmc.biolith.api.biome.sub.RatioTargets;
 import net.minecraft.world.level.biome.Biomes;
 
 public class PaleWorldBiomePlacement {

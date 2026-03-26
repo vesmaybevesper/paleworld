@@ -15,15 +15,9 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
-//?1.21.11{
-/*import net.minecraft.resources.Identifier;
-*///?}
+import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-//?<1.21.11{
-import net.minecraft.resources.ResourceLocation;
-//?}
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.random.WeightedList;
 import net.minecraft.util.valueproviders.ConstantInt;
@@ -132,10 +126,6 @@ public class PaleWorldConfiguredFeatures {
 
 	private static FallenTreeConfiguration.FallenTreeConfigurationBuilder fallen(Block log, int minLength, int maxLength) {
 		return (new FallenTreeConfiguration.FallenTreeConfigurationBuilder(BlockStateProvider.simple(log), UniformInt.of(minLength, maxLength))).logDecorators(ImmutableList.of());
-	}
-
-	private static RandomPatchConfiguration createRandomPatchFeatureConfig(BlockStateProvider block, int tries) {
-		return FeatureUtils.simpleRandomPatchConfiguration(tries, PlacementUtils.inlinePlaced((Feature)Feature.SIMPLE_BLOCK, (FeatureConfiguration) (new SimpleBlockConfiguration(block))));
 	}
 
 	public static void bootstrap(BootstrapContext<ConfiguredFeature<?,?>> configuredFeatureRegisterable) {
@@ -503,7 +493,7 @@ public class PaleWorldConfiguredFeatures {
 
 		register(configuredFeatureRegisterable,
 				CHRYSANTHEMUM,
-				Feature.FLOWER,
+				Feature.SIMPLE_BLOCK,
 				new RandomPatchConfiguration(50, 4, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
 						(new SimpleBlockConfiguration(new NoiseProvider(2345L, new NormalNoise.NoiseParameters
 								(0, 1.0), 0.020833334F,
@@ -511,7 +501,7 @@ public class PaleWorldConfiguredFeatures {
 
 		register(configuredFeatureRegisterable,
 				ASPHODEL,
-				Feature.FLOWER,
+				Feature.SIMPLE_BLOCK,
 				new RandomPatchConfiguration(40, 3, 1, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
 						(new SimpleBlockConfiguration(new NoiseProvider(2345L, new NormalNoise.NoiseParameters
 								(0, 1.0), 0.020833334F,
@@ -531,11 +521,6 @@ public class PaleWorldConfiguredFeatures {
 	}
 
 	public static ResourceKey<ConfiguredFeature<?, ?>> resourceKey(String name){
-		//?<1.21.11{
-		return ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(PaleWorld.MOD_ID, name));
-		//?}
-		//?1.21.11{
-		/*return ResourceKey.create(Registries.CONFIGURED_FEATURE, Identifier.fromNamespaceAndPath(PaleWorld.MOD_ID, name));
-		*///?}
+		return ResourceKey.create(Registries.CONFIGURED_FEATURE, Identifier.fromNamespaceAndPath(PaleWorld.MOD_ID, name));
 	}
 }

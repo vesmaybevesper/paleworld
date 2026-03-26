@@ -45,7 +45,7 @@ public class BigDyingDripleafBlock extends BigDripleafBlock {
 	protected boolean canSurvive(BlockState blockState, LevelReader levelReader, BlockPos blockPos) {
 		BlockPos blockPos1 = blockPos.below();
 		BlockState blockState1 = levelReader.getBlockState(blockPos);
-		return blockState1.is(this) || blockState1.is(PaleWorldBlocks.BIG_DYING_DRIPLEAF_STEM) || blockState1.is(BlockTags.BIG_DRIPLEAF_PLACEABLE);
+		return blockState1.is(this) || blockState1.is(PaleWorldBlocks.BIG_DYING_DRIPLEAF_STEM) || blockState1.is(BlockTags.SUPPORTS_BIG_DRIPLEAF);
 	}
 
 	@Override

@@ -2,28 +2,19 @@ package dev.vesper.paleworld.platform.fabric.datagen.genFrom;
 //? fabric{
 import dev.vesper.paleworld.common.biomes.PaleWorldBiomes;
 import dev.vesper.paleworld.common.items.PaleWorldItems;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricAdvancementProvider;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.advancements.AdvancementType;
-//?<1.21.11{
-import net.minecraft.advancements.critereon.ConsumeItemTrigger;
-import net.minecraft.advancements.critereon.InventoryChangeTrigger;
-import net.minecraft.advancements.critereon.LocationPredicate;
-import net.minecraft.advancements.critereon.PlayerTrigger;
-import net.minecraft.resources.ResourceLocation;
-//?}
-//?1.21.11{
-/*import net.minecraft.advancements.criterion.ConsumeItemTrigger;
+import net.minecraft.advancements.criterion.ConsumeItemTrigger;
 import net.minecraft.advancements.criterion.InventoryChangeTrigger;
 import net.minecraft.advancements.criterion.LocationPredicate;
 import net.minecraft.advancements.criterion.PlayerTrigger;
-import net.minecraft.resources.Identifier;
-*///?}
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
@@ -34,7 +25,7 @@ import java.util.function.Consumer;
 import static dev.vesper.paleworld.PaleWorld.MOD_ID;
 
 public class Advancements extends FabricAdvancementProvider {
-	public Advancements(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registryLookup) {
+	public Advancements(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registryLookup) {
 		super(output, registryLookup);
 	}
 
@@ -47,12 +38,7 @@ public class Advancements extends FabricAdvancementProvider {
 							Items.PALE_MOSS_BLOCK,
 							Component.translatable("advancement.root"),
 							Component.translatable("advancement.rootText"),
-							//?<1.21.11{
-							ResourceLocation.fromNamespaceAndPath("minecraft","gui/advancements/backgrounds/stone"),
-							//?}
-							//?1.21.11{
-							/*Identifier.fromNamespaceAndPath("minecraft","gui/advancements/backgrounds/stone"),
-							*///?}
+							Identifier.fromNamespaceAndPath("minecraft","gui/advancements/backgrounds/stone"),
 							AdvancementType.TASK,
 							true,
 							true,

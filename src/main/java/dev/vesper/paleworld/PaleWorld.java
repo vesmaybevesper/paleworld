@@ -21,6 +21,8 @@ import dev.vesper.paleworld.common.modify.PaleGardenMobSpawnRates;
 import dev.vesper.paleworld.common.world.gen.PaleWorldWorldGen;
 import dev.vesper.paleworld.common.world.gen.feature.PaleSpikeFeature;
 import dev.vesper.paleworld.platform.Platform;
+import net.fabricmc.fabric.api.client.particle.v1.ParticleProviderRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.ModelLayerRegistry;
 import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -30,9 +32,6 @@ import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConf
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import dev.vesper.paleworld.platform.fabric.FabricPlatform;
-import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
-import net.fabricmc.fabric.api.client.rendering.v1.BlockRenderLayerMap;
-import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 
@@ -40,7 +39,7 @@ import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRe
 public class PaleWorld {
 
 	public static final String MOD_ID = /*$ mod_id*/ "paleworld";
-	public static final String MOD_VERSION = /*$ mod_version*/ "2.1.2";
+	public static final String MOD_VERSION = /*$ mod_version*/ "2.1.3";
 	public static final String MOD_FRIENDLY_NAME = /*$ mod_name*/ "Pale World";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
@@ -92,8 +91,8 @@ public class PaleWorld {
 		LOGGER.info("Initializing {} Client on {}", MOD_ID, PaleWorld.xplat().loader());
 		LOGGER.debug("{}: { version: {}; friendly_name: {} }", MOD_ID, MOD_VERSION, MOD_FRIENDLY_NAME);
 		//? fabric {
-		EntityModelLayerRegistry.registerModelLayer(PaleAxolotlModel.PALE_AXOLOTL, PaleAxolotlModel::getTexturedModelData);
-		EntityModelLayerRegistry.registerModelLayer(VampireBatModel.VAMPIRE_BAT, VampireBatModel::getTexturedModelData);
+		ModelLayerRegistry.registerModelLayer(PaleAxolotlModel.PALE_AXOLOTL, PaleAxolotlModel::getTexturedModelData);
+		ModelLayerRegistry.registerModelLayer(VampireBatModel.VAMPIRE_BAT, VampireBatModel::getTexturedModelData);
 		EntityRendererRegistry.register(Entities.PALE_AXOLOTL, PaleAxolotlRenderer::new);
 		EntityRendererRegistry.register(Entities.VAMPIRE_BAT, VampireBatRenderer::new);
 		//EntityRendererRegistry.register(Entities.LOST_SOUL, LostSoulRenderer::new);
@@ -110,9 +109,9 @@ public class PaleWorld {
 		BlockRenderLayerMap.putBlock(PaleWorldBlocks.RAFFLESIA, ChunkSectionLayer.CUTOUT);
 
 		PaleWorld.LOGGER.info("Client: Block Textures Registered");
-		ParticleFactoryRegistry.getInstance().register(ParticleTypes.MOSS_PARTICLE, MossParticle.Factory::new);
-		ParticleFactoryRegistry.getInstance().register(ParticleTypes.FOG_PARTICLE, FogParticle.Factory::new);
-		ParticleFactoryRegistry.getInstance().register(ParticleTypes.RAFFLESIA_PARTICLE, RafflesiaParticle.Factory::new);
+		ParticleProviderRegistry.getInstance().register(ParticleTypes.MOSS_PARTICLE, MossParticle.Factory::new);
+		ParticleProviderRegistry.getInstance().register(ParticleTypes.FOG_PARTICLE, FogParticle.Factory::new);
+		ParticleProviderRegistry.getInstance().register(ParticleTypes.RAFFLESIA_PARTICLE, RafflesiaParticle.Factory::new);
 		//ParticleFactoryRegistry.getInstance().register(ParticleTypes.LOST_SOUL_AURA, LostSoulParticle.Factory::new);
 		//?}
 		PaleWorld.LOGGER.info("Client: Particles Registered");

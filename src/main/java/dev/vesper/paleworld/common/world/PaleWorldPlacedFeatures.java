@@ -8,13 +8,8 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
-//?1.21.11{
-/*import net.minecraft.resources.Identifier;
-*///?}
+import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-//?<1.21.11{
-import net.minecraft.resources.ResourceLocation;
-//?}
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
@@ -267,12 +262,7 @@ public class PaleWorldPlacedFeatures {
 
 
 	public static ResourceKey<@NotNull PlacedFeature> registryKey(String name){
-		//?<1.21.11{
-		return ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(PaleWorld.MOD_ID, name));
-		//?}
-		//?1.21.11{
-		/*return ResourceKey.create(Registries.PLACED_FEATURE, Identifier.fromNamespaceAndPath(PaleWorld.MOD_ID, name));
-		*///?}
+		return ResourceKey.create(Registries.PLACED_FEATURE, Identifier.fromNamespaceAndPath(PaleWorld.MOD_ID, name));
 	}
 
 	private static void register(BootstrapContext<@NotNull PlacedFeature> context, ResourceKey<@NotNull PlacedFeature> key, Holder<@NotNull ConfiguredFeature<?,?>> configuredFeatureRegistryEntry, List<PlacementModifier> modifiers) {

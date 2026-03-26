@@ -1,16 +1,11 @@
 package dev.vesper.paleworld.common.blocks.custom;
 
 import dev.vesper.paleworld.common.blocks.PaleWorldBlocks;
-//? <1.21.11{
-import net.minecraft.BlockUtil;
-//?}
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
-//? 1.21.11{
-/*import net.minecraft.util.BlockUtil;
-*///?}
+import net.minecraft.util.BlockUtil;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -43,7 +38,7 @@ public class BigDyingDripleafStemBlock extends BigDripleafStemBlock {
 		BlockPos blockPos1 = blockPos.below();
 		BlockState blockState1 = levelReader.getBlockState(blockPos1);
 		BlockState blockState2 = levelReader.getBlockState(blockPos.above());
-		return (blockState1.is(this) || blockState1.is(BlockTags.BIG_DRIPLEAF_PLACEABLE)) && (blockState2.is(this) || blockState2.is(PaleWorldBlocks.BIG_DYING_DRIPLEAF));
+		return (blockState1.is(this) || blockState1.is(BlockTags.SUPPORTS_BIG_DRIPLEAF)) && (blockState2.is(this) || blockState2.is(PaleWorldBlocks.BIG_DYING_DRIPLEAF));
 	}
 
 	protected static boolean placeStemAtDying(LevelAccessor world, BlockPos pos, FluidState fluidState, Direction direction) {

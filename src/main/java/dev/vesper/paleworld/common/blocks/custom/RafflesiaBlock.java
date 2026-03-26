@@ -43,12 +43,7 @@ public class RafflesiaBlock extends FlowerBlock {
 	@Override
 	public void stepOn(Level level, BlockPos blockPos, BlockState blockState, Entity entity) {
 		if (entity instanceof Player){
-			//? >=1.21.6{
 			((Player) entity).addEffect((MobEffectInstance) MobEffects.NAUSEA);
-			//?}
-			//? 1.21.4{
-			/*((Player) entity).addEffect((MobEffectInstance) MobEffects.CONFUSION);
-			*///?}
 		}
 	}
 
