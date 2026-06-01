@@ -38,7 +38,7 @@ public class Advancements extends FabricAdvancementProvider {
 							Items.PALE_MOSS_BLOCK,
 							Component.translatable("advancement.root"),
 							Component.translatable("advancement.rootText"),
-							Identifier.fromNamespaceAndPath("minecraft","gui/advancements/backgrounds/stone"),
+							Identifier.fromNamespaceAndPath("minecraft","block/pale_moss_block"),
 							AdvancementType.TASK,
 							true,
 							true,
