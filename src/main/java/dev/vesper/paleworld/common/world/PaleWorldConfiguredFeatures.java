@@ -6,6 +6,7 @@ import dev.vesper.paleworld.common.blocks.PaleWorldBlocks;
 import dev.vesper.paleworld.common.blocks.custom.PaleVineBodyBlock;
 import dev.vesper.paleworld.common.blocks.custom.PaleVines;
 import dev.vesper.paleworld.common.blocks.custom.SmallDyingDripleafBlock;
+import dev.vesper.paleworld.common.tags.PaleWorldBlockTags;
 import dev.vesper.paleworld.common.world.gen.feature.BlankLeaves;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
@@ -15,6 +16,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.data.worldgen.features.VegetationFeatures;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
@@ -40,9 +42,9 @@ import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfigur
 import net.minecraft.world.level.levelgen.feature.configurations.GeodeConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.RandomBooleanFeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleRandomFeatureConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.SpikeConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.VegetationPatchConfiguration;
 import net.minecraft.world.level.levelgen.feature.featuresize.ThreeLayersFeatureSize;
@@ -129,6 +131,7 @@ public class PaleWorldConfiguredFeatures {
 	}
 
 	public static void bootstrap(BootstrapContext<ConfiguredFeature<?,?>> configuredFeatureRegisterable) {
+
 		HolderGetter<ConfiguredFeature<?, ?>> registryEntryLookup = configuredFeatureRegisterable.lookup(Registries.CONFIGURED_FEATURE);
 		HolderGetter<StructureProcessorList> registryEntryLookup2 = configuredFeatureRegisterable.lookup(Registries.PROCESSOR_LIST);
 
@@ -487,25 +490,29 @@ public class PaleWorldConfiguredFeatures {
 						.ignoreVines()
 						.build());
 
-		register(configuredFeatureRegisterable, PALE_SPIKE, PaleWorld.PALE_SPIKE);
+		register(configuredFeatureRegisterable, PALE_SPIKE, Feature.SPIKE, new SpikeConfiguration(PaleWorldBlocks.PALE_STONE.defaultBlockState(), BlockPredicate.matchesBlocks(new Block[]{Blocks.PALE_MOSS_BLOCK}), BlockPredicate.matchesTag(PaleWorldBlockTags.PALE_SPIKE_REPLACEABLE)));
 
 		register(configuredFeatureRegisterable, FALLEN_PALE_OAK, Feature.FALLEN_TREE, fallenPaleOak().build());
 
-		register(configuredFeatureRegisterable,
+		/*register(configuredFeatureRegisterable,
 				CHRYSANTHEMUM,
 				Feature.SIMPLE_BLOCK,
-				new RandomPatchConfiguration(50, 4, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
-						(new SimpleBlockConfiguration(new NoiseProvider(2345L, new NormalNoise.NoiseParameters
-								(0, 1.0), 0.020833334F,
-								List.of(PaleWorldBlocks.CHRYSANTHEMUM.defaultBlockState())))))));
+				new SimpleRandomFeatureConfiguration(HolderSet.direct(new Holder[]{PlacementUtils.inlinePlaced(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(PaleWorldBlocks.CHRYSANTHEMUM)))})));
+		// 50, 4, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
+		//						(new SimpleBlockConfiguration(new NoiseProvider(2345L, new NormalNoise.NoiseParameters
+		//								(0, 1.0), 0.020833334F,
+		//								List.of(PaleWorldBlocks.CHRYSANTHEMUM.defaultBlockState()))))))*/
 
-		register(configuredFeatureRegisterable,
+		/*register(configuredFeatureRegisterable,
 				ASPHODEL,
 				Feature.SIMPLE_BLOCK,
 				new RandomPatchConfiguration(40, 3, 1, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
 						(new SimpleBlockConfiguration(new NoiseProvider(2345L, new NormalNoise.NoiseParameters
 								(0, 1.0), 0.020833334F,
-								List.of(PaleWorldBlocks.ASPHODEL.defaultBlockState())))))));
+								List.of(PaleWorldBlocks.ASPHODEL.defaultBlockState())))))));*/
+
+		register(configuredFeatureRegisterable, CHRYSANTHEMUM, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseProvider(2345L, new NormalNoise.NoiseParameters(0, 1.0f, new double[0]), 0.020833334F, List.of(PaleWorldBlocks.CHRYSANTHEMUM.defaultBlockState()))));
+		register(configuredFeatureRegisterable, ASPHODEL, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseProvider(2345L, new NormalNoise.NoiseParameters(0, 1.0f, new double[0]), 0.020833334F, List.of(PaleWorldBlocks.ASPHODEL.defaultBlockState()))));
 	}
 
 	public static void register(BootstrapContext<ConfiguredFeature<?, ?>> context, ResourceKey<ConfiguredFeature<?, ?>> key, Feature<NoneFeatureConfiguration> feature){

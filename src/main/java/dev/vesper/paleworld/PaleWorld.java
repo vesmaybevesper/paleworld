@@ -19,16 +19,13 @@ import dev.vesper.paleworld.common.items.PaleWorldItemGroup;
 import dev.vesper.paleworld.common.items.PaleWorldItems;
 import dev.vesper.paleworld.common.modify.PaleGardenMobSpawnRates;
 import dev.vesper.paleworld.common.world.gen.PaleWorldWorldGen;
-import dev.vesper.paleworld.common.world.gen.feature.PaleSpikeFeature;
 import dev.vesper.paleworld.platform.Platform;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ModelLayerRegistry;
-import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import dev.vesper.paleworld.platform.fabric.FabricPlatform;
@@ -45,16 +42,16 @@ public class PaleWorld {
 
 	private static final Platform PLATFORM = createPlatformInstance();
 
-	public static final Feature<NoneFeatureConfiguration> PALE_SPIKE;
+	//public static final Feature<NoneFeatureConfiguration> PALE_SPIKE;
 
 
 	private static <C extends FeatureConfiguration, F extends Feature<C>> F register(String name, F feature) {
 		return (F)(Registry.register(BuiltInRegistries.FEATURE, name, feature));
 	}
 
-	static {
+	/*static {
 		PALE_SPIKE = register("pale_spike", new PaleSpikeFeature(NoneFeatureConfiguration.CODEC));
-	}
+	}*/
 
 
 	public static void onInitialize() {
@@ -96,9 +93,9 @@ public class PaleWorld {
 		EntityRendererRegistry.register(Entities.PALE_AXOLOTL, PaleAxolotlRenderer::new);
 		EntityRendererRegistry.register(Entities.VAMPIRE_BAT, VampireBatRenderer::new);
 		//EntityRendererRegistry.register(Entities.LOST_SOUL, LostSoulRenderer::new);
-
 		PaleWorld.LOGGER.info("Client: Mob Renderers Registered");
-		BlockRenderLayerMap.putBlock(PaleWorldBlocks.PALE_VINE, ChunkSectionLayer.CUTOUT);
+// in theory mc should handle this by its self i dont have to do anything here, if thats true and you're reading this it means i forgot to delete it whoops
+		/*BlockRenderLayerMap.putBlock(PaleWorldBlocks.PALE_VINE, ChunkSectionLayer.CUTOUT);
 		BlockRenderLayerMap.putBlock(PaleWorldBlocks.PALE_VINE_BODY, ChunkSectionLayer.CUTOUT);
 		BlockRenderLayerMap.putBlock(PaleWorldBlocks.DYING_AZALEA, ChunkSectionLayer.CUTOUT);
 		BlockRenderLayerMap.putBlock(PaleWorldBlocks.SMALL_DYING_DRIPLEAF, ChunkSectionLayer.CUTOUT);
@@ -107,8 +104,8 @@ public class PaleWorld {
 		BlockRenderLayerMap.putBlock(PaleWorldBlocks.CHRYSANTHEMUM, ChunkSectionLayer.CUTOUT);
 		BlockRenderLayerMap.putBlock(PaleWorldBlocks.ASPHODEL, ChunkSectionLayer.CUTOUT);
 		BlockRenderLayerMap.putBlock(PaleWorldBlocks.RAFFLESIA, ChunkSectionLayer.CUTOUT);
+		PaleWorld.LOGGER.info("Client: Block Textures Registered");*/
 
-		PaleWorld.LOGGER.info("Client: Block Textures Registered");
 		ParticleProviderRegistry.getInstance().register(ParticleTypes.MOSS_PARTICLE, MossParticle.Factory::new);
 		ParticleProviderRegistry.getInstance().register(ParticleTypes.FOG_PARTICLE, FogParticle.Factory::new);
 		ParticleProviderRegistry.getInstance().register(ParticleTypes.RAFFLESIA_PARTICLE, RafflesiaParticle.Factory::new);

@@ -256,11 +256,6 @@ public class PaleWorldPlacedFeatures {
 		register(registerable, ASPHODEL, configuredFeatures.getOrThrow(PaleWorldConfiguredFeatures.ASPHODEL), RarityFilter.onAverageOnceEvery(3), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
 	}
 
-
-
-
-
-
 	public static ResourceKey<@NotNull PlacedFeature> registryKey(String name){
 		return ResourceKey.create(Registries.PLACED_FEATURE, Identifier.fromNamespaceAndPath(PaleWorld.MOD_ID, name));
 	}
