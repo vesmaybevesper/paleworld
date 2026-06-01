@@ -3,10 +3,10 @@ stonecutter = "0.8.3"
 stonecutter-postprocess = "2.1-beta.8"
 mod-publish = "1.1.0"
 dotenv-gradle = "4.0.0"
-fabric-loom = "1.15-SNAPSHOT"
-neoforge-moddev = "2.0.140"
+fabric-loom = "1.16-SNAPSHOT"
+neoforge-moddev = "2.0.141"
 foojay = "1.0.0"
-fabric-loader= "0.18.4"
+fabric-loader= "0.19.2"
 fletching-table = "0.1.0-alpha.22"
 
 [libraries]

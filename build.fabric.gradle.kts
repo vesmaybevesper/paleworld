@@ -83,7 +83,7 @@ dependencies {
 	implementation(libs.fabric.loader)
 	implementation("net.fabricmc.fabric-api:fabric-api:${prop("deps.fabric-api")}")
 	implementation("com.geckolib:geckolib-fabric-${prop("deps.minecraft")}:${prop("deps.geckolib")}")
-	//implementation("net.tslat.smartbrainlib:SmartBrainLib-fabric-${prop("deps.minecraft")}:${prop("deps.smartbrainlib")}")
+	implementation("maven.modrinth:smartbrainlib:${prop("deps.smartbrainlib")}")
 	implementation("maven.modrinth:eveningstarlib:${prop("deps.eveningstarlib")}")
 	implementation("dev.isxander:yet-another-config-lib:${prop("deps.yacl")}")
 	implementation("com.terraformersmc:biolith-fabric:${prop("deps.biolith")}")
