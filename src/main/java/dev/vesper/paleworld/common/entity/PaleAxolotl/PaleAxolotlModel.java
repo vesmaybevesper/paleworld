@@ -79,7 +79,7 @@ public class PaleAxolotlModel extends GeoModel<PaleAxolotl> {
 	}
 
 	@Override
-	public @NonNull Identifier getAnimationResource(PaleAxolotl animatable) {
+	public @NonNull Identifier getAnimationResource(@NonNull PaleAxolotl animatable) {
 		return Identifier.fromNamespaceAndPath(MOD_ID, "geckolib/animations/pale_axolotl");
 	}
 }

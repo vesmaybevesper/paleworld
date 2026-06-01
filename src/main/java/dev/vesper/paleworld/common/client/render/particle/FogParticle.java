@@ -8,6 +8,7 @@ import net.minecraft.client.particle.SpriteSet;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.util.RandomSource;
 import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.NonNull;
 
 public class FogParticle extends BaseAshSmokeParticle {
 	protected FogParticle(ClientLevel clientLevel, double d, double e, double f, double j, double k, double l, float m, SpriteSet spriteSet) {
@@ -23,7 +24,7 @@ public class FogParticle extends BaseAshSmokeParticle {
 		}
 
 		@Override
-		public @Nullable Particle createParticle(SimpleParticleType particleOptions, ClientLevel clientLevel, double d, double e, double f, double g, double h, double i, RandomSource randomSource) {
+		public @Nullable Particle createParticle(@NonNull SimpleParticleType particleOptions, @NonNull ClientLevel clientLevel, double d, double e, double f, double g, double h, double i, RandomSource randomSource) {
 			double velX = (double) randomSource.nextFloat() * -1.9 * (double) randomSource.nextFloat() * 0.1;
 			double velY = (double) randomSource.nextFloat() * (double) -0.5F * (double) randomSource.nextFloat() * 0.1 * (double) 0.5F;
 			double velZ = (double) randomSource.nextFloat() * -1.9 * (double) randomSource.nextFloat() * 0.1;

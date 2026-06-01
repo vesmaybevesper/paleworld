@@ -36,6 +36,7 @@ import net.tslat.smartbrainlib.api.core.sensor.ExtendedSensor;
 import net.tslat.smartbrainlib.api.core.sensor.vanilla.AxolotlSpecificSensor;
 import net.tslat.smartbrainlib.api.core.sensor.vanilla.NearbyLivingEntitySensor;
 import org.jetbrains.annotations.NotNull;
+import org.jspecify.annotations.NonNull;
 
 import java.util.List;
 
@@ -70,13 +71,13 @@ public class PaleAxolotl extends Axolotl implements Bucketable, GeoEntity, Smart
 	}
 
 	@Override
-	protected void defineSynchedData(SynchedEntityData.Builder builder) {
+	protected void defineSynchedData(SynchedEntityData.@NonNull Builder builder) {
 		super.defineSynchedData(builder);
 		builder.define(FROM_BUCKET, false);
 	}
 
 	@Override
-	public void travel(Vec3 vec3) {
+	public void travel(@NonNull Vec3 vec3) {
 		super.travel(vec3);
 	}
 
@@ -113,7 +114,7 @@ public class PaleAxolotl extends Axolotl implements Bucketable, GeoEntity, Smart
 	}
 
 	@Override
-	protected @NotNull PathNavigation createNavigation(Level level) {
+	protected @NotNull PathNavigation createNavigation(@NonNull Level level) {
 		return new AmphibiousPathNavigation(this, level);
 	}
 
@@ -124,14 +125,6 @@ public class PaleAxolotl extends Axolotl implements Bucketable, GeoEntity, Smart
 		if (this.level().isClientSide()){
 			this.setAnimationStates();
 		}
-	}
-
-	@Override
-	public List<? extends ExtendedSensor<? extends PaleAxolotl>> getSensors() {
-		return List.of(
-				new AxolotlSpecificSensor<>(),
-				new NearbyLivingEntitySensor<>()
-		);
 	}
 
 	@Override
@@ -171,7 +164,15 @@ public class PaleAxolotl extends Axolotl implements Bucketable, GeoEntity, Smart
 	}
 
 	@Override
-	public AnimatableInstanceCache getAnimatableInstanceCache() {
+	public @NonNull AnimatableInstanceCache getAnimatableInstanceCache() {
 		return this.geoCache;
+	}
+
+	@Override
+	public @NonNull List<? extends ExtendedSensor<?>> getSensors(@NonNull PaleAxolotl paleAxolotl) {
+		return List.of(
+				new AxolotlSpecificSensor<>(),
+				new NearbyLivingEntitySensor<>()
+		);
 	}
 }

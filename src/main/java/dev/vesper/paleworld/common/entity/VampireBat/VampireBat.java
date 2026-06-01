@@ -25,7 +25,6 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.SpawnGroupData;
-import net.minecraft.world.entity.ai.Brain;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.FlyingMoveControl;
@@ -43,8 +42,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.phys.Vec3;
 import net.tslat.smartbrainlib.api.SmartBrainOwner;
-import net.tslat.smartbrainlib.api.core.BrainActivityGroup;
-import net.tslat.smartbrainlib.api.core.SmartBrainProvider;
+import net.tslat.smartbrainlib.api.core.ActivityBuilder;
 import net.tslat.smartbrainlib.api.core.behaviour.FirstApplicableBehaviour;
 import net.tslat.smartbrainlib.api.core.behaviour.OneRandomBehaviour;
 import net.tslat.smartbrainlib.api.core.behaviour.custom.attack.AnimatableMeleeAttack;
@@ -65,6 +63,7 @@ import net.tslat.smartbrainlib.api.core.sensor.vanilla.NearbyLivingEntitySensor;
 import net.tslat.smartbrainlib.api.core.sensor.vanilla.NearbyPlayersSensor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.NonNull;
 
 import java.util.List;
 
@@ -91,7 +90,7 @@ public class VampireBat extends Monster implements FlyingAnimal, SmartBrainOwner
 	}
 
 	@Override
-	protected @NotNull PathNavigation createNavigation(Level level) {
+	protected @NotNull PathNavigation createNavigation(@NonNull Level level) {
 		final SmoothFlyingPathNavigation nav = new SmoothFlyingPathNavigation(this, level);
 		nav.setCanFloat(true);
 		return nav;
@@ -103,50 +102,45 @@ public class VampireBat extends Monster implements FlyingAnimal, SmartBrainOwner
 		return this.moveControl;
 	}
 
-	// Explicitly overwrite all goals with nothing so SBL can take over
+	// Explicitly overwrite all goals with nothing so SBL can take over. needed? no. makes me feel good? kinda
 	@Override
 	protected void registerGoals() {
 	}
 
 	@Override
-	protected Brain.@NotNull Provider<?> brainProvider() {
-		return new SmartBrainProvider<>(this);
-	}
-
-	@Override
-	public BrainActivityGroup<? extends VampireBat> getCoreTasks() {
-		return BrainActivityGroup.coreTasks(
-				new AvoidSun(),
+	public @NonNull ActivityBuilder<? extends VampireBat> getCoreBehaviourGroup(@NonNull VampireBat owner) {
+		return SmartBrainOwner.super.getCoreBehaviourGroup(owner).behaviours(List.of(
+				new AvoidSun<>(),
 				new EscapeSun<>().cooldownFor(entity -> 20),
 				new LookAtTarget<>(),
 				new MoveToWalkTarget<>()
-		);
+		));
 	}
 
 	@Override
-	public BrainActivityGroup<? extends VampireBat> getIdleTasks() {
-		return BrainActivityGroup.idleTasks(
+	public @NonNull ActivityBuilder<? extends VampireBat> getIdleBehaviourGroup(@NonNull VampireBat owner) {
+		return SmartBrainOwner.super.getIdleBehaviourGroup(owner).behaviours(List.of(
 				new FirstApplicableBehaviour<VampireBat>(
 						new SetPlayerLookTarget<>(),
 						new SetRandomLookTarget<>()
 				),
 				new OneRandomBehaviour<>(
-						new SetRandomFlyingTarget<VampireBat>().verticalWeight(entity -> -(entity.getRandom().nextInt(10) == 0 ? 1 : 0)).setRadius(4, 4).startCondition(VampireBat::isFlying),
+						new SetRandomFlyingTarget<VampireBat>().verticalWeight(entity -> -(entity.getRandom().nextInt(10) == 0 ? 1 : 0)).setRadius(4,4).startCondition(VampireBat::isFlying),
 						new Idle<>().runFor(entity -> entity.getRandom().nextIntBetweenInclusive(30, 60)),
 						new TargetOrRetaliate<>().useMemory(MemoryModuleType.NEAREST_ATTACKABLE).cooldownForBetween(1200, 2400)
 				)
-		);
+		));
 	}
 
 	@Override
-	public BrainActivityGroup<? extends VampireBat> getFightTasks() {
-		return BrainActivityGroup.fightTasks(
-				new InvalidateAttackTarget(),
+	public @NonNull ActivityBuilder<? extends VampireBat> getFightingBehaviourGroup(@NonNull VampireBat owner) {
+		return SmartBrainOwner.super.getFightingBehaviourGroup(owner).behaviours(List.of(
+				new InvalidateAttackTarget<>(),
 				new FirstApplicableBehaviour<>(
 						new AnimatableMeleeAttack<>(0).whenStarting(entity -> setAggressive(true)).whenStarting(entity -> setAggressive(false)),
 						new SetWalkTargetToAttackTarget<>()
 				)
-		);
+		));
 	}
 
 	@Override
@@ -171,8 +165,8 @@ public class VampireBat extends Monster implements FlyingAnimal, SmartBrainOwner
 	}
 
 	@Override
-	protected void customServerAiStep(ServerLevel serverLevel) {
-		tickBrain(this);
+	protected void customServerAiStep(@NonNull ServerLevel serverLevel) {
+		//tickBrain(this);
 
 		boolean wasFlying = isFlying();
 		this.isFlying = true;
@@ -200,7 +194,7 @@ public class VampireBat extends Monster implements FlyingAnimal, SmartBrainOwner
 	}
 
 	@Override
-	protected void defineSynchedData(SynchedEntityData.Builder builder) {
+	protected void defineSynchedData(SynchedEntityData.@NonNull Builder builder) {
 		super.defineSynchedData(builder);
 		builder.define(VAMPIRE_BAT_FLAGS, (byte) 0);
 	}
@@ -229,12 +223,12 @@ public class VampireBat extends Monster implements FlyingAnimal, SmartBrainOwner
 	}
 
 	@Override
-	public boolean causeFallDamage(double d, float f, DamageSource damageSource) {
+	public boolean causeFallDamage(double d, float f, @NonNull DamageSource damageSource) {
 		return false;
 	}
 
 	@Override
-	public boolean hurtServer(ServerLevel serverLevel, DamageSource damageSource, float f) {
+	public boolean hurtServer(@NonNull ServerLevel serverLevel, @NonNull DamageSource damageSource, float f) {
 		if (super.hurtServer(serverLevel, damageSource, (float) this.getAttributeBaseValue(Attributes.ATTACK_DAMAGE))){
 			handleDamageEvent(damageSource);
 			return true;
@@ -243,7 +237,7 @@ public class VampireBat extends Monster implements FlyingAnimal, SmartBrainOwner
 	}
 
 	@Override
-	protected void actuallyHurt(ServerLevel serverLevel, DamageSource damageSource, float f) {
+	protected void actuallyHurt(@NonNull ServerLevel serverLevel, @NonNull DamageSource damageSource, float f) {
 		super.actuallyHurt(serverLevel, damageSource, (float) this.getAttributeBaseValue(Attributes.ATTACK_DAMAGE));
 	}
 
@@ -253,17 +247,17 @@ public class VampireBat extends Monster implements FlyingAnimal, SmartBrainOwner
 	}
 
 	@Override
-	protected void travelFlying(Vec3 vec3, float f) {
+	protected void travelFlying(@NonNull Vec3 vec3, float f) {
 		super.travelFlying(vec3, 0.2f);
 	}
 
 	@Override
-	public void travel(Vec3 vec3) {
+	public void travel(@NonNull Vec3 vec3) {
 		travelFlying(vec3, 0.2f);
 	}
 
 	@Override
-	public @Nullable SpawnGroupData finalizeSpawn(ServerLevelAccessor serverLevelAccessor, DifficultyInstance difficultyInstance, EntitySpawnReason entitySpawnReason, @Nullable SpawnGroupData spawnGroupData) {
+	public @Nullable SpawnGroupData finalizeSpawn(@NonNull ServerLevelAccessor serverLevelAccessor, @NonNull DifficultyInstance difficultyInstance, @NonNull EntitySpawnReason entitySpawnReason, @Nullable SpawnGroupData spawnGroupData) {
 		return super.finalizeSpawn(serverLevelAccessor, difficultyInstance, entitySpawnReason, spawnGroupData);
 	}
 
@@ -277,7 +271,7 @@ public class VampireBat extends Monster implements FlyingAnimal, SmartBrainOwner
 	}
 
 	@Override
-	protected @NotNull SoundEvent getHurtSound(DamageSource damageSource) {
+	protected @NotNull SoundEvent getHurtSound(@NonNull DamageSource damageSource) {
 		return SoundEvents.BAT_HURT;
 	}
 
@@ -287,26 +281,13 @@ public class VampireBat extends Monster implements FlyingAnimal, SmartBrainOwner
 	}
 
 	@Override
-	protected boolean shouldDropLoot(ServerLevel serverLevel) {
+	protected boolean shouldDropLoot(@NonNull ServerLevel serverLevel) {
 		return true;
 	}
 
 	@Override
 	public @Nullable ItemStack getPickResult() {
 		return new ItemStack(PaleWorldItems.VAMPIRE_BAT_SPAWN_EGG);
-	}
-
-	@Override
-	public List<? extends ExtendedSensor<? extends VampireBat>> getSensors() {
-		return List.of(
-				new NearbyPlayersSensor<>(),
-				new NearbyLivingEntitySensor<VampireBat>()
-						.setPredicate((target, entity) ->
-								target instanceof Player ||
-								target instanceof Pig ||
-								target instanceof Sheep ||
-								target instanceof PaleAxolotl)
-		);
 	}
 
 	@Override
@@ -319,7 +300,20 @@ public class VampireBat extends Monster implements FlyingAnimal, SmartBrainOwner
 	}
 
 	@Override
-	public AnimatableInstanceCache getAnimatableInstanceCache() {
+	public @NonNull AnimatableInstanceCache getAnimatableInstanceCache() {
 		return this.geoCache;
+	}
+
+	@Override
+	public @NonNull List<? extends ExtendedSensor<?>> getSensors(@NonNull VampireBat vampireBat) {
+		return List.of(
+				new NearbyPlayersSensor<>(),
+				new NearbyLivingEntitySensor<VampireBat>()
+						.setPredicate((entity, target) ->
+								target instanceof Player ||
+										target instanceof Pig ||
+										target instanceof Sheep ||
+										target instanceof PaleAxolotl)
+		);
 	}
 }

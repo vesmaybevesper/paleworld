@@ -21,6 +21,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.NotNull;
+import org.jspecify.annotations.NonNull;
 
 public class PaleVineBodyBlock extends GrowingPlantBodyBlock implements PaleVines {
 	public static final MapCodec<PaleVineBodyBlock> CODEC = simpleCodec(PaleVineBodyBlock::new);
@@ -32,7 +33,7 @@ public class PaleVineBodyBlock extends GrowingPlantBodyBlock implements PaleVine
 	}
 
 	@Override
-	protected void onPlace(BlockState blockState, Level level, BlockPos blockPos, BlockState blockState2, boolean bl) {
+	protected void onPlace(@NonNull BlockState blockState, Level level, @NonNull BlockPos blockPos, @NonNull BlockState blockState2, boolean bl) {
 		if (!level.isClientSide()) {
 			level.scheduleTick(blockPos, this, 20);
 		}
@@ -40,7 +41,7 @@ public class PaleVineBodyBlock extends GrowingPlantBodyBlock implements PaleVine
 	}
 
 	@Override
-	protected void tick(BlockState blockState, ServerLevel serverLevel, BlockPos blockPos, RandomSource randomSource) {
+	protected void tick(@NonNull BlockState blockState, @NonNull ServerLevel serverLevel, @NonNull BlockPos blockPos, @NonNull RandomSource randomSource) {
 		if (!PaleVines.hasBerries(blockState) && randomSource.nextFloat() < 0.10f){
 			serverLevel.setBlock(blockPos, blockState.setValue(BERRIES, true), 2);
 		}
@@ -48,17 +49,17 @@ public class PaleVineBodyBlock extends GrowingPlantBodyBlock implements PaleVine
 	}
 
 	@Override
-	protected @NotNull ItemStack getCloneItemStack(LevelReader levelReader, BlockPos blockPos, BlockState blockState, boolean bl) {
+	protected @NotNull ItemStack getCloneItemStack(@NonNull LevelReader levelReader, @NonNull BlockPos blockPos, @NonNull BlockState blockState, boolean bl) {
 		return new ItemStack(PaleWorldItems.PALE_BERRIES);
 	}
 
 	@Override
-	protected @NotNull InteractionResult useWithoutItem(BlockState blockState, Level level, BlockPos blockPos, Player player, BlockHitResult blockHitResult) {
+	protected @NotNull InteractionResult useWithoutItem(@NonNull BlockState blockState, @NonNull Level level, @NonNull BlockPos blockPos, @NonNull Player player, @NonNull BlockHitResult blockHitResult) {
 		return PaleVines.pickBerries(player, blockState, level, blockPos);
 	}
 
 	@Override
-	protected @NotNull BlockState updateShape(BlockState blockState, LevelReader levelReader, ScheduledTickAccess scheduledTickAccess, BlockPos blockPos, Direction direction, BlockPos blockPos2, BlockState blockState2, RandomSource randomSource) {
+	protected @NotNull BlockState updateShape(@NonNull BlockState blockState, @NonNull LevelReader levelReader, @NonNull ScheduledTickAccess scheduledTickAccess, @NonNull BlockPos blockPos, @NonNull Direction direction, @NonNull BlockPos blockPos2, @NonNull BlockState blockState2, @NonNull RandomSource randomSource) {
 		if (levelReader instanceof Level mutableLevel){
 			if (direction == Direction.DOWN && levelReader.getBlockState(blockPos.below()).isAir()){
 				mutableLevel.setBlockAndUpdate(blockPos, PaleWorldBlocks.PALE_VINE.defaultBlockState());
@@ -78,17 +79,17 @@ public class PaleVineBodyBlock extends GrowingPlantBodyBlock implements PaleVine
 	}
 
 	@Override
-	public boolean isBonemealSuccess(Level level, RandomSource randomSource, BlockPos blockPos, BlockState blockState) {
+	public boolean isBonemealSuccess(@NonNull Level level, @NonNull RandomSource randomSource, @NonNull BlockPos blockPos, @NonNull BlockState blockState) {
 		return true;
 	}
 
 	@Override
-	public void performBonemeal(ServerLevel serverLevel, RandomSource randomSource, BlockPos blockPos, BlockState blockState) {
+	public void performBonemeal(ServerLevel serverLevel, @NonNull RandomSource randomSource, @NonNull BlockPos blockPos, BlockState blockState) {
 		serverLevel.setBlock(blockPos, blockState.setValue(BERRIES, false), 2);
 	}
 
 	@Override
-	public boolean isValidBonemealTarget(LevelReader levelReader, BlockPos blockPos, BlockState blockState) {
+	public boolean isValidBonemealTarget(@NonNull LevelReader levelReader, @NonNull BlockPos blockPos, BlockState blockState) {
 		return !blockState.getValue(BERRIES);
 	}
 

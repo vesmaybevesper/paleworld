@@ -20,6 +20,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.NotNull;
+import org.jspecify.annotations.NonNull;
 
 public class PaleVineHeadBlock extends GrowingPlantHeadBlock implements PaleVines {
 	public static final MapCodec<PaleVineHeadBlock> CODEC = simpleCodec(PaleVineHeadBlock::new);
@@ -39,7 +40,7 @@ public class PaleVineHeadBlock extends GrowingPlantHeadBlock implements PaleVine
 	}
 
 	@Override
-	protected int getBlocksToGrowWhenBonemealed(RandomSource randomSource) {
+	protected int getBlocksToGrowWhenBonemealed(@NonNull RandomSource randomSource) {
 		return 1;
 	}
 
@@ -49,7 +50,7 @@ public class PaleVineHeadBlock extends GrowingPlantHeadBlock implements PaleVine
 	}
 
 	@Override
-	protected void onPlace(BlockState blockState, Level level, BlockPos blockPos, BlockState blockState2, boolean bl) {
+	protected void onPlace(@NonNull BlockState blockState, Level level, @NonNull BlockPos blockPos, @NonNull BlockState blockState2, boolean bl) {
 		if (!level.isClientSide()){
 			level.scheduleTick(blockPos, this, 20);
 		}
@@ -57,7 +58,7 @@ public class PaleVineHeadBlock extends GrowingPlantHeadBlock implements PaleVine
 	}
 
 	@Override
-	protected void tick(BlockState blockState, ServerLevel serverLevel, BlockPos blockPos, RandomSource randomSource) {
+	protected void tick(@NonNull BlockState blockState, @NonNull ServerLevel serverLevel, @NonNull BlockPos blockPos, @NonNull RandomSource randomSource) {
 
 		if (!PaleVines.hasBerries(blockState) && randomSource.nextFloat() < 0.10f){
 			serverLevel.setBlock(blockPos, blockState.setValue(BERRIES, true), 2);
@@ -71,43 +72,43 @@ public class PaleVineHeadBlock extends GrowingPlantHeadBlock implements PaleVine
 	}
 
 	@Override
-	protected @NotNull BlockState getGrowIntoState(BlockState blockState, RandomSource randomSource) {
+	protected @NotNull BlockState getGrowIntoState(@NonNull BlockState blockState, @NonNull RandomSource randomSource) {
 		return super.getGrowIntoState(blockState, randomSource).setValue(BERRIES, randomSource.nextFloat() < 0.11f);
 	}
 
 	@Override
-	protected @NotNull ItemStack getCloneItemStack(LevelReader levelReader, BlockPos blockPos, BlockState blockState, boolean bl) {
+	protected @NotNull ItemStack getCloneItemStack(@NonNull LevelReader levelReader, @NonNull BlockPos blockPos, @NonNull BlockState blockState, boolean bl) {
 		return new ItemStack(PaleWorldItems.PALE_BERRIES);
 	}
 
 	@Override
-	protected InteractionResult useWithoutItem(BlockState blockState, Level level, BlockPos blockPos, Player player, BlockHitResult blockHitResult) {
+	protected @NonNull InteractionResult useWithoutItem(@NonNull BlockState blockState, @NonNull Level level, @NonNull BlockPos blockPos, @NonNull Player player, @NonNull BlockHitResult blockHitResult) {
 		return PaleVines.pickBerries(player, blockState, level, blockPos);
 	}
 
 	@Override
-	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+	protected void createBlockStateDefinition(StateDefinition.@NonNull Builder<Block, BlockState> builder) {
 		super.createBlockStateDefinition(builder);
 		builder.add(BERRIES);
 	}
 
 	@Override
-	public boolean isValidBonemealTarget(LevelReader levelReader, BlockPos blockPos, BlockState blockState) {
+	public boolean isValidBonemealTarget(@NonNull LevelReader levelReader, @NonNull BlockPos blockPos, BlockState blockState) {
 		return !blockState.getValue(BERRIES);
 	}
 
 	@Override
-	public boolean isBonemealSuccess(Level level, RandomSource randomSource, BlockPos blockPos, BlockState blockState) {
+	public boolean isBonemealSuccess(@NonNull Level level, @NonNull RandomSource randomSource, @NonNull BlockPos blockPos, @NonNull BlockState blockState) {
 		return true;
 	}
 
 	@Override
-	public void performBonemeal(ServerLevel serverLevel, RandomSource randomSource, BlockPos blockPos, BlockState blockState) {
+	public void performBonemeal(ServerLevel serverLevel, @NonNull RandomSource randomSource, @NonNull BlockPos blockPos, BlockState blockState) {
 		serverLevel.setBlock(blockPos, blockState.setValue(BERRIES, true), 2);
 	}
 
 	@Override
-	protected boolean canSurvive(BlockState blockState, LevelReader levelReader, BlockPos blockPos) {
+	protected boolean canSurvive(@NonNull BlockState blockState, LevelReader levelReader, BlockPos blockPos) {
 		return levelReader.getBlockState(blockPos.above()).is(Blocks.PALE_MOSS_BLOCK);
 	}
 }

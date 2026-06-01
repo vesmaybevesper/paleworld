@@ -19,6 +19,7 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import org.jetbrains.annotations.NotNull;
+import org.jspecify.annotations.NonNull;
 
 public class BigDyingDripleafBlock extends BigDripleafBlock {
 	private static final BooleanProperty WATERLOGGED;
@@ -28,7 +29,7 @@ public class BigDyingDripleafBlock extends BigDripleafBlock {
 	}
 
 	@Override
-	public boolean isBonemealSuccess(Level level, RandomSource randomSource, BlockPos blockPos, BlockState blockState) {
+	public boolean isBonemealSuccess(@NonNull Level level, @NonNull RandomSource randomSource, @NonNull BlockPos blockPos, @NonNull BlockState blockState) {
 		return false;
 	}
 
@@ -42,14 +43,14 @@ public class BigDyingDripleafBlock extends BigDripleafBlock {
 	}
 
 	@Override
-	protected boolean canSurvive(BlockState blockState, LevelReader levelReader, BlockPos blockPos) {
+	protected boolean canSurvive(@NonNull BlockState blockState, LevelReader levelReader, BlockPos blockPos) {
 		BlockPos blockPos1 = blockPos.below();
 		BlockState blockState1 = levelReader.getBlockState(blockPos);
 		return blockState1.is(this) || blockState1.is(PaleWorldBlocks.BIG_DYING_DRIPLEAF_STEM) || blockState1.is(BlockTags.SUPPORTS_BIG_DRIPLEAF);
 	}
 
 	@Override
-	protected @NotNull BlockState updateShape(BlockState blockState, LevelReader levelReader, ScheduledTickAccess scheduledTickAccess, BlockPos blockPos, Direction direction, BlockPos blockPos2, BlockState blockState2, RandomSource randomSource) {
+	protected @NotNull BlockState updateShape(@NonNull BlockState blockState, @NonNull LevelReader levelReader, @NonNull ScheduledTickAccess scheduledTickAccess, @NonNull BlockPos blockPos, @NonNull Direction direction, @NonNull BlockPos blockPos2, @NonNull BlockState blockState2, @NonNull RandomSource randomSource) {
 		if (direction == Direction.DOWN && !blockState.canSurvive(levelReader, blockPos)){
 			return Blocks.AIR.defaultBlockState();
 		} else {

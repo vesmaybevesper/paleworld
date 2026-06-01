@@ -22,6 +22,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
+import org.jspecify.annotations.NonNull;
 
 public class RafflesiaBlock extends FlowerBlock {
 	private static final VoxelShape SHAPE = Block.column(6, 0, 10);
@@ -31,29 +32,29 @@ public class RafflesiaBlock extends FlowerBlock {
 	}
 
 	@Override
-	protected boolean canSurvive(BlockState blockState, LevelReader levelReader, BlockPos blockPos) {
+	protected boolean canSurvive(@NonNull BlockState blockState, @NonNull LevelReader levelReader, BlockPos blockPos) {
 		return Block.canSupportCenter(levelReader, blockPos.below(), Direction.UP) && !levelReader.isWaterAt(blockPos);
 	}
 
 	@Override
-	protected @NotNull BlockState updateShape(BlockState blockState, LevelReader levelReader, ScheduledTickAccess scheduledTickAccess, BlockPos blockPos, Direction direction, BlockPos blockPos2, BlockState blockState2, RandomSource randomSource) {
+	protected @NotNull BlockState updateShape(@NonNull BlockState blockState, @NonNull LevelReader levelReader, @NonNull ScheduledTickAccess scheduledTickAccess, @NonNull BlockPos blockPos, @NonNull Direction direction, @NonNull BlockPos blockPos2, @NonNull BlockState blockState2, @NonNull RandomSource randomSource) {
 		return direction == Direction.DOWN && !this.canSurvive(blockState, levelReader, blockPos) ? Blocks.AIR.getStateDefinition().any() : super.updateShape(blockState, levelReader, scheduledTickAccess, blockPos, direction, blockPos2, blockState2, randomSource);
 	}
 
 	@Override
-	public void stepOn(Level level, BlockPos blockPos, BlockState blockState, Entity entity) {
+	public void stepOn(@NonNull Level level, @NonNull BlockPos blockPos, @NonNull BlockState blockState, @NonNull Entity entity) {
 		if (entity instanceof Player){
 			((Player) entity).addEffect((MobEffectInstance) MobEffects.NAUSEA);
 		}
 	}
 
 	@Override
-	protected @NotNull VoxelShape getShape(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, CollisionContext collisionContext) {
+	protected @NotNull VoxelShape getShape(BlockState blockState, @NonNull BlockGetter blockGetter, @NonNull BlockPos blockPos, @NonNull CollisionContext collisionContext) {
 		return SHAPE.move(blockState.getOffset(blockPos));
 	}
 
 	@Override
-	public void animateTick(BlockState blockState, Level level, BlockPos blockPos, RandomSource randomSource) {
+	public void animateTick(@NonNull BlockState blockState, Level level, BlockPos blockPos, RandomSource randomSource) {
 		int x = blockPos.getX();
 		int y = blockPos.getY();
 		int z = blockPos.getZ();

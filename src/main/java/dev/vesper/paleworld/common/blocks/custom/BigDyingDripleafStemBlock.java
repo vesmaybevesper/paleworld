@@ -19,6 +19,7 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import org.jetbrains.annotations.NotNull;
+import org.jspecify.annotations.NonNull;
 
 import java.util.Optional;
 
@@ -29,12 +30,12 @@ public class BigDyingDripleafStemBlock extends BigDripleafStemBlock {
 	}
 
 	@Override
-	public boolean isBonemealSuccess(Level level, RandomSource randomSource, BlockPos blockPos, BlockState blockState) {
+	public boolean isBonemealSuccess(@NonNull Level level, @NonNull RandomSource randomSource, @NonNull BlockPos blockPos, @NonNull BlockState blockState) {
 		return false;
 	}
 
 	@Override
-	protected boolean canSurvive(BlockState blockState, LevelReader levelReader, BlockPos blockPos) {
+	protected boolean canSurvive(@NonNull BlockState blockState, LevelReader levelReader, BlockPos blockPos) {
 		BlockPos blockPos1 = blockPos.below();
 		BlockState blockState1 = levelReader.getBlockState(blockPos1);
 		BlockState blockState2 = levelReader.getBlockState(blockPos.above());
@@ -47,14 +48,14 @@ public class BigDyingDripleafStemBlock extends BigDripleafStemBlock {
 	}
 
 	@Override
-	protected @NotNull ItemStack getCloneItemStack(LevelReader levelReader, BlockPos blockPos, BlockState blockState, boolean bl) {
+	protected @NotNull ItemStack getCloneItemStack(@NonNull LevelReader levelReader, @NonNull BlockPos blockPos, @NonNull BlockState blockState, boolean bl) {
 		return new ItemStack(PaleWorldBlocks.BIG_DYING_DRIPLEAF);
 	}
 
 	@Override
-	public void performBonemeal(ServerLevel serverLevel, RandomSource randomSource, BlockPos blockPos, BlockState blockState) {
+	public void performBonemeal(@NonNull ServerLevel serverLevel, @NonNull RandomSource randomSource, @NonNull BlockPos blockPos, BlockState blockState) {
 		Optional<BlockPos> optional = BlockUtil.getTopConnectedBlock(serverLevel, blockPos, blockState.getBlock(), Direction.UP, Blocks.BIG_DRIPLEAF);
-		if (!optional.isEmpty()) {
+		if (optional.isPresent()) {
 			BlockPos blockPos1 = (BlockPos)optional.get();
 			BlockPos blockPos2 = blockPos1.above();
 			Direction direction = (Direction)blockState.getValue(FACING);
