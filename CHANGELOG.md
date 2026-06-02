@@ -1,6 +1,6 @@
-- Nerf Vampire Bats
-  - Significantly reduced flying speed: 2 → 0.25
-  - Significantly reduced max health: 20 → 5
-  - Reduced damage: 3 → 1
-  - Increased hitbox: .25 x .5 → .7f x 1
-- Fixed incorrect Pale Axolotl hitbox on 1.21.11
+- Update to 26.1.2
+
+**Known Issues:**
+- Pale Spikes (Pale Stone rock formations in the Pale Garden) don't generate
+
+Please report anything issues you find to the [github](https://github.com/vesmaybevesper/paleworld)
