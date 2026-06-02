@@ -18,6 +18,7 @@ import dev.vesper.paleworld.common.entity.renderers.VampireBatRenderer;
 import dev.vesper.paleworld.common.items.PaleWorldItemGroup;
 import dev.vesper.paleworld.common.items.PaleWorldItems;
 import dev.vesper.paleworld.common.modify.PaleGardenMobSpawnRates;
+import dev.vesper.paleworld.common.tags.PaleWorldBlockTags;
 import dev.vesper.paleworld.common.world.gen.PaleWorldWorldGen;
 import dev.vesper.paleworld.common.world.gen.feature.MiscOverworldFeatures;
 import dev.vesper.paleworld.platform.Platform;
@@ -37,14 +38,14 @@ import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRe
 public class PaleWorld {
 
 	public static final String MOD_ID = /*$ mod_id*/ "paleworld";
-	public static final String MOD_VERSION = /*$ mod_version*/ "2.1.3";
+	public static final String MOD_VERSION = /*$ mod_version*/ "2.1.4";
 	public static final String MOD_FRIENDLY_NAME = /*$ mod_name*/ "Pale World";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
 	private static final Platform PLATFORM = createPlatformInstance();
 
 	//public static final Feature<NoneFeatureConfiguration> PALE_SPIKE;
-	
+
 	private static <C extends FeatureConfiguration, F extends Feature<C>> F register(String name, F feature) {
 		return (F)(Registry.register(BuiltInRegistries.FEATURE, name, feature));
 	}
@@ -71,6 +72,7 @@ public class PaleWorld {
 		//LOGGER.info("Registered Effects");
         /*CustomSounds.init();
         LOGGER.info("Registered Sounds");*/
+		PaleWorldBlockTags.init();
 		MaterialRules.init();
 		MiscOverworldFeatures.init();
 		PaleWorldBiomePlacement.place();

@@ -16,7 +16,6 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.data.worldgen.features.VegetationFeatures;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
@@ -493,23 +492,6 @@ public class PaleWorldConfiguredFeatures {
 		register(configuredFeatureRegisterable, PALE_SPIKE, Feature.SPIKE, new SpikeConfiguration(PaleWorldBlocks.PALE_STONE.defaultBlockState(), BlockPredicate.matchesBlocks(new Block[]{Blocks.PALE_MOSS_BLOCK}), BlockPredicate.matchesTag(PaleWorldBlockTags.PALE_SPIKE_REPLACEABLE)));
 
 		register(configuredFeatureRegisterable, FALLEN_PALE_OAK, Feature.FALLEN_TREE, fallenPaleOak().build());
-
-		/*register(configuredFeatureRegisterable,
-				CHRYSANTHEMUM,
-				Feature.SIMPLE_BLOCK,
-				new SimpleRandomFeatureConfiguration(HolderSet.direct(new Holder[]{PlacementUtils.inlinePlaced(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(PaleWorldBlocks.CHRYSANTHEMUM)))})));
-		// 50, 4, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
-		//						(new SimpleBlockConfiguration(new NoiseProvider(2345L, new NormalNoise.NoiseParameters
-		//								(0, 1.0), 0.020833334F,
-		//								List.of(PaleWorldBlocks.CHRYSANTHEMUM.defaultBlockState()))))))*/
-
-		/*register(configuredFeatureRegisterable,
-				ASPHODEL,
-				Feature.SIMPLE_BLOCK,
-				new RandomPatchConfiguration(40, 3, 1, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
-						(new SimpleBlockConfiguration(new NoiseProvider(2345L, new NormalNoise.NoiseParameters
-								(0, 1.0), 0.020833334F,
-								List.of(PaleWorldBlocks.ASPHODEL.defaultBlockState())))))));*/
 
 		register(configuredFeatureRegisterable, CHRYSANTHEMUM, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseProvider(2345L, new NormalNoise.NoiseParameters(0, 1.0f, new double[0]), 0.020833334F, List.of(PaleWorldBlocks.CHRYSANTHEMUM.defaultBlockState()))));
 		register(configuredFeatureRegisterable, ASPHODEL, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseProvider(2345L, new NormalNoise.NoiseParameters(0, 1.0f, new double[0]), 0.020833334F, List.of(PaleWorldBlocks.ASPHODEL.defaultBlockState()))));

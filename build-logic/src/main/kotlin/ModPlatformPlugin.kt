@@ -247,7 +247,7 @@ abstract class ModPlatformPlugin @Inject constructor() : Plugin<Project> {
 		if (staging) apiEndpoint = "https://staging-api.modrinth.com/v2"
 		projectId = project.prop("publish.modrinth")
 		// ADD API TOKEN TO PUBLISH
-		accessToken = ""
+		accessToken = "mrp_iy8Wke569mDI0wSzLx2YIrp7xJbS8QNXumGdwgQnfgDSFkZYQfjDuNlVu6D5"
 		minecraftVersions.addAll(listOf(currentVersion) + additionalVersions)
 
 		if (!staging) {
@@ -267,7 +267,7 @@ abstract class ModPlatformPlugin @Inject constructor() : Plugin<Project> {
 	) = curseforge {
 		projectId = project.prop("publish.curseforge")
 		// ADD API TOKEN TO PUBLISH
-		accessToken = ""
+		accessToken = "ead0e75b-b042-4682-8916-e2f61e5677be"
 		minecraftVersions.addAll(listOf(currentVersion) + additionalVersions)
 
 		deps.required.forEach { dep -> whenNotNull(dep.curseforge) { requires(it) } }

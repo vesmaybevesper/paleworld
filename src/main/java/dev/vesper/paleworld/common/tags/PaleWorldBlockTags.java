@@ -12,6 +12,8 @@ public final class PaleWorldBlockTags {
 
 	}
 
+	public static void init(){}
+
 	private static TagKey<Block> create(final String name) {
 		return TagKey.create(Registries.BLOCK, Identifier.withDefaultNamespace(name));
 	}
