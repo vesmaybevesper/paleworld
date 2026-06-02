@@ -19,6 +19,7 @@ import dev.vesper.paleworld.common.items.PaleWorldItemGroup;
 import dev.vesper.paleworld.common.items.PaleWorldItems;
 import dev.vesper.paleworld.common.modify.PaleGardenMobSpawnRates;
 import dev.vesper.paleworld.common.world.gen.PaleWorldWorldGen;
+import dev.vesper.paleworld.common.world.gen.feature.MiscOverworldFeatures;
 import dev.vesper.paleworld.platform.Platform;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ModelLayerRegistry;
@@ -43,8 +44,7 @@ public class PaleWorld {
 	private static final Platform PLATFORM = createPlatformInstance();
 
 	//public static final Feature<NoneFeatureConfiguration> PALE_SPIKE;
-
-
+	
 	private static <C extends FeatureConfiguration, F extends Feature<C>> F register(String name, F feature) {
 		return (F)(Registry.register(BuiltInRegistries.FEATURE, name, feature));
 	}
@@ -53,19 +53,13 @@ public class PaleWorld {
 		PALE_SPIKE = register("pale_spike", new PaleSpikeFeature(NoneFeatureConfiguration.CODEC));
 	}*/
 
-
 	public static void onInitialize() {
 		LOGGER.info("Initializing {} on {}", MOD_ID, PaleWorld.xplat().loader());
 		Entities.init();
-		//? fabric{
 		// these yell about failing but work fine
 		FabricDefaultAttributeRegistry.register(Entities.PALE_AXOLOTL, PaleAxolotl.setAttributes().build());
 		FabricDefaultAttributeRegistry.register(Entities.VAMPIRE_BAT, VampireBat.createHostileAttributes());
 		//FabricDefaultAttributeRegistry.register(Entities.LOST_SOUL, LostSoul.createAttributes());
-		//?}
-		//? neoforge{
-
-		//?}
 		PaleGardenMobSpawnRates.override();
 		LOGGER.info("Registered Entities");
 		ParticleTypes.register();
@@ -78,6 +72,7 @@ public class PaleWorld {
         /*CustomSounds.init();
         LOGGER.info("Registered Sounds");*/
 		MaterialRules.init();
+		MiscOverworldFeatures.init();
 		PaleWorldBiomePlacement.place();
 		PaleWorldWorldGen.genWorld();
 		EntityGen.addSpawns();
@@ -87,30 +82,17 @@ public class PaleWorld {
 	public static void onInitializeClient() {
 		LOGGER.info("Initializing {} Client on {}", MOD_ID, PaleWorld.xplat().loader());
 		LOGGER.debug("{}: { version: {}; friendly_name: {} }", MOD_ID, MOD_VERSION, MOD_FRIENDLY_NAME);
-		//? fabric {
 		ModelLayerRegistry.registerModelLayer(PaleAxolotlModel.PALE_AXOLOTL, PaleAxolotlModel::getTexturedModelData);
 		ModelLayerRegistry.registerModelLayer(VampireBatModel.VAMPIRE_BAT, VampireBatModel::getTexturedModelData);
 		EntityRendererRegistry.register(Entities.PALE_AXOLOTL, PaleAxolotlRenderer::new);
 		EntityRendererRegistry.register(Entities.VAMPIRE_BAT, VampireBatRenderer::new);
 		//EntityRendererRegistry.register(Entities.LOST_SOUL, LostSoulRenderer::new);
 		PaleWorld.LOGGER.info("Client: Mob Renderers Registered");
-// in theory mc should handle this by its self i dont have to do anything here, if thats true and you're reading this it means i forgot to delete it whoops
-		/*BlockRenderLayerMap.putBlock(PaleWorldBlocks.PALE_VINE, ChunkSectionLayer.CUTOUT);
-		BlockRenderLayerMap.putBlock(PaleWorldBlocks.PALE_VINE_BODY, ChunkSectionLayer.CUTOUT);
-		BlockRenderLayerMap.putBlock(PaleWorldBlocks.DYING_AZALEA, ChunkSectionLayer.CUTOUT);
-		BlockRenderLayerMap.putBlock(PaleWorldBlocks.SMALL_DYING_DRIPLEAF, ChunkSectionLayer.CUTOUT);
-		BlockRenderLayerMap.putBlock(PaleWorldBlocks.BIG_DYING_DRIPLEAF, ChunkSectionLayer.CUTOUT);
-		BlockRenderLayerMap.putBlock(PaleWorldBlocks.BIG_DYING_DRIPLEAF_STEM, ChunkSectionLayer.CUTOUT);
-		BlockRenderLayerMap.putBlock(PaleWorldBlocks.CHRYSANTHEMUM, ChunkSectionLayer.CUTOUT);
-		BlockRenderLayerMap.putBlock(PaleWorldBlocks.ASPHODEL, ChunkSectionLayer.CUTOUT);
-		BlockRenderLayerMap.putBlock(PaleWorldBlocks.RAFFLESIA, ChunkSectionLayer.CUTOUT);
-		PaleWorld.LOGGER.info("Client: Block Textures Registered");*/
 
 		ParticleProviderRegistry.getInstance().register(ParticleTypes.MOSS_PARTICLE, MossParticle.Factory::new);
 		ParticleProviderRegistry.getInstance().register(ParticleTypes.FOG_PARTICLE, FogParticle.Factory::new);
 		ParticleProviderRegistry.getInstance().register(ParticleTypes.RAFFLESIA_PARTICLE, RafflesiaParticle.Factory::new);
 		//ParticleFactoryRegistry.getInstance().register(ParticleTypes.LOST_SOUL_AURA, LostSoulParticle.Factory::new);
-		//?}
 		PaleWorld.LOGGER.info("Client: Particles Registered");
 	}
 
