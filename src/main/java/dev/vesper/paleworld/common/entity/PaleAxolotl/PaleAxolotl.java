@@ -24,7 +24,11 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.navigation.AmphibiousPathNavigation;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
-import net.minecraft.world.entity.animal.Bucketable;
+//? <26.2{
+/*import net.minecraft.world.entity.animal.Bucketable;
+*///?} >=26.2{
+import net.minecraft.world.entity.Bucketable;
+//?}
 import net.minecraft.world.entity.animal.axolotl.Axolotl;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
