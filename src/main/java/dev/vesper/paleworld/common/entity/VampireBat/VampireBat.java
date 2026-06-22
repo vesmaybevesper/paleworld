@@ -32,7 +32,9 @@ import net.minecraft.world.entity.ai.control.MoveControl;
 import net.minecraft.world.entity.ai.memory.MemoryModuleType;
 import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
-import net.minecraft.world.entity.animal.FlyingAnimal;
+//? <26.2{
+/*import net.minecraft.world.entity.animal.FlyingAnimal;
+*///?}
 import net.minecraft.world.entity.animal.pig.Pig;
 import net.minecraft.world.entity.animal.sheep.Sheep;
 import net.minecraft.world.entity.monster.Monster;
@@ -66,8 +68,11 @@ import org.jetbrains.annotations.Nullable;
 import org.jspecify.annotations.NonNull;
 
 import java.util.List;
-
-public class VampireBat extends Monster implements FlyingAnimal, SmartBrainOwner<VampireBat>, GeoEntity {
+//? <26.2{
+/*public class VampireBat extends Monster implements FlyingAnimal, SmartBrainOwner<VampireBat>, GeoEntity {
+	*///?} >= 26.2{
+public class VampireBat extends Monster implements SmartBrainOwner<VampireBat>, GeoEntity{
+	//?}
 	private static final EntityDataAccessor<Byte> VAMPIRE_BAT_FLAGS = SynchedEntityData.defineId(VampireBat.class, EntityDataSerializers.BYTE);
 	protected boolean isFlying = false;
 	protected final FlyingPathNavigation flyingNav;
@@ -204,10 +209,17 @@ public class VampireBat extends Monster implements FlyingAnimal, SmartBrainOwner
 		return (this.entityData.get(VAMPIRE_BAT_FLAGS) & 1) != 0;
 	}
 
-	@Override
+//? 26.1.2{
+	/*@Override
 	public boolean isFlying() {
 		return !isRoosting();
 	}
+*///?}
+//? >=26.2{
+	public boolean isFlying(){
+		return !isRoosting();
+	}
+//?}
 
 	public static AttributeSupplier.Builder createHostileAttributes() {
 		return Monster.createMonsterAttributes()
