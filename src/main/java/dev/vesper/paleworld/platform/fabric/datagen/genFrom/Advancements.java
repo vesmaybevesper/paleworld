@@ -12,7 +12,8 @@ import net.minecraft.advancements.AdvancementType;
 import net.minecraft.advancements.criterion.InventoryChangeTrigger;
 import net.minecraft.advancements.criterion.LocationPredicate;
 import net.minecraft.advancements.criterion.PlayerTrigger;
-*///?} >=26.2{
+*///?}
+//? >=26.2{
 import net.minecraft.advancements.predicates.LocationPredicate;
 import net.minecraft.advancements.triggers.ConsumeItemTrigger;
 import net.minecraft.advancements.triggers.InventoryChangeTrigger;
