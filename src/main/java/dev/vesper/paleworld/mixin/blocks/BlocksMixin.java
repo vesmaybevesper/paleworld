@@ -3,6 +3,7 @@ package dev.vesper.paleworld.mixin.blocks;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Slice;
@@ -11,6 +12,49 @@ import static dev.vesper.paleworld.common.config.PaleWorldConfig.horrorMode;
 
 @Mixin(Blocks.class)
 public class BlocksMixin {
+	//? <26.2 {
+    /*@ModifyExpressionValue(
+            method = {"<clinit>"},
+            at = {@At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;of()Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;"
+            )},
+            slice = {@Slice(
+                    from = @At(
+                            value = "CONSTANT",
+                            args = {"stringValue=open_eyeblossom"}
+                    )
+            )}
+    )
+    private static BlockBehaviour.Properties openEyeblossom(BlockBehaviour.Properties original) {
+                if (horrorMode) {
+                    return original.lightLevel((blockstate) -> 3);
+                } else {
+                    return original.lightLevel((blockstate) -> 5);
+                }
+    }
+
+@ModifyExpressionValue(
+        method = {"<clinit>"},
+        at = {@At(
+                value = "INVOKE",
+                target = "Lnet/minecraft/world/level/block/Blocks;flowerPotProperties()Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;"
+        )},
+        slice = {@Slice(
+                from = @At(
+                        value = "CONSTANT",
+                        args = {"stringValue=potted_open_eyeblossom"}
+                )
+        )}
+)
+private static BlockBehaviour.Properties pottedOpenEyeblossom(BlockBehaviour.Properties original) {
+    if (horrorMode) {
+        return original.lightLevel((blockstate) -> 3);
+    } else {
+        return original.lightLevel((blockstate) -> 5);
+    }
+}
+*///?} >=26.2{
 	@ModifyExpressionValue(
 			method = {"<clinit>"},
 			at = {@At(
@@ -19,9 +63,13 @@ public class BlocksMixin {
 			)},
 			slice = {@Slice(
 					from = @At(
-							value = "CONSTANT",
-							args = {"stringValue=open_eyeblossom"}
-					)
+							value = "FIELD",
+							opcode = Opcodes.GETSTATIC,
+							target = "Lnet/minecraft/references/BlockItemIds;OPEN_EYEBLOSSOM:Lnet/minecraft/references/BlockItemId;"),
+					to = @At(
+							value = "FIELD",
+							opcode = Opcodes.GETSTATIC,
+							target = "Lnet/minecraft/references/BlockItemIds;CLOSED_EYEBLOSSOM:Lnet/minecraft/references/BlockItemId;")
 			)}
 	)
 	private static BlockBehaviour.Properties openEyeblossom(BlockBehaviour.Properties original) {
@@ -40,9 +88,13 @@ public class BlocksMixin {
 			)},
 			slice = {@Slice(
 					from = @At(
-							value = "CONSTANT",
-							args = {"stringValue=potted_open_eyeblossom"}
-					)
+							value = "FIELD",
+							opcode = Opcodes.GETSTATIC,
+							target = "Lnet/minecraft/references/BlockIds;POTTED_OPEN_EYEBLOSSOM:Lnet/minecraft/resources/ResourceKey;"),
+					to = @At(
+							value = "FIELD",
+							opcode = Opcodes.GETSTATIC,
+							target = "Lnet/minecraft/references/BlockIds;POTTED_CLOSED_EYEBLOSSOM:Lnet/minecraft/resources/ResourceKey;")
 			)}
 	)
 	private static BlockBehaviour.Properties pottedOpenEyeblossom(BlockBehaviour.Properties original) {
@@ -52,4 +104,5 @@ public class BlocksMixin {
 			return original.lightLevel((blockstate) -> 5);
 		}
 	}
+	//?}
 }
