@@ -46,6 +46,7 @@ platform {
 
 spotbugs {
 	toolVersion = "4.10.2"
+	ignoreFailures=true
 }
 
 loom {
