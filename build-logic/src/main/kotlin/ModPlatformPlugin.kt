@@ -10,6 +10,7 @@ import org.gradle.api.Project
 import org.gradle.api.plugins.JavaPluginExtension
 import org.gradle.api.provider.Property
 import org.gradle.api.tasks.Copy
+import org.gradle.initialization.Environment
 import org.gradle.internal.extensions.stdlib.toDefaultLowerCase
 import org.gradle.jvm.tasks.Jar
 import org.gradle.kotlin.dsl.*
@@ -247,7 +248,7 @@ abstract class ModPlatformPlugin @Inject constructor() : Plugin<Project> {
 		if (staging) apiEndpoint = "https://staging-api.modrinth.com/v2"
 		projectId = project.prop("publish.modrinth")
 		// ADD API TOKEN TO PUBLISH
-		accessToken = ""
+		accessToken = acesssToken
 		minecraftVersions.addAll(listOf(currentVersion) + additionalVersions)
 
 		if (!staging) {
@@ -267,7 +268,7 @@ abstract class ModPlatformPlugin @Inject constructor() : Plugin<Project> {
 	) = curseforge {
 		projectId = project.prop("publish.curseforge")
 		// ADD API TOKEN TO PUBLISH
-		accessToken = ""
+		accessToken = acesssToken
 		minecraftVersions.addAll(listOf(currentVersion) + additionalVersions)
 
 		deps.required.forEach { dep -> whenNotNull(dep.curseforge) { requires(it) } }
