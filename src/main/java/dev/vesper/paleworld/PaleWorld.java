@@ -47,7 +47,7 @@ public class PaleWorld {
 	//public static final Feature<NoneFeatureConfiguration> PALE_SPIKE;
 
 	private static <C extends FeatureConfiguration, F extends Feature<C>> F register(String name, F feature) {
-		return (F)(Registry.register(BuiltInRegistries.FEATURE, name, feature));
+		return Registry.register(BuiltInRegistries.FEATURE, name, feature);
 	}
 
 	/*static {

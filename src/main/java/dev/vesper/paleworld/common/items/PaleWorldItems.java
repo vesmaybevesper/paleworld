@@ -29,22 +29,18 @@ public class PaleWorldItems {
 	public static final ResourceKey<Item> PALE_BERRIES_KEY = ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(PaleWorld.MOD_ID, "pale_berries"));
 	public static final ResourceKey<Item> PALE_COMPASS_KEY = ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(PaleWorld.MOD_ID, "pale_compass"));
 
-	public static Item PALE_AXOLOTL_SPAWN_EGG = registerItems(new SpawnEggItem(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(PaleWorld.MOD_ID, "pale_axolotl_spawn_egg"))).spawnEgg(Entities.PALE_AXOLOTL)), PALE_AXOLOTL_SPAWN_EGG_KEY);
-	public static Item VAMPIRE_BAT_SPAWN_EGG = registerItems(new SpawnEggItem(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(PaleWorld.MOD_ID, "vampire_bat_spawn_egg"))).spawnEgg(Entities.VAMPIRE_BAT)), VAMPIRE_BAT_SPAWN_EGG_KEY);
-	public static Item PALE_BERRIES = registerItems(new PaleBerriesItem(new Item.Properties().food(PaleWorldFoodProperties.PALE_BERRIES, PaleWorldConsumables.PALE_BERRIES).setId(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(PaleWorld.MOD_ID, "pale_berries")))), PALE_BERRIES_KEY);
-	public static Item PALE_AXOLOTL_BUCKET = registerItems(new MobBucketItem(Entities.PALE_AXOLOTL, Fluids.WATER, SoundEvents.BUCKET_EMPTY_AXOLOTL, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY).setId(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(PaleWorld.MOD_ID,"pale_axolotl_bucket")))),PALE_AXOLOTL_BUCKET_KEY);
+	public static final Item PALE_AXOLOTL_SPAWN_EGG = registerItems(new SpawnEggItem(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(PaleWorld.MOD_ID, "pale_axolotl_spawn_egg"))).spawnEgg(Entities.PALE_AXOLOTL)), PALE_AXOLOTL_SPAWN_EGG_KEY);
+	public static final Item VAMPIRE_BAT_SPAWN_EGG = registerItems(new SpawnEggItem(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(PaleWorld.MOD_ID, "vampire_bat_spawn_egg"))).spawnEgg(Entities.VAMPIRE_BAT)), VAMPIRE_BAT_SPAWN_EGG_KEY);
+	public static final Item PALE_BERRIES = registerItems(new PaleBerriesItem(new Item.Properties().food(PaleWorldFoodProperties.PALE_BERRIES, PaleWorldConsumables.PALE_BERRIES).setId(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(PaleWorld.MOD_ID, "pale_berries")))), PALE_BERRIES_KEY);
+	public static final Item PALE_AXOLOTL_BUCKET = registerItems(new MobBucketItem(Entities.PALE_AXOLOTL, Fluids.WATER, SoundEvents.BUCKET_EMPTY_AXOLOTL, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY).setId(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(PaleWorld.MOD_ID,"pale_axolotl_bucket")))),PALE_AXOLOTL_BUCKET_KEY);
 
-	public static Item PALE_APPLE = registerItems("pale_apple", new Item.Properties().food(PaleWorldFoodProperties.PALE_APPLE, PaleWorldConsumables.PALE_APPLE));
-	public static Item DRAINED_CRYSTAL_FRAGMENT = registerItems("drained_crystal_fragment");
+	public static final Item PALE_APPLE = registerItems("pale_apple", new Item.Properties().food(PaleWorldFoodProperties.PALE_APPLE, PaleWorldConsumables.PALE_APPLE));
+	public static final Item DRAINED_CRYSTAL_FRAGMENT = registerItems("drained_crystal_fragment");
 
 	// public static Item PALE_COMPASS = registerItems("pale_compass", (new Item.Settings().rarity(Rarity.UNCOMMON).registryKey(PALE_COMPASS_KEY)));
 
 	private static ResourceKey<Item> keyOf(String id) {
 		return ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(PaleWorld.MOD_ID, id));
-	}
-
-	private static ResourceKey<Item> keyOf(ResourceKey<Block> blockKey) {
-		return ResourceKey.create(Registries.ITEM, blockKey.identifier());
 	}
 
 	public static Item registerItems(Item item, ResourceKey<Item> registryKey) {
@@ -60,7 +56,7 @@ public class PaleWorldItems {
 	}
 
 	public static Item registerItems(ResourceKey<Item> key, Function<Item.Properties, Item> factory, Item.Properties settings) {
-		Item item = (Item) factory.apply(settings.setId(key));
+		Item item = factory.apply(settings.setId(key));
 		if (item instanceof BlockItem blockItem) {
 			blockItem.registerBlocks(Item.BY_BLOCK, item);
 		}

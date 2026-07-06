@@ -24,7 +24,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
-import static dev.vesper.paleworld.common.util.varHolder.fogFade;
+import static dev.vesper.paleworld.common.util.VarHolder.fogFade;
 
 @Mixin(FogRenderer.class)
 public class FogRendererMixin {
@@ -33,7 +33,7 @@ public class FogRendererMixin {
 	private static final float FADE_SPEED = 0.002f;
 
 	@Unique
-	private static boolean shaderFailWarned = false;
+	private static final boolean shaderFailWarned = false;
 	private static float fogAlphaBase;
 	private static Entity entity;
 	private static float renderDistanceBlocks;

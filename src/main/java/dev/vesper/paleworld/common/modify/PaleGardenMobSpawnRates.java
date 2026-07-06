@@ -13,7 +13,7 @@ import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.Biome;
 
 public class PaleGardenMobSpawnRates {
-	public static ResourceKey<Biome> paleGardenKey = ResourceKey.create(Registries.BIOME, Identifier.fromNamespaceAndPath("minecraft", "pale_garden"));
+	public static final ResourceKey<Biome> paleGardenKey = ResourceKey.create(Registries.BIOME, Identifier.fromNamespaceAndPath("minecraft", "pale_garden"));
 
 	public static EntityType<?> entityType(String mob){
 		return BuiltInRegistries.ENTITY_TYPE.getValue(Identifier.withDefaultNamespace(mob));

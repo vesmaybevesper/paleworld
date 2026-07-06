@@ -43,7 +43,7 @@ public class BigDyingDripleafStemBlock extends BigDripleafStemBlock {
 	}
 
 	protected static boolean placeStemAtDying(LevelAccessor world, BlockPos pos, FluidState fluidState, Direction direction) {
-		BlockState blockState = (BlockState)((BlockState)PaleWorldBlocks.BIG_DYING_DRIPLEAF_STEM.defaultBlockState().setValue(WATERLOGGED, fluidState.isSourceOfType(Fluids.WATER))).setValue(FACING, direction);
+		BlockState blockState = PaleWorldBlocks.BIG_DYING_DRIPLEAF_STEM.defaultBlockState().setValue(WATERLOGGED, fluidState.isSourceOfType(Fluids.WATER)).setValue(FACING, direction);
 		return world.setBlock(pos, blockState, 3);
 	}
 
@@ -56,9 +56,9 @@ public class BigDyingDripleafStemBlock extends BigDripleafStemBlock {
 	public void performBonemeal(@NonNull ServerLevel serverLevel, @NonNull RandomSource randomSource, @NonNull BlockPos blockPos, BlockState blockState) {
 		Optional<BlockPos> optional = BlockUtil.getTopConnectedBlock(serverLevel, blockPos, blockState.getBlock(), Direction.UP, Blocks.BIG_DRIPLEAF);
 		if (optional.isPresent()) {
-			BlockPos blockPos1 = (BlockPos)optional.get();
+			BlockPos blockPos1 = optional.get();
 			BlockPos blockPos2 = blockPos1.above();
-			Direction direction = (Direction)blockState.getValue(FACING);
+			Direction direction = blockState.getValue(FACING);
 			placeStemAtDying(serverLevel, blockPos, serverLevel.getFluidState(blockPos), direction);
 			BigDyingDripleafBlock.placeDyingDripleafAt(serverLevel, blockPos2, serverLevel.getFluidState(blockPos2), direction);
 		}

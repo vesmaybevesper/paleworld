@@ -25,11 +25,11 @@ public interface PaleVines {
 	BooleanProperty BERRIES = BlockStateProperties.BERRIES;
 
 	static InteractionResult pickBerries(@Nullable Entity picker, BlockState state, Level level, BlockPos pos){
-		if ((Boolean)state.getValue(BERRIES)) {
+		if (state.getValue(BERRIES)) {
 			Block.popResource(level, pos, new ItemStack(PaleWorldItems.PALE_BERRIES, 1));
 			float f = Mth.randomBetween(level.getRandom(), 0.8F, 1.2F);
-			level.playSound((Player)null, pos, SoundEvents.CAVE_VINES_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, f);
-			BlockState blockState = (BlockState)state.setValue(BERRIES, false);
+			level.playSound(null, pos, SoundEvents.CAVE_VINES_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, f);
+			BlockState blockState = state.setValue(BERRIES, false);
 			level.setBlock(pos, blockState, 2);
 			level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(picker, blockState));
 			return InteractionResult.SUCCESS;

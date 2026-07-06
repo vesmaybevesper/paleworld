@@ -12,7 +12,7 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.resources.Identifier;
 
 public class PaleWorldConfig {
-	public static ConfigClassHandler<PaleWorldConfig> CONFIG = ConfigClassHandler.createBuilder(PaleWorldConfig.class)
+	public static final ConfigClassHandler<PaleWorldConfig> CONFIG = ConfigClassHandler.createBuilder(PaleWorldConfig.class)
 			.id(Identifier.fromNamespaceAndPath("paleworld", "config"))
 			.serializer(config -> GsonConfigSerializerBuilder.create(config)
 					.setPath(YACLPlatform.getConfigDir().resolve("paleworld.json5"))
@@ -24,26 +24,26 @@ public class PaleWorldConfig {
 		return CONFIG.generateGui().generateScreen(parent);
 	}
 
-	public enum mode {VANILLA, SHADER, PARTICLE}
+	public enum Mode {VANILLA, SHADER, PARTICLE}
 
 	@AutoGen(category = "Visual")
 	@FloatField
 	@SerialEntry
-	public static float fogStart = 0.5F;
+	public static final float fogStart = 0.5F;
 	@AutoGen(category = "Visual")
 	@FloatField
 	@SerialEntry
-	public static float fogEnd = 20F;
+	public static final float fogEnd = 20F;
 	@AutoGen(category = "Visual")
 	@FloatField
 	@SerialEntry
-	public static float fogTransparency = 0.7F;
+	public static final float fogTransparency = 0.7F;
 	@AutoGen(category = "Visual")
 	@Boolean(formatter = Boolean.Formatter.ON_OFF, colored = true)
 	@SerialEntry
-	public static boolean horrorMode = false;
+	public static final boolean horrorMode = false;
 	//@AutoGen(category = "Visual")
 	@EnumCycler
 	//@SerialEntry
-	public static mode fogMode = mode.VANILLA;
+	public static Mode fogMode = Mode.VANILLA;
 }

@@ -16,7 +16,7 @@ public class MiscOverworldFeatures {
 	public static final ResourceKey<ConfiguredFeature<?, ?>> PALE_SPIKE = FeatureUtils.createKey("pale_spike");
 
 	public static void bootstrap(final BootstrapContext<ConfiguredFeature<?, ?>> context) {
-		FeatureUtils.register(context, PALE_SPIKE, Feature.SPIKE, new SpikeConfiguration(PaleWorldBlocks.PALE_STONE.defaultBlockState(), BlockPredicate.matchesBlocks(new Block[]{Blocks.PALE_MOSS_BLOCK}), BlockPredicate.matchesTag(PaleWorldBlockTags.PALE_SPIKE_REPLACEABLE)));
+		FeatureUtils.register(context, PALE_SPIKE, Feature.SPIKE, new SpikeConfiguration(PaleWorldBlocks.PALE_STONE.defaultBlockState(), BlockPredicate.matchesBlocks(Blocks.PALE_MOSS_BLOCK), BlockPredicate.matchesTag(PaleWorldBlockTags.PALE_SPIKE_REPLACEABLE)));
 	}
 
 	public static void init(){}

@@ -32,7 +32,6 @@ public class PaleBerriesItem extends Item {
 
 		BlockPos vinePos = pos.below();
 		BlockState clickedBlockSate = level.getBlockState(pos);
-		BlockState belowBlockState = level.getBlockState(vinePos);
 
 		if (level.getBlockState(vinePos).isAir() || level.getBlockState(vinePos).is(PaleWorldBlocks.PALE_VINE_BODY)){
 			level.setBlockAndUpdate(vinePos, PaleWorldBlocks.PALE_VINE.defaultBlockState());
