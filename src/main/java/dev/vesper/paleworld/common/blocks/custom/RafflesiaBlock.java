@@ -44,7 +44,11 @@ public class RafflesiaBlock extends FlowerBlock {
 	@Override
 	public void stepOn(@NonNull Level level, @NonNull BlockPos blockPos, @NonNull BlockState blockState, @NonNull Entity entity) {
 		if (entity instanceof Player){
-			((Player) entity).addEffect((MobEffectInstance) MobEffects.NAUSEA);
+			//? <26.2{
+			/*((Player) entity).addEffect((MobEffectInstance) MobEffects.NAUSEA);
+			*///?} >=26.2{
+
+			//?}
 		}
 	}
 
@@ -61,6 +65,6 @@ public class RafflesiaBlock extends FlowerBlock {
 		double d = x + randomSource.nextDouble();
 		double e = y + 0.7;
 		double f = z + randomSource.nextDouble();
-		level.addParticle((ParticleOptions) ParticleTypes.RAFFLESIA_PARTICLE, d, e, f, 0, 0, 0);
+		level.addParticle(ParticleTypes.RAFFLESIA_PARTICLE, d, e, f, 0, 0, 0);
 	}
 }
