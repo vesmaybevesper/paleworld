@@ -45,15 +45,15 @@ import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.phys.Vec3;
 import net.tslat.smartbrainlib.api.SmartBrainOwner;
 import net.tslat.smartbrainlib.api.core.ActivityBuilder;
-import net.tslat.smartbrainlib.api.core.behaviour.FirstApplicableBehaviour;
-import net.tslat.smartbrainlib.api.core.behaviour.OneRandomBehaviour;
+import net.tslat.smartbrainlib.api.core.behaviour.base.FirstApplicableBehaviour;
+import net.tslat.smartbrainlib.api.core.behaviour.base.OneRandomBehaviour;
 import net.tslat.smartbrainlib.api.core.behaviour.custom.attack.AnimatableMeleeAttack;
 import net.tslat.smartbrainlib.api.core.behaviour.custom.look.LookAtTarget;
 import net.tslat.smartbrainlib.api.core.behaviour.custom.misc.AvoidSun;
 import net.tslat.smartbrainlib.api.core.behaviour.custom.misc.Idle;
 import net.tslat.smartbrainlib.api.core.behaviour.custom.move.EscapeSun;
 import net.tslat.smartbrainlib.api.core.behaviour.custom.move.MoveToWalkTarget;
-import net.tslat.smartbrainlib.api.core.behaviour.custom.path.SetRandomFlyingTarget;
+import net.tslat.smartbrainlib.api.core.behaviour.custom.path.SetRandomFlyTarget;
 import net.tslat.smartbrainlib.api.core.behaviour.custom.path.SetWalkTargetToAttackTarget;
 import net.tslat.smartbrainlib.api.core.behaviour.custom.target.InvalidateAttackTarget;
 import net.tslat.smartbrainlib.api.core.behaviour.custom.target.SetPlayerLookTarget;
@@ -77,13 +77,21 @@ public class VampireBat extends Monster implements SmartBrainOwner<VampireBat>, 
 	protected boolean isFlying = false;
 	protected final FlyingPathNavigation flyingNav;
 	protected final PathNavigation walkNav;
-	protected final FlyingMoveControl flightControl;
+	//? 26.1.2{
+	/*protected final FlyingMoveControl flightControl;
+	*///?} >=26.2{
+	protected final FlyingMoveControl<VampireBat> flightControl;
+	//?}
 	private final AnimatableInstanceCache geoCache = GeckoLibUtil.createInstanceCache(this);
 	protected static final RawAnimation FLYING_ANIM = RawAnimation.begin().thenLoop("vb.fly");
 
 	public VampireBat(EntityType<? extends Monster> entityType, Level level) {
 		super(entityType, level);
-		this.flightControl = new FlyingMoveControl(this, 10, true);
+		//? 26.1.2{
+		/*this.flightControl = new FlyingMoveControl(this, 10, true);
+		*///?} >=26.2{
+		this.flightControl = new FlyingMoveControl<>(this, 10, true);
+		//?}
 		this.flyingNav = new FlyingPathNavigation(this, level);
 		this.walkNav = this.navigation;
 		this.walkNav.setCanFloat(true);
@@ -130,9 +138,9 @@ public class VampireBat extends Monster implements SmartBrainOwner<VampireBat>, 
 						new SetRandomLookTarget<>()
 				),
 				new OneRandomBehaviour<>(
-						new SetRandomFlyingTarget<VampireBat>().verticalWeight(entity -> -(entity.getRandom().nextInt(10) == 0 ? 1 : 0)).setRadius(4,4).startCondition(VampireBat::isFlying),
+						new SetRandomFlyTarget<VampireBat>().verticalWeight(entity -> -(entity.getRandom().nextInt(10) == 0 ? 1 : 0)).setRadius(4,4).startCondition(VampireBat::isFlying),
 						new Idle<>().runFor(entity -> entity.getRandom().nextIntBetweenInclusive(30, 60)),
-						new TargetOrRetaliate<>().useMemory(MemoryModuleType.NEAREST_ATTACKABLE).cooldownForBetween(1200, 2400)
+						new TargetOrRetaliate<>().useMemory(MemoryModuleType.NEAREST_ATTACKABLE).cooldownFor(1200, 2400)
 				)
 		));
 	}
@@ -190,7 +198,7 @@ public class VampireBat extends Monster implements SmartBrainOwner<VampireBat>, 
 	public void setRoosting(boolean roosting){
 		if (this.entityData == null) return;
 
-		byte flags = (Byte) this.entityData.get(VAMPIRE_BAT_FLAGS);
+		byte flags = this.entityData.get(VAMPIRE_BAT_FLAGS);
 		if (roosting){
 			this.entityData.set(VAMPIRE_BAT_FLAGS, (byte) (flags | 1));
 		} else {
@@ -223,10 +231,10 @@ public class VampireBat extends Monster implements SmartBrainOwner<VampireBat>, 
 
 	public static AttributeSupplier.Builder createHostileAttributes() {
 		return Monster.createMonsterAttributes()
-				.add(Attributes.FOLLOW_RANGE, (double)35.0F)
-				.add(Attributes.FLYING_SPEED, (double).25F)
-				.add(Attributes.ATTACK_DAMAGE, (double)1.0F)
-				.add(Attributes.MAX_HEALTH, (double)5F);
+				.add(Attributes.FOLLOW_RANGE, 35.0F)
+				.add(Attributes.FLYING_SPEED, .25F)
+				.add(Attributes.ATTACK_DAMAGE, 1.0F)
+				.add(Attributes.MAX_HEALTH, 5F);
 	}
 
 	@Override
