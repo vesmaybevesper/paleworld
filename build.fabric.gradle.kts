@@ -1,6 +1,7 @@
 plugins {
 	id("mod-platform")
 	id("net.fabricmc.fabric-loom")
+	id("com.github.spotbugs") version "6.5.8"
 }
 
 platform {
@@ -43,6 +44,10 @@ platform {
 	}
 }
 
+spotbugs {
+	toolVersion = "4.10.2"
+}
+
 loom {
 	accessWidenerPath = rootProject.file("src/main/resources/${prop("mod.id")}.accesswidener")
 	runs.named("client") {
@@ -63,7 +68,7 @@ loom {
 }
 
 fabricApi {
-	configureDataGeneration() {
+	configureDataGeneration {
 		outputDirectory = file("${rootDir}/versions/datagen/${stonecutter.current.version.split("-")[0]}/src/main/generated")
 		client = true
 	}
@@ -76,6 +81,8 @@ repositories{
 	maven("https://api.modrinth.com/maven")
 	maven("https://maven.isxander.dev/releases")
 	maven("https://maven.terraformersmc.com/")
+	mavenCentral()
+	gradlePluginPortal()
 }
 
 dependencies {
@@ -85,8 +92,9 @@ dependencies {
 	implementation("com.geckolib:geckolib-fabric-${prop("deps.minecraft")}:${prop("deps.geckolib")}")
 	implementation("maven.modrinth:smartbrainlib:${prop("deps.smartbrainlib")}")
 	implementation("maven.modrinth:eveningstarlib:${prop("deps.eveningstarlib")}")
-	implementation("dev.isxander:yet-another-config-lib:${prop("deps.yacl")}")
+	implementation("maven.modrinth:yacl:${prop("deps.yacl")}")
 	implementation("com.terraformersmc:biolith-fabric:${prop("deps.biolith")}")
 	implementation("com.terraformersmc:modmenu:${prop("deps.modmenu")}")
 	compileOnly("maven.modrinth:iris:${prop("deps.iris")}")
+	spotbugsPlugins("com.h3xstream.findsecbugs:findsecbugs-plugin:1.14.0")
 }
