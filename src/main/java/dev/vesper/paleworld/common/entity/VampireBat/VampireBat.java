@@ -37,6 +37,7 @@ import net.minecraft.world.entity.ai.navigation.PathNavigation;
 *///?}
 import net.minecraft.world.entity.animal.pig.Pig;
 import net.minecraft.world.entity.animal.sheep.Sheep;
+import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -71,7 +72,7 @@ import java.util.List;
 //? <26.2{
 /*public class VampireBat extends Monster implements FlyingAnimal, SmartBrainOwner<VampireBat>, GeoEntity {
 	*///?} >= 26.2{
-public class VampireBat extends Monster implements SmartBrainOwner<VampireBat>, GeoEntity{
+public class VampireBat extends Monster implements SmartBrainOwner<VampireBat>, GeoEntity, Enemy {
 	//?}
 	private static final EntityDataAccessor<Byte> VAMPIRE_BAT_FLAGS = SynchedEntityData.defineId(VampireBat.class, EntityDataSerializers.BYTE);
 	protected boolean isFlying = false;
@@ -168,8 +169,6 @@ public class VampireBat extends Monster implements SmartBrainOwner<VampireBat>, 
 		if (isFlyingVehicle() && this.isFlying){
 			setDeltaMovement(getDeltaMovement().subtract(0, getAttributeValue(Attributes.GRAVITY), 0));
 		}
-
-		// im pretty sure isFlyingVehicle() is always false so this isn't doing anything but thats something to test later
 
 		assert Minecraft.getInstance().level != null;
 		if (this.getOnPos().getY() < Minecraft.getInstance().level.getHeight() + 1){
@@ -273,7 +272,7 @@ public class VampireBat extends Monster implements SmartBrainOwner<VampireBat>, 
 
 	@Override
 	public void travel(@NonNull Vec3 vec3) {
-		travelFlying(vec3, 0.2f);
+		this.travelFlying(vec3, 0.2f);
 	}
 
 	@Override

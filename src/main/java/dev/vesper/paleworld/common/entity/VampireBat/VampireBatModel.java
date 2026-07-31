@@ -10,7 +10,7 @@ import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.resources.Identifier;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.NonNull;
 
 
 import static dev.vesper.paleworld.PaleWorld.MOD_ID;
@@ -53,17 +53,17 @@ public class VampireBatModel extends GeoModel<VampireBat> {
 	}
 
 	@Override
-	public Identifier getModelResource(GeoRenderState renderState) {
+	public @NonNull Identifier getModelResource(@NonNull GeoRenderState renderState) {
 		return Identifier.fromNamespaceAndPath(MOD_ID, "geckolib/models/vampire_bat");
 	}
 
 	@Override
-	public Identifier getTextureResource(GeoRenderState renderState) {
+	public @NonNull Identifier getTextureResource(@NonNull GeoRenderState renderState) {
 		return Identifier.fromNamespaceAndPath(MOD_ID, "textures/entity/vampire_bat.png");
 	}
 
 	@Override
-	public Identifier getAnimationResource(VampireBat animatable) {
+	public @NonNull Identifier getAnimationResource(@NonNull VampireBat animatable) {
 		return Identifier.fromNamespaceAndPath(MOD_ID, "geckolib/animations/vampire_bat");
 	}
 }
