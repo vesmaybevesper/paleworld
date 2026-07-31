@@ -44,15 +44,9 @@ public class PaleWorld {
 
 	private static final Platform PLATFORM = createPlatformInstance();
 
-	//public static final Feature<NoneFeatureConfiguration> PALE_SPIKE;
-
 	private static <C extends FeatureConfiguration, F extends Feature<C>> F register(String name, F feature) {
 		return Registry.register(BuiltInRegistries.FEATURE, name, feature);
 	}
-
-	/*static {
-		PALE_SPIKE = register("pale_spike", new PaleSpikeFeature(NoneFeatureConfiguration.CODEC));
-	}*/
 
 	public static void onInitialize() {
 		LOGGER.info("Initializing {} on {}", MOD_ID, PaleWorld.xplat().loader());
