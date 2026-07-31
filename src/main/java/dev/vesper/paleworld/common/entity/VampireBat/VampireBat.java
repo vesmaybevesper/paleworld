@@ -218,15 +218,10 @@ public class VampireBat extends Monster implements SmartBrainOwner<VampireBat>, 
 
 //? 26.1.2{
 	/*@Override
+*///?}
 	public boolean isFlying() {
 		return !isRoosting();
 	}
-*///?}
-//? >=26.2{
-	public boolean isFlying(){
-		return !isRoosting();
-	}
-//?}
 
 	public static AttributeSupplier.Builder createHostileAttributes() {
 		return Monster.createMonsterAttributes()
