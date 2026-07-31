@@ -8,15 +8,15 @@ import dev.isxander.yacl3.config.v2.api.autogen.EnumCycler;
 import dev.isxander.yacl3.config.v2.api.autogen.FloatField;
 import dev.isxander.yacl3.config.v2.api.serializer.GsonConfigSerializerBuilder;
 import dev.isxander.yacl3.platform.YACLPlatform;
+import dev.vesper.eveningstarlib.common.YACLserializers.fastjson.FastJsonConfigSerializerBuilder;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.resources.Identifier;
 
 public class PaleWorldConfig {
 	public static final ConfigClassHandler<PaleWorldConfig> CONFIG = ConfigClassHandler.createBuilder(PaleWorldConfig.class)
 			.id(Identifier.fromNamespaceAndPath("paleworld", "config"))
-			.serializer(config -> GsonConfigSerializerBuilder.create(config)
+			.serializer(config -> FastJsonConfigSerializerBuilder.create(config)
 					.setPath(YACLPlatform.getConfigDir().resolve("paleworld.json5"))
-					.setJson5(true)
 					.build())
 			.build();
 
