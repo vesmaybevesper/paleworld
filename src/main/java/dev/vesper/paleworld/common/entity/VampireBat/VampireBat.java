@@ -69,6 +69,7 @@ import org.jetbrains.annotations.Nullable;
 import org.jspecify.annotations.NonNull;
 
 import java.util.List;
+
 //? <26.2{
 /*public class VampireBat extends Monster implements FlyingAnimal, SmartBrainOwner<VampireBat>, GeoEntity {
 	*///?} >= 26.2{
@@ -78,21 +79,13 @@ public class VampireBat extends Monster implements SmartBrainOwner<VampireBat>, 
 	protected boolean isFlying = false;
 	protected final FlyingPathNavigation flyingNav;
 	protected final PathNavigation walkNav;
-	//? 26.1.2{
-	/*protected final FlyingMoveControl flightControl;
-	*///?} >=26.2{
-	protected final FlyingMoveControl<VampireBat> flightControl;
-	//?}
+	protected final FlyingMoveControl/*? if >= 26.2 {*/<VampireBat>/*?}*/ flightControl;
 	private final AnimatableInstanceCache geoCache = GeckoLibUtil.createInstanceCache(this);
 	protected static final RawAnimation FLYING_ANIM = RawAnimation.begin().thenLoop("vb.fly");
 
 	public VampireBat(EntityType<? extends Monster> entityType, Level level) {
 		super(entityType, level);
-		//? 26.1.2{
-		/*this.flightControl = new FlyingMoveControl(this, 10, true);
-		*///?} >=26.2{
-		this.flightControl = new FlyingMoveControl<>(this, 10, true);
-		//?}
+		this.flightControl = new FlyingMoveControl/*? if >= 26.2 {*/<>/*?}*/(this, 10, true);
 		this.flyingNav = new FlyingPathNavigation(this, level);
 		this.walkNav = this.navigation;
 		this.walkNav.setCanFloat(true);
@@ -111,7 +104,7 @@ public class VampireBat extends Monster implements SmartBrainOwner<VampireBat>, 
 	}
 
 	@Override
-	public @NotNull MoveControl getMoveControl() {
+	public @NotNull MoveControl/*? if >= 26.2 {*/<?>/*?}*/ getMoveControl() {
 		this.moveControl = this.flightControl;
 		return this.moveControl;
 	}
