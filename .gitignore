@@ -52,3 +52,4 @@ bin/
 !.idea/icon.png
 !.idea/icon.svg
 /versions/datagen
+build-logic/src/main/kotlin/ModPlatformPlugin.kt
