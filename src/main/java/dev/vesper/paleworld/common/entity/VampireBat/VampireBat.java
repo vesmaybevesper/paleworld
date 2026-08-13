@@ -89,7 +89,6 @@ public class VampireBat extends Monster implements SmartBrainOwner<VampireBat>, 
 		this.flyingNav = new FlyingPathNavigation(this, level);
 		this.walkNav = this.navigation;
 		this.walkNav.setCanFloat(true);
-
 		this.xpReward = 5;
 		if (!level.isClientSide()) {
 			this.setRoosting(false);
@@ -209,9 +208,7 @@ public class VampireBat extends Monster implements SmartBrainOwner<VampireBat>, 
 		return (this.entityData.get(VAMPIRE_BAT_FLAGS) & 1) != 0;
 	}
 
-//? 26.1.2{
-	/*@Override
-*///?}
+/*? 26.1.2{*//*@Override*//*?}*/
 	public boolean isFlying() {
 		return !isRoosting();
 	}
