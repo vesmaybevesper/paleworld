@@ -23,7 +23,7 @@ public class PaleWorldConfig {
 		return CONFIG.generateGui().generateScreen(parent);
 	}
 
-	public enum Mode {VANILLA, SHADER, PARTICLE}
+	public enum FogType {VANILLA, SHADER, PARTICLE}
 
 	@AutoGen(category = "Visual")
 	@FloatField
@@ -41,8 +41,16 @@ public class PaleWorldConfig {
 	@Boolean(formatter = Boolean.Formatter.ON_OFF, colored = true)
 	@SerialEntry
 	public static final boolean horrorMode = false;
+	@AutoGen(category = "Main")
+	@Boolean(formatter = Boolean.Formatter.ON_OFF, colored = true)
+	@SerialEntry
+	public static boolean glowingEye = true;
+	@AutoGen(category = "Main")
+	@Boolean(formatter = Boolean.Formatter.ON_OFF, colored = true)
+	@SerialEntry
+	public static boolean gamemodeFog = false;
 	//@AutoGen(category = "Visual")
 	@EnumCycler
 	//@SerialEntry
-	public static Mode fogMode = Mode.VANILLA;
+	public static FogType fogType = FogType.VANILLA;
 }
