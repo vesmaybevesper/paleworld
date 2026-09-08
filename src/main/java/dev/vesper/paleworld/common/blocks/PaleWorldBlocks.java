@@ -47,6 +47,7 @@ public class PaleWorldBlocks {
 		return PALE_VINE_BODY;
 	}
 
+	//? <=26.2{
 	public static final Block PALE_VINE = regBlock("pale_vine",
 			new PaleVineHeadBlock(
 					GrowingPlantBodyBlock.Properties.of()
@@ -200,7 +201,161 @@ public class PaleWorldBlocks {
 			.instrument(NoteBlockInstrument.BASEDRUM)
 			.mapColor(MapColor.COLOR_ORANGE)
 	));
+	//?} >=26.3{
+	/*public static final Block PALE_VINE = regBlock("pale_vine",
+			new PaleVineHeadBlock(
+					GrowingPlantBodyBlock.Properties.of()
+							.setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(MOD_ID, "pale_vine")))
+							.noCollision()
+							.sound(SoundType.CAVE_VINES)
+							.randomTicks()
+							.lightLevel(PaleVines.getLightLevelProvider(7))
+							.instabreak()
+							.mapColor(MapColor.COLOR_GRAY)
+							.pushReaction(PushReaction.POPPED)
+							.noOcclusion()
+			));
 
+	public static final Block PALE_VINE_BODY = regBlock("pale_vine_body",
+			new PaleVineBodyBlock(
+					GrowingPlantHeadBlock.Properties.of()
+							.setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(MOD_ID, "pale_vine_body")))
+							.noCollision()
+							.sound(SoundType.CAVE_VINES)
+							.randomTicks()
+							.lightLevel(PaleVines.getLightLevelProvider(7))
+							.instabreak()
+							.mapColor(MapColor.COLOR_GRAY)
+							.pushReaction(PushReaction.POPPED)
+							.noOcclusion()
+			));
+	public static final Block BIG_DYING_DRIPLEAF_STEM = regBlock("big_dying_dripleaf_stem",
+			new BigDyingDripleafStemBlock(
+					BlockBehaviour.Properties.of()
+							.setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(MOD_ID, "big_dying_dripleaf_stem")))
+							.noCollision()
+							.sound(SoundType.BIG_DRIPLEAF)
+							.randomTicks()
+							.instabreak()
+							.mapColor(MapColor.COLOR_BROWN)
+							.pushReaction(PushReaction.POPPED)
+			));
+
+	public static final Block BIG_DYING_DRIPLEAF = regBlock("big_dying_dripleaf", new BigDyingDripleafBlock(
+			BlockBehaviour.Properties.of()
+					.setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(MOD_ID, "big_dying_dripleaf")))
+					.noCollision()
+					.strength(0.1F)
+					.sound(SoundType.BIG_DRIPLEAF)
+					.mapColor(MapColor.COLOR_BROWN)
+					.pushReaction(PushReaction.POPPED)
+	));
+
+	public static final Block SMALL_DYING_DRIPLEAF = regBlock(
+			"small_dying_dripleaf",
+			new SmallDyingDripleafBlock(
+					BlockBehaviour.Properties.of()
+							.setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(MOD_ID, "small_dying_dripleaf")))
+							.mapColor(MapColor.COLOR_BROWN)
+							.noCollision()
+							.instabreak()
+							.sound(SoundType.SMALL_DRIPLEAF)
+							.offsetType(BlockBehaviour.OffsetType.XYZ)
+							.pushReaction(PushReaction.POPPED)
+							.requiresCorrectToolForDrops()
+			));
+
+	public static final Block PETRIFIED_PALE_OAK = regBlock("petrified_pale_oak",
+			new Block(
+					BlockBehaviour.Properties.of()
+							.setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(MOD_ID, "petrified_pale_oak")))
+							.mapColor(MapColor.WOOL)
+							.sound(SoundType.WOOD)
+							.ignitedByLava()
+							.strength(7)
+							.requiresCorrectToolForDrops()
+							.pushReaction(PushReaction.PUSH_PULL)
+			));
+
+	public static final Block DYING_AZALEA = regBlock(
+			"dying_azalea",
+			new DyingAzalea(
+					BlockBehaviour.Properties.of()
+							.setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(MOD_ID, "dying_azalea")))
+							.mapColor(MapColor.COLOR_GRAY)
+							.forceSolidOff()
+							.instabreak()
+							.sound(SoundType.AZALEA)
+							.noOcclusion()
+							.pushReaction(PushReaction.POPPED)
+			));
+
+	public static final Block CHRYSANTHEMUM = regBlock(
+			"chrysanthemum",
+			(settings) -> new FlowerBlock(MobEffects.REGENERATION, 10.0F, settings),
+			BlockBehaviour.Properties.of()
+					.setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(MOD_ID, "chrysanthemum")))
+					.mapColor(MapColor.QUARTZ)
+					.noCollision()
+					.instabreak()
+					.sound(SoundType.GRASS)
+					.offsetType(BlockBehaviour.OffsetType.XZ)
+					.pushReaction(PushReaction.POPPED)
+	);
+
+	public static final Block RAFFLESIA = regBlock(
+			"rafflesia",
+			(settings) -> new RafflesiaBlock(MobEffects.NAUSEA, 10.0F, settings),
+			BlockBehaviour.Properties.of()
+					.setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(MOD_ID, "rafflesia")))
+					.mapColor(MapColor.COLOR_RED)
+					.noCollision()
+					.instabreak()
+					.sound(SoundType.GRASS)
+					.offsetType(BlockBehaviour.OffsetType.XZ)
+					.pushReaction(PushReaction.POPPED)
+	);
+
+	public static final Block ASPHODEL = regBlock(
+			"asphodel",
+			(settings) -> new FlowerBlock(MobEffects.LUCK, 15.0F, settings),
+			BlockBehaviour.Properties.of()
+					.setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(MOD_ID, "asphodel")))
+					.mapColor(MapColor.QUARTZ)
+					.noCollision()
+					.instabreak()
+					.sound(SoundType.GRASS)
+					.offsetType(BlockBehaviour.OffsetType.XZ)
+					.pushReaction(PushReaction.POPPED)
+	);
+
+	public static final Block WHITE_CRYSTAL = regBlock("white_crystal", new AmethystBlock(BlockBehaviour.Properties.of()
+			.setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(MOD_ID, "white_crystal")))
+			.mapColor(MapColor.WOOL)
+			.strength(1.5F)
+			.requiresCorrectToolForDrops()
+			.pushReaction(PushReaction.PUSH_PULL)
+			.sound(SoundType.AMETHYST)
+	));
+
+	public static final Block PALE_STONE = regBlock("pale_stone", new Block(BlockBehaviour.Properties.of()
+			.setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(MOD_ID, "pale_stone")))
+			.pushReaction(PushReaction.PUSH_PULL)
+			.sound(SoundType.TUFF)
+			.requiresCorrectToolForDrops()
+			.strength(1.5F)
+			.mapColor(MapColor.STONE)));
+
+	public static final Block STRIPPED_CREAKING_HEART = regBlock("stripped_creaking_heart", new CreakingHeartBlock(BlockBehaviour.Properties.of()
+			.setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(MOD_ID, "stripped_creaking_heart")))
+			.pushReaction(PushReaction.PUSH_PULL)
+			.sound(SoundType.CREAKING_HEART)
+			.requiresCorrectToolForDrops()
+			.strength(10)
+			.instrument(NoteBlockInstrument.BASEDRUM)
+			.mapColor(MapColor.COLOR_ORANGE)
+	));
+	*///?}
 	private static Block regBlock(String name, Block block){
 		regBlockItem(name, block);
 		return Registry.register(BuiltInRegistries.BLOCK, Identifier.fromNamespaceAndPath(MOD_ID, name), block);

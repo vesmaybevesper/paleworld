@@ -49,7 +49,11 @@ public class PaleWorldBiomes {
 		BiomeDefaultFeatures.commonSpawns(spawner);
 		BiomeDefaultFeatures.oceanSpawns(spawner,1,1,3);
 
+		//? <=26.2{
 		BiomeGenerationSettings.Builder builder = new BiomeGenerationSettings.Builder(biomeRegisterable.lookup(Registries.PLACED_FEATURE), biomeRegisterable.lookup(Registries.CONFIGURED_CARVER));
+		//?} >=26.3{
+		/*BiomeGenerationSettings.Builder builder = new BiomeGenerationSettings.Builder(biomeRegisterable.lookup(Registries.PLACED_FEATURE), biomeRegisterable.lookup(Registries.CARVER));
+		*///?}
 		globalOverworldGeneration(builder);
 		builder.addCarver(Carvers.CAVE);
 		builder.addCarver(Carvers.CAVE_EXTRA_UNDERGROUND);
@@ -92,7 +96,12 @@ public class PaleWorldBiomes {
 	public static Biome paleValley(BootstrapContext<Biome> biomeRegisterable){
 
 		MobSpawnSettings.Builder spawner = new MobSpawnSettings.Builder();
+
+		//? <=26.2{
 		BiomeGenerationSettings.Builder builder = new BiomeGenerationSettings.Builder(biomeRegisterable.lookup(Registries.PLACED_FEATURE), biomeRegisterable.lookup(Registries.CONFIGURED_CARVER));
+		//?} >=26.3{
+		/*BiomeGenerationSettings.Builder builder = new BiomeGenerationSettings.Builder(biomeRegisterable.lookup(Registries.PLACED_FEATURE), biomeRegisterable.lookup(Registries.CARVER));
+		*///?}
 
 		BiomeDefaultFeatures.addDefaultSprings(builder);
 		BiomeDefaultFeatures.commonSpawns(spawner);

@@ -13,6 +13,7 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.BigDripleafStemBlock;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.BonemealSource;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
@@ -29,10 +30,17 @@ public class BigDyingDripleafStemBlock extends BigDripleafStemBlock {
 		super(properties);
 	}
 
+	//? <=26.2{
 	@Override
 	public boolean isBonemealSuccess(@NonNull Level level, @NonNull RandomSource randomSource, @NonNull BlockPos blockPos, @NonNull BlockState blockState) {
 		return false;
 	}
+	//?} >=26.3{
+	/*@Override
+	public boolean isBonemealSuccess(@NonNull Level level, @NonNull RandomSource random, @NonNull BlockPos pos, @NonNull BlockState state, @NonNull BonemealSource source) {
+		return false;
+	}
+	*///?}
 
 	@Override
 	protected boolean canSurvive(@NonNull BlockState blockState, LevelReader levelReader, BlockPos blockPos) {
@@ -52,6 +60,7 @@ public class BigDyingDripleafStemBlock extends BigDripleafStemBlock {
 		return new ItemStack(PaleWorldBlocks.BIG_DYING_DRIPLEAF);
 	}
 
+	//? <=26.2{
 	@Override
 	public void performBonemeal(@NonNull ServerLevel serverLevel, @NonNull RandomSource randomSource, @NonNull BlockPos blockPos, BlockState blockState) {
 		Optional<BlockPos> optional = BlockUtil.getTopConnectedBlock(serverLevel, blockPos, blockState.getBlock(), Direction.UP, Blocks.BIG_DRIPLEAF);
@@ -63,6 +72,20 @@ public class BigDyingDripleafStemBlock extends BigDripleafStemBlock {
 			BigDyingDripleafBlock.placeDyingDripleafAt(serverLevel, blockPos2, serverLevel.getFluidState(blockPos2), direction);
 		}
 	}
+	//?} >=26.3{
+	/*@Override
+	public void performBonemeal(@NonNull ServerLevel level, @NonNull RandomSource random, @NonNull BlockPos pos, BlockState state, @NonNull BonemealSource source) {
+		Optional<BlockPos> optional = BlockUtil.getTopConnectedBlock(level, pos, state.getBlock(), Direction.UP, Blocks.BIG_DRIPLEAF);
+		if (optional.isPresent()) {
+			BlockPos blockPos1 = optional.get();
+			BlockPos blockPos2 = blockPos1.above();
+			Direction direction = state.getValue(FACING);
+			placeStemAtDying(level, pos, level.getFluidState(pos), direction);
+			BigDyingDripleafBlock.placeDyingDripleafAt(level, blockPos2, level.getFluidState(blockPos2), direction);
+		}
+	}
+
+	*///?}
 
 	static {
 		WATERLOGGED = BlockStateProperties.WATERLOGGED;

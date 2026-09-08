@@ -13,6 +13,7 @@ import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.level.block.BigDripleafBlock;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.BonemealSource;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
@@ -28,10 +29,19 @@ public class BigDyingDripleafBlock extends BigDripleafBlock {
 		super(properties);
 	}
 
+	//? <=26.2{
 	@Override
 	public boolean isBonemealSuccess(@NonNull Level level, @NonNull RandomSource randomSource, @NonNull BlockPos blockPos, @NonNull BlockState blockState) {
 		return false;
 	}
+	//?} >=26.3{
+
+	/*@Override
+	public boolean isBonemealSuccess(@NonNull Level level, @NonNull RandomSource random, @NonNull BlockPos pos, @NonNull BlockState state, @NonNull BonemealSource source) {
+		return false;
+	}
+
+	*///?}
 
 	public static boolean canGrowIntoDying(BlockState blockState){
 		return blockState.isAir() || blockState.is(Blocks.WATER) || blockState.is(PaleWorldBlocks.SMALL_DYING_DRIPLEAF);
