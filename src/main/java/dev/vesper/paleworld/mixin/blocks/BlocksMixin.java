@@ -1,6 +1,7 @@
 package dev.vesper.paleworld.mixin.blocks;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
+import dev.vesper.paleworld.common.config.PaleWorldConfig;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import org.objectweb.asm.Opcodes;
@@ -73,11 +74,14 @@ private static BlockBehaviour.Properties pottedOpenEyeblossom(BlockBehaviour.Pro
 			)}
 	)
 	private static BlockBehaviour.Properties openEyeblossom(BlockBehaviour.Properties original) {
-		if (horrorMode) {
-			return original.lightLevel((blockstate) -> 3);
-		} else {
-			return original.lightLevel((blockstate) -> 5);
+		if (PaleWorldConfig.glowingEye) {
+			if (horrorMode) {
+				return original.lightLevel((blockstate) -> 3);
+			} else {
+				return original.lightLevel((blockstate) -> 5);
+			}
 		}
+		return original;
 	}
 
 	@ModifyExpressionValue(
@@ -98,11 +102,14 @@ private static BlockBehaviour.Properties pottedOpenEyeblossom(BlockBehaviour.Pro
 			)}
 	)
 	private static BlockBehaviour.Properties pottedOpenEyeblossom(BlockBehaviour.Properties original) {
-		if (horrorMode) {
-			return original.lightLevel((blockstate) -> 3);
-		} else {
-			return original.lightLevel((blockstate) -> 5);
+		if (PaleWorldConfig.glowingEye) {
+			if (horrorMode) {
+				return original.lightLevel((blockstate) -> 3);
+			} else {
+				return original.lightLevel((blockstate) -> 5);
+			}
 		}
+		return original;
 	}
 	//?}
 }

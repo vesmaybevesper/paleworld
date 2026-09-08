@@ -3,20 +3,15 @@ package dev.vesper.paleworld.mixin.render;
 import com.llamalad7.mixinextras.sugar.Local;
 import dev.vesper.eveningstarlib.common.ESLModChecks;
 import dev.vesper.paleworld.common.config.PaleWorldConfig;
+import dev.vesper.paleworld.common.util.FogCode;
 import net.minecraft.client.Camera;
 import net.minecraft.client.DeltaTracker;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.fog.FogData;
 import net.minecraft.client.renderer.fog.FogRenderer;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.Biomes;
-import net.minecraft.world.level.levelgen.Heightmap;
-import org.jetbrains.annotations.NotNull;
+import org.joml.Vector4f;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -24,68 +19,42 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
-import static dev.vesper.paleworld.common.util.VarHolder.fogFade;
 
 @Mixin(FogRenderer.class)
 public class FogRendererMixin {
 
 	@Unique
-	private static final float FADE_SPEED = 0.002f;
-
-	@Unique
-	private static final boolean shaderFailWarned = false;
 	private static float fogAlphaBase;
-	private static Entity entity;
-	private static float renderDistanceBlocks;
+	@Unique
+	private static Entity capturedEntity;
+	@Unique
+	private static float renderBlocks;
+	@Unique
+	private static Vector4f capturedColor;
+	@Unique
+	private static FogData capturedFog;
 
 	@Inject(method = "setupFog", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/fog/environment/FogEnvironment;setupFog(Lnet/minecraft/client/renderer/fog/FogData;Lnet/minecraft/client/Camera;Lnet/minecraft/client/multiplayer/ClientLevel;FLnet/minecraft/client/DeltaTracker;)V", shift = At.Shift.BEFORE), locals = LocalCapture.CAPTURE_FAILHARD)
-	private static void onFogStart(Camera camera, int renderDistanceInChunks, DeltaTracker deltaTracker, float darkenWorldAmount, ClientLevel level, CallbackInfoReturnable<FogData> cir, @Local(name = "entity") Entity localEntity) {
-		entity = localEntity;
-		renderDistanceBlocks = renderDistanceInChunks * 16;
+	private static void onFogStart(Camera camera, int renderDistanceInChunks, DeltaTracker deltaTracker, float darkenWorldAmount, ClientLevel level, CallbackInfoReturnable<FogData> cir, @Local(name = "entity") Entity entity) {
+		capturedEntity = entity;
+		renderBlocks = renderDistanceInChunks * 16;
 	}
 
 	@Inject(method = "updateBuffer(Lnet/minecraft/client/renderer/fog/FogData;)V", at = @At("HEAD"))
 	private void updateBuffer(FogData fog, CallbackInfo ci) {
-		if (entity instanceof Player player) {
-			//? fabric{
-			if (!ESLModChecks.isShaders()) {
-				//?} neoforge{
-				/*if (!ModList.get().isLoaded("iris")) {
-				 *///?}
-				BlockPos pos = player.getOnPos();
-				assert Minecraft.getInstance().level != null;
-				Holder<@NotNull Biome> biome = Minecraft.getInstance().level.getBiome(pos);
-				if (!biome.is(Biomes.PALE_GARDEN)) {return;}
-
-				int topY = Minecraft.getInstance().level.getHeight(Heightmap.Types.WORLD_SURFACE, pos.getX(), pos.getZ());
-
-				if (biome.is(Biomes.PALE_GARDEN)) {
-					if (player.getY() <= (double)(topY + 15) && player.getY() >= 15.0D && !player.isCreative() && !player.isSpectator()) {
-						fogFade = Math.min(fogFade + 0.002F, 1.0F);
-					} else {
-						if (!(fogFade > 0.0F)) {
-							return;
+		if (!ESLModChecks.isShaders()) {
+			if (capturedEntity instanceof Player player) {
+				if (PaleWorldConfig.fogType == PaleWorldConfig.FogType.VANILLA) {
+					if (PaleWorldConfig.gamemodeFog){
+						if (!player.isCreative() && !player.isSpectator()){
+							FogCode.setFogBuffer(renderBlocks, fog, fogAlphaBase, player);
 						}
-						fogFade = Math.min(fogFade - 0.002F, 0.0F);
+					} else {
+						FogCode.setFogBuffer(renderBlocks, fog, fogAlphaBase, player);
 					}
+				} else if (PaleWorldConfig.fogType == PaleWorldConfig.FogType.SHADER) {
+					//this type is intended for a future custom fog shader option so it shouldn't do anything RN
 				}
-
-				if (PaleWorldConfig.horrorMode) {
-					fog.environmentalStart = renderDistanceBlocks * 0.8F + fogFade * (0.1F - renderDistanceBlocks * 0.8F);
-					fog.environmentalEnd = renderDistanceBlocks + fogFade * (8.0F - renderDistanceBlocks);
-					fogAlphaBase = 0.99F;
-				} else {
-					fog.environmentalStart = renderDistanceBlocks * 0.8F + fogFade * (PaleWorldConfig.fogStart - renderDistanceBlocks * 0.8F);
-					fog.environmentalEnd = renderDistanceBlocks + fogFade * (PaleWorldConfig.fogEnd - renderDistanceBlocks);
-					fogAlphaBase = PaleWorldConfig.fogTransparency;
-				}
-
-				fog.skyEnd = fog.environmentalEnd;
-				fog.cloudEnd = fog.environmentalEnd;
-				fog.color.x += fogFade * (0.8F - fog.color.x);
-				fog.color.y += fogFade * (0.8F - fog.color.y);
-				fog.color.z += fogFade * (0.85F - fog.color.z);
-				fog.color.w += fogFade * (fogAlphaBase - fog.color.w);
 			}
 		}
 	}
